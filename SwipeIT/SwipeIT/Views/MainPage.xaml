@@ -12,16 +12,29 @@
             <CarouselView  ItemsSource="{Binding DevelopersResult}">
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout Padding="10">
-                            <Label Text="{Binding  Name }"
+                        <SwipeView>
+                            <SwipeView.TopItems>
+                                <SwipeItems>
+                                    <SwipeItemView>
+                                        <StackLayout Margin="10"
+                                                     Orientation="Horizontal" HorizontalOptions="Center">
+                                            <Button Text="Button1" BackgroundColor="Green" />
+                                            <Button Text="Button2" BackgroundColor="Red" />
+                                        </StackLayout>
+                                    </SwipeItemView>
+                                </SwipeItems>
+                            </SwipeView.TopItems>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding  Name }"
                                    FontSize="16" />
-                            <Label Text="{Binding ID}"
+                                <Label Text="{Binding ID}"
                                    LineBreakMode="NoWrap"
                                    FontSize="13" />
-                            <Image Source="{Binding Image}"
+                                <Image Source="{Binding Image}"
                                    WidthRequest="200"
                                    HeightRequest="200" />
-                        </StackLayout>
+                            </StackLayout>
+                        </SwipeView>
                     </DataTemplate>
                 </CarouselView.ItemTemplate>
             </CarouselView>
