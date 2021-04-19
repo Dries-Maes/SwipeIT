@@ -16,5 +16,13 @@ namespace SwipeIT.Views
         {
             InitializeComponent();
         }
+
+        private void OnFavoriteSwipeItemInvoked(object sender, EventArgs e)
+        {
+        }
+
+        private void OnDeleteSwipeItemInvoked(object sender, EventArgs e)
+        {
+        }
     }
 }

@@ -12,6 +12,8 @@ namespace SwipeIT.ViewModels
     {
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
         public DeveloperRepo developerRepo = DeveloperRepo.GetSingleton();
+        public RecruiterRepo recruiterRepo = RecruiterRepo.GetSingleton();
+        public SkillsRepo skillsRepo = SkillsRepo.GetSingleton();
 
         private bool isBusy = false;
 
