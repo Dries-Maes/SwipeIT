@@ -4,12 +4,7 @@ using System.Text;
 
 namespace SwipeIT.Models
 {
-    public class Admin
+    internal abstract class User
     {
-        public int MyProperty { get; set; }
-
-        public Admin()
-        {
-        }
     }
 }
