@@ -319,5 +319,10 @@ namespace SwipeIT.Services
                 },
             };
         }
+
+        public Task<Developer> GetAllItemsAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

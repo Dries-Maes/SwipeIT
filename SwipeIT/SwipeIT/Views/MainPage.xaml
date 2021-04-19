@@ -6,9 +6,14 @@
     <ContentPage.BindingContext>
         <local:MainViewModel />
     </ContentPage.BindingContext>
-
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{Binding CurrentUser.Name }" />
+        <ToolbarItem Text="Like"
+                     Command="{Binding Like}" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
+
             <CarouselView  ItemsSource="{Binding DevelopersResult}">
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
@@ -17,22 +22,26 @@
                                 <SwipeItems>
                                     <SwipeItemView>
                                         <StackLayout Margin="10"
-                                                     Orientation="Horizontal" HorizontalOptions="Center">
-                                            <Button Text="Button1" BackgroundColor="Green" />
-                                            <Button Text="Button2" BackgroundColor="Red" />
+                                                     Orientation="Horizontal"
+                                                     HorizontalOptions="Center">
+                                            <Button Text="Like"
+                                                    BackgroundColor="Green" />
+                                            <Button Text="Button2"
+                                                    BackgroundColor="Red" />
                                         </StackLayout>
                                     </SwipeItemView>
                                 </SwipeItems>
                             </SwipeView.TopItems>
+
                             <StackLayout Padding="10">
                                 <Label Text="{Binding  Name }"
-                                   FontSize="16" />
+                                       FontSize="16" />
                                 <Label Text="{Binding ID}"
-                                   LineBreakMode="NoWrap"
-                                   FontSize="13" />
+                                       LineBreakMode="NoWrap"
+                                       FontSize="13" />
                                 <Image Source="{Binding Image}"
-                                   WidthRequest="200"
-                                   HeightRequest="200" />
+                                       WidthRequest="200"
+                                       HeightRequest="200" />
                             </StackLayout>
                         </SwipeView>
                     </DataTemplate>

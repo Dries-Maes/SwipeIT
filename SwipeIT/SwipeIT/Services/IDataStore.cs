@@ -14,6 +14,8 @@ namespace SwipeIT.Services
 
         Task<T> GetItemAsync(int id);
 
+        Task<T> GetAllItemsAsync();
+
         Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false);
     }
 }

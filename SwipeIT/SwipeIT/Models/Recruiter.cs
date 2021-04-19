@@ -8,5 +8,11 @@ namespace SwipeIT.Models
     {
         public string Company { get; set; }
         public List<Developer> LikedDevelopers { get; set; }
+
+        public Recruiter()
+        {
+            Role = Role.Recruiter;
+            LikedDevelopers = new List<Developer>();
+        }
     }
 }

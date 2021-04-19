@@ -91,5 +91,10 @@ namespace SwipeIT.Services
                 },
             };
         }
+
+        public Task<Recruiter> GetAllItemsAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

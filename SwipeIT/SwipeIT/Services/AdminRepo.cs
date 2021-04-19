@@ -8,6 +8,11 @@ namespace SwipeIT.Services
 {
     public class AdminRepo : IDataStore<Admin>
     {
+        public Task<Admin> GetAllItemsAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         Task<bool> IDataStore<Admin>.AddItemAsync(Admin item)
         {
             throw new NotImplementedException();

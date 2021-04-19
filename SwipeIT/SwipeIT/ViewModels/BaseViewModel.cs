@@ -10,6 +10,7 @@ namespace SwipeIT.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+        public static Account CurrentUser { get; set; }
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
         public DeveloperRepo developerRepo = DeveloperRepo.GetSingleton();
         public RecruiterRepo recruiterRepo = RecruiterRepo.GetSingleton();
@@ -42,6 +43,14 @@ namespace SwipeIT.ViewModels
             onChanged?.Invoke();
             OnPropertyChanged(propertyName);
             return true;
+        }
+
+        public BaseViewModel()
+        {
+            CurrentUser = new Recruiter //TODO LOGIN SCHERM MOCK RECRUITER
+            {
+                Name = "Pieter",
+            };
         }
 
         #region INotifyPropertyChanged
