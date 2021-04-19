@@ -11,5 +11,6 @@ namespace SwipeIT.Models
         public string Image { get; set; }
         public int YearsOfExperience { get; set; }
         public List<Skill> Skills { get; set; }
+        public List<String> Locations { get; set; }
     }
 }
