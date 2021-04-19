@@ -87,5 +87,10 @@ namespace SwipeIT.Services
                 },
             };
         }
+
+        public Task<Skill> GetAllItemsAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

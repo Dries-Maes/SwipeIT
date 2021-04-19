@@ -66,5 +66,10 @@ namespace SwipeIT.Services
         {
             throw new NotImplementedException();
         }
+
+        public Task<Item> GetAllItemsAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
