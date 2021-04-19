@@ -8,7 +8,7 @@ namespace SwipeIT.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        public List<Developer> DevelopersResult { get; }
+        public List<Developer> DevelopersResult { get; set; }
 
         public MainViewModel()
         {
@@ -18,7 +18,7 @@ namespace SwipeIT.ViewModels
 
         private void GetMockData()
         {
-            throw new NotImplementedException();
+            DevelopersResult = developerRepo.GetDevelopers();
         }
     }
 }

@@ -18,6 +18,9 @@
                             <Label Text="{Binding ID}"
                                    LineBreakMode="NoWrap"
                                    FontSize="13" />
+                            <Image Source="{Binding Image}"
+                                   WidthRequest="200"
+                                   HeightRequest="200" />
                         </StackLayout>
                     </DataTemplate>
                 </CarouselView.ItemTemplate>

@@ -13,12 +13,12 @@ namespace SwipeIT.Services
             throw new NotImplementedException();
         }
 
-        Task<bool> IDataStore<Admin>.DeleteItemAsync(string id)
+        Task<bool> IDataStore<Admin>.DeleteItemAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<Admin> IDataStore<Admin>.GetItemAsync(string id)
+        Task<Admin> IDataStore<Admin>.GetItemAsync(int id)
         {
             throw new NotImplementedException();
         }

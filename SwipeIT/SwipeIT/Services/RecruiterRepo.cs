@@ -13,12 +13,12 @@ namespace SwipeIT.Services
             throw new NotImplementedException();
         }
 
-        public Task<bool> DeleteItemAsync(string id)
+        public Task<bool> DeleteItemAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Recruiter> GetItemAsync(string id)
+        public Task<Recruiter> GetItemAsync(int id)
         {
             throw new NotImplementedException();
         }
