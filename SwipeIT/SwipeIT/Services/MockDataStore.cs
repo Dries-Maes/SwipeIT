@@ -8,7 +8,7 @@ namespace SwipeIT.Services
 {
     public class MockDataStore : IDataStore<Item>
     {
-        readonly List<Item> items;
+        private readonly List<Item> items;
 
         public MockDataStore()
         {
@@ -55,6 +55,21 @@ namespace SwipeIT.Services
         public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false)
         {
             return await Task.FromResult(items);
+        }
+
+        public Task<bool> DeleteItemAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Item> GetItemAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Item> GetAllItemsAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }
