@@ -10,7 +10,6 @@ namespace SwipeIT.Models
         public string Surname { get; set; }
         public string Name { get; set; }
         public string Image { get; set; }
-        public List<String> MyProperty { get; set; }
         public int YearsOfExperience { get; set; }
         public List<Skill> Skills { get; set; }
     }
