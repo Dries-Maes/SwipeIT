@@ -7,12 +7,12 @@ namespace SwipeIT.Models
     public class Recruiter : User
     {
         public string Company { get; set; }
-        public List<Developer> LikedDevelopers { get; set; }
+        public List<Developer> SelectedDevelopers { get; set; }
 
         public Recruiter()
         {
             Role = Role.Recruiter;
-            LikedDevelopers = new List<Developer>();
+            SelectedDevelopers = new List<Developer>();
         }
     }
 }

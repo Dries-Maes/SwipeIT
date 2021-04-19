@@ -1,9 +1,11 @@
-﻿using SwipeIT.Models;
+﻿using Nest;
+using SwipeIT.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace SwipeIT.ViewModels
 {
@@ -11,7 +13,7 @@ namespace SwipeIT.ViewModels
     {
         public List<Developer> DevelopersResult { get; set; }
 
-        public ICommand Like { get; }
+        public Command<Developer> LikeCommand => new Command<Developer>(Like);
 
         public MainViewModel()
         {
@@ -22,6 +24,11 @@ namespace SwipeIT.ViewModels
         private void GetMockData()
         {
             DevelopersResult = developerRepo.GetDevelopers();
+        }
+
+        private void Like(Developer developer)
+        {
+            ((Recruiter)CurrentUser).SelectedDevelopers.Add(developer);
         }
     }
 }
