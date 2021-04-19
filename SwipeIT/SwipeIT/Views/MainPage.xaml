@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:SwipeIT.ViewModels"
-             x:Class="SwipeIT.Views.MainPage">
+             x:Class="SwipeIT.Views.MainPage"
+             BackgroundColor="{AppThemeBinding Dark=Black, Light=White}">
     <ContentPage.BindingContext>
         <local:MainViewModel />
     </ContentPage.BindingContext>
@@ -13,8 +14,11 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-
-            <CarouselView  ItemsSource="{Binding DevelopersResult}">
+            <CarouselView ItemsSource="{Binding DevelopersResult}">
+                <CarouselView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal"
+                                       SnapPointsType="Mandatory" />
+                </CarouselView.ItemsLayout>
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
                         <SwipeView>
@@ -24,9 +28,9 @@
                                         <StackLayout Margin="10"
                                                      Orientation="Horizontal"
                                                      HorizontalOptions="Center">
-                                            <Button Text="Like"
+                                            <Button Text="Save"
                                                     BackgroundColor="Green" />
-                                            <Button Text="Button2"
+                                            <Button Text="Cancel"
                                                     BackgroundColor="Red" />
                                         </StackLayout>
                                     </SwipeItemView>
@@ -34,11 +38,15 @@
                             </SwipeView.TopItems>
 
                             <StackLayout Padding="10">
-                                <Label Text="{Binding  Name }"
-                                       FontSize="16" />
-                                <Label Text="{Binding ID}"
-                                       LineBreakMode="NoWrap"
-                                       FontSize="13" />
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding ID}"
+                                           FontSize="13" />
+                                    <Label Text="{Binding Name}"
+                                           FontSize="16" />
+                                    <Label Text="{Binding Surname}"
+                                           LineBreakMode="NoWrap"
+                                           FontSize="16" />
+                                </StackLayout>
                                 <Image Source="{Binding Image}"
                                        WidthRequest="200"
                                        HeightRequest="200" />
