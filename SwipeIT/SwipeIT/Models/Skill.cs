@@ -4,7 +4,14 @@ using System.Text;
 
 namespace SwipeIT.Models
 {
-    class Skill
+    internal class Skill
     {
+        private int myVar;
+
+        public int MyProperty
+        {
+            get { return myVar; }
+            set { myVar = value; }
+        }
     }
 }
