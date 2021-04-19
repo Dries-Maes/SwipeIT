@@ -10,6 +10,5 @@ namespace SwipeIT.Models
 
         public string Address { get; set; }
 
-        public List<Skill> Skills {get; set; }
     }
 }
