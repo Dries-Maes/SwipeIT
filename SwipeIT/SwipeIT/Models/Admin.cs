@@ -4,12 +4,8 @@ using System.Text;
 
 namespace SwipeIT.Models
 {
-    public class Admin
+    public class Admin : Account
     {
-        public int MyProperty { get; set; }
-
-        public Admin()
-        {
-        }
+        public int ID { get; set; }
     }
 }
