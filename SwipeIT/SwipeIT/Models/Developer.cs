@@ -4,7 +4,10 @@ using System.Text;
 
 namespace SwipeIT.Models
 {
-    class Developer
+    internal class Developer : User
     {
+        public int ID { get; set; }
+
+        public string Address { get; set; }
     }
 }
