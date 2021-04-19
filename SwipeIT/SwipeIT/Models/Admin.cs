@@ -6,6 +6,5 @@ namespace SwipeIT.Models
 {
     public class Admin : Account
     {
-        public int ID { get; set; }
     }
 }
