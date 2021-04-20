@@ -6,10 +6,20 @@ using System.Text;
 
 namespace SwipeIT.Services
 {
-    public class CurrentUserSingleton
+    public class CurrentUserSingleton : ObservableObject
     {
         private static CurrentUserSingleton instance;
-        public Account CurrentUser { get; set; }
+        private Account currentUser;
+
+        public Account CurrentUser
+        {
+            get { return currentUser; }
+            set
+            {
+                currentUser = value;
+                OnPropertyChanged(nameof(CurrentUser));
+            }
+        }
 
         private CurrentUserSingleton()
         {

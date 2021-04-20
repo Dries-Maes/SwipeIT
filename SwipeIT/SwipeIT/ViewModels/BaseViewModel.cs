@@ -10,16 +10,7 @@ namespace SwipeIT.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        private CurrentUserSingleton currentUserSingleton;
-
-        public CurrentUserSingleton CurrentUserSingleton
-        {
-            get { return currentUserSingleton; }
-            set
-            {
-                currentUserSingleton = value;
-            }
-        }
+        public CurrentUserSingleton CurrentUserSingleton { get; set; }
 
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
         public DeveloperRepo DeveloperRepo = DeveloperRepo.GetSingleton();
