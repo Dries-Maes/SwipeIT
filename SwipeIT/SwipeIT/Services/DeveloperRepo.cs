@@ -126,7 +126,7 @@ namespace SwipeIT.Services
                         "Evergem",
                     },
                     Email="ward@impesoft.com",
-                    Password ="L34V3M34L0N3"
+                    Password ="pass"
                 },
                 new Developer
                 {

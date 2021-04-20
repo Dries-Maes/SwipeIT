@@ -6,6 +6,7 @@ using System.Text;
 using Xamarin.Forms;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SwipeIT.ViewModels
 {
@@ -62,7 +63,6 @@ namespace SwipeIT.ViewModels
                 }
                 else
                 {
-                    // user exists
                     ErrorMessage = "User already exists";
                     return;
                 }
@@ -110,26 +110,29 @@ namespace SwipeIT.ViewModels
             return UserPassword == CurrentUserSingleton.CurrentUser.Password;
         }
 
-        private void CreateNewUser()
+        private async Task CreateNewUser()
         {
             if (IsDeveloper)
             {
-                CurrentUserSingleton.CurrentUser = new Developer()
+                Developer temp = new Developer
                 {
                     Email = UserMail,
                     Password = UserPassword,
                     FirstName = FirstName,
                     LastName = LastName,
                 };
+                CurrentUserSingleton.CurrentUser = temp;
+                await DeveloperRepo.AddItemAsync((Developer)CurrentUserSingleton.CurrentUser);
             }
 
             if (IsRecruiter)
             {
-                CurrentUserSingleton.CurrentUser = new Recruiter()
+                CurrentUserSingleton.CurrentUser = new Recruiter
                 {
                     Email = UserMail,
                     Password = UserPassword
                 };
+                await RecruiterRepo.AddItemAsync((Recruiter)CurrentUserSingleton.CurrentUser);
             }
             // todo admin (release 3)
         }
