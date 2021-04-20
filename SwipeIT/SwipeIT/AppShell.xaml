@@ -124,6 +124,11 @@
         <ShellContent Route="ItemsPage"
                       ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>
+    <FlyoutItem Title="Settings"
+                Icon="icon_feed.png">
+        <ShellContent Route="SettingsPage"
+                      ContentTemplate="{DataTemplate local:SettingsPage}" />
+    </FlyoutItem>
 
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
     <MenuItem Text="Logout"
