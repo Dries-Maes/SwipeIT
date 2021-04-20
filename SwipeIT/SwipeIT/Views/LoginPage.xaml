@@ -9,15 +9,28 @@
     <ContentPage.Content>
         <StackLayout Padding="10,0,10,0"
                      VerticalOptions="Center">
-            <Entry Text="Username" />
+            <Entry Placeholder="Email"
+                   Keyboard="Email" />
             <Entry IsPassword="True"
-                   Text="Password" />
+                   Placeholder="Password" />
+            <Entry IsPassword="True"
+                   Placeholder="Confirm Password"
+                   IsVisible="{Binding Source={x:Reference SignUp},
+                                    Path=IsToggled}" />
+            <Entry Placeholder="Surname"
+                   IsVisible="{Binding Source={x:Reference SignUp},
+                                    Path=IsToggled}" />
+            <Entry Placeholder="Name"
+                   IsVisible="{Binding Source={x:Reference SignUp},
+                                    Path=IsToggled}" />
             <StackLayout Orientation="Horizontal">
                 <Button VerticalOptions="Center"
                         Text="Login"
                         Command="{Binding LoginCommand}" />
-                <Button VerticalOptions="Center"
-                        Text="Signup" />
+                <Label Text="Signup"
+                       VerticalOptions="Center" />
+                <Switch x:Name="SignUp"
+                        VerticalOptions="Center" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
