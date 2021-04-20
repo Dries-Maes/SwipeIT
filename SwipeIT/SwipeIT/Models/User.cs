@@ -6,27 +6,27 @@ namespace SwipeIT.Models
 {
     public abstract class User : Account
     {
-        private string surname;
+        private string firstName;
 
-        public string Surname
+        public string FirstName
         {
-            get { return surname; }
+            get { return firstName; }
             set
             {
-                surname = value;
-                OnPropertyChanged(nameof(Surname));
+                firstName = value;
+                OnPropertyChanged(nameof(FirstName));
             }
         }
 
-        private string name;
+        private string lastName;
 
-        public string Name
+        public string LastName
         {
-            get { return name; }
+            get { return lastName; }
             set
             {
-                name = value;
-                OnPropertyChanged(nameof(Name));
+                lastName = value;
+                OnPropertyChanged(nameof(LastName));
             }
         }
 

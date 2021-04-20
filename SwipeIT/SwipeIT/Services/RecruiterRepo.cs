@@ -26,7 +26,7 @@ namespace SwipeIT.Services
             return instance;
         }
 
-        public List<Recruiter> GetRecruiter()
+        public List<Recruiter> GetRecruiters()
         {
             return recruiters;
         }
@@ -68,30 +68,38 @@ namespace SwipeIT.Services
                 new Recruiter
                 {
                     ID = 1,
-                    LastName = "Jef",
-                    FirstName = "Besos",
+                   FirstName = "Jef",
+                    LastName = "Besos",
                     Company = "Bamazon",
+                    Email = "jef@bamazon.com",
+                    Password = "B3505"
                 },
                 new Recruiter
                 {
                     ID = 2,
-                    LastName = "Billy",
-                    FirstName = "Gates",
+                    FirstName = "Billy",
+                    LastName = "Gates",
                     Company = "Licrosoft",
+                    Email ="billygates@licrosoft.org",
+                    Password ="BgL003!?"
                 },
                 new Recruiter
                 {
                     ID = 3,
-                    LastName = "Stefaan",
-                    FirstName = "Jops",
+                    FirstName = "Stefaan",
+                    LastName = "Jops",
                     Company = "Bapple",
+                    Email = "stefjops@bapple.io",
+                    Password = "Peer4TheWin"
                 },
                 new Recruiter
                 {
                     ID = 4,
-                    LastName = "Meloen",
-                    FirstName = "Musk",
+                    FirstName = "Meloen",
+                    LastName = "Musk",
                     Company = "Teslaa",
+                    Email ="muskmeloen@teslaa.be",
+                    Password ="Model3XS"
                 },
             };
         }

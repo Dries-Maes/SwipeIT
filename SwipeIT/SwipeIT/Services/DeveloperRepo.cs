@@ -85,6 +85,8 @@ namespace SwipeIT.Services
                         "Leuven",
                         "Mechelen",
                     },
+                    Email ="jens.v.gelder@gmail.com",
+                    Password ="DoNotDrag0n!"
                 },
                 new Developer
                 {
@@ -103,6 +105,8 @@ namespace SwipeIT.Services
                     {
                         "Gent",
                     },
+                    Email="dm.inbox@outlook.com",
+                    Password ="P1ssM30ff"
                 },
                 new Developer
                 {
@@ -121,6 +125,8 @@ namespace SwipeIT.Services
                     {
                         "Evergem",
                     },
+                    Email="ward@impesoft.com",
+                    Password ="L34V3M34L0N3"
                 },
                 new Developer
                 {
@@ -139,6 +145,8 @@ namespace SwipeIT.Services
                     {
                         "Gent",
                     },
+                    Email ="seba.kesteloot@gmail.com",
+                    Password="r00t"
                 },
                 new Developer
                 {
@@ -157,6 +165,8 @@ namespace SwipeIT.Services
                     {
                         "Gent",
                     },
+                    Email="simon.van.tittelboom@gmail.com",
+                    Password ="R00T2.0"
                 },
                 new Developer
                 {
@@ -175,6 +185,8 @@ namespace SwipeIT.Services
                     {
                         "Gent",
                     },
+                    Email ="joyce.alfvoet@gmail.com",
+                    Password = "Recruit#MeToo"
                 },
                 new Developer
                 {
@@ -193,6 +205,8 @@ namespace SwipeIT.Services
                     {
                         "Gent",
                     },
+                    Email = "delobellekobe@gmail.com",
+                    Password ="IkWeetGeenPaswoordmeer"
                 },
                 new Developer
                 {
@@ -211,6 +225,8 @@ namespace SwipeIT.Services
                     {
                         "Gent",
                     },
+                    Email="emmadanckaert@hotmail.com",
+                    Password = "DriesHeeftAltijdGelijk"
                 },
                 new Developer
                 {
@@ -229,6 +245,8 @@ namespace SwipeIT.Services
                     {
                         "Gent",
                     },
+                    Email="anstavropoulos@gmail.com",
+                    Password= "Gr33c3"
                 },
                 new Developer
                 {
@@ -247,6 +265,8 @@ namespace SwipeIT.Services
                     {
                         "Gent",
                     },
+                    Email = "pieter_van_durme@hotmail.com",
+                    Password ="Fr1tuur"
                 },
                 new Developer
                 {
@@ -265,6 +285,8 @@ namespace SwipeIT.Services
                     {
                         "Gent",
                     },
+                    Email ="nvanroyen@gmail.com",
+                    Password = "ILoveTinder"
                 },
                 new Developer
                 {

@@ -10,19 +10,29 @@
         <StackLayout Padding="10,0,10,0"
                      VerticalOptions="Center">
             <Entry Placeholder="Email"
+                   x:Name="Email"
                    Keyboard="Email" />
             <Entry IsPassword="True"
+                   x:Name="Password"
                    Placeholder="Password" />
             <Entry IsPassword="True"
                    Placeholder="Confirm Password"
                    IsVisible="{Binding Source={x:Reference SignUp},
                                     Path=IsToggled}" />
-            <Entry Placeholder="Surname"
+            <Entry Placeholder="FirstName"
                    IsVisible="{Binding Source={x:Reference SignUp},
                                     Path=IsToggled}" />
             <Entry Placeholder="Name"
                    IsVisible="{Binding Source={x:Reference SignUp},
                                     Path=IsToggled}" />
+            <StackLayout Orientation="Horizontal"
+                         IsVisible="{Binding Source={x:Reference SignUp},
+                                    Path=IsToggled}"
+                         HorizontalOptions="CenterAndExpand">
+                <RadioButton Content="Developer"
+                             IsEnabled="True" />
+                <RadioButton Content="Recruiter" />
+            </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Button VerticalOptions="Center"
                         Text="Login"
