@@ -10,12 +10,12 @@ namespace SwipeIT.Services
     {
         private static RecruiterRepo instance;
 
+        private List<Recruiter> recruiters { get; set; }
+
         private RecruiterRepo()
         {
             AddDummyData();
         }
-
-        private List<Recruiter> recruiters { get; set; }
 
         public static RecruiterRepo GetSingleton()
         {

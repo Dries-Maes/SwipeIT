@@ -23,12 +23,12 @@ namespace SwipeIT.ViewModels
 
         private void GetMockData()
         {
-            DevelopersResult = developerRepo.GetDevelopers();
+            DevelopersResult = DeveloperRepo.GetDevelopers();
         }
 
         private void Like(Developer developer)
         {
-            ((Recruiter)CurrentUser).SelectedDevelopers.Add(developer);
+            ((Recruiter)CurrentUserSingleton.CurrentUser).SelectedDevelopers.Add(developer);
         }
     }
 }
