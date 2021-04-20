@@ -33,22 +33,27 @@
                                           CommandParameter="{Binding .}" />
                 </Image.GestureRecognizers>
             </Image>
-            <CollectionView ItemsSource="{Binding AvatarList}"
-                            IsVisible="{Binding ShowImagePicker}"
-                            SelectionChangedCommand="{Binding AvatarSelectedCommand}"
-                            SelectionChangedCommandParameter="{Binding .}">
-                <CollectionView.ItemTemplate>
+            <CarouselView ItemsSource="{Binding AvatarList}"
+                          IsVisible="{Binding ShowImagePicker}">
+
+                <CarouselView.ItemTemplate>
                     <DataTemplate>
-                        <Image Source="{Binding .}" />
+                        <Image Source="{Binding .}">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:SettingsViewModel}}, Path=AvatarSelectedCommand}"
+                                                      CommandParameter="{Binding .}"
+                                                      NumberOfTapsRequired="1" />
+                            </Image.GestureRecognizers>
+                        </Image>
                     </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.ItemsLayout>
+                </CarouselView.ItemTemplate>
+                <CarouselView.ItemsLayout>
 
                     <LinearItemsLayout Orientation="Horizontal"
                                        SnapPointsAlignment="Center"
                                        SnapPointsType="Mandatory" />
-                </CollectionView.ItemsLayout>
-            </CollectionView>
+                </CarouselView.ItemsLayout>
+            </CarouselView>
 
             <Label Text="Years of experience"
                    VerticalTextAlignment="Center"

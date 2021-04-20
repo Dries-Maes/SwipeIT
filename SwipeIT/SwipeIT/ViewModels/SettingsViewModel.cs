@@ -1,4 +1,5 @@
 ﻿using SwipeIT.Models;
+using SwipeIT.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,12 +8,24 @@ using Xamarin.Forms;
 namespace SwipeIT.ViewModels
 {
     public class SettingsViewModel : BaseViewModel
+
     {
+        private bool showImagePicker;
+
+        public bool ShowImagePicker
+        {
+            get { return showImagePicker; }
+            set
+            {
+                showImagePicker = value;
+                OnPropertyChanged(nameof(ShowImagePicker));
+            }
+        }
+
         public Command<Account> SaveCommand => new Command<Account>(SaveAsync);
         public Command<string> AvatarSelectedCommand => new Command<string>(AvatarSelected);
-        public Command<string> ImageClickedCommand => new Command<string>(ImageClicked);
+        public Command ImageClickedCommand => new Command(ImageClicked);
 
-        public bool ShowImagePicker { get; set; }
         public bool IsDeveloper { get; set; }
         public bool IsRecruiter { get; set; }
 
@@ -22,10 +35,10 @@ namespace SwipeIT.ViewModels
         public SettingsViewModel()
         {
             AvatarList = new List<string> {
-            "icon01.png",
-            "icon02.png",
-            "icon03.png",
-            "icon04.png",
+            "Icon1.png",
+            "Icon2.png",
+            "Icon3.png",
+            "Icon4.png",
             };
             CurrentUser = (User)CurrentUserSingleton.CurrentUser;
             if (CurrentUserSingleton.CurrentUser is Developer)
@@ -40,14 +53,14 @@ namespace SwipeIT.ViewModels
             }
         }
 
-        private void ImageClicked(string obj)
+        private void ImageClicked()
         {
             ShowImagePicker = true;
         }
 
-        private void AvatarSelected(string obj)
+        private void AvatarSelected(string imageURL)
         {
-            CurrentUser.Image = obj;
+            CurrentUser.Image = imageURL;
             ShowImagePicker = false;
         }
 
