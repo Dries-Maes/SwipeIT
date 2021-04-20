@@ -13,6 +13,19 @@ namespace SwipeIT.ViewModels
     {
         public bool IsRecruiter { get; set; }
         public bool IsDeveloper { get; set; }
+        private string errorMessage;
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
+        public string ErrorMessage
+        {
+            get => errorMessage;
+            set
+            {
+                errorMessage = value;
+                OnPropertyChanged(nameof(ErrorMessage));
+            }
+        }
 
         public bool IsSignUp { get; set; }
         public string UserPassword { get; set; }
@@ -50,7 +63,8 @@ namespace SwipeIT.ViewModels
                 else
                 {
                     // user exists
-                    throw new NotImplementedException();
+                    ErrorMessage = "User already exists";
+                    return;
                 }
             }
             else
@@ -61,10 +75,17 @@ namespace SwipeIT.ViewModels
                 }
                 catch (Exception)
                 {
-                    throw; // User not found
+                    ErrorMessage = "User not Found";
+                    return;
                 }
 
                 //user exists, let's continue
+                if (!VerifyPassword())
+                {
+                    ErrorMessage = "Password Mismatch";
+                    return;
+                }
+
                 switch (CurrentUserSingleton.CurrentUser)
                 {
                     case Developer developer:
@@ -81,8 +102,12 @@ namespace SwipeIT.ViewModels
                 }
             }
 
-            //       if (CurrentUserSingleton.CurrentUser.Password!=UserPassword) {}
-            //              // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
+            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
+        }
+
+        private bool VerifyPassword()
+        {
+            return UserPassword == CurrentUserSingleton.CurrentUser.Password;
         }
 
         private void CreateNewUser()
@@ -92,7 +117,9 @@ namespace SwipeIT.ViewModels
                 CurrentUserSingleton.CurrentUser = new Developer()
                 {
                     Email = UserMail,
-                    Password = UserPassword
+                    Password = UserPassword,
+                    FirstName = FirstName,
+                    LastName = LastName,
                 };
             }
 

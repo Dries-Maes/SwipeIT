@@ -25,9 +25,11 @@
                    IsVisible="{Binding Source={x:Reference SignUp},
                                     Path=IsToggled}" />
             <Entry Placeholder="FirstName"
+                   Text="{Binding FirstName}"
                    IsVisible="{Binding Source={x:Reference SignUp},
                                     Path=IsToggled}" />
-            <Entry Placeholder="Name"
+            <Entry Placeholder="LastName"
+                   Text="{Binding LastName}"
                    IsVisible="{Binding Source={x:Reference SignUp},
                                     Path=IsToggled}" />
             <StackLayout Orientation="Horizontal"
@@ -49,6 +51,9 @@
                         IsToggled="{Binding IsSignUp}"
                         VerticalOptions="Center" />
             </StackLayout>
+            <Label Text="{Binding ErrorMessage, FallbackValue='no errors yet'}"
+                   TextColor="Red"
+                   VerticalOptions="Center" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
