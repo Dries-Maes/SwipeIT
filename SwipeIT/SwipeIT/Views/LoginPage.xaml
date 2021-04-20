@@ -35,8 +35,9 @@
                                     Path=IsToggled}"
                          HorizontalOptions="CenterAndExpand">
                 <RadioButton Content="Developer"
-                             IsChecked="{Binding }" />
-                <RadioButton Content="Recruiter" />
+                             IsChecked="{Binding IsDeveloper }" />
+                <RadioButton Content="Recruiter"
+                             IsChecked="{Binding IsRecruiter}" />
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Button VerticalOptions="Center"
@@ -45,6 +46,7 @@
                 <Label Text="Signup"
                        VerticalOptions="Center" />
                 <Switch x:Name="SignUp"
+                        IsToggled="{Binding IsSignUp}"
                         VerticalOptions="Center" />
             </StackLayout>
         </StackLayout>
