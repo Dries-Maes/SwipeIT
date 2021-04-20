@@ -11,6 +11,8 @@ namespace SwipeIT.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
+        public bool IsRecruiter { get; set; }
+        public bool IsDeveloper { get; set; }
         public string UserPassword { get; set; }
         public string UserMail { get; set; }
         public List<Developer> DevelopersResult;
@@ -45,11 +47,22 @@ namespace SwipeIT.ViewModels
                 throw; // User not found
             }
             //user exists, let's continue
+            if (CurrentUserSingleton.CurrentUser is Developer developer)
+            {
+                await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
+            }
+            else if (CurrentUserSingleton.CurrentUser is Recruiter recruiter)
+            {
+                await Shell.Current.GoToAsync($"//{nameof(LikeOverviewPage)}");
+            }
+            else if (CurrentUserSingleton.CurrentUser is Admin admin)
+            {
+                // do admin stuff
+                throw new NotImplementedException();
+            }
 
             //       if (CurrentUserSingleton.CurrentUser.Password!=UserPassword) {}
             //              // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-            //  bool answer = DisplayAlert("Question?", "Would you like to play a game", "Yes", "No");
-            //await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
         }
     }
 }
