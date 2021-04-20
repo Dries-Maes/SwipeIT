@@ -10,5 +10,13 @@ namespace SwipeIT.Models
         public Role Role { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+
+        public DateTime DateCreated { get; set; }
+        public DateTime DateModified { get; set; }
+
+        public Account()
+        {
+            DateCreated = DateTime.Now;
+        }
     }
 }
