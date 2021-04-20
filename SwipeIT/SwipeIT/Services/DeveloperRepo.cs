@@ -69,8 +69,8 @@ namespace SwipeIT.Services
                 new Developer
                 {
                     ID = 420,
-                    Name = "Van Gelder",
-                    Surname = "Jens",
+                    LastName = "Van Gelder",
+                    FirstName = "Jens",
                     Image = "Jens.jpg",
                     Skills = new List<Skill>
                     {
@@ -85,12 +85,14 @@ namespace SwipeIT.Services
                         "Leuven",
                         "Mechelen",
                     },
+                    Email ="jens.v.gelder@gmail.com",
+                    Password ="DoNotDrag0n!"
                 },
                 new Developer
                 {
                     ID = 1,
-                    Name = "Maes",
-                    Surname = "Dries",
+                    LastName = "Maes",
+                    FirstName = "Dries",
                     Image = "Dries.jpg",
                     Skills = new List<Skill>
                     {
@@ -103,12 +105,14 @@ namespace SwipeIT.Services
                     {
                         "Gent",
                     },
+                    Email="dm.inbox@outlook.com",
+                    Password ="P1ssM30ff"
                 },
                 new Developer
                 {
                     ID = 2,
-                    Name = "Impe",
-                    Surname = "Ward",
+                    LastName = "Impe",
+                    FirstName = "Ward",
                     Image = "Ward.jpg",
                     Skills = new List<Skill>
                     {
@@ -121,12 +125,14 @@ namespace SwipeIT.Services
                     {
                         "Evergem",
                     },
+                    Email="ward@impesoft.com",
+                    Password ="L34V3M34L0N3"
                 },
                 new Developer
                 {
                     ID = 3,
-                    Name = "Kesteloot",
-                    Surname = "Sebastiaan-Willem",
+                    LastName = "Kesteloot",
+                    FirstName = "Sebastiaan-Willem",
                     Image = "Seba.jpg",
                     Skills = new List<Skill>
                     {
@@ -139,12 +145,14 @@ namespace SwipeIT.Services
                     {
                         "Gent",
                     },
+                    Email ="seba.kesteloot@gmail.com",
+                    Password="r00t"
                 },
                 new Developer
                 {
                     ID = 4,
-                    Name = "Van Tittelboom",
-                    Surname = "Simon",
+                    LastName = "Van Tittelboom",
+                    FirstName = "Simon",
                     Image = "Simon.jpg",
                     Skills = new List<Skill>
                     {
@@ -157,12 +165,14 @@ namespace SwipeIT.Services
                     {
                         "Gent",
                     },
+                    Email="simon.van.tittelboom@gmail.com",
+                    Password ="R00T2.0"
                 },
                 new Developer
                 {
                     ID = 5,
-                    Name = "Alfvoet",
-                    Surname = "Joyce",
+                    LastName = "Alfvoet",
+                    FirstName = "Joyce",
                     Image = "Joyce.jpg",
                     Skills = new List<Skill>
                     {
@@ -175,12 +185,14 @@ namespace SwipeIT.Services
                     {
                         "Gent",
                     },
+                    Email ="joyce.alfvoet@gmail.com",
+                    Password = "Recruit#MeToo"
                 },
                 new Developer
                 {
                     ID = 6,
-                    Name = "DeLobelle",
-                    Surname = "Kobe",
+                    LastName = "DeLobelle",
+                    FirstName = "Kobe",
                     Image = "Kobe.jpg",
                     Skills = new List<Skill>
                     {
@@ -193,12 +205,14 @@ namespace SwipeIT.Services
                     {
                         "Gent",
                     },
+                    Email = "delobellekobe@gmail.com",
+                    Password ="IkWeetGeenPaswoordmeer"
                 },
                 new Developer
                 {
                     ID = 7,
-                    Name = "Danckaert",
-                    Surname = "Emma",
+                    LastName = "Danckaert",
+                    FirstName = "Emma",
                     Image = "Emma.jpg",
                     Skills = new List<Skill>
                     {
@@ -211,12 +225,14 @@ namespace SwipeIT.Services
                     {
                         "Gent",
                     },
+                    Email="emmadanckaert@hotmail.com",
+                    Password = "DriesHeeftAltijdGelijk"
                 },
                 new Developer
                 {
                     ID = 8,
-                    Name = "Stavropoulos",
-                    Surname = "Andreas",
+                    LastName = "Stavropoulos",
+                    FirstName = "Andreas",
                     Image = "Andreas.jpg",
                     Skills = new List<Skill>
                     {
@@ -229,12 +245,14 @@ namespace SwipeIT.Services
                     {
                         "Gent",
                     },
+                    Email="anstavropoulos@gmail.com",
+                    Password= "Gr33c3"
                 },
                 new Developer
                 {
                     ID = 9,
-                    Name = "Van Durme",
-                    Surname = "Pieter",
+                    LastName = "Van Durme",
+                    FirstName = "Pieter",
                     Image = "Pieter.jpg",
                     Skills = new List<Skill>
                     {
@@ -247,12 +265,14 @@ namespace SwipeIT.Services
                     {
                         "Gent",
                     },
+                    Email = "pieter_van_durme@hotmail.com",
+                    Password ="Fr1tuur"
                 },
                 new Developer
                 {
                     ID = 10,
-                    Name = "Van Royen",
-                    Surname = "Nick",
+                    LastName = "Van Royen",
+                    FirstName = "Nick",
                     Image = "Nick.jpg",
                     Skills = new List<Skill>
                     {
@@ -265,12 +285,14 @@ namespace SwipeIT.Services
                     {
                         "Gent",
                     },
+                    Email ="nvanroyen@gmail.com",
+                    Password = "ILoveTinder"
                 },
                 new Developer
                 {
                     ID = 11,
-                    Name = "Van Yperzele",
-                    Surname = "Diederick",
+                    LastName = "Van Yperzele",
+                    FirstName = "Diederick",
                     Image = "Diederick.jpg",
                     Skills = new List<Skill>
                     {
@@ -287,8 +309,8 @@ namespace SwipeIT.Services
                 new Developer
                 {
                     ID = 12,
-                    Name = "Verhulsdonck",
-                    Surname = "Marieke",
+                    LastName = "Verhulsdonck",
+                    FirstName = "Marieke",
                     Image = "Marieke.jpg",
                     Skills = new List<Skill>
                     {
@@ -305,8 +327,8 @@ namespace SwipeIT.Services
                 new Developer
                 {
                     ID = 13,
-                    Name = "Wouters",
-                    Surname = "Michiel",
+                    LastName = "Wouters",
+                    FirstName = "Michiel",
                     Image = "Michiel.jpg",
                     Skills = new List<Skill>
                     {

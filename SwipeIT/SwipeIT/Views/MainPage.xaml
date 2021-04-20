@@ -41,9 +41,9 @@
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{Binding ID}"
                                            FontSize="13" />
-                                    <Label Text="{Binding Name}"
+                                    <Label Text="{Binding LastName}"
                                            FontSize="16" />
-                                    <Label Text="{Binding Surname}"
+                                    <Label Text="{Binding FirstName}"
                                            LineBreakMode="NoWrap"
                                            FontSize="16" />
                                 </StackLayout>
