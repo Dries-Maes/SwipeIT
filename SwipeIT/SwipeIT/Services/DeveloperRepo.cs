@@ -69,9 +69,9 @@ namespace SwipeIT.Services
                 new Developer
                 {
                     ID = 420,
-                    Name = "Van Gelder",
-                    Surname = "Jens",
-                    Image = "Jens.jpg",
+                    LastName = "Van Gelder",
+                    FirstName = "Jens",
+                    Image = "1.png",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -89,9 +89,9 @@ namespace SwipeIT.Services
                 new Developer
                 {
                     ID = 1,
-                    Name = "Maes",
-                    Surname = "Dries",
-                    Image = "Dries.jpg",
+                    LastName = "Maes",
+                    FirstName = "Dries",
+                    Image = "2.png",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -107,9 +107,9 @@ namespace SwipeIT.Services
                 new Developer
                 {
                     ID = 2,
-                    Name = "Impe",
-                    Surname = "Ward",
-                    Image = "Ward.jpg",
+                    LastName = "Impe",
+                    FirstName = "Ward",
+                    Image = "3.png",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -125,9 +125,9 @@ namespace SwipeIT.Services
                 new Developer
                 {
                     ID = 3,
-                    Name = "Kesteloot",
-                    Surname = "Sebastiaan-Willem",
-                    Image = "Seba.jpg",
+                    LastName = "Kesteloot",
+                    FirstName = "Sebastiaan-Willem",
+                    Image = "4.png",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -143,9 +143,9 @@ namespace SwipeIT.Services
                 new Developer
                 {
                     ID = 4,
-                    Name = "Van Tittelboom",
-                    Surname = "Simon",
-                    Image = "Simon.jpg",
+                    LastName = "Van Tittelboom",
+                    FirstName = "Simon",
+                    Image = "5.png",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -161,9 +161,9 @@ namespace SwipeIT.Services
                 new Developer
                 {
                     ID = 5,
-                    Name = "Alfvoet",
-                    Surname = "Joyce",
-                    Image = "Joyce.jpg",
+                    LastName = "Alfvoet",
+                    FirstName = "Joyce",
+                    Image = "6.png",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -179,9 +179,9 @@ namespace SwipeIT.Services
                 new Developer
                 {
                     ID = 6,
-                    Name = "DeLobelle",
-                    Surname = "Kobe",
-                    Image = "Kobe.jpg",
+                    LastName = "DeLobelle",
+                    FirstName = "Kobe",
+                    Image = "7.png",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -197,9 +197,9 @@ namespace SwipeIT.Services
                 new Developer
                 {
                     ID = 7,
-                    Name = "Danckaert",
-                    Surname = "Emma",
-                    Image = "Emma.jpg",
+                    LastName = "Danckaert",
+                    FirstName = "Emma",
+                    Image = "8.png",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -215,9 +215,9 @@ namespace SwipeIT.Services
                 new Developer
                 {
                     ID = 8,
-                    Name = "Stavropoulos",
-                    Surname = "Andreas",
-                    Image = "Andreas.jpg",
+                    LastName = "Stavropoulos",
+                    FirstName = "Andreas",
+                    Image = "9.png",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -233,9 +233,9 @@ namespace SwipeIT.Services
                 new Developer
                 {
                     ID = 9,
-                    Name = "Van Durme",
-                    Surname = "Pieter",
-                    Image = "Pieter.jpg",
+                    LastName = "Van Durme",
+                    FirstName = "Pieter",
+                    Image = "10.png",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -251,9 +251,9 @@ namespace SwipeIT.Services
                 new Developer
                 {
                     ID = 10,
-                    Name = "Van Royen",
-                    Surname = "Nick",
-                    Image = "Nick.jpg",
+                    LastName = "Van Royen",
+                    FirstName = "Nick",
+                    Image = "11.png",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -269,9 +269,9 @@ namespace SwipeIT.Services
                 new Developer
                 {
                     ID = 11,
-                    Name = "Van Yperzele",
-                    Surname = "Diederick",
-                    Image = "Diederick.jpg",
+                    LastName = "Van Yperzele",
+                    FirstName = "Diederick",
+                    Image = "12.png",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -287,9 +287,9 @@ namespace SwipeIT.Services
                 new Developer
                 {
                     ID = 12,
-                    Name = "Verhulsdonck",
-                    Surname = "Marieke",
-                    Image = "Marieke.jpg",
+                    LastName = "Verhulsdonck",
+                    FirstName = "Marieke",
+                    Image = "13.png",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -305,9 +305,9 @@ namespace SwipeIT.Services
                 new Developer
                 {
                     ID = 13,
-                    Name = "Wouters",
-                    Surname = "Michiel",
-                    Image = "Michiel.jpg",
+                    LastName = "Wouters",
+                    FirstName = "Michiel",
+                    Image = "14.png",
                     Skills = new List<Skill>
                     {
                         new Skill

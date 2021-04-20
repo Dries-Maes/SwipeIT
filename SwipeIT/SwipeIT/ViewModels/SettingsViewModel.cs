@@ -12,14 +12,17 @@ namespace SwipeIT.ViewModels
         public bool IsDeveloper { get; set; }
         public bool IsRecruiter { get; set; }
 
+        public User CurrentUser { get; set; }
+
         public SettingsViewModel()
         {
+            CurrentUser = (User)CurrentUserSingleton.CurrentUser;
             if (CurrentUserSingleton.CurrentUser is Developer)
             {
                 IsDeveloper = true;
                 IsRecruiter = false;
             }
-            else if (CurrentUserSingleton.CurrentUser is Developer)
+            else if (CurrentUserSingleton.CurrentUser is Recruiter)
             {
                 IsDeveloper = false;
                 IsRecruiter = true;

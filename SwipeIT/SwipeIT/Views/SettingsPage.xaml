@@ -4,14 +4,53 @@
              xmlns:local="clr-namespace:SwipeIT.ViewModels"
              x:Class="SwipeIT.Views.SettingsPage">
     <ContentPage.BindingContext>
-        <local:MainViewModel />
+        <local:SettingsViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome THE SETTINGS PAGE"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand"
-                   Visual="" />
+
+        <StackLayout VerticalOptions="Center"
+                     HorizontalOptions="Center"
+                     WidthRequest="300">
+          
+                <Label Text="First name"
+                       VerticalTextAlignment="Center" />
+            
+                <Entry Text="{Binding CurrentUserSingleton.CurrentUser.FirstName}"
+                       VerticalTextAlignment="Center"
+                       />
+            
+                <Label Text="Last name:"
+                       
+                       VerticalTextAlignment="Center" 
+                       Margin="0,0,20,0"/>
+            
+            <Entry Text="{Binding CurrentUserSingleton.CurrentUser.LastName}" />
+
+
+
+            <Image Source="{Binding CurrentUserSingleton.CurrentUser.Image}"
+                   HorizontalOptions="StartAndExpand"
+                   HeightRequest="100"
+                   WidthRequest="100" />
+            
+            <Label Text="Years of experience"
+                       VerticalTextAlignment="Center"
+                       Margin="0,0,20,0" />
+            
+                <Entry Text="{Binding CurrentUserSingleton.CurrentUser.YearsOfExperience}"
+                       Keyboard="Numeric"     />
+
+            <Label Text="Address"
+                   IsVisible="{Binding IsDeveloper}" />
+            
+                <Entry Text="{Binding CurrentUserSingleton.CurrentUser.Address}"
+                       IsVisible="{Binding IsDeveloper}" />
+            
+                <Label Text="Company" />
+            
+                <Entry Text="{Binding CurrentUserSingleton.CurrentUser.Company}"
+                       IsVisible="{Binding IsRecruiter}" />
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
