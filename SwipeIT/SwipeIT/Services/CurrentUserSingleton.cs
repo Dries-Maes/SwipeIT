@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SwipeIT.Services
 {
-    public class CurrentUserSingleton : INotifyPropertyChanged
+    public class CurrentUserSingleton
     {
         private static CurrentUserSingleton instance;
         public Account CurrentUser { get; set; }
@@ -28,7 +28,5 @@ namespace SwipeIT.Services
             }
             return instance;
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
