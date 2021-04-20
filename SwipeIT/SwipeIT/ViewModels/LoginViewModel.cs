@@ -6,6 +6,7 @@ using System.Text;
 using Xamarin.Forms;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SwipeIT.ViewModels
 {
@@ -13,6 +14,19 @@ namespace SwipeIT.ViewModels
     {
         public bool IsRecruiter { get; set; }
         public bool IsDeveloper { get; set; }
+        private string errorMessage;
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
+        public string ErrorMessage
+        {
+            get => errorMessage;
+            set
+            {
+                errorMessage = value;
+                OnPropertyChanged(nameof(ErrorMessage));
+            }
+        }
 
         public bool IsSignUp { get; set; }
         public string UserPassword { get; set; }
@@ -49,8 +63,8 @@ namespace SwipeIT.ViewModels
                 }
                 else
                 {
-                    // user exists
-                    throw new NotImplementedException();
+                    ErrorMessage = "User already exists";
+                    return;
                 }
             }
             else
@@ -61,10 +75,17 @@ namespace SwipeIT.ViewModels
                 }
                 catch (Exception)
                 {
-                    throw; // User not found
+                    ErrorMessage = "User not Found";
+                    return;
                 }
 
                 //user exists, let's continue
+                if (!VerifyPassword())
+                {
+                    ErrorMessage = "Password Mismatch";
+                    return;
+                }
+
                 switch (CurrentUserSingleton.CurrentUser)
                 {
                     case Developer developer:
@@ -72,7 +93,7 @@ namespace SwipeIT.ViewModels
                         break;
 
                     case Recruiter recruiter:
-                        await Shell.Current.GoToAsync($"//{nameof(LikeOverviewPage)}");
+                        await Shell.Current.GoToAsync($"//{nameof(MainViewModel)}");
                         break;
 
                     case Admin admin:
@@ -81,28 +102,37 @@ namespace SwipeIT.ViewModels
                 }
             }
 
-            //       if (CurrentUserSingleton.CurrentUser.Password!=UserPassword) {}
-            //              // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
+            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
         }
 
-        private void CreateNewUser()
+        private bool VerifyPassword()
+        {
+            return UserPassword == CurrentUserSingleton.CurrentUser.Password;
+        }
+
+        private async Task CreateNewUser()
         {
             if (IsDeveloper)
             {
-                CurrentUserSingleton.CurrentUser = new Developer()
+                Developer temp = new Developer
                 {
                     Email = UserMail,
-                    Password = UserPassword
+                    Password = UserPassword,
+                    FirstName = FirstName,
+                    LastName = LastName,
                 };
+                CurrentUserSingleton.CurrentUser = temp;
+                await DeveloperRepo.AddItemAsync((Developer)CurrentUserSingleton.CurrentUser);
             }
 
             if (IsRecruiter)
             {
-                CurrentUserSingleton.CurrentUser = new Recruiter()
+                CurrentUserSingleton.CurrentUser = new Recruiter
                 {
                     Email = UserMail,
                     Password = UserPassword
                 };
+                await RecruiterRepo.AddItemAsync((Recruiter)CurrentUserSingleton.CurrentUser);
             }
             // todo admin (release 3)
         }
