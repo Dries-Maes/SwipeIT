@@ -13,6 +13,8 @@ namespace SwipeIT.ViewModels
     {
         public bool IsRecruiter { get; set; }
         public bool IsDeveloper { get; set; }
+
+        public bool IsSignUp { get; set; }
         public string UserPassword { get; set; }
         public string UserMail { get; set; }
         public List<Developer> DevelopersResult;
@@ -38,31 +40,71 @@ namespace SwipeIT.ViewModels
 
         private async void OnLoginClicked(object obj)
         {
-            try
+            if (IsSignUp)
             {
-                CurrentUserSingleton.CurrentUser = Accounts.First(x => x.Email == UserMail);
+                if (Accounts.Where(x => x.Email == UserMail).ToList().Count == 0)
+                {
+                    CreateNewUser();
+                    await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
+                }
+                else
+                {
+                    // user exists
+                    throw new NotImplementedException();
+                }
             }
-            catch (Exception)
+            else
             {
-                throw; // User not found
-            }
-            //user exists, let's continue
-            if (CurrentUserSingleton.CurrentUser is Developer developer)
-            {
-                await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
-            }
-            else if (CurrentUserSingleton.CurrentUser is Recruiter recruiter)
-            {
-                await Shell.Current.GoToAsync($"//{nameof(LikeOverviewPage)}");
-            }
-            else if (CurrentUserSingleton.CurrentUser is Admin admin)
-            {
-                // do admin stuff
-                throw new NotImplementedException();
+                try // find user
+                {
+                    CurrentUserSingleton.CurrentUser = Accounts.First(x => x.Email == UserMail);
+                }
+                catch (Exception)
+                {
+                    throw; // User not found
+                }
+
+                //user exists, let's continue
+                switch (CurrentUserSingleton.CurrentUser)
+                {
+                    case Developer developer:
+                        await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
+                        break;
+
+                    case Recruiter recruiter:
+                        await Shell.Current.GoToAsync($"//{nameof(LikeOverviewPage)}");
+                        break;
+
+                    case Admin admin:
+                        // do admin stuff
+                        throw new NotImplementedException();
+                }
             }
 
             //       if (CurrentUserSingleton.CurrentUser.Password!=UserPassword) {}
             //              // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
+        }
+
+        private void CreateNewUser()
+        {
+            if (IsDeveloper)
+            {
+                CurrentUserSingleton.CurrentUser = new Developer()
+                {
+                    Email = UserMail,
+                    Password = UserPassword
+                };
+            }
+
+            if (IsRecruiter)
+            {
+                CurrentUserSingleton.CurrentUser = new Recruiter()
+                {
+                    Email = UserMail,
+                    Password = UserPassword
+                };
+            }
+            // todo admin (release 3)
         }
     }
 }
