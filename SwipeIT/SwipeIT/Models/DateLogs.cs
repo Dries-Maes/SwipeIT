@@ -1,12 +1,34 @@
-﻿using System;
+﻿using SwipeIT.Services;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace SwipeIT.Models
 {
-    public abstract class DateLogs
+    public abstract class DateLogs : ObservableObject
     {
-        public DateTime DateCreated { get; set; }
-        public DateTime DateModified { get; set; }
+        private DateTime dateCreated;
+
+        public DateTime DateCreated
+        {
+            get { return dateCreated; }
+            set
+            {
+                dateCreated = value;
+                OnPropertyChanged(nameof(DateCreated));
+            }
+        }
+
+        private DateTime dateModified;
+
+        public DateTime DateModified
+        {
+            get { return dateModified; }
+            set
+            {
+                dateModified = value;
+                OnPropertyChanged(nameof(DateModified));
+            }
+        }
     }
 }

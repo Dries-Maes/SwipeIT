@@ -18,7 +18,6 @@ namespace SwipeIT.ViewModels
             set
             {
                 currentUserSingleton = value;
-                OnPropertyChanged(nameof(CurrentUserSingleton));
             }
         }
 
