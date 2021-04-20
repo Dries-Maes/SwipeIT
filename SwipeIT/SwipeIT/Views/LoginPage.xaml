@@ -3,17 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:SwipeIT.ViewModels"
              mc:Ignorable="d"
              x:Class="SwipeIT.Views.LoginPage"
              Shell.NavBarIsVisible="False">
+    <ContentPage.BindingContext>
+        <local:LoginViewModel />
+    </ContentPage.BindingContext>
     <ContentPage.Content>
+
         <StackLayout Padding="10,0,10,0"
                      VerticalOptions="Center">
             <Entry Placeholder="Email"
-                   x:Name="Email"
+                   Text="{Binding UserMail}"
                    Keyboard="Email" />
             <Entry IsPassword="True"
-                   x:Name="Password"
+                   Text="{Binding UserPassword}"
                    Placeholder="Password" />
             <Entry IsPassword="True"
                    Placeholder="Confirm Password"

@@ -15,8 +15,8 @@ namespace SwipeIT.Services
         {
             CurrentUser = new Recruiter
             {
-                LastName = "Pieter",
-                Email = "Pieter2"
+                FirstName = "Pieter",
+                Email = "Pieter@pietercorp.org"
             };
         }
 
