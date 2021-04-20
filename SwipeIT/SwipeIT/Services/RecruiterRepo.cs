@@ -1,6 +1,7 @@
 ﻿using SwipeIT.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -72,7 +73,13 @@ namespace SwipeIT.Services
                     LastName = "Besos",
                     Company = "Bamazon",
                     Email = "jef@bamazon.com",
-                    Password = "B3505"
+                    Password = "B3505",
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
                 },
                 new Recruiter
                 {
@@ -81,7 +88,13 @@ namespace SwipeIT.Services
                     LastName = "Gates",
                     Company = "Licrosoft",
                     Email ="billygates@licrosoft.org",
-                    Password ="BgL003!?"
+                    Password ="BgL003!?",
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
                 },
                 new Recruiter
                 {
@@ -90,7 +103,13 @@ namespace SwipeIT.Services
                     LastName = "Jops",
                     Company = "Bapple",
                     Email = "stefjops@bapple.io",
-                    Password = "Peer4TheWin"
+                    Password = "Peer4TheWin",
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
                 },
                 new Recruiter
                 {
@@ -99,7 +118,13 @@ namespace SwipeIT.Services
                     LastName = "Musk",
                     Company = "Teslaa",
                     Email ="muskmeloen@teslaa.be",
-                    Password ="Model3XS"
+                    Password ="Model3XS",
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
                 },
             };
         }

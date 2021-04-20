@@ -2,6 +2,7 @@
 using SwipeIT.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using Xamarin.Forms;
@@ -25,9 +26,9 @@ namespace SwipeIT.ViewModels
             }
         }
 
-        private List<Location> availableLocations;
+        private ObservableCollection<Location> availableLocations;
 
-        public List<Location> AvailableLocations
+        public ObservableCollection<Location> AvailableLocations
         {
             get { return availableLocations; }
             set
@@ -50,7 +51,7 @@ namespace SwipeIT.ViewModels
         public Command<Account> SaveCommand => new Command<Account>(SaveAsync);
         public Command<Location> DeleteLocationCommand => new Command<Location>(DeleteLocationAsync);
 
-        public Command<Location> AddLocationCommand => new Command<Location>(AddLocation);
+        public Command AddLocationCommand => new Command(AddLocation);
 
         public Command<string> AvatarSelectedCommand => new Command<string>(AvatarSelected);
         public Command ImageClickedCommand => new Command(ImageClicked);
@@ -63,7 +64,7 @@ namespace SwipeIT.ViewModels
 
         public SettingsViewModel()
         {
-            AvailableLocations = new List<Location>();
+            AvailableLocations = new ObservableCollection<Location>();
             CurrentUser = (User)CurrentUserSingleton.CurrentUser;
             foreach (Location item in Enum.GetValues(typeof(Location)))
             {
@@ -125,10 +126,14 @@ namespace SwipeIT.ViewModels
             AvailableLocations.Add(location);
         }
 
-        private void AddLocation(Location location)
+        private void AddLocation()
         {
-            CurrentUser.Locations.Add(location);
-            AvailableLocations.Remove(location);
+            if (SelectedLocation != Location.Unassigned)
+            {
+                CurrentUser.Locations.Add(SelectedLocation);
+                AvailableLocations.Remove(SelectedLocation);
+                SelectedLocation = AvailableLocations.Count == 0 ? Location.Unassigned : AvailableLocations[0];
+            }
         }
 
         private void ImageClicked()
