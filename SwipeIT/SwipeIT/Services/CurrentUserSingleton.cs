@@ -1,6 +1,7 @@
 ﻿using SwipeIT.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 
@@ -27,7 +28,14 @@ namespace SwipeIT.Services
             {
                 FirstName = "Pieter",
                 Email = "Pieter@pietercorp.org",
-                Image = "Icon27.png"
+                Image = "Icon27.png",
+                Company = "PCorp",
+                Locations = new ObservableCollection<Location> {
+                Location.Henegouwen,
+                Location.Antwerpen,
+                Location.Luik,
+                Location.Namen
+                }
             };
         }
 

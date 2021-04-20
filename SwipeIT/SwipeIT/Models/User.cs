@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace SwipeIT.Models
@@ -66,9 +67,9 @@ namespace SwipeIT.Models
             }
         }
 
-        private List<Location> locations;
+        private ObservableCollection<Location> locations;
 
-        public List<Location> Locations
+        public ObservableCollection<Location> Locations
         {
             get { return locations; }
             set
@@ -81,7 +82,7 @@ namespace SwipeIT.Models
         public User()
         {
             Skills = new List<Skill>();
-            Locations = new List<Location>();
+            Locations = new ObservableCollection<Location>();
         }
     }
 }
