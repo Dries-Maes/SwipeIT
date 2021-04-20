@@ -66,9 +66,9 @@ namespace SwipeIT.Models
             }
         }
 
-        private List<string> locations;
+        private List<Location> locations;
 
-        public List<string> Locations
+        public List<Location> Locations
         {
             get { return locations; }
             set
@@ -81,7 +81,7 @@ namespace SwipeIT.Models
         public User()
         {
             Skills = new List<Skill>();
-            Locations = new List<string>();
+            Locations = new List<Location>();
         }
     }
 }
