@@ -4,12 +4,11 @@ using System.Text;
 
 namespace SwipeIT.Models
 {
-    public class Skill
+    public class Skill : DateLogs
     {
         public int ID { get; set; }
         public string SkillName { get; set; }
-        public DateTime DateCreated { get; set; }
-        public DateTime DateModified { get; set; }
+        public bool IsCreatedByUser { get; set; }
 
         public Skill()
         {
