@@ -52,9 +52,13 @@ namespace SwipeIT.Services
             throw new NotImplementedException();
         }
 
-        public Task<bool> UpdateItemAsync(Recruiter item)
+        public async Task<bool> UpdateItemAsync(Recruiter item)
         {
-            throw new NotImplementedException();
+            Recruiter oldItem = recruiters.FirstOrDefault(x => x == item);
+            recruiters.Remove(oldItem);
+            recruiters.Add(item);
+
+            return await Task.FromResult(true);
         }
 
         private void AddDummyData()

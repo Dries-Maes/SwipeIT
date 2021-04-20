@@ -8,11 +8,23 @@ namespace SwipeIT.ViewModels
 {
     public class SettingsViewModel : BaseViewModel
     {
-        public Command<Account> SaveCommand => new Command<Account>(Save);
+        public Account CurrentUser { get; set; }
+        public Command<Account> SaveCommand => new Command<Account>(SaveAsync);
 
-        private void Save(Account obj)
+        public SettingsViewModel()
         {
-            throw new NotImplementedException(); //Call update method
+        }
+
+        private async void SaveAsync(Account account)
+        {
+            if (account is Developer)
+            {
+                await DeveloperRepo.UpdateItemAsync((Developer)account);
+            }
+            else if (account is Recruiter)
+            {
+                await RecruiterRepo.UpdateItemAsync((Recruiter)account);
+            }
         }
     }
 }
