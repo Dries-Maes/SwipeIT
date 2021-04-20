@@ -53,9 +53,13 @@ namespace SwipeIT.Services
             throw new NotImplementedException();
         }
 
-        public Task<bool> UpdateItemAsync(Developer item)
+        public async Task<bool> UpdateItemAsync(Developer item)
         {
-            throw new NotImplementedException();
+            Developer oldItem = developers.FirstOrDefault(x => x == item);
+            developers.Remove(oldItem);
+            developers.Add(item);
+
+            return await Task.FromResult(true);
         }
 
         private void AddDummyData()
