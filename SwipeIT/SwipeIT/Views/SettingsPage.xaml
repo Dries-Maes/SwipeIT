@@ -11,46 +11,62 @@
         <StackLayout VerticalOptions="Center"
                      HorizontalOptions="Center"
                      WidthRequest="300">
-          
-                <Label Text="First name"
-                       VerticalTextAlignment="Center" />
-            
-                <Entry Text="{Binding CurrentUserSingleton.CurrentUser.FirstName}"
-                       VerticalTextAlignment="Center"
-                       />
-            
-                <Label Text="Last name:"
-                       
-                       VerticalTextAlignment="Center" 
-                       Margin="0,0,20,0"/>
-            
+
+            <Label Text="First name"
+                   VerticalTextAlignment="Center" />
+
+            <Entry Text="{Binding CurrentUserSingleton.CurrentUser.FirstName}"
+                   VerticalTextAlignment="Center" />
+
+            <Label Text="Last name:"
+                   VerticalTextAlignment="Center"
+                   Margin="0,0,20,0" />
+
             <Entry Text="{Binding CurrentUserSingleton.CurrentUser.LastName}" />
-
-
 
             <Image Source="{Binding CurrentUserSingleton.CurrentUser.Image}"
                    HorizontalOptions="StartAndExpand"
                    HeightRequest="100"
-                   WidthRequest="100" />
-            
+                   WidthRequest="100">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ImageClickedCommand}"
+                                          CommandParameter="{Binding .}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <CollectionView ItemsSource="{Binding AvatarList}"
+                            IsVisible="{Binding ShowImagePicker}"
+                            SelectionChangedCommand="{Binding AvatarSelectedCommand}"
+                            SelectionChangedCommandParameter="{Binding .}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding .}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.ItemsLayout>
+
+                    <LinearItemsLayout Orientation="Horizontal"
+                                       SnapPointsAlignment="Center"
+                                       SnapPointsType="Mandatory" />
+                </CollectionView.ItemsLayout>
+            </CollectionView>
+
             <Label Text="Years of experience"
-                       VerticalTextAlignment="Center"
-                       Margin="0,0,20,0" />
-            
-                <Entry Text="{Binding CurrentUserSingleton.CurrentUser.YearsOfExperience}"
-                       Keyboard="Numeric"     />
+                   VerticalTextAlignment="Center"
+                   Margin="0,0,20,0" />
+
+            <Entry Text="{Binding CurrentUserSingleton.CurrentUser.YearsOfExperience}"
+                   Keyboard="Numeric" />
 
             <Label Text="Address"
                    IsVisible="{Binding IsDeveloper}" />
-            
-                <Entry Text="{Binding CurrentUserSingleton.CurrentUser.Address}"
-                       IsVisible="{Binding IsDeveloper}" />
-            
-                <Label Text="Company" />
-            
-                <Entry Text="{Binding CurrentUserSingleton.CurrentUser.Company}"
-                       IsVisible="{Binding IsRecruiter}" />
-            
+
+            <Entry Text="{Binding CurrentUserSingleton.CurrentUser.Address}"
+                   IsVisible="{Binding IsDeveloper}" />
+
+            <Label Text="Company" />
+
+            <Entry Text="{Binding CurrentUserSingleton.CurrentUser.Company}"
+                   IsVisible="{Binding IsRecruiter}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

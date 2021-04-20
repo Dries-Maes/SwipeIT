@@ -3,7 +3,6 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:viewmodels="clr-namespace:SwipeIT.ViewModels"
        xmlns:local="clr-namespace:SwipeIT.Views"
-       x:DataType="viewmodels:BaseViewModel"
        Title="SwipeIT"
        x:Class="SwipeIT.AppShell">
 
