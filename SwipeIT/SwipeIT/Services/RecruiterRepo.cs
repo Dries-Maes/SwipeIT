@@ -1,6 +1,7 @@
 ﻿using SwipeIT.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -73,7 +74,7 @@ namespace SwipeIT.Services
                     Company = "Bamazon",
                     Email = "jef@bamazon.com",
                     Password = "B3505",
-                     Locations = new List<Location>
+                     Locations = new ObservableCollection<Location>
                     {
                         Location.Antwerpen,
                         Location.VlaamsBrabant,
@@ -88,7 +89,7 @@ namespace SwipeIT.Services
                     Company = "Licrosoft",
                     Email ="billygates@licrosoft.org",
                     Password ="BgL003!?",
-                     Locations = new List<Location>
+                     Locations = new ObservableCollection<Location>
                     {
                         Location.Antwerpen,
                         Location.VlaamsBrabant,
@@ -103,7 +104,7 @@ namespace SwipeIT.Services
                     Company = "Bapple",
                     Email = "stefjops@bapple.io",
                     Password = "Peer4TheWin",
-                     Locations = new List<Location>
+                     Locations = new ObservableCollection<Location>
                     {
                         Location.Antwerpen,
                         Location.VlaamsBrabant,
@@ -118,7 +119,7 @@ namespace SwipeIT.Services
                     Company = "Teslaa",
                     Email ="muskmeloen@teslaa.be",
                     Password ="Model3XS",
-                     Locations = new List<Location>
+                     Locations = new ObservableCollection<Location>
                     {
                         Location.Antwerpen,
                         Location.VlaamsBrabant,

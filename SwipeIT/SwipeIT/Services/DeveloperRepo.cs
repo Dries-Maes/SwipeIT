@@ -1,6 +1,7 @@
 ﻿using SwipeIT.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -79,7 +80,7 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<Location>
+                    Locations = new ObservableCollection<Location>
                     {
                         Location.Antwerpen,
                         Location.VlaamsBrabant,
@@ -101,7 +102,7 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                     Locations = new List<Location>
+                     Locations = new ObservableCollection<Location>
                     {
                         Location.Antwerpen,
                         Location.VlaamsBrabant,
@@ -123,7 +124,7 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                     Locations = new List<Location>
+                     Locations = new ObservableCollection<Location>
                     {
                         Location.Antwerpen,
                         Location.VlaamsBrabant,
@@ -145,7 +146,7 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                     Locations = new List<Location>
+                     Locations = new ObservableCollection<Location>
                     {
                         Location.Antwerpen,
                         Location.VlaamsBrabant,
@@ -167,7 +168,7 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                     Locations = new List<Location>
+                     Locations = new ObservableCollection<Location>
                     {
                         Location.Antwerpen,
                         Location.VlaamsBrabant,
@@ -189,7 +190,7 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                     Locations = new List<Location>
+                     Locations = new ObservableCollection<Location>
                     {
                         Location.Antwerpen,
                         Location.VlaamsBrabant,
@@ -211,7 +212,7 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                     Locations = new List<Location>
+                     Locations = new ObservableCollection<Location>
                     {
                         Location.Antwerpen,
                         Location.VlaamsBrabant,
@@ -233,7 +234,7 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                     Locations = new List<Location>
+                     Locations = new ObservableCollection<Location>
                     {
                         Location.Antwerpen,
                         Location.VlaamsBrabant,
@@ -255,7 +256,7 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                     Locations = new List<Location>
+                     Locations = new ObservableCollection<Location>
                     {
                         Location.Antwerpen,
                         Location.VlaamsBrabant,
@@ -277,7 +278,7 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                     Locations = new List<Location>
+                     Locations = new ObservableCollection<Location>
                     {
                         Location.Antwerpen,
                         Location.VlaamsBrabant,
@@ -299,7 +300,7 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                     Locations = new List<Location>
+                     Locations = new ObservableCollection<Location>
                     {
                         Location.Antwerpen,
                         Location.VlaamsBrabant,
@@ -321,7 +322,7 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                     Locations = new List<Location>
+                     Locations = new ObservableCollection<Location>
                     {
                         Location.Antwerpen,
                         Location.VlaamsBrabant,
@@ -341,7 +342,7 @@ namespace SwipeIT.Services
                             SkillName="Communication"
                         },
                     },
-                     Locations = new List<Location>
+                     Locations = new ObservableCollection<Location>
                     {
                         Location.Antwerpen,
                         Location.VlaamsBrabant,
@@ -361,7 +362,7 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                     Locations = new List<Location>
+                     Locations = new ObservableCollection<Location>
                     {
                         Location.Antwerpen,
                         Location.VlaamsBrabant,
