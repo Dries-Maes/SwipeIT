@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace SwipeIT.ViewModels
 {
@@ -33,6 +34,7 @@ namespace SwipeIT.ViewModels
         private async void OnLoginClicked(object obj)
         {
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
+            bool answer = DisplayAlert("Question?", "Would you like to play a game", "Yes", "No");
             await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
         }
     }
