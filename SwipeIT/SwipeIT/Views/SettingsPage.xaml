@@ -10,7 +10,8 @@
         <StackLayout>
             <Label Text="Welcome THE SETTINGS PAGE"
                    VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
+                   HorizontalOptions="CenterAndExpand"
+                   Visual="" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
