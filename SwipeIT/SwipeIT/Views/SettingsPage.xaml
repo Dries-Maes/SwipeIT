@@ -11,46 +11,72 @@
         <StackLayout VerticalOptions="Center"
                      HorizontalOptions="Center"
                      WidthRequest="300">
-          
-                <Label Text="First name"
-                       VerticalTextAlignment="Center" />
+            <CollectionView ItemsSource="{Binding AvatarList}"
+                            IsVisible="{Binding ShowImagePicker}"
+                            HeightRequest="100">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding .}"
+                               HeightRequest="100">
+
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:SettingsViewModel}}, Path=AvatarSelectedCommand}"
+                                                      CommandParameter="{Binding .}"
+                                                      NumberOfTapsRequired="1" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.ItemsLayout>
+
+                    <LinearItemsLayout Orientation="Horizontal"
+                                       SnapPointsAlignment="Start"
+                                       SnapPointsType="MandatorySingle" />
+                </CollectionView.ItemsLayout>
+            </CollectionView>
+            <Image Source="{Binding CurrentUserSingleton.CurrentUser.Image}"
+                   HorizontalOptions="Center"
+                   HeightRequest="150"
+                   WidthRequest="150"
+                   >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ImageClickedCommand}"
+                                          CommandParameter="{Binding .}" />
+                </Image.GestureRecognizers>
+            </Image>
             
-                <Entry Text="{Binding CurrentUserSingleton.CurrentUser.FirstName}"
-                       VerticalTextAlignment="Center"
-                       />
-            
-                <Label Text="Last name:"
-                       
-                       VerticalTextAlignment="Center" 
-                       Margin="0,0,20,0"/>
-            
+            <Label Text="First name"
+                   VerticalTextAlignment="Center" />
+
+            <Entry Text="{Binding CurrentUserSingleton.CurrentUser.FirstName}"
+                   VerticalTextAlignment="Center" />
+
+            <Label Text="Last name:"
+                   VerticalTextAlignment="Center"
+                   Margin="0,0,20,0" />
+
             <Entry Text="{Binding CurrentUserSingleton.CurrentUser.LastName}" />
 
+           
 
-
-            <Image Source="{Binding CurrentUserSingleton.CurrentUser.Image}"
-                   HorizontalOptions="StartAndExpand"
-                   HeightRequest="100"
-                   WidthRequest="100" />
-            
             <Label Text="Years of experience"
-                       VerticalTextAlignment="Center"
-                       Margin="0,0,20,0" />
-            
-                <Entry Text="{Binding CurrentUserSingleton.CurrentUser.YearsOfExperience}"
-                       Keyboard="Numeric"     />
+                   VerticalTextAlignment="Center"
+                   Margin="0,0,20,0" />
+
+            <Entry Text="{Binding CurrentUserSingleton.CurrentUser.YearsOfExperience}"
+                   Keyboard="Numeric" />
 
             <Label Text="Address"
                    IsVisible="{Binding IsDeveloper}" />
-            
-                <Entry Text="{Binding CurrentUserSingleton.CurrentUser.Address}"
-                       IsVisible="{Binding IsDeveloper}" />
-            
-                <Label Text="Company" />
-            
-                <Entry Text="{Binding CurrentUserSingleton.CurrentUser.Company}"
-                       IsVisible="{Binding IsRecruiter}" />
-            
+
+            <Entry Text="{Binding CurrentUserSingleton.CurrentUser.Address}"
+                   IsVisible="{Binding IsDeveloper}" />
+
+            <Label Text="Company" />
+
+            <Entry Text="{Binding CurrentUserSingleton.CurrentUser.Company}"
+                   IsVisible="{Binding IsRecruiter}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
