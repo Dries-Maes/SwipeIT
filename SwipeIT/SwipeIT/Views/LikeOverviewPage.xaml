@@ -32,11 +32,11 @@
                             <StackLayout Padding="10">
                                 <StackLayout Orientation="Horizontal">
                                     <Image Source="{Binding Image}"
-                                       WidthRequest="40"
-                                       HeightRequest="40" />
-                                    <Label Text="{Binding Name}"
+                                           WidthRequest="40"
+                                           HeightRequest="40" />
+                                    <Label Text="{Binding LastName}"
                                            FontSize="16" />
-                                    <Label Text="{Binding Surname}"
+                                    <Label Text="{Binding FirstName}"
                                            LineBreakMode="NoWrap"
                                            FontSize="16">
                                         <Label.GestureRecognizers>

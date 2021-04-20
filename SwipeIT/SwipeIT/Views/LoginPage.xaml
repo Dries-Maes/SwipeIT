@@ -3,26 +3,41 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:SwipeIT.ViewModels"
              mc:Ignorable="d"
              x:Class="SwipeIT.Views.LoginPage"
              Shell.NavBarIsVisible="False">
+    <ContentPage.BindingContext>
+        <local:LoginViewModel />
+    </ContentPage.BindingContext>
     <ContentPage.Content>
+
         <StackLayout Padding="10,0,10,0"
                      VerticalOptions="Center">
             <Entry Placeholder="Email"
+                   Text="{Binding UserMail}"
                    Keyboard="Email" />
             <Entry IsPassword="True"
+                   Text="{Binding UserPassword}"
                    Placeholder="Password" />
             <Entry IsPassword="True"
                    Placeholder="Confirm Password"
                    IsVisible="{Binding Source={x:Reference SignUp},
                                     Path=IsToggled}" />
-            <Entry Placeholder="Surname"
+            <Entry Placeholder="FirstName"
                    IsVisible="{Binding Source={x:Reference SignUp},
                                     Path=IsToggled}" />
             <Entry Placeholder="Name"
                    IsVisible="{Binding Source={x:Reference SignUp},
                                     Path=IsToggled}" />
+            <StackLayout Orientation="Horizontal"
+                         IsVisible="{Binding Source={x:Reference SignUp},
+                                    Path=IsToggled}"
+                         HorizontalOptions="CenterAndExpand">
+                <RadioButton Content="Developer"
+                             IsChecked="{Binding }" />
+                <RadioButton Content="Recruiter" />
+            </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Button VerticalOptions="Center"
                         Text="Login"
