@@ -35,7 +35,7 @@
                                     Path=IsToggled}"
                          HorizontalOptions="CenterAndExpand">
                 <RadioButton Content="Developer"
-                             IsEnabled="True" />
+                             IsChecked="{Binding }" />
                 <RadioButton Content="Recruiter" />
             </StackLayout>
             <StackLayout Orientation="Horizontal">
