@@ -6,12 +6,77 @@ namespace SwipeIT.Models
 {
     public abstract class User : Account
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Image { get; set; }
-        public int YearsOfExperience { get; set; }
-        public List<Skill> Skills { get; set; }
-        public List<String> Locations { get; set; }
+        private string surname;
+
+        public string Surname
+        {
+            get { return surname; }
+            set
+            {
+                surname = value;
+                OnPropertyChanged(nameof(Surname));
+            }
+        }
+
+        private string name;
+
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                name = value;
+                OnPropertyChanged(nameof(Name));
+            }
+        }
+
+        private string image;
+
+        public string Image
+        {
+            get { return image; }
+            set
+            {
+                image = value;
+                OnPropertyChanged(nameof(Image));
+            }
+        }
+
+        private int yearsOfExperience;
+
+        public int YearsOfExperience
+        {
+            get { return yearsOfExperience; }
+            set
+            {
+                yearsOfExperience = value;
+                OnPropertyChanged(nameof(yearsOfExperience));
+            }
+        }
+
+        private List<Skill> skills;
+
+        public List<Skill> Skills
+        {
+            get { return skills; }
+            set
+            {
+                skills = value;
+                OnPropertyChanged(nameof(Skills));
+            }
+        }
+
+        private List<string> locations;
+
+        public List<string> Locations
+        {
+            get { return locations; }
+            set
+            {
+                locations = value;
+                OnPropertyChanged(nameof(Locations));
+            }
+        }
 
         public User()
         {
