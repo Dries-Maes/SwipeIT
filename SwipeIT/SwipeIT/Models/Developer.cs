@@ -1,13 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace SwipeIT.Models
 {
     public class Developer : User
     {
-        public string Address { get; set; }
-        public List<Recruiter> LikedByRecruiters { get; set; }
+        private string address;
+
+        public string Address
+        {
+            get { return address; }
+            set
+            {
+                address = value;
+                OnPropertyChanged(nameof(Address));
+            }
+        }
+
+        private List<Recruiter> likedByRecruiters;
+
+        public List<Recruiter> LikedByRecruiters
+        {
+            get { return likedByRecruiters; }
+            set
+            {
+                likedByRecruiters = value;
+                OnPropertyChanged(nameof(OnPropertyChanged));
+            }
+        }
 
         public Developer()
         {
