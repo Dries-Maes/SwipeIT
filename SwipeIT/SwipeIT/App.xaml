@@ -6,7 +6,9 @@
         Define global resources and styles here, that apply to all pages in your app.
     -->
     <Application.Resources>
+        <!--<local:BooleanToVisibilityConverter  x:Key="MyVisConverter" />-->
         <ResourceDictionary>
+            <Color x:Key="Primary">#2196F3</Color>
             <Color x:Key="DarkTextColor">#EEEEEE</Color>
             <Color x:Key="Primary">#2196F3</Color>
             <Color x:Key="LightTextColor">#111111</Color>
