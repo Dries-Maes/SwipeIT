@@ -104,17 +104,6 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Andreas.jpg" />
-    <Content Include="Diederick.jpg" />
-    <Content Include="Dries.jpg" />
-    <Content Include="Emma.jpg" />
-    <Content Include="Jens.jpg" />
-    <Content Include="Joyce.jpg" />
-    <Content Include="Kobe.jpg" />
-    <Content Include="Marieke.jpg" />
-    <Content Include="Michiel.jpg" />
-    <Content Include="Nick.jpg" />
-    <Content Include="Pieter.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
@@ -143,9 +132,6 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
-    <Content Include="Seba.jpg" />
-    <Content Include="Simon.jpg" />
-    <Content Include="Ward.jpg" />
     <Content Include="xamarin_logo.png" />
     <Content Include="icon_about.png" />
     <Content Include="icon_feed.png" />

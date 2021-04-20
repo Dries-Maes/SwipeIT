@@ -51,7 +51,7 @@
                         IsToggled="{Binding IsSignUp}"
                         VerticalOptions="Center" />
             </StackLayout>
-            <Label Text="{Binding ErrorMessage, FallbackValue='no errors yet'}"
+            <Label Text="{Binding ErrorMessage}"
                    TextColor="Red"
                    VerticalOptions="Center" />
         </StackLayout>
