@@ -71,7 +71,7 @@ namespace SwipeIT.Services
                     ID = 420,
                     Name = "Van Gelder",
                     Surname = "Jens",
-                    Image = "Jens.jpg",
+                    Image = "Icon15.png",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -91,7 +91,7 @@ namespace SwipeIT.Services
                     ID = 1,
                     Name = "Maes",
                     Surname = "Dries",
-                    Image = "Dries.jpg",
+                    Image = "Icon2.png",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -109,7 +109,7 @@ namespace SwipeIT.Services
                     ID = 2,
                     Name = "Impe",
                     Surname = "Ward",
-                    Image = "Ward.jpg",
+                    Image = "Icon3.jpg",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -127,7 +127,7 @@ namespace SwipeIT.Services
                     ID = 3,
                     Name = "Kesteloot",
                     Surname = "Sebastiaan-Willem",
-                    Image = "Seba.jpg",
+                    Image = "Icon5.jpg",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -145,7 +145,7 @@ namespace SwipeIT.Services
                     ID = 4,
                     Name = "Van Tittelboom",
                     Surname = "Simon",
-                    Image = "Simon.jpg",
+                    Image = "Icon6.jpg",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -163,7 +163,7 @@ namespace SwipeIT.Services
                     ID = 5,
                     Name = "Alfvoet",
                     Surname = "Joyce",
-                    Image = "Joyce.jpg",
+                    Image = "Icon7.jpg",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -181,7 +181,7 @@ namespace SwipeIT.Services
                     ID = 6,
                     Name = "DeLobelle",
                     Surname = "Kobe",
-                    Image = "Kobe.jpg",
+                    Image = "Icon10.jpg",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -199,7 +199,7 @@ namespace SwipeIT.Services
                     ID = 7,
                     Name = "Danckaert",
                     Surname = "Emma",
-                    Image = "Emma.jpg",
+                    Image = "Icon11.jpg",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -217,7 +217,7 @@ namespace SwipeIT.Services
                     ID = 8,
                     Name = "Stavropoulos",
                     Surname = "Andreas",
-                    Image = "Andreas.jpg",
+                    Image = "Icon16.jpg",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -235,7 +235,7 @@ namespace SwipeIT.Services
                     ID = 9,
                     Name = "Van Durme",
                     Surname = "Pieter",
-                    Image = "Pieter.jpg",
+                    Image = "Icon14.jpg",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -253,7 +253,7 @@ namespace SwipeIT.Services
                     ID = 10,
                     Name = "Van Royen",
                     Surname = "Nick",
-                    Image = "Nick.jpg",
+                    Image = "Icon20.jpg",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -271,7 +271,7 @@ namespace SwipeIT.Services
                     ID = 11,
                     Name = "Van Yperzele",
                     Surname = "Diederick",
-                    Image = "Diederick.jpg",
+                    Image = "Icon18.jpg",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -289,7 +289,7 @@ namespace SwipeIT.Services
                     ID = 12,
                     Name = "Verhulsdonck",
                     Surname = "Marieke",
-                    Image = "Marieke.jpg",
+                    Image = "Icon4.jpg",
                     Skills = new List<Skill>
                     {
                         new Skill
@@ -307,7 +307,7 @@ namespace SwipeIT.Services
                     ID = 13,
                     Name = "Wouters",
                     Surname = "Michiel",
-                    Image = "Michiel.jpg",
+                    Image = "Icon30.jpg",
                     Skills = new List<Skill>
                     {
                         new Skill
