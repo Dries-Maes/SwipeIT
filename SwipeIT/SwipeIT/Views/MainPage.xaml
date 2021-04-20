@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SwipeIT.ViewModels"
+             x:Class="SwipeIT.Views.MainPage"
+             BackgroundColor="{AppThemeBinding Dark=Black, Light=White}">
+    <ContentPage.BindingContext>
+        <local:MainViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{Binding CurrentUser.Name }" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <CarouselView ItemsSource="{Binding DevelopersResult}">
+                <CarouselView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal"
+                                       SnapPointsType="Mandatory" />
+                </CarouselView.ItemsLayout>
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <SwipeView>
+                            <SwipeView.TopItems>
+                                <SwipeItems>
+                                    <SwipeItemView>
+                                        <StackLayout Margin="10"
+                                                     Orientation="Horizontal"
+                                                     HorizontalOptions="Center">
+                                            <Button Text="Save"
+                                                    BackgroundColor="Green"
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:MainViewModel}}, Path=LikeCommand}"
+                                                    CommandParameter="{Binding .}" />
+                                            <Button Text="Cancel"
+                                                    BackgroundColor="Red" />
+                                        </StackLayout>
+                                    </SwipeItemView>
+                                </SwipeItems>
+                            </SwipeView.TopItems>
+
+                            <StackLayout Padding="10">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding ID}"
+                                           FontSize="13" />
+                                    <Label Text="{Binding Name}"
+                                           FontSize="16" />
+                                    <Label Text="{Binding Surname}"
+                                           LineBreakMode="NoWrap"
+                                           FontSize="16" />
+                                </StackLayout>
+                                <Image Source="{Binding Image}"
+                                       WidthRequest="200"
+                                       HeightRequest="200" />
+                            </StackLayout>
+                        </SwipeView>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

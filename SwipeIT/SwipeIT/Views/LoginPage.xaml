@@ -7,8 +7,18 @@
              x:Class="SwipeIT.Views.LoginPage"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
+        <StackLayout Padding="10,0,10,0"
+                     VerticalOptions="Center">
+            <Entry Text="Username" />
+            <Entry IsPassword="True"
+                   Text="Password" />
+            <StackLayout Orientation="Horizontal">
+                <Button VerticalOptions="Center"
+                        Text="Login"
+                        Command="{Binding LoginCommand}" />
+                <Button VerticalOptions="Center"
+                        Text="Signup" />
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
