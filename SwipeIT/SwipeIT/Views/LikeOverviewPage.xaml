@@ -12,42 +12,45 @@
             <CollectionView ItemsSource="{Binding CurrentUserSingleton.CurrentUser.SelectedDevelopers}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <SwipeView>
-                            <SwipeView.RightItems>
-                                <SwipeItems>
-                                    <SwipeItem Text="X"
+                        <StackLayout Margin="10">
+                            <SwipeView BackgroundColor="Red">
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="X"
                                                BackgroundColor="Red"
                                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeleteCommand}"
                                                CommandParameter="{Binding .}" />
-                                </SwipeItems>
-                            </SwipeView.RightItems>
-                            <SwipeView.LeftItems>
-                                <SwipeItems>
-                                    <SwipeItem Text="More Info"
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <SwipeView.LeftItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="More Info"
                                                BackgroundColor="Green"
                                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=TestCommand}"
                                                CommandParameter="{Binding .}" />
-                                </SwipeItems>
-                            </SwipeView.LeftItems>
-                            <StackLayout Padding="10">
-                                <StackLayout Orientation="Horizontal">
-                                    <Image Source="{Binding Image}"
-                                           WidthRequest="40"
-                                           HeightRequest="40" />
-                                    <Label Text="{Binding LastName}"
-                                           FontSize="16" />
-                                    <Label Text="{Binding FirstName}"
-                                           LineBreakMode="NoWrap"
-                                           FontSize="16">
-                                        <Label.GestureRecognizers>
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+                                <Frame HasShadow="True" CornerRadius="20" BorderColor="Black">
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer NumberOfTapsRequired="1"
                                                           Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=TestCommand}"
-                                               CommandParameter="{Binding .}" />
-                                        </Label.GestureRecognizers>
-                                    </Label>
-                                </StackLayout>
-                            </StackLayout>
-                        </SwipeView>
+                                                          CommandParameter="{Binding .}" />
+                                        </StackLayout.GestureRecognizers>
+                                        <Image Source="{Binding Image}"
+                                           WidthRequest="60"
+                                           HeightRequest="60" />
+                                        <Label Text="{Binding LastName}"
+                                           FontSize="16"
+                                           VerticalTextAlignment="Center" />
+                                        <Label Text="{Binding FirstName}"
+                                           LineBreakMode="NoWrap"
+                                           FontSize="16"
+                                           VerticalTextAlignment="Center" />
+                                    </StackLayout>
+                                </Frame>
+                            </SwipeView>
+                        </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

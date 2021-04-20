@@ -30,7 +30,14 @@ namespace SwipeIT.ViewModels
 
         private void Testmethod()
         {
-            Test = true;
+            if (Test)
+            {
+                Test = false;
+            }
+            else
+            {
+                Test = true;
+            }
         }
     }
 }
