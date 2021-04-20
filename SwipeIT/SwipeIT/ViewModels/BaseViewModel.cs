@@ -10,22 +10,22 @@ namespace SwipeIT.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        private Account currentUser;
+        private CurrentUserSingleton currentUserSingleton;
 
-        public Account CurrentUser
+        public CurrentUserSingleton CurrentUserSingleton
         {
-            get { return currentUser; }
+            get { return currentUserSingleton; }
             set
             {
-                currentUser = value;
-                OnPropertyChanged(nameof(CurrentUser));
+                currentUserSingleton = value;
+                OnPropertyChanged(nameof(CurrentUserSingleton));
             }
         }
 
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
-        public DeveloperRepo developerRepo = DeveloperRepo.GetSingleton();
-        public RecruiterRepo recruiterRepo = RecruiterRepo.GetSingleton();
-        public SkillsRepo skillsRepo = SkillsRepo.GetSingleton();
+        public DeveloperRepo DeveloperRepo = DeveloperRepo.GetSingleton();
+        public RecruiterRepo RecruiterRepo = RecruiterRepo.GetSingleton();
+        public SkillsRepo SkillsRepo = SkillsRepo.GetSingleton();
 
         private bool isBusy = false;
 
@@ -58,11 +58,7 @@ namespace SwipeIT.ViewModels
 
         public BaseViewModel()
         {
-            CurrentUser = new Recruiter //TODO LOGIN SCHERM MOCK RECRUITER
-            {
-                Name = "Pieter",
-                Email = "Pieter2"
-            };
+            CurrentUserSingleton = CurrentUserSingleton.GetSingleton();
         }
 
         #region INotifyPropertyChanged

@@ -9,7 +9,6 @@
         <ResourceDictionary>
             <Color x:Key="DarkTextColor">#EEEEEE</Color>
             <Color x:Key="Primary">#2196F3</Color>
-
             <Color x:Key="LightTextColor">#111111</Color>
             <Color x:Key="PrimaryWindowsLight">#2196F3</Color>
             <Color x:Key="PrimaryWindowsDark">#0055B0</Color>
