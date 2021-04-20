@@ -23,6 +23,12 @@
             <Entry Placeholder="Name"
                    IsVisible="{Binding Source={x:Reference SignUp},
                                     Path=IsToggled}" />
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="CenterAndExpand">
+                <RadioButton Content="Developer"
+                             IsEnabled="True" />
+                <RadioButton Content="Recruiter" />
+            </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Button VerticalOptions="Center"
                         Text="Login"
