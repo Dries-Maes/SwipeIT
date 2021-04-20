@@ -8,6 +8,7 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
+            <Button IsVisible="{Binding Test}" BackgroundColor="Red" />
             <CollectionView ItemsSource="{Binding CurrentUserSingleton.CurrentUser.SelectedDevelopers}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -20,6 +21,14 @@
                                                CommandParameter="{Binding .}" />
                                 </SwipeItems>
                             </SwipeView.RightItems>
+                            <SwipeView.LeftItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="More Info"
+                                               BackgroundColor="Green"
+                                               Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=TestCommand}"
+                                               CommandParameter="{Binding .}" />
+                                </SwipeItems>
+                            </SwipeView.LeftItems>
                             <StackLayout Padding="10">
                                 <StackLayout Orientation="Horizontal">
                                     <Image Source="{Binding Image}"
@@ -29,7 +38,13 @@
                                            FontSize="16" />
                                     <Label Text="{Binding FirstName}"
                                            LineBreakMode="NoWrap"
-                                           FontSize="16" />
+                                           FontSize="16">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                          Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=TestCommand}"
+                                               CommandParameter="{Binding .}" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
                                 </StackLayout>
                             </StackLayout>
                         </SwipeView>
