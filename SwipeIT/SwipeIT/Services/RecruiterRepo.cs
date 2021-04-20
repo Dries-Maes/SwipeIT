@@ -68,29 +68,29 @@ namespace SwipeIT.Services
                 new Recruiter
                 {
                     ID = 1,
-                    Name = "Jef",
-                    Surname = "Besos",
+                    LastName = "Jef",
+                    FirstName = "Besos",
                     Company = "Bamazon",
                 },
                 new Recruiter
                 {
                     ID = 2,
-                    Name = "Billy",
-                    Surname = "Gates",
+                    LastName = "Billy",
+                    FirstName = "Gates",
                     Company = "Licrosoft",
                 },
                 new Recruiter
                 {
                     ID = 3,
-                    Name = "Stefaan",
-                    Surname = "Jops",
+                    LastName = "Stefaan",
+                    FirstName = "Jops",
                     Company = "Bapple",
                 },
                 new Recruiter
                 {
                     ID = 4,
-                    Name = "Meloen",
-                    Surname = "Musk",
+                    LastName = "Meloen",
+                    FirstName = "Musk",
                     Company = "Teslaa",
                 },
             };
