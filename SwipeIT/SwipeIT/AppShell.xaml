@@ -109,7 +109,7 @@
                       ContentTemplate="{DataTemplate local:MainPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Login"
-                Icon="icon_about.png">
+                Icon="icon_login.png">
         <ShellContent Route="LoginPage"
                       ContentTemplate="{DataTemplate local:LoginPage}" />
     </FlyoutItem>

@@ -26,16 +26,8 @@ namespace SwipeIT.Services
             CurrentUser = new Recruiter
             {
                 FirstName = "Pieter",
-                LastName = "Pallieter",
                 Email = "Pieter@pietercorp.org",
-                Image = "Icon27.png",
-                Company = "PCorp",
-                Locations = new List<Location> {
-                Location.Henegouwen,
-                Location.Antwerpen,
-                Location.Luik,
-                Location.Namen
-                }
+                Image = "Icon27.png"
             };
         }
 

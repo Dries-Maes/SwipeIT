@@ -72,13 +72,7 @@ namespace SwipeIT.Services
                     LastName = "Besos",
                     Company = "Bamazon",
                     Email = "jef@bamazon.com",
-                    Password = "B3505",
-                     Locations = new List<Location>
-                    {
-                        Location.Antwerpen,
-                        Location.VlaamsBrabant,
-                        Location.Henegouwen,
-                    },
+                    Password = "B3505"
                 },
                 new Recruiter
                 {
@@ -87,13 +81,7 @@ namespace SwipeIT.Services
                     LastName = "Gates",
                     Company = "Licrosoft",
                     Email ="billygates@licrosoft.org",
-                    Password ="BgL003!?",
-                     Locations = new List<Location>
-                    {
-                        Location.Antwerpen,
-                        Location.VlaamsBrabant,
-                        Location.Henegouwen,
-                    },
+                    Password ="BgL003!?"
                 },
                 new Recruiter
                 {
@@ -102,13 +90,7 @@ namespace SwipeIT.Services
                     LastName = "Jops",
                     Company = "Bapple",
                     Email = "stefjops@bapple.io",
-                    Password = "Peer4TheWin",
-                     Locations = new List<Location>
-                    {
-                        Location.Antwerpen,
-                        Location.VlaamsBrabant,
-                        Location.Henegouwen,
-                    },
+                    Password = "Peer4TheWin"
                 },
                 new Recruiter
                 {
@@ -117,13 +99,7 @@ namespace SwipeIT.Services
                     LastName = "Musk",
                     Company = "Teslaa",
                     Email ="muskmeloen@teslaa.be",
-                    Password ="Model3XS",
-                     Locations = new List<Location>
-                    {
-                        Location.Antwerpen,
-                        Location.VlaamsBrabant,
-                        Location.Henegouwen,
-                    },
+                    Password ="Model3XS"
                 },
             };
         }
