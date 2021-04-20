@@ -79,11 +79,11 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                    Locations = new List<Location>
                     {
-                        "Haacht",
-                        "Leuven",
-                        "Mechelen",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
                     Email ="jens.v.gelder@gmail.com",
                     Password ="DoNotDrag0n!"
@@ -101,9 +101,11 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new List<Location>
                     {
-                        "Gent",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
                     Email="dm.inbox@outlook.com",
                     Password ="P1ssM30ff"
@@ -121,9 +123,11 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new List<Location>
                     {
-                        "Evergem",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
                     Email="ward@impesoft.com",
                     Password ="pass"
@@ -141,9 +145,11 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new List<Location>
                     {
-                        "Gent",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
                     Email ="seba.kesteloot@gmail.com",
                     Password="r00t"
@@ -161,9 +167,11 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new List<Location>
                     {
-                        "Gent",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
                     Email="simon.van.tittelboom@gmail.com",
                     Password ="R00T2.0"
@@ -181,9 +189,11 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new List<Location>
                     {
-                        "Gent",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
                     Email ="joyce.alfvoet@gmail.com",
                     Password = "Recruit#MeToo"
@@ -201,9 +211,11 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new List<Location>
                     {
-                        "Gent",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
                     Email = "delobellekobe@gmail.com",
                     Password ="IkWeetGeenPaswoordmeer"
@@ -221,9 +233,11 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new List<Location>
                     {
-                        "Gent",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
                     Email="emmadanckaert@hotmail.com",
                     Password = "DriesHeeftAltijdGelijk"
@@ -241,9 +255,11 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new List<Location>
                     {
-                        "Gent",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
                     Email="anstavropoulos@gmail.com",
                     Password= "Gr33c3"
@@ -261,9 +277,11 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new List<Location>
                     {
-                        "Gent",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
                     Email = "pieter_van_durme@hotmail.com",
                     Password ="Fr1tuur"
@@ -281,9 +299,11 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new List<Location>
                     {
-                        "Gent",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
                     Email ="nvanroyen@gmail.com",
                     Password = "ILoveTinder"
@@ -301,9 +321,11 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new List<Location>
                     {
-                        "Gent",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
                 },
                 new Developer
@@ -319,9 +341,11 @@ namespace SwipeIT.Services
                             SkillName="Communication"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new List<Location>
                     {
-                        "Holland",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
                 },
                 new Developer
@@ -337,10 +361,11 @@ namespace SwipeIT.Services
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new List<Location>
                     {
-                        "Limburg",
-                        "Aalst",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
                 },
             };

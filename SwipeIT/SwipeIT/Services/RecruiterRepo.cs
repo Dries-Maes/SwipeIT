@@ -72,7 +72,13 @@ namespace SwipeIT.Services
                     LastName = "Besos",
                     Company = "Bamazon",
                     Email = "jef@bamazon.com",
-                    Password = "B3505"
+                    Password = "B3505",
+                     Locations = new List<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
                 },
                 new Recruiter
                 {
@@ -81,7 +87,13 @@ namespace SwipeIT.Services
                     LastName = "Gates",
                     Company = "Licrosoft",
                     Email ="billygates@licrosoft.org",
-                    Password ="BgL003!?"
+                    Password ="BgL003!?",
+                     Locations = new List<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
                 },
                 new Recruiter
                 {
@@ -90,7 +102,13 @@ namespace SwipeIT.Services
                     LastName = "Jops",
                     Company = "Bapple",
                     Email = "stefjops@bapple.io",
-                    Password = "Peer4TheWin"
+                    Password = "Peer4TheWin",
+                     Locations = new List<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
                 },
                 new Recruiter
                 {
@@ -99,7 +117,13 @@ namespace SwipeIT.Services
                     LastName = "Musk",
                     Company = "Teslaa",
                     Email ="muskmeloen@teslaa.be",
-                    Password ="Model3XS"
+                    Password ="Model3XS",
+                     Locations = new List<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
                 },
             };
         }

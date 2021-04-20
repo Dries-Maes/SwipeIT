@@ -2,6 +2,7 @@
 using SwipeIT.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
@@ -11,6 +12,30 @@ namespace SwipeIT.ViewModels
 
     {
         private bool showImagePicker;
+
+        private Location selectedLocation;
+
+        public Location SelectedLocation
+        {
+            get { return selectedLocation; }
+            set
+            {
+                selectedLocation = value;
+                OnPropertyChanged(nameof(SelectedLocation));
+            }
+        }
+
+        private List<Location> availableLocations;
+
+        public List<Location> AvailableLocations
+        {
+            get { return availableLocations; }
+            set
+            {
+                availableLocations = value;
+                OnPropertyChanged(nameof(AvailableLocations));
+            }
+        }
 
         public bool ShowImagePicker
         {
@@ -23,6 +48,10 @@ namespace SwipeIT.ViewModels
         }
 
         public Command<Account> SaveCommand => new Command<Account>(SaveAsync);
+        public Command<Location> DeleteLocationCommand => new Command<Location>(DeleteLocationAsync);
+
+        public Command<Location> AddLocationCommand => new Command<Location>(AddLocation);
+
         public Command<string> AvatarSelectedCommand => new Command<string>(AvatarSelected);
         public Command ImageClickedCommand => new Command(ImageClicked);
 
@@ -34,6 +63,17 @@ namespace SwipeIT.ViewModels
 
         public SettingsViewModel()
         {
+            AvailableLocations = new List<Location>();
+            CurrentUser = (User)CurrentUserSingleton.CurrentUser;
+            foreach (Location item in Enum.GetValues(typeof(Location)))
+            {
+                if (item != Location.Unassigned && !CurrentUser.Locations.Contains(item))
+                {
+                    AvailableLocations.Add(item);
+                }
+            }
+            //AvailableLocations = AvailableLocations.Where(x => !CurrentUser.Locations.Contains(x)).ToList();
+
             AvatarList = new List<string> {
                 "Icon01.png",
                 "Icon02.png",
@@ -67,7 +107,6 @@ namespace SwipeIT.ViewModels
                 "Icon30.png",
                 "Icon31.png",
             };
-            CurrentUser = (User)CurrentUserSingleton.CurrentUser;
             if (CurrentUserSingleton.CurrentUser is Developer)
             {
                 IsDeveloper = true;
@@ -78,6 +117,18 @@ namespace SwipeIT.ViewModels
                 IsDeveloper = false;
                 IsRecruiter = true;
             }
+        }
+
+        private void DeleteLocationAsync(Location location)
+        {
+            CurrentUser.Locations.Remove(location);
+            AvailableLocations.Add(location);
+        }
+
+        private void AddLocation(Location location)
+        {
+            CurrentUser.Locations.Add(location);
+            AvailableLocations.Remove(location);
         }
 
         private void ImageClicked()
