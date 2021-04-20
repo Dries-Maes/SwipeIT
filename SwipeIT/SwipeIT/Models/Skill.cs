@@ -1,10 +1,11 @@
-﻿using System;
+﻿using SwipeIT.Services;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace SwipeIT.Models
 {
-    public class Skill : DateLogs
+    public class Skill : ObservableObject
     {
         private int id;
 
@@ -41,9 +42,21 @@ namespace SwipeIT.Models
             }
         }
 
+        private DateLog dateLog;
+
+        public DateLog DateLog
+        {
+            get { return dateLog; }
+            set
+            {
+                dateLog = value;
+                OnPropertyChanged(nameof(DateLog));
+            }
+        }
+
         public Skill()
         {
-            DateCreated = DateTime.Now;
+            DateLog = new DateLog();
         }
     }
 }

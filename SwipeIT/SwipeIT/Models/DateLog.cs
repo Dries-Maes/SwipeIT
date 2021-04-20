@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SwipeIT.Models
 {
-    public abstract class DateLogs : ObservableObject
+    public class DateLog
     {
         private DateTime dateCreated;
 
@@ -15,7 +15,6 @@ namespace SwipeIT.Models
             set
             {
                 dateCreated = value;
-                OnPropertyChanged(nameof(DateCreated));
             }
         }
 
@@ -27,8 +26,12 @@ namespace SwipeIT.Models
             set
             {
                 dateModified = value;
-                OnPropertyChanged(nameof(DateModified));
             }
+        }
+
+        public DateLog()
+        {
+            DateCreated = DateTime.Now;
         }
     }
 }
