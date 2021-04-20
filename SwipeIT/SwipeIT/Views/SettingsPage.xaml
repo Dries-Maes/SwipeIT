@@ -32,7 +32,7 @@
 
                         <LinearItemsLayout Orientation="Horizontal"
                                            SnapPointsAlignment="Start"
-                                           SnapPointsType="MandatorySingle" />
+                                           SnapPointsType="Mandatory" />
                     </CollectionView.ItemsLayout>
                 </CollectionView>
                 <Image Source="{Binding CurrentUserSingleton.CurrentUser.Image}"
