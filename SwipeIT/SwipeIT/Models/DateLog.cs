@@ -7,27 +7,9 @@ namespace SwipeIT.Models
 {
     public class DateLog
     {
-        private DateTime dateCreated;
+        public DateTime DateCreated { get; set; }
 
-        public DateTime DateCreated
-        {
-            get { return dateCreated; }
-            set
-            {
-                dateCreated = value;
-            }
-        }
-
-        private DateTime dateModified;
-
-        public DateTime DateModified
-        {
-            get { return dateModified; }
-            set
-            {
-                dateModified = value;
-            }
-        }
+        public DateTime DateModified { get; set; }
 
         public DateLog()
         {

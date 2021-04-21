@@ -11,7 +11,7 @@ namespace SwipeIT.Models
 
         public string FirstName
         {
-            get { return firstName; }
+            get => firstName;
             set
             {
                 firstName = value;
@@ -23,7 +23,7 @@ namespace SwipeIT.Models
 
         public string LastName
         {
-            get { return lastName; }
+            get => lastName;
             set
             {
                 lastName = value;
@@ -35,7 +35,7 @@ namespace SwipeIT.Models
 
         public string Image
         {
-            get { return image; }
+            get => image;
             set
             {
                 image = value;
@@ -47,7 +47,7 @@ namespace SwipeIT.Models
 
         public int YearsOfExperience
         {
-            get { return yearsOfExperience; }
+            get => yearsOfExperience;
             set
             {
                 yearsOfExperience = value;
@@ -59,7 +59,7 @@ namespace SwipeIT.Models
 
         public ObservableCollection<Skill> Skills
         {
-            get { return skills; }
+            get => skills;
             set
             {
                 skills = value;
@@ -71,7 +71,7 @@ namespace SwipeIT.Models
 
         public ObservableCollection<Location> Locations
         {
-            get { return locations; }
+            get => locations;
             set
             {
                 locations = value;
