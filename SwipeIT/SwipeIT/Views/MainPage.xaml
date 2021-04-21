@@ -8,7 +8,7 @@
         <local:MainViewModel />
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="{Binding CurrentUserSingleton.CurrentUser.Name }" />
+        <ToolbarItem Text="{Binding CurrentUserSingleton.CurrentUser.FirstName }" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand">

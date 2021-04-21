@@ -93,7 +93,7 @@ namespace SwipeIT.ViewModels
                         break;
 
                     case Recruiter recruiter:
-                        await Shell.Current.GoToAsync($"//{nameof(MainViewModel)}");
+                        await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
                         break;
 
                     case Admin admin:
