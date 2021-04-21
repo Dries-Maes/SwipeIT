@@ -102,7 +102,7 @@ namespace SwipeIT.ViewModels
             AvailableLocations = new ObservableCollection<Location>();
             foreach (Location item in Enum.GetValues(typeof(Location)))
             {
-                if (item != Location.Unassigned && !((User)CurrentUserSingleton.CurrentUser).Locations.Contains(item))
+                if (item != Location.Select && !((User)CurrentUserSingleton.CurrentUser).Locations.Contains(item))
                 {
                     AvailableLocations.Add(item);
                 }
@@ -141,12 +141,13 @@ namespace SwipeIT.ViewModels
 
         private void AddLocation()
         {
-            if (SelectedLocation != Location.Unassigned)
+            if (SelectedLocation != Location.Select)
             {
                 ((User)CurrentUserSingleton.CurrentUser).Locations.Add(SelectedLocation);
                 AvailableLocations.Remove(SelectedLocation);
-                SelectedLocation = AvailableLocations.Count == 0 ? Location.Unassigned : AvailableLocations[0];
+                SelectedLocation = AvailableLocations.Count == 0 ? Location.Select : AvailableLocations[0];
             }
+            SelectedLocation = Location.Select;
         }
 
         private void ImageClicked()

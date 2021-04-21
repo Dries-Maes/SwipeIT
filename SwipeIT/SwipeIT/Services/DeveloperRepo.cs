@@ -79,11 +79,24 @@ namespace SwipeIT.Services
                         {
                             SkillName="C#"
                         },
+                        new Skill
+                        {
+                            SkillName="Google"
+                        },
+                        new Skill
+                        {
+                            SkillName=".NET"
+                        },
+                        new Skill
+                        {
+                            SkillName="Javascript"
+                        },
                     },
                     Locations = new ObservableCollection<Location>
                     {
                         Location.Antwerpen,
                         Location.VlaamsBrabant,
+                        Location.Luik,
                         Location.Henegouwen,
                     },
                     Email ="jens.v.gelder@gmail.com",

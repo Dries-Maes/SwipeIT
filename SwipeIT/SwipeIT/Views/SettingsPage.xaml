@@ -7,8 +7,9 @@
         <local:SettingsViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <ScrollView  HorizontalOptions="CenterAndExpand">
-            <StackLayout Margin="30" HorizontalOptions="CenterAndExpand">
+        <ScrollView>
+            <StackLayout Margin="30"
+                         Padding="5">
                 <CollectionView ItemsSource="{Binding AvatarList}"
                                 IsVisible="{Binding ShowImagePicker}"
                                 HeightRequest="100">
@@ -79,49 +80,49 @@
                         SelectedItem="{Binding Source={RelativeSource AncestorType={x:Type local:SettingsViewModel}}, Path=SelectedLocation}"
                         VerticalOptions="Start">
                 </Picker>
-
                 <Button Text="Add location"
                         Command="{Binding AddLocationCommand}" />
-                <ListView ItemsSource="{Binding CurrentUserSingleton.CurrentUser.Locations}"
-                          SelectionMode="None">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding .}"
-                                           VerticalOptions="Center" />
-                                    <Button Text="Delete"
-                                            WidthRequest="75"
-                                            HorizontalOptions="EndAndExpand"
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:SettingsViewModel}}, Path=DeleteLocationCommand}"
-                                            CommandParameter="{Binding .}" />
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                <StackLayout BindableLayout.ItemsSource="{Binding CurrentUserSingleton.CurrentUser.Locations}">
 
-                <ListView ItemsSource="{Binding CurrentUserSingleton.CurrentUser.Skills}"
-                          SelectionMode="Single">
-                    <ListView.ItemTemplate>
+                    <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding SkillName}"
-                                           VerticalOptions="Center" />
-                                    <Button Text="Delete"
-                                            WidthRequest="75"
-                                            HorizontalOptions="EndAndExpand"
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:SettingsViewModel}}, Path=SkillDeletedCommand}"
-                                            CommandParameter="{Binding SkillName}" />
-                                </StackLayout>
-                            </ViewCell>
+
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding .}"
+                                       VerticalOptions="Center" />
+                                <Button Text="Delete"
+                                        WidthRequest="75"
+                                        HorizontalOptions="EndAndExpand"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:SettingsViewModel}}, Path=DeleteLocationCommand}"
+                                        CommandParameter="{Binding .}" />
+                            </StackLayout>
                         </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
                 <Entry Text="{Binding SkillEntry}"
                        Placeholder="Add a skill"
                        ReturnCommand="{Binding SkillEnteredCommand}" />
+
+                <StackLayout BindableLayout.ItemsSource="{Binding CurrentUserSingleton.CurrentUser.Skills}"
+                             Padding="0,5"
+                             Margin="0,5">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding SkillName}"
+                                       VerticalOptions="Center" />
+                                <Button Text="Delete"
+                                        WidthRequest="75"
+                                        HorizontalOptions="EndAndExpand"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:SettingsViewModel}}, Path=SkillDeletedCommand}"
+                                        CommandParameter="{Binding SkillName}" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+                <Label Text=" " />
+                <Label Text=" " />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
