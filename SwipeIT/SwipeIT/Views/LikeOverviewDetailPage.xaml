@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SwipeIT.ViewModels"
+             x:Class="SwipeIT.Views.LikeOverviewDetailPage">
+    <ContentPage.BindingContext>
+        <local:LikeOverviewDetailViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="30" HorizontalOptions="CenterAndExpand">
+                <Image Source="{Binding SelectedDeveloper.Image}"
+                       HorizontalOptions="Center"
+                       HeightRequest="150"
+                       WidthRequest="150"
+                       Margin="0,20,0,0">
+                </Image>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,5,0,15">
+                    <Label Text="{Binding SelectedDeveloper.FirstName}" FontSize="Large" />
+                    <Label Text="{Binding SelectedDeveloper.LastName}" FontSize="Large" />
+                </StackLayout>
+
+                <Label Text="Email:" />
+                <StackLayout Orientation="Horizontal">
+                    <Entry Text="{Binding SelectedDeveloper.Email}"
+                   IsEnabled="False" />
+                    <Button Text="M"
+                            WidthRequest="50"
+                            HeightRequest="50"
+                            HorizontalOptions="EndAndExpand"
+                            Command="{Binding SendMailCommand}" />
+                </StackLayout>
+
+                <Label Text="Address:" />
+                <Entry Text="{Binding SelectedDeveloper.Address}"
+                   IsEnabled="False" />
+
+                <Label Text="Years of experience:"
+                       VerticalTextAlignment="Center"
+                       Margin="0,0,20,0" />
+                <Entry Text="{Binding SelectedDeveloper.YearsOfExperience}"
+                       IsEnabled="False" />
+
+                <Label Text="Available work locations:"
+                   Margin="0,0,0,15" />
+                <FlexLayout FlexLayout.Grow="1">
+                    <CollectionView ItemsSource="{Binding SelectedDeveloper.Locations}"
+                                    SelectionMode="None"
+                                    ItemsLayout="VerticalGrid,2">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BorderColor="Black" CornerRadius="20">
+                                    <Label Text="{Binding .}"
+                                           VerticalOptions="Center"
+                                           HorizontalTextAlignment="Center" />
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </FlexLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
