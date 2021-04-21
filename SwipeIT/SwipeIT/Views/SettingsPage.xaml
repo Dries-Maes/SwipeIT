@@ -33,6 +33,7 @@
                                            SnapPointsType="Mandatory" />
                     </CollectionView.ItemsLayout>
                 </CollectionView>
+
                 <Image Source="{Binding CurrentUserSingleton.CurrentUser.Image}"
                        HorizontalOptions="Center"
                        HeightRequest="150"
@@ -78,6 +79,7 @@
                         SelectedItem="{Binding Source={RelativeSource AncestorType={x:Type local:SettingsViewModel}}, Path=SelectedLocation}"
                         VerticalOptions="Start">
                 </Picker>
+
                 <Button Text="Add location"
                         Command="{Binding AddLocationCommand}" />
                 <ListView ItemsSource="{Binding CurrentUserSingleton.CurrentUser.Locations}"
@@ -98,6 +100,28 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+
+                <ListView ItemsSource="{Binding CurrentUserSingleton.CurrentUser.Skills}"
+                          SelectionMode="Single">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding SkillName}"
+                                           VerticalOptions="Center" />
+                                    <Button Text="Delete"
+                                            WidthRequest="75"
+                                            HorizontalOptions="EndAndExpand"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:SettingsViewModel}}, Path=SkillDeletedCommand}"
+                                            CommandParameter="{Binding SkillName}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Entry Text="{Binding SkillEntry}"
+                       Placeholder="Add a skill"
+                       ReturnCommand="{Binding SkillEnteredCommand}" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

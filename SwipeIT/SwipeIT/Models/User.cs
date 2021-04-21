@@ -55,9 +55,9 @@ namespace SwipeIT.Models
             }
         }
 
-        private List<Skill> skills;
+        private ObservableCollection<Skill> skills;
 
-        public List<Skill> Skills
+        public ObservableCollection<Skill> Skills
         {
             get { return skills; }
             set
@@ -81,7 +81,7 @@ namespace SwipeIT.Models
 
         public User()
         {
-            Skills = new List<Skill>();
+            Skills = new ObservableCollection<Skill>();
             Locations = new ObservableCollection<Location>();
         }
     }

@@ -89,6 +89,13 @@ namespace SwipeIT.Services
                     Company = "Bamazon",
                     Email = "jef@bamazon.com",
                     Password = "B3505",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
                      Locations = new ObservableCollection<Location>
                     {
                         Location.Antwerpen,
@@ -104,6 +111,13 @@ namespace SwipeIT.Services
                     Company = "Licrosoft",
                     Email ="billygates@licrosoft.org",
                     Password ="BgL003!?",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
                      Locations = new ObservableCollection<Location>
                     {
                         Location.Antwerpen,
@@ -119,6 +133,13 @@ namespace SwipeIT.Services
                     Company = "Bapple",
                     Email = "stefjops@bapple.io",
                     Password = "Peer4TheWin",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
                      Locations = new ObservableCollection<Location>
                     {
                         Location.Antwerpen,
@@ -134,6 +155,13 @@ namespace SwipeIT.Services
                     Company = "Teslaa",
                     Email ="muskmeloen@teslaa.be",
                     Password ="Model3XS",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
                      Locations = new ObservableCollection<Location>
                     {
                         Location.Antwerpen,

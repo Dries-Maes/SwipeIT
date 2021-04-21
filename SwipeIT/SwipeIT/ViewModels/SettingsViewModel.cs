@@ -47,6 +47,18 @@ namespace SwipeIT.ViewModels
             }
         }
 
+        private string skillEntry;
+
+        public string SkillEntry
+        {
+            get { return skillEntry; }
+            set
+            {
+                skillEntry = value;
+                OnPropertyChanged(nameof(SkillEntry));
+            }
+        }
+
         public List<string> AvatarList { get; set; }
         public bool IsDeveloper { get; set; }
         public bool IsRecruiter { get; set; }
@@ -55,8 +67,17 @@ namespace SwipeIT.ViewModels
         public Command<Location> DeleteLocationCommand => new Command<Location>(DeleteLocationAsync);
 
         public Command AddLocationCommand => new Command(AddLocation);
+        public Command SkillEnteredCommand => new Command(SkillEnteredAsync);
 
         public Command<string> AvatarSelectedCommand => new Command<string>(AvatarSelected);
+        public Command<string> SkillDeletedCommand => new Command<string>(SkillDeleted);
+
+        private void SkillDeleted(string skill)
+        {
+            var temp = ((User)CurrentUserSingleton.CurrentUser).Skills;
+            temp.Remove(temp.FirstOrDefault(x => x.SkillName == skill));
+        }
+
         public Command ImageClickedCommand => new Command(ImageClicked);
 
         public SettingsViewModel()
@@ -64,6 +85,16 @@ namespace SwipeIT.ViewModels
             BuildAvailableLocationsList();
             BuildAvatarList();
             SetRoleBools();
+        }
+
+        private async void SkillEnteredAsync()
+        {
+            if (!SkillsRepo.GetSkills().Select(x => x.SkillName).Contains(SkillEntry))
+            {
+                await SkillsRepo.AddItemAsync(new Skill { SkillName = SkillEntry, IsCreatedByUser = true });
+            }
+            ((User)CurrentUserSingleton.CurrentUser).Skills.Add(SkillsRepo.GetSkills().FirstOrDefault(x => x.SkillName == SkillEntry));
+            SkillEntry = "";
         }
 
         private void BuildAvailableLocationsList()
