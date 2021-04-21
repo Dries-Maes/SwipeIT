@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:SwipeIT.ViewModels"
-             x:Class="SwipeIT.Views.SettingsPage">
+             x:Class="SwipeIT.Views.SettingsPage"
+             Disappearing="ContentPage_Disappearing">
     <ContentPage.BindingContext>
         <local:SettingsViewModel />
     </ContentPage.BindingContext>
