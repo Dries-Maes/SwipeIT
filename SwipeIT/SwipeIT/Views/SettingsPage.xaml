@@ -7,8 +7,8 @@
         <local:SettingsViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <ScrollView HorizontalOptions="CenterAndExpand">
-            <StackLayout WidthRequest="{OnPlatform Android=300}">
+        <ScrollView  HorizontalOptions="CenterAndExpand">
+            <StackLayout Margin="30" HorizontalOptions="CenterAndExpand">
                 <CollectionView ItemsSource="{Binding AvatarList}"
                                 IsVisible="{Binding ShowImagePicker}"
                                 HeightRequest="100">
@@ -80,9 +80,8 @@
                 </Picker>
                 <Button Text="Add location"
                         Command="{Binding AddLocationCommand}" />
-                <ListView ItemsSource="{Binding CurrentUser.Locations}"
-                          SelectionMode="None"
-                          HeightRequest="100">
+                <ListView ItemsSource="{Binding CurrentUserSingleton.CurrentUser.Locations}"
+                          SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
