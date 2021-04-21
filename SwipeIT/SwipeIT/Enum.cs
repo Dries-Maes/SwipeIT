@@ -14,7 +14,7 @@ namespace SwipeIT
 
     public enum Location
     {
-        Unassigned = 0,
+        Select = 0,
         Antwerpen = 1,
         Henegouwen = 2,
         Limburg = 3,
