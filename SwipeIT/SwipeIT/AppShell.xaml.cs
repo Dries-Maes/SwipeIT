@@ -14,6 +14,9 @@ namespace SwipeIT
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
             Routing.RegisterRoute(nameof(LikeOverviewPage), typeof(LikeOverviewPage));
+
+            Routing.RegisterRoute(nameof(LikeOverviewDetailPage), typeof(LikeOverviewDetailPage));
+
             Routing.RegisterRoute(nameof(SwipePage), typeof(SwipePage));
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
         }
