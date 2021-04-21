@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace SwipeIT.Models
 {
@@ -16,9 +17,9 @@ namespace SwipeIT.Models
             }
         }
 
-        private List<Developer> selectedDevelopers;
+        private ObservableCollection<Developer> selectedDevelopers;
 
-        public List<Developer> SelectedDevelopers
+        public ObservableCollection<Developer> SelectedDevelopers
         {
             get { return selectedDevelopers; }
             set
@@ -31,7 +32,7 @@ namespace SwipeIT.Models
         public Recruiter()
         {
             Role = Role.Recruiter;
-            SelectedDevelopers = new List<Developer>();
+            SelectedDevelopers = new ObservableCollection<Developer>();
         }
     }
 }

@@ -58,7 +58,7 @@ namespace SwipeIT.ViewModels
             {
                 if (Accounts.Where(x => x.Email == UserMail).ToList().Count == 0)
                 {
-                    CreateNewUser();
+                    await CreateNewUser();
                     await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
                 }
                 else
@@ -93,7 +93,7 @@ namespace SwipeIT.ViewModels
                         break;
 
                     case Recruiter recruiter:
-                        await Shell.Current.GoToAsync($"//{nameof(MainViewModel)}");
+                        await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
                         break;
 
                     case Admin admin:
