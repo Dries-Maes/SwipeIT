@@ -12,6 +12,16 @@ namespace SwipeIT.ViewModels
     {
         private bool showImagePicker;
 
+        public bool ShowImagePicker
+        {
+            get { return showImagePicker; }
+            set
+            {
+                showImagePicker = value;
+                OnPropertyChanged(nameof(ShowImagePicker));
+            }
+        }
+
         private Location selectedLocation;
 
         public Location SelectedLocation
@@ -36,15 +46,9 @@ namespace SwipeIT.ViewModels
             }
         }
 
-        public bool ShowImagePicker
-        {
-            get { return showImagePicker; }
-            set
-            {
-                showImagePicker = value;
-                OnPropertyChanged(nameof(ShowImagePicker));
-            }
-        }
+        public List<string> AvatarList { get; set; }
+        public bool IsDeveloper { get; set; }
+        public bool IsRecruiter { get; set; }
 
         public Command<Account> SaveCommand => new Command<Account>(SaveAsync);
         public Command<Location> DeleteLocationCommand => new Command<Location>(DeleteLocationAsync);
@@ -54,11 +58,16 @@ namespace SwipeIT.ViewModels
         public Command<string> AvatarSelectedCommand => new Command<string>(AvatarSelected);
         public Command ImageClickedCommand => new Command(ImageClicked);
 
-        public bool IsDeveloper { get; set; }
-        public bool IsRecruiter { get; set; }
         public List<string> AvatarList { get; set; }
 
         public SettingsViewModel()
+        {
+            BuildAvailableLocationsList();
+            BuildAvatarList();
+            SetRoleBools();
+        }
+
+        private void BuildAvailableLocationsList()
         {
             AvailableLocations = new ObservableCollection<Location>();
             foreach (Location item in Enum.GetValues(typeof(Location)))
@@ -68,40 +77,10 @@ namespace SwipeIT.ViewModels
                     AvailableLocations.Add(item);
                 }
             }
+        }
 
-            AvatarList = new List<string> {
-                "Icon01.png",
-                "Icon02.png",
-                "Icon03.png",
-                "Icon04.png",
-                "Icon05.png",
-                "Icon06.png",
-                "Icon07.png",
-                "Icon08.png",
-                "Icon09.png",
-                "Icon10.png",
-                "Icon11.png",
-                "Icon12.png",
-                "Icon13.png",
-                "Icon14.png",
-                "Icon15.png",
-                "Icon16.png",
-                "Icon17.png",
-                "Icon18.png",
-                "Icon19.png",
-                "Icon20.png",
-                "Icon21.png",
-                "Icon22.png",
-                "Icon23.png",
-                "Icon24.png",
-                "Icon25.png",
-                "Icon26.png",
-                "Icon27.png",
-                "Icon28.png",
-                "Icon29.png",
-                "Icon30.png",
-                "Icon31.png",
-            };
+        private void SetRoleBools()
+        {
             if (CurrentUserSingleton.CurrentUser is Developer)
             {
                 IsDeveloper = true;
@@ -112,6 +91,16 @@ namespace SwipeIT.ViewModels
                 IsDeveloper = false;
                 IsRecruiter = true;
             }
+        }
+
+        private void BuildAvatarList()
+        {
+            AvatarList = new List<string>();
+            for (int i = 1; i < 31; i++)
+            {
+                AvatarList.Add($"Icon{i.ToString("00")}.png");
+            }
+            AvatarList = AvatarList.OrderBy(a => Guid.NewGuid()).ToList();
         }
 
         private void DeleteLocationAsync(Location location)
@@ -132,7 +121,7 @@ namespace SwipeIT.ViewModels
 
         private void ImageClicked()
         {
-            ShowImagePicker = true;
+            ShowImagePicker = ShowImagePicker == true ? false : true;
         }
 
         private void AvatarSelected(string imageURL)
