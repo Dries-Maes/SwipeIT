@@ -1,6 +1,7 @@
 ﻿using SwipeIT.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,7 +16,7 @@ namespace SwipeIT.Services
             AddDummyData();
         }
 
-        private List<Skill> skills { get; set; }
+        private ObservableCollection<Skill> skills { get; set; }
 
         public static SkillsRepo GetSingleton()
         {
@@ -26,7 +27,7 @@ namespace SwipeIT.Services
             return instance;
         }
 
-        public List<Skill> GetSkills()
+        public ObservableCollection<Skill> GetSkills()
         {
             return skills;
         }
@@ -59,7 +60,7 @@ namespace SwipeIT.Services
 
         private void AddDummyData()
         {
-            skills = new List<Skill>
+            skills = new ObservableCollection<Skill>
             {
                 new Skill
                 {

@@ -73,7 +73,7 @@ namespace SwipeIT.Services
                     LastName = "Van Gelder",
                     FirstName = "Jens",
                     Image = "Icon15.png",
-                    Skills = new List<Skill>
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
@@ -95,7 +95,7 @@ namespace SwipeIT.Services
                     LastName = "Maes",
                     FirstName = "Dries",
                     Image = "Icon03.png",
-                    Skills = new List<Skill>
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
@@ -117,7 +117,7 @@ namespace SwipeIT.Services
                     LastName = "Impe",
                     FirstName = "Ward",
                     Image = "Icon07.png",
-                    Skills = new List<Skill>
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
@@ -139,7 +139,7 @@ namespace SwipeIT.Services
                     LastName = "Kesteloot",
                     FirstName = "Sebastiaan-Willem",
                     Image = "Icon05.png",
-                    Skills = new List<Skill>
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
@@ -161,7 +161,7 @@ namespace SwipeIT.Services
                     LastName = "Van Tittelboom",
                     FirstName = "Simon",
                     Image = "Icon06.png",
-                    Skills = new List<Skill>
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
@@ -183,7 +183,7 @@ namespace SwipeIT.Services
                     LastName = "Alfvoet",
                     FirstName = "Joyce",
                     Image = "Icon08.png",
-                    Skills = new List<Skill>
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
@@ -205,7 +205,7 @@ namespace SwipeIT.Services
                     LastName = "DeLobelle",
                     FirstName = "Kobe",
                     Image = "Icon10.png",
-                    Skills = new List<Skill>
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
@@ -227,7 +227,7 @@ namespace SwipeIT.Services
                     LastName = "Danckaert",
                     FirstName = "Emma",
                     Image = "Icon11.png",
-                    Skills = new List<Skill>
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
@@ -249,7 +249,7 @@ namespace SwipeIT.Services
                     LastName = "Stavropoulos",
                     FirstName = "Andreas",
                     Image = "Icon12.png",
-                    Skills = new List<Skill>
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
@@ -271,7 +271,7 @@ namespace SwipeIT.Services
                     LastName = "Van Durme",
                     FirstName = "Pieter",
                     Image = "Icon18.png",
-                    Skills = new List<Skill>
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
@@ -293,7 +293,7 @@ namespace SwipeIT.Services
                     LastName = "Van Royen",
                     FirstName = "Nick",
                     Image = "Icon19.png",
-                    Skills = new List<Skill>
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
@@ -315,7 +315,7 @@ namespace SwipeIT.Services
                     LastName = "Van Yperzele",
                     FirstName = "Diederick",
                     Image = "Icon20.png",
-                    Skills = new List<Skill>
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
@@ -335,7 +335,7 @@ namespace SwipeIT.Services
                     LastName = "Verhulsdonck",
                     FirstName = "Marieke",
                     Image = "Icon22.png",
-                    Skills = new List<Skill>
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
@@ -355,7 +355,7 @@ namespace SwipeIT.Services
                     LastName = "Wouters",
                     FirstName = "Michiel",
                     Image = "Icon24.png",
-                    Skills = new List<Skill>
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
