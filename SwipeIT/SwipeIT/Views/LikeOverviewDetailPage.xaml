@@ -8,12 +8,11 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Margin="30" HorizontalOptions="CenterAndExpand">
+            <StackLayout Margin="30">
                 <Image Source="{Binding SelectedDeveloper.Image}"
                        HorizontalOptions="Center"
                        HeightRequest="150"
-                       WidthRequest="150"
-                       Margin="0,20,0,0">
+                       WidthRequest="150">
                 </Image>
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,5,0,15">
@@ -24,7 +23,7 @@
                 <Label Text="Email:" />
                 <StackLayout Orientation="Horizontal">
                     <Entry Text="{Binding SelectedDeveloper.Email}"
-                   IsEnabled="False" />
+                           IsEnabled="False" />
                     <Button Text="M"
                             WidthRequest="50"
                             HeightRequest="50"
@@ -34,7 +33,7 @@
 
                 <Label Text="Address:" />
                 <Entry Text="{Binding SelectedDeveloper.Address}"
-                   IsEnabled="False" />
+                       IsEnabled="False" />
 
                 <Label Text="Years of experience:"
                        VerticalTextAlignment="Center"
@@ -44,21 +43,39 @@
 
                 <Label Text="Available work locations:"
                    Margin="0,0,0,15" />
-                <FlexLayout FlexLayout.Grow="1">
-                    <CollectionView ItemsSource="{Binding SelectedDeveloper.Locations}"
-                                    SelectionMode="None"
-                                    ItemsLayout="VerticalGrid,2">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Frame BorderColor="Black" CornerRadius="20">
-                                    <Label Text="{Binding .}"
-                                           VerticalOptions="Center"
-                                           HorizontalTextAlignment="Center" />
-                                </Frame>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                <FlexLayout BindableLayout.ItemsSource="{Binding SelectedDeveloper.Locations}"
+                            Wrap="Wrap"
+                            Direction="Row"
+                            JustifyContent="Start">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BorderColor="Black" CornerRadius="20">
+                                <Label Text="{Binding .}"
+                                       VerticalOptions="Center"
+                                       HorizontalTextAlignment="Center" />
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
                 </FlexLayout>
+
+                <Label Text="Skills:"
+                   Margin="0,0,0,15" />
+                <FlexLayout BindableLayout.ItemsSource="{Binding SelectedDeveloper.Skills}"
+                            Wrap="Wrap"
+                            Direction="Row"
+                            JustifyContent="Start"
+                            AlignItems="Start">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BorderColor="Black" CornerRadius="20">
+                                <Label Text="{Binding SkillName}"
+                                       VerticalOptions="Center"
+                                       HorizontalTextAlignment="Center" />
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+                <Button Text="Send Message" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
