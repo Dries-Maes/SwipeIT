@@ -20,8 +20,10 @@
                    Keyboard="Email" />
             <Entry IsPassword="True"
                    Text="{Binding UserPassword}"
-                   Placeholder="Password" />
+                   Placeholder="Password"
+                   ReturnCommand="{Binding LoginCommand}" />
             <Entry IsPassword="True"
+                   Text="{Binding VerificationPassword}"
                    Placeholder="Confirm Password"
                    IsVisible="{Binding Source={x:Reference SignUp},
                                     Path=IsToggled}" />

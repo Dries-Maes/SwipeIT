@@ -30,6 +30,7 @@ namespace SwipeIT.ViewModels
 
         public bool IsSignUp { get; set; }
         public string UserPassword { get; set; }
+        public string VerificationPassword { get; set; }
         public string UserMail { get; set; }
         public List<Developer> DevelopersResult;
         public List<Recruiter> RecruiterResult;
@@ -58,6 +59,7 @@ namespace SwipeIT.ViewModels
             {
                 if (Accounts.Where(x => x.Email == UserMail).ToList().Count == 0)
                 {
+                    CheckFormValues();
                     await CreateNewUser();
                     await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
                 }
@@ -102,6 +104,16 @@ namespace SwipeIT.ViewModels
                         throw new NotImplementedException();
                 }
             }
+        }
+
+        private bool CheckFormValues()
+        {
+            return PassWordsMatch();
+        }
+
+        private bool PassWordsMatch()
+        {
+            return UserPassword == VerificationPassword;
         }
 
         private bool VerifyPassword()
