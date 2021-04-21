@@ -11,7 +11,7 @@
         <ToolbarItem Text="{Binding CurrentUserSingleton.CurrentUser.Name }" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout VerticalOptions="CenterAndExpand">
             <CarouselView ItemsSource="{Binding DevelopersResult}">
                 <CarouselView.ItemsLayout>
                     <LinearItemsLayout Orientation="Horizontal"
@@ -19,6 +19,7 @@
                 </CarouselView.ItemsLayout>
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
+
                         <SwipeView>
                             <SwipeView.TopItems>
                                 <SwipeItems>
@@ -26,6 +27,7 @@
                                         <StackLayout Margin="10"
                                                      Orientation="Horizontal"
                                                      HorizontalOptions="Center">
+
                                             <Button Text="Save"
                                                     BackgroundColor="Green"
                                                     Command="{Binding Source={RelativeSource AncestorType={x:Type local:MainViewModel}}, Path=LikeCommand}"
@@ -38,6 +40,8 @@
                             </SwipeView.TopItems>
 
                             <StackLayout Padding="10">
+                                <Button IsVisible="{OnIdiom Desktop=True, Default=false, TV=True }"
+                                        Text="Add To DeveloperList" />
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{Binding ID}"
                                            FontSize="13" />
