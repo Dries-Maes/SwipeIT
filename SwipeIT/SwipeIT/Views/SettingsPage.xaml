@@ -35,17 +35,24 @@
                                            SnapPointsType="Mandatory" />
                     </CollectionView.ItemsLayout>
                 </CollectionView>
+                <Grid>
 
-                <Image Source="{Binding CurrentUserSingleton.CurrentUser.Image}"
+                    <Image Source="{Binding CurrentUserSingleton.CurrentUser.Image}"
                        HorizontalOptions="Center"
                        HeightRequest="150"
                        WidthRequest="150">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ImageClickedCommand}"
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ImageClickedCommand}"
                                               CommandParameter="{Binding .}" />
-                    </Image.GestureRecognizers>
-                </Image>
-
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image Source="icon_about.png"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           HeightRequest="40"
+                           WidthRequest="40"
+                           Margin="100,5,0,0" />
+                </Grid>
                 <Label Text="First name"
                        VerticalTextAlignment="Center" />
 

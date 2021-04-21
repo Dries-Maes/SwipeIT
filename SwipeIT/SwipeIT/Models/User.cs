@@ -35,7 +35,10 @@ namespace SwipeIT.Models
 
         public string Image
         {
-            get => image;
+            get
+            {
+                return string.IsNullOrEmpty(image) ? "Icon01.png" : image;
+            }
             set
             {
                 image = value;
