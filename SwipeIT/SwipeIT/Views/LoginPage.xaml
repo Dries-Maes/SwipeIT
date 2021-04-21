@@ -3,12 +3,59 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:SwipeIT.ViewModels"
              mc:Ignorable="d"
              x:Class="SwipeIT.Views.LoginPage"
              Shell.NavBarIsVisible="False">
+    <ContentPage.BindingContext>
+        <local:LoginViewModel />
+    </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
+
+        <StackLayout Padding="{OnPlatform Android='10,0,10,0', UWP='100,0,100,0'}"
+                     VerticalOptions="Center">
+            <Entry Placeholder="Email"
+                   Text="{Binding UserMail}"
+                   Keyboard="Email" />
+            <Entry IsPassword="True"
+                   Text="{Binding UserPassword}"
+                   Placeholder="Password"
+                   ReturnCommand="{Binding LoginCommand}" />
+            <Entry IsPassword="True"
+                   Text="{Binding VerificationPassword}"
+                   Placeholder="Confirm Password"
+                   IsVisible="{Binding Source={x:Reference SignUp},
+                                    Path=IsToggled}" />
+            <Entry Placeholder="FirstName"
+                   Text="{Binding FirstName}"
+                   IsVisible="{Binding Source={x:Reference SignUp},
+                                    Path=IsToggled}" />
+            <Entry Placeholder="LastName"
+                   Text="{Binding LastName}"
+                   IsVisible="{Binding Source={x:Reference SignUp},
+                                    Path=IsToggled}" />
+            <StackLayout Orientation="Horizontal"
+                         IsVisible="{Binding Source={x:Reference SignUp},
+                                    Path=IsToggled}"
+                         HorizontalOptions="CenterAndExpand">
+                <RadioButton Content="Developer"
+                             IsChecked="{Binding IsDeveloper }" />
+                <RadioButton Content="Recruiter"
+                             IsChecked="{Binding IsRecruiter}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Button VerticalOptions="Center"
+                        Text="Login"
+                        Command="{Binding LoginCommand}" />
+                <Label Text="Signup"
+                       VerticalOptions="Center" />
+                <Switch x:Name="SignUp"
+                        IsToggled="{Binding IsSignUp}"
+                        VerticalOptions="Center" />
+            </StackLayout>
+            <Label Text="{Binding ErrorMessage}"
+                   TextColor="Red"
+                   VerticalOptions="Center" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

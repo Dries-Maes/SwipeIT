@@ -1,6 +1,7 @@
 ﻿using SwipeIT.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,23 +11,19 @@ namespace SwipeIT.Services
     {
         private static RecruiterRepo instance;
 
+        private List<Recruiter> recruiters { get; set; }
+
         private RecruiterRepo()
         {
             AddDummyData();
         }
 
-        private List<Recruiter> recruiters { get; set; }
-
         public static RecruiterRepo GetSingleton()
         {
-            if (instance == null)
-            {
-                instance = new RecruiterRepo();
-            }
-            return instance;
+            return instance ?? (instance = new RecruiterRepo());
         }
 
-        public List<Recruiter> GetRecruiter()
+        public List<Recruiter> GetRecruiters()
         {
             return recruiters;
         }
@@ -52,9 +49,13 @@ namespace SwipeIT.Services
             throw new NotImplementedException();
         }
 
-        public Task<bool> UpdateItemAsync(Recruiter item)
+        public async Task<bool> UpdateItemAsync(Recruiter item)
         {
-            throw new NotImplementedException();
+            Recruiter oldItem = recruiters.FirstOrDefault(x => x == item);
+            recruiters.Remove(oldItem);
+            recruiters.Add(item);
+
+            return await Task.FromResult(true);
         }
 
         private void AddDummyData()
@@ -64,30 +65,105 @@ namespace SwipeIT.Services
                 new Recruiter
                 {
                     ID = 1,
-                    Name = "Jef",
-                    Surname = "Besos",
+                    FirstName = "test",
+                    LastName = "test",
+                    Company = "test",
+                    Email = "test",
+                    Password = "test",
+                    Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
+                },
+                new Recruiter
+                {
+                    ID = 1,
+                   FirstName = "Jef",
+                    LastName = "Besos",
                     Company = "Bamazon",
+                    Email = "jef@bamazon.com",
+                    Password = "B3505",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
                 },
                 new Recruiter
                 {
                     ID = 2,
-                    Name = "Billy",
-                    Surname = "Gates",
+                    FirstName = "Billy",
+                    LastName = "Gates",
                     Company = "Licrosoft",
+                    Email ="billygates@licrosoft.org",
+                    Password ="BgL003!?",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
                 },
                 new Recruiter
                 {
                     ID = 3,
-                    Name = "Stefaan",
-                    Surname = "Jops",
+                    FirstName = "Stefaan",
+                    LastName = "Jops",
                     Company = "Bapple",
+                    Email = "stefjops@bapple.io",
+                    Password = "Peer4TheWin",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
                 },
                 new Recruiter
                 {
                     ID = 4,
-                    Name = "Meloen",
-                    Surname = "Musk",
+                    FirstName = "Meloen",
+                    LastName = "Musk",
                     Company = "Teslaa",
+                    Email ="muskmeloen@teslaa.be",
+                    Password ="Model3XS",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
                 },
             };
         }

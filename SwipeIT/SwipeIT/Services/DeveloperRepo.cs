@@ -1,6 +1,7 @@
 ﻿using SwipeIT.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,9 +54,13 @@ namespace SwipeIT.Services
             throw new NotImplementedException();
         }
 
-        public Task<bool> UpdateItemAsync(Developer item)
+        public async Task<bool> UpdateItemAsync(Developer item)
         {
-            throw new NotImplementedException();
+            Developer oldItem = developers.FirstOrDefault(x => x == item);
+            developers.Remove(oldItem);
+            developers.Add(item);
+
+            return await Task.FromResult(true);
         }
 
         private void AddDummyData()
@@ -65,256 +70,316 @@ namespace SwipeIT.Services
                 new Developer
                 {
                     ID = 420,
-                    Name = "Van Gelder",
-                    Surname = "Jens",
-                    Image = "Jens.jpg",
-                    Skills = new List<Skill>
+                    LastName = "Van Gelder",
+                    FirstName = "Jens",
+                    Image = "Icon15.png",
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
                             SkillName="C#"
                         },
+                        new Skill
+                        {
+                            SkillName="Google"
+                        },
+                        new Skill
+                        {
+                            SkillName=".NET"
+                        },
+                        new Skill
+                        {
+                            SkillName="Javascript"
+                        },
                     },
-                    Locations = new List<string>
+                    Locations = new ObservableCollection<Location>
                     {
-                        "Haacht",
-                        "Leuven",
-                        "Mechelen",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Luik,
+                        Location.Henegouwen,
                     },
+                    Email ="jens.v.gelder@gmail.com",
+                    Password ="DoNotDrag0n!"
                 },
                 new Developer
                 {
                     ID = 1,
-                    Name = "Maes",
-                    Surname = "Dries",
-                    Image = "Dries.jpg",
-                    Skills = new List<Skill>
+                    LastName = "Maes",
+                    FirstName = "Dries",
+                    Image = "Icon03.png",
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new ObservableCollection<Location>
                     {
-                        "Gent",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
+                    Email="dm.inbox@outlook.com",
+                    Password ="P1ssM30ff"
                 },
                 new Developer
                 {
                     ID = 2,
-                    Name = "Impe",
-                    Surname = "Ward",
-                    Image = "Ward.jpg",
-                    Skills = new List<Skill>
+                    LastName = "Impe",
+                    FirstName = "Ward",
+                    Image = "Icon07.png",
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new ObservableCollection<Location>
                     {
-                        "Evergem",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
+                    Email="ward@impesoft.com",
+                    Password ="pass"
                 },
                 new Developer
                 {
                     ID = 3,
-                    Name = "Kesteloot",
-                    Surname = "Sebastiaan-Willem",
-                    Image = "Seba.jpg",
-                    Skills = new List<Skill>
+                    LastName = "Kesteloot",
+                    FirstName = "Sebastiaan-Willem",
+                    Image = "Icon05.png",
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new ObservableCollection<Location>
                     {
-                        "Gent",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
+                    Email ="seba.kesteloot@gmail.com",
+                    Password="r00t"
                 },
                 new Developer
                 {
                     ID = 4,
-                    Name = "Van Tittelboom",
-                    Surname = "Simon",
-                    Image = "Simon.jpg",
-                    Skills = new List<Skill>
+                    LastName = "Van Tittelboom",
+                    FirstName = "Simon",
+                    Image = "Icon06.png",
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new ObservableCollection<Location>
                     {
-                        "Gent",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
+                    Email="simon.van.tittelboom@gmail.com",
+                    Password ="R00T2.0"
                 },
                 new Developer
                 {
                     ID = 5,
-                    Name = "Alfvoet",
-                    Surname = "Joyce",
-                    Image = "Joyce.jpg",
-                    Skills = new List<Skill>
+                    LastName = "Alfvoet",
+                    FirstName = "Joyce",
+                    Image = "Icon08.png",
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new ObservableCollection<Location>
                     {
-                        "Gent",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
+                    Email ="joyce.alfvoet@gmail.com",
+                    Password = "Recruit#MeToo"
                 },
                 new Developer
                 {
                     ID = 6,
-                    Name = "DeLobelle",
-                    Surname = "Kobe",
-                    Image = "Kobe.jpg",
-                    Skills = new List<Skill>
+                    LastName = "DeLobelle",
+                    FirstName = "Kobe",
+                    Image = "Icon10.png",
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new ObservableCollection<Location>
                     {
-                        "Gent",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
+                    Email = "delobellekobe@gmail.com",
+                    Password ="IkWeetGeenPaswoordmeer"
                 },
                 new Developer
                 {
                     ID = 7,
-                    Name = "Danckaert",
-                    Surname = "Emma",
-                    Image = "Emma.jpg",
-                    Skills = new List<Skill>
+                    LastName = "Danckaert",
+                    FirstName = "Emma",
+                    Image = "Icon11.png",
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new ObservableCollection<Location>
                     {
-                        "Gent",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
+                    Email="emmadanckaert@hotmail.com",
+                    Password = "DriesHeeftAltijdGelijk"
                 },
                 new Developer
                 {
                     ID = 8,
-                    Name = "Stavropoulos",
-                    Surname = "Andreas",
-                    Image = "Andreas.jpg",
-                    Skills = new List<Skill>
+                    LastName = "Stavropoulos",
+                    FirstName = "Andreas",
+                    Image = "Icon12.png",
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new ObservableCollection<Location>
                     {
-                        "Gent",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
+                    Email="anstavropoulos@gmail.com",
+                    Password= "Gr33c3"
                 },
                 new Developer
                 {
                     ID = 9,
-                    Name = "Van Durme",
-                    Surname = "Pieter",
-                    Image = "Pieter.jpg",
-                    Skills = new List<Skill>
+                    LastName = "Van Durme",
+                    FirstName = "Pieter",
+                    Image = "Icon18.png",
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new ObservableCollection<Location>
                     {
-                        "Gent",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
+                    Email = "pieter_van_durme@hotmail.com",
+                    Password ="Fr1tuur"
                 },
                 new Developer
                 {
                     ID = 10,
-                    Name = "Van Royen",
-                    Surname = "Nick",
-                    Image = "Nick.jpg",
-                    Skills = new List<Skill>
+                    LastName = "Van Royen",
+                    FirstName = "Nick",
+                    Image = "Icon19.png",
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new ObservableCollection<Location>
                     {
-                        "Gent",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
+                    Email ="nvanroyen@gmail.com",
+                    Password = "ILoveTinder"
                 },
                 new Developer
                 {
                     ID = 11,
-                    Name = "Van Yperzele",
-                    Surname = "Diederick",
-                    Image = "Diederick.jpg",
-                    Skills = new List<Skill>
+                    LastName = "Van Yperzele",
+                    FirstName = "Diederick",
+                    Image = "Icon20.png",
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new ObservableCollection<Location>
                     {
-                        "Gent",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
                 },
                 new Developer
                 {
                     ID = 12,
-                    Name = "Verhulsdonck",
-                    Surname = "Marieke",
-                    Image = "Marieke.jpg",
-                    Skills = new List<Skill>
+                    LastName = "Verhulsdonck",
+                    FirstName = "Marieke",
+                    Image = "Icon22.png",
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
                             SkillName="Communication"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new ObservableCollection<Location>
                     {
-                        "Holland",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
                 },
                 new Developer
                 {
                     ID = 13,
-                    Name = "Wouters",
-                    Surname = "Michiel",
-                    Image = "Michiel.jpg",
-                    Skills = new List<Skill>
+                    LastName = "Wouters",
+                    FirstName = "Michiel",
+                    Image = "Icon24.png",
+                    Skills = new ObservableCollection<Skill>
                     {
                         new Skill
                         {
                             SkillName="C#"
                         },
                     },
-                    Locations = new List<string>
+                     Locations = new ObservableCollection<Location>
                     {
-                        "Limburg",
-                        "Aalst",
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
                     },
                 },
             };

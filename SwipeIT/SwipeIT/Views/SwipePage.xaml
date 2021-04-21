@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SwipeIT.ViewModels"
+             x:Class="SwipeIT.Views.SwipePage"
+             BackgroundColor="{AppThemeBinding Dark=Black, Light=White}">
+    <ContentPage.BindingContext>
+        <local:SwipeViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{Binding CurrentUserSingleton.CurrentUser.FirstName }" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand"
+                     HorizontalOptions="CenterAndExpand"
+                     BackgroundColor="{StaticResource Primary}">
+
+            <CarouselView ItemsSource="{Binding DevelopersResult}">
+                <CarouselView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal"
+                                           SnapPointsType="Mandatory" />
+                </CarouselView.ItemsLayout>
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <SwipeView>
+                            <SwipeView.TopItems>
+                                <SwipeItems>
+                                    <SwipeItemView>
+                                        <StackLayout Margin="10"
+                                                         Orientation="Horizontal"
+                                                         HorizontalOptions="Center">
+
+                                            <Button Text="Save"
+                                                        BackgroundColor="Green"
+                                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:SwipeViewModel}}, Path=LikeCommand}"
+                                                        CommandParameter="{Binding .}" />
+                                            <Button Text="Cancel"
+                                                        BackgroundColor="Red" />
+                                        </StackLayout>
+                                    </SwipeItemView>
+                                </SwipeItems>
+                            </SwipeView.TopItems>
+                            <Frame
+                   HasShadow="True"
+                   CornerRadius="20">
+                                <StackLayout Margin="10">
+                                    <Image Source="{Binding Image}"
+                                           HorizontalOptions="Center"
+                                           HeightRequest="150"
+                                           WidthRequest="150">
+                                    </Image>
+
+                                    <StackLayout Orientation="Horizontal"
+                                                 HorizontalOptions="Center">
+                                        <Label Text="{Binding FirstName}" FontSize="Large" />
+                                        <Label Text="{Binding LastName}" FontSize="Large" />
+                                    </StackLayout>
+
+                                    <FlexLayout BindableLayout.ItemsSource="{Binding Locations}"
+                                                Wrap="Wrap"
+                                                Direction="Row"
+                                                JustifyContent="Center"
+                                                Margin="0,25,0,25">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <Frame BorderColor="Black"
+                                                       CornerRadius="20">
+                                                    <Label Text="{Binding .}"
+                                                           VerticalOptions="Center"
+                                                           HorizontalTextAlignment="Center" />
+                                                </Frame>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </FlexLayout>
+
+                                    <FlexLayout BindableLayout.ItemsSource="{Binding Skills}"
+                                            Wrap="Wrap"
+                                            Direction="Row"
+                                            JustifyContent="Center"
+                                            AlignItems="Center">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <Frame BorderColor="Black" CornerRadius="20">
+                                                    <Label Text="{Binding SkillName}"
+                                                       VerticalOptions="Center"
+                                                       HorizontalTextAlignment="Center" />
+                                                </Frame>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </FlexLayout>
+                                </StackLayout>
+                            </Frame>
+                        </SwipeView>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

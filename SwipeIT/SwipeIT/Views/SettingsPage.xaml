@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SwipeIT.ViewModels"
+             x:Class="SwipeIT.Views.SettingsPage"
+             Disappearing="ContentPage_Disappearing">
+    <ContentPage.BindingContext>
+        <local:SettingsViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="30"
+                         Padding="5">
+                <CollectionView ItemsSource="{Binding AvatarList}"
+                                IsVisible="{Binding ShowImagePicker}"
+                                HeightRequest="100">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding .}"
+                                   HeightRequest="100">
+
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:SettingsViewModel}}, Path=AvatarSelectedCommand}"
+                                                          CommandParameter="{Binding .}"
+                                                          NumberOfTapsRequired="1" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.ItemsLayout>
+
+                        <LinearItemsLayout Orientation="Horizontal"
+                                           SnapPointsAlignment="Start"
+                                           SnapPointsType="Mandatory" />
+                    </CollectionView.ItemsLayout>
+                </CollectionView>
+                <Grid>
+
+                    <Image Source="{Binding CurrentUserSingleton.CurrentUser.Image}"
+                       HorizontalOptions="Center"
+                       HeightRequest="150"
+                       WidthRequest="150">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ImageClickedCommand}"
+                                              CommandParameter="{Binding .}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image Source="icon_about.png"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           HeightRequest="40"
+                           WidthRequest="40"
+                           Margin="100,5,0,0" />
+                </Grid>
+                <Label Text="First name"
+                       VerticalTextAlignment="Center" />
+
+                <Entry Text="{Binding CurrentUserSingleton.CurrentUser.FirstName}"
+                       VerticalTextAlignment="Center" />
+
+                <Label Text="Last name:"
+                       VerticalTextAlignment="Center"
+                       Margin="0,0,20,0" />
+
+                <Entry Text="{Binding CurrentUserSingleton.CurrentUser.LastName}" />
+
+                <Label Text="Years of experience"
+                       VerticalTextAlignment="Center"
+                       Margin="0,0,20,0" />
+
+                <Entry Text="{Binding CurrentUserSingleton.CurrentUser.YearsOfExperience}"
+                       Keyboard="Numeric" />
+
+                <Label Text="Address"
+                       IsVisible="{Binding IsDeveloper}" />
+
+                <Entry Text="{Binding CurrentUserSingleton.CurrentUser.Address}"
+                       IsVisible="{Binding IsDeveloper}" />
+
+                <Label Text="Company" />
+
+                <Entry Text="{Binding CurrentUserSingleton.CurrentUser.Company}"
+                       IsVisible="{Binding IsRecruiter}" />
+                <Picker Title="Select location"
+                        ItemsSource="{Binding AvailableLocations}"
+                        ItemDisplayBinding="{Binding .}"
+                        SelectedItem="{Binding Source={RelativeSource AncestorType={x:Type local:SettingsViewModel}}, Path=SelectedLocation}"
+                        VerticalOptions="Start">
+                </Picker>
+                <Button Text="Add location"
+                        Command="{Binding AddLocationCommand}" />
+                <StackLayout BindableLayout.ItemsSource="{Binding CurrentUserSingleton.CurrentUser.Locations}">
+
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding .}"
+                                       VerticalOptions="Center" />
+                                <Button Text="Delete"
+                                        WidthRequest="75"
+                                        HorizontalOptions="EndAndExpand"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:SettingsViewModel}}, Path=DeleteLocationCommand}"
+                                        CommandParameter="{Binding .}" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+                <Entry Text="{Binding SkillEntry}"
+                       Placeholder="Add a skill"
+                       ReturnCommand="{Binding SkillEnteredCommand}" />
+
+                <StackLayout BindableLayout.ItemsSource="{Binding CurrentUserSingleton.CurrentUser.Skills}"
+                             Padding="0,5"
+                             Margin="0,5">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding SkillName}"
+                                       VerticalOptions="Center" />
+                                <Button Text="Delete"
+                                        WidthRequest="75"
+                                        HorizontalOptions="EndAndExpand"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:SettingsViewModel}}, Path=SkillDeletedCommand}"
+                                        CommandParameter="{Binding SkillName}" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+                <Label Text=" " />
+                <Label Text=" " />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
