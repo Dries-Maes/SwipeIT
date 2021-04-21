@@ -8,9 +8,7 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout VerticalOptions="Center"
-                         HorizontalOptions="Center"
-                         WidthRequest="300">
+            <StackLayout Margin="30" HorizontalOptions="CenterAndExpand">
                 <Image Source="{Binding SelectedDeveloper.Image}"
                        HorizontalOptions="Center"
                        HeightRequest="150"

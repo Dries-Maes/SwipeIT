@@ -3,6 +3,7 @@ using SwipeIT.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Xamarin.Forms;
 
 namespace SwipeIT.ViewModels
@@ -57,8 +58,6 @@ namespace SwipeIT.ViewModels
 
         public Command<string> AvatarSelectedCommand => new Command<string>(AvatarSelected);
         public Command ImageClickedCommand => new Command(ImageClicked);
-
-        public List<string> AvatarList { get; set; }
 
         public SettingsViewModel()
         {

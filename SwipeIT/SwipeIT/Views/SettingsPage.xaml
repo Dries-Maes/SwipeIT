@@ -8,7 +8,7 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <ScrollView  HorizontalOptions="CenterAndExpand">
-            <StackLayout WidthRequest="{OnPlatform Android=300}">
+            <StackLayout Margin="30" HorizontalOptions="CenterAndExpand">
                 <CollectionView ItemsSource="{Binding AvatarList}"
                                 IsVisible="{Binding ShowImagePicker}"
                                 HeightRequest="100">

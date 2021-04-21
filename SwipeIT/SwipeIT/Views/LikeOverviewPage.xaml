@@ -7,7 +7,7 @@
         <local:LikeOverviewViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Margin="30" HorizontalOptions="CenterAndExpand">
             <Button IsVisible="{Binding Test}"
                     BackgroundColor="Red" />
             <CollectionView ItemsSource="{Binding CurrentUserSingleton.CurrentUser.SelectedDevelopers}">
