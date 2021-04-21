@@ -3,8 +3,6 @@ using SwipeIT.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using Xamarin.Forms;
 
 namespace SwipeIT.ViewModels
@@ -58,8 +56,6 @@ namespace SwipeIT.ViewModels
 
         public bool IsDeveloper { get; set; }
         public bool IsRecruiter { get; set; }
-
-        //public User CurrentUser { get; set; }
         public List<string> AvatarList { get; set; }
 
         public SettingsViewModel()

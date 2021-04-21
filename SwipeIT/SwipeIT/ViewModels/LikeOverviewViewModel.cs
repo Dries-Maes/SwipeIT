@@ -1,4 +1,5 @@
 ﻿using SwipeIT.Models;
+using SwipeIT.Views;
 using Xamarin.Forms;
 
 namespace SwipeIT.ViewModels
@@ -18,23 +19,16 @@ namespace SwipeIT.ViewModels
         }
 
         public Command<Developer> DeleteCommand => new Command<Developer>(DeleteDeveloperFromList);
-        public Command TestCommand => new Command(Testmethod);
+        public Command<Developer> DeveloperTappedCommand => new Command<Developer>(OnDeveloperSelected);
 
         private void DeleteDeveloperFromList(Developer developer)
         {
             ((Recruiter)CurrentUserSingleton.CurrentUser).SelectedDevelopers.Remove(developer);
         }
 
-        private void Testmethod()
+        private async void OnDeveloperSelected(Developer developer)
         {
-            if (Test)
-            {
-                Test = false;
-            }
-            else
-            {
-                Test = true;
-            }
+            await Shell.Current.GoToAsync($"{nameof(LikeOverviewDetailPage)}?{nameof(LikeOverviewDetailViewModel.DeveloperID)}={developer.ID}");
         }
     }
 }

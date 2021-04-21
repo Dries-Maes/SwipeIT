@@ -82,7 +82,7 @@
                 </Picker>
                 <Button Text="Add location"
                         Command="{Binding AddLocationCommand}" />
-                <ListView ItemsSource="{Binding CurrentUser.Locations}"
+                <ListView ItemsSource="{Binding CurrentUserSingleton.CurrentUser.Locations}"
                           SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
