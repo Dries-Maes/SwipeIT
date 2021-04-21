@@ -83,8 +83,8 @@
                    ApplyToDerivedTypes="True">
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
-                        <VisualStateGroup x:Name="CommonStates">
-                            <VisualState x:Name="Normal">
+                        <VisualStateGroup x:Name="CommonStates1">
+                            <VisualState x:Name="Normal1">
                                 <VisualState.Setters>
                                     <Setter TargetName="FlyoutItemLabel"
                                             Property="Label.TextColor"
@@ -103,7 +103,7 @@
         FlyoutDisplayOptions="AsMultipleItems" will create a separate flyout item for each child element
         https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
     -->
-    <FlyoutItem Title="Login"
+    <FlyoutItem Title="Logout"
                 Icon="icon_login.png">
         <ShellContent Route="LoginPage"
                       Shell.FlyoutBehavior="Disabled"
@@ -136,10 +136,10 @@
     </FlyoutItem>
 
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
-    <MenuItem Text="Logout"
+    <!--<MenuItem Text="Logout"
               StyleClass="MenuItemLayoutStyle"
               Clicked="OnMenuItemClicked">
-    </MenuItem>
+    </MenuItem>-->
 
     <!--
         TabBar lets you define content that won't show up in a flyout menu. When this content is active
