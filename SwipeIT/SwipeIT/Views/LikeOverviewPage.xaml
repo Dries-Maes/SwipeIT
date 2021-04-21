@@ -7,10 +7,10 @@
         <local:LikeOverviewViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Margin="30" HorizontalOptions="CenterAndExpand">
-            <Button IsVisible="{Binding Test}"
-                    BackgroundColor="Red" />
-            <CollectionView ItemsSource="{Binding CurrentUserSingleton.CurrentUser.SelectedDevelopers}">
+        <StackLayout Margin="{OnPlatform Android=30, UWP=100}"
+                     HorizontalOptions="CenterAndExpand">
+            <CollectionView IsVisible="{OnPlatform Android=true, Default=false}"
+                            ItemsSource="{Binding CurrentUserSingleton.CurrentUser.SelectedDevelopers}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Margin="1">
@@ -32,6 +32,62 @@
                                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeveloperTappedCommand}"
                                                                   CommandParameter="{Binding .}" />
                                         </StackLayout.GestureRecognizers>
+                                        <Button IsVisible="{OnIdiom Desktop=True, Default=false, TV=True }"
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeleteCommand}"
+                                                CommandParameter="{Binding .}"
+                                                Text="x"
+                                                BackgroundColor="Red" />
+                                        <Image Source="{Binding Image}"
+                                               WidthRequest="60"
+                                               HeightRequest="60" />
+                                        <Label Text="{Binding LastName}"
+                                               FontSize="16"
+                                               VerticalTextAlignment="Center" />
+                                        <Label Text="{Binding FirstName}"
+                                               LineBreakMode="NoWrap"
+                                               FontSize="16"
+                                               VerticalTextAlignment="Center" />
+                                    </StackLayout>
+                                </Frame>
+                            </SwipeView>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <CollectionView IsVisible="{OnPlatform UWP=true, Default=false}"
+                            ItemsSource="{Binding CurrentUserSingleton.CurrentUser.SelectedDevelopers}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Horizontal"
+                                     Span="3" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Margin="1">
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="X"
+                                                   BackgroundColor="Red"
+                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeleteCommand}"
+                                                   CommandParameter="{Binding .}" />
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <Frame HasShadow="True"
+                                       CornerRadius="10"
+                                       BorderColor="Black">
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                                  Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeveloperTappedCommand}"
+                                                                  CommandParameter="{Binding .}" />
+                                        </StackLayout.GestureRecognizers>
+                                        <Button IsVisible="{OnIdiom Desktop=True, Default=false, TV=True }"
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeleteCommand}"
+                                                CommandParameter="{Binding .}"
+                                                Text="x"
+                                                BackgroundColor="Red" />
                                         <Image Source="{Binding Image}"
                                                WidthRequest="60"
                                                HeightRequest="60" />
