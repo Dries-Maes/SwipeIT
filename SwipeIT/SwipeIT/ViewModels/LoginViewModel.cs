@@ -85,7 +85,8 @@ namespace SwipeIT.ViewModels
                     ErrorMessage = "Password Mismatch";
                     return;
                 }
-
+                // password check passes when you got here so we decide were to go from here
+                // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
                 switch (CurrentUserSingleton.CurrentUser)
                 {
                     case Developer developer:
@@ -93,7 +94,7 @@ namespace SwipeIT.ViewModels
                         break;
 
                     case Recruiter recruiter:
-                        await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+                        await Shell.Current.GoToAsync($"//{nameof(SwipePage)}");
                         break;
 
                     case Admin admin:
@@ -101,8 +102,6 @@ namespace SwipeIT.ViewModels
                         throw new NotImplementedException();
                 }
             }
-
-            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
         }
 
         private bool VerifyPassword()

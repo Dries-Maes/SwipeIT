@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace SwipeIT.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPage : ContentPage
+    public partial class SwipePage : ContentPage
     {
-        public MainPage()
+        public SwipePage()
         {
             InitializeComponent();
         }
