@@ -20,11 +20,7 @@ namespace SwipeIT.Services
 
         public static RecruiterRepo GetSingleton()
         {
-            if (instance == null)
-            {
-                instance = new RecruiterRepo();
-            }
-            return instance;
+            return instance ?? (instance = new RecruiterRepo());
         }
 
         public List<Recruiter> GetRecruiters()

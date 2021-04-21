@@ -20,11 +20,7 @@ namespace SwipeIT.Services
 
         public static SkillsRepo GetSingleton()
         {
-            if (instance == null)
-            {
-                instance = new SkillsRepo();
-            }
-            return instance;
+            return instance ?? (instance = new SkillsRepo());
         }
 
         public ObservableCollection<Skill> GetSkills()

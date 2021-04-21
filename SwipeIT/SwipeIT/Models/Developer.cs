@@ -8,7 +8,7 @@ namespace SwipeIT.Models
 
         public string Address
         {
-            get { return address; }
+            get => address;
             set
             {
                 address = value;
@@ -20,7 +20,7 @@ namespace SwipeIT.Models
 
         public List<Recruiter> LikedByRecruiters
         {
-            get { return likedByRecruiters; }
+            get => likedByRecruiters;
             set
             {
                 likedByRecruiters = value;

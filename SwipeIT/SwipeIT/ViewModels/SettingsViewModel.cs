@@ -15,7 +15,7 @@ namespace SwipeIT.ViewModels
 
         public bool ShowImagePicker
         {
-            get { return showImagePicker; }
+            get => showImagePicker;
             set
             {
                 showImagePicker = value;
@@ -27,7 +27,7 @@ namespace SwipeIT.ViewModels
 
         public Location SelectedLocation
         {
-            get { return selectedLocation; }
+            get => selectedLocation;
             set
             {
                 selectedLocation = value;
@@ -39,7 +39,7 @@ namespace SwipeIT.ViewModels
 
         public ObservableCollection<Location> AvailableLocations
         {
-            get { return availableLocations; }
+            get => availableLocations;
             set
             {
                 availableLocations = value;
@@ -51,7 +51,7 @@ namespace SwipeIT.ViewModels
 
         public string SkillEntry
         {
-            get { return skillEntry; }
+            get => skillEntry;
             set
             {
                 skillEntry = value;
@@ -128,7 +128,7 @@ namespace SwipeIT.ViewModels
             AvatarList = new List<string>();
             for (int i = 1; i < 31; i++)
             {
-                AvatarList.Add($"Icon{i.ToString("00")}.png");
+                AvatarList.Add($"Icon{i:00}.png");
             }
             AvatarList = AvatarList.OrderBy(a => Guid.NewGuid()).ToList();
         }
@@ -152,7 +152,7 @@ namespace SwipeIT.ViewModels
 
         private void ImageClicked()
         {
-            ShowImagePicker = ShowImagePicker == true ? false : true;
+            ShowImagePicker = ShowImagePicker != true;
         }
 
         private void AvatarSelected(string imageURL)

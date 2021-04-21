@@ -9,7 +9,7 @@ namespace SwipeIT.Models
 
         public string Company
         {
-            get { return company; }
+            get => company;
             set
             {
                 company = value;
@@ -21,7 +21,7 @@ namespace SwipeIT.Models
 
         public ObservableCollection<Developer> SelectedDevelopers
         {
-            get { return selectedDevelopers; }
+            get => selectedDevelopers;
             set
             {
                 selectedDevelopers = value;

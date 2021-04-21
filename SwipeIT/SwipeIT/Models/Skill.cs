@@ -7,22 +7,13 @@ namespace SwipeIT.Models
 {
     public class Skill : ObservableObject
     {
-        private int id;
-
-        public int ID
-        {
-            get { return id; }
-            set
-            {
-                id = value;
-            }
-        }
+        public int ID { get; set; }
 
         private string skillName;
 
         public string SkillName
         {
-            get { return skillName; }
+            get => skillName;
             set
             {
                 skillName = value;
@@ -34,7 +25,7 @@ namespace SwipeIT.Models
 
         public bool IsCreatedByUser
         {
-            get { return isCreatedByUser; }
+            get => isCreatedByUser;
             set
             {
                 isCreatedByUser = value;
@@ -46,7 +37,7 @@ namespace SwipeIT.Models
 
         public DateLog DateLog
         {
-            get { return dateLog; }
+            get => dateLog;
             set
             {
                 dateLog = value;

@@ -14,7 +14,7 @@ namespace SwipeIT.Services
 
         public Account CurrentUser
         {
-            get { return currentUser; }
+            get => currentUser;
             set
             {
                 currentUser = value;
@@ -41,11 +41,7 @@ namespace SwipeIT.Services
 
         public static CurrentUserSingleton GetSingleton()
         {
-            if (instance == null)
-            {
-                instance = new CurrentUserSingleton();
-            }
-            return instance;
+            return instance ?? (instance = new CurrentUserSingleton());
         }
     }
 }

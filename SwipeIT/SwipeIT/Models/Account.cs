@@ -11,7 +11,7 @@ namespace SwipeIT.Models
 
         public int ID
         {
-            get { return id; }
+            get => id;
             set
             {
                 id = value;
@@ -22,7 +22,7 @@ namespace SwipeIT.Models
 
         public Role Role
         {
-            get { return role; }
+            get => role;
             set
             {
                 role = value;
@@ -34,7 +34,7 @@ namespace SwipeIT.Models
 
         public string Email
         {
-            get { return email; }
+            get => email;
             set
             {
                 email = value;
@@ -46,7 +46,7 @@ namespace SwipeIT.Models
 
         public string Password
         {
-            get { return password; }
+            get => password;
             set
             {
                 password = value;
@@ -58,8 +58,8 @@ namespace SwipeIT.Models
 
         public DateLog DateLog
         {
-            get { return dateLog; }
-            set { dateLog = value; }
+            get => dateLog;
+            set => dateLog = value;
         }
 
         public Account()

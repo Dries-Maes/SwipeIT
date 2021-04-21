@@ -15,7 +15,7 @@ namespace SwipeIT.ViewModels
 
         public Developer SelectedDeveloper
         {
-            get { return selectedDeveloper; }
+            get => selectedDeveloper;
             set
             {
                 selectedDeveloper = value;
@@ -27,7 +27,7 @@ namespace SwipeIT.ViewModels
 
         public int DeveloperID
         {
-            get { return developerID; }
+            get => developerID;
             set
             {
                 developerID = value;
