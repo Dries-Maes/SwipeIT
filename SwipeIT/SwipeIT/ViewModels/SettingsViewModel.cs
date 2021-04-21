@@ -35,6 +35,22 @@ namespace SwipeIT.ViewModels
             }
         }
 
+        internal void UpdateCurrentUser()
+        {
+            if (CurrentUserSingleton.CurrentUser is Developer)
+            {
+                DeveloperRepo.UpdateItemAsync((Developer)CurrentUserSingleton.CurrentUser);
+            }
+            else if (CurrentUserSingleton.CurrentUser is Recruiter)
+            {
+                RecruiterRepo.UpdateItemAsync((Recruiter)CurrentUserSingleton.CurrentUser);
+            }
+            else
+            {
+                //AdminRepo
+            }
+        }
+
         private ObservableCollection<Location> availableLocations;
 
         public ObservableCollection<Location> AvailableLocations
