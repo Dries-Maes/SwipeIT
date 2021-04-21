@@ -42,7 +42,9 @@ namespace SwipeIT.ViewModels
         public LoginViewModel()
         {
             GetMockData();
-
+            CurrentUserSingleton.CurrentUser = null;
+            UserMail = "";
+            UserPassword = "";
             LoginCommand = new Command(OnLoginClicked);
         }
 
