@@ -69,6 +69,21 @@ namespace SwipeIT.Services
                 new Recruiter
                 {
                     ID = 1,
+                    FirstName = "test",
+                    LastName = "test",
+                    Company = "test",
+                    Email = "test",
+                    Password = "test",
+                    Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
+                },
+                new Recruiter
+                {
+                    ID = 1,
                    FirstName = "Jef",
                     LastName = "Besos",
                     Company = "Bamazon",

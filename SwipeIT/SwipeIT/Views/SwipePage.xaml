@@ -2,16 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:SwipeIT.ViewModels"
-             x:Class="SwipeIT.Views.MainPage"
+             x:Class="SwipeIT.Views.SwipePage"
              BackgroundColor="{AppThemeBinding Dark=Black, Light=White}">
     <ContentPage.BindingContext>
-        <local:MainViewModel />
+        <local:SwipeViewModel />
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="{Binding CurrentUserSingleton.CurrentUser.FirstName }" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout VerticalOptions="CenterAndExpand">
+        <StackLayout VerticalOptions="CenterAndExpand"
+                     HorizontalOptions="CenterAndExpand">
             <CarouselView ItemsSource="{Binding DevelopersResult}">
                 <CarouselView.ItemsLayout>
                     <LinearItemsLayout Orientation="Horizontal"
@@ -30,7 +31,7 @@
 
                                             <Button Text="Save"
                                                     BackgroundColor="Green"
-                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:MainViewModel}}, Path=LikeCommand}"
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:SwipeViewModel}}, Path=LikeCommand}"
                                                     CommandParameter="{Binding .}" />
                                             <Button Text="Cancel"
                                                     BackgroundColor="Red" />

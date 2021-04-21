@@ -9,13 +9,13 @@ using Xamarin.Forms;
 
 namespace SwipeIT.ViewModels
 {
-    public class MainViewModel : BaseViewModel
+    public class SwipeViewModel : BaseViewModel
     {
         public List<Developer> DevelopersResult { get; set; }
 
         public Command<Developer> LikeCommand => new Command<Developer>(Like);
 
-        public MainViewModel()
+        public SwipeViewModel()
         {
             DevelopersResult = new List<Developer>();
             GetMockData();
