@@ -59,21 +59,19 @@ namespace SwipeIT.ViewModels
         public bool IsDeveloper { get; set; }
         public bool IsRecruiter { get; set; }
 
-        public User CurrentUser { get; set; }
+        //public User CurrentUser { get; set; }
         public List<string> AvatarList { get; set; }
 
         public SettingsViewModel()
         {
             AvailableLocations = new ObservableCollection<Location>();
-            CurrentUser = (User)CurrentUserSingleton.CurrentUser;
             foreach (Location item in Enum.GetValues(typeof(Location)))
             {
-                if (item != Location.Unassigned && !CurrentUser.Locations.Contains(item))
+                if (item != Location.Unassigned && !((User)CurrentUserSingleton.CurrentUser).Locations.Contains(item))
                 {
                     AvailableLocations.Add(item);
                 }
             }
-            //AvailableLocations = AvailableLocations.Where(x => !CurrentUser.Locations.Contains(x)).ToList();
 
             AvatarList = new List<string> {
                 "Icon01.png",
@@ -122,7 +120,7 @@ namespace SwipeIT.ViewModels
 
         private void DeleteLocationAsync(Location location)
         {
-            CurrentUser.Locations.Remove(location);
+            ((User)CurrentUserSingleton.CurrentUser).Locations.Remove(location);
             AvailableLocations.Add(location);
         }
 
@@ -130,7 +128,7 @@ namespace SwipeIT.ViewModels
         {
             if (SelectedLocation != Location.Unassigned)
             {
-                CurrentUser.Locations.Add(SelectedLocation);
+                ((User)CurrentUserSingleton.CurrentUser).Locations.Add(SelectedLocation);
                 AvailableLocations.Remove(SelectedLocation);
                 SelectedLocation = AvailableLocations.Count == 0 ? Location.Unassigned : AvailableLocations[0];
             }
@@ -143,7 +141,7 @@ namespace SwipeIT.ViewModels
 
         private void AvatarSelected(string imageURL)
         {
-            CurrentUser.Image = imageURL;
+            ((User)CurrentUserSingleton.CurrentUser).Image = imageURL;
             ShowImagePicker = false;
         }
 
