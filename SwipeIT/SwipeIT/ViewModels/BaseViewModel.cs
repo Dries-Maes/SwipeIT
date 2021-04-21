@@ -12,7 +12,6 @@ namespace SwipeIT.ViewModels
     {
         public CurrentUserSingleton CurrentUserSingleton { get; set; }
 
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
         public DeveloperRepo DeveloperRepo = DeveloperRepo.GetSingleton();
         public RecruiterRepo RecruiterRepo = RecruiterRepo.GetSingleton();
         public SkillsRepo SkillsRepo = SkillsRepo.GetSingleton();
