@@ -57,7 +57,7 @@ namespace SwipeIT.ViewModels
 
         private void SendMail()
         {
-            Launcher.OpenAsync(new Uri($"mailto:{SelectedDeveloper.Email}?Subject=Hello%20again"));
+            Launcher.OpenAsync(new Uri($"mailto:{SelectedDeveloper.Email}?subject=SwipeIT found a Like!&body=Hey, {SelectedDeveloper.FirstName}!%0D%0A%0D%0AWe at {((Recruiter)CurrentUserSingleton.CurrentUser).Company} might have an interesting job offer for you.%0D%0A%0D%0AContact us for more information."));
         }
     }
 }
