@@ -12,9 +12,8 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
 
-        <StackLayout Padding="10,0,10,0"
-                     VerticalOptions="Center"
-                     WidthRequest="{OnPlatform UWP=50}">
+        <StackLayout Padding="{OnPlatform Android='10,0,10,0', UWP='100,0,100,0'}"
+                     VerticalOptions="Center">
             <Entry Placeholder="Email"
                    Text="{Binding UserMail}"
                    Keyboard="Email" />

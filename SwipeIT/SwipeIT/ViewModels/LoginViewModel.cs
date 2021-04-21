@@ -6,6 +6,7 @@ using System.Text;
 using Xamarin.Forms;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace SwipeIT.ViewModels
@@ -55,17 +56,24 @@ namespace SwipeIT.ViewModels
 
         private async void OnLoginClicked(object obj)
         {
+            ErrorMessage = "";
             if (IsSignUp)
             {
+                if (!RequiredFields())
+                {
+                    ErrorMessage = "Email and Password fields cannot be empty\n";
+                    return;
+                }
+
                 if (Accounts.Where(x => x.Email == UserMail).ToList().Count == 0)
                 {
-                    CheckFormValues();
+                    if (ErrorInFormValues()) return;
                     await CreateNewUser();
                     await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
                 }
                 else
                 {
-                    ErrorMessage = "User already exists";
+                    ErrorMessage += "User already exists\n";
                     return;
                 }
             }
@@ -77,14 +85,14 @@ namespace SwipeIT.ViewModels
                 }
                 catch (Exception)
                 {
-                    ErrorMessage = "User not Found";
+                    ErrorMessage += "User not Found\n";
                     return;
                 }
 
                 //user exists, let's continue
                 if (!VerifyPassword())
                 {
-                    ErrorMessage = "Password Mismatch";
+                    ErrorMessage += "Password Mismatch\n";
                     return;
                 }
                 // password check passes when you got here so we decide were to go from here
@@ -106,9 +114,37 @@ namespace SwipeIT.ViewModels
             }
         }
 
-        private bool CheckFormValues()
+        private bool RequiredFields()
         {
-            return PassWordsMatch();
+            return !(String.IsNullOrEmpty(UserMail) || String.IsNullOrEmpty(UserPassword));
+        }
+
+        private bool ErrorInFormValues()
+        {
+            bool retVal = false;
+            if (!PassWordsMatch())
+            {
+                ErrorMessage += "Passwords don't match\n";
+                retVal = true;
+            }
+
+            if (EmptyFields())
+            {
+                ErrorMessage += "These required fields cannot be empty\n";
+                retVal = true;
+            }
+
+            if (IsDeveloper == false && IsRecruiter == false)
+            {
+                ErrorMessage += "please select your Developer or Recruiter role\n";
+                retVal = true;
+            }
+            return retVal;
+        }
+
+        private bool EmptyFields()
+        {
+            return String.IsNullOrEmpty(LastName) || String.IsNullOrEmpty(FirstName);
         }
 
         private bool PassWordsMatch()
@@ -141,7 +177,9 @@ namespace SwipeIT.ViewModels
                 CurrentUserSingleton.CurrentUser = new Recruiter
                 {
                     Email = UserMail,
-                    Password = UserPassword
+                    Password = UserPassword,
+                    FirstName = FirstName,
+                    LastName = LastName,
                 };
                 await RecruiterRepo.AddItemAsync((Recruiter)CurrentUserSingleton.CurrentUser);
             }
