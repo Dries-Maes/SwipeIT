@@ -14,6 +14,7 @@ namespace SwipeIT
             Database.EnsureCreated();
         }
 
+        // Database is autonmatically generated on first run
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
