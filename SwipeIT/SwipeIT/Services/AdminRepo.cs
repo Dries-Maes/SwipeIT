@@ -26,7 +26,7 @@ namespace SwipeIT.Services
             return instance;
         }
 
-        public List<Admin> GetDevelopers()
+        public List<Admin> GetAdmins()
         {
             return admins;
         }

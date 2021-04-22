@@ -133,15 +133,6 @@ namespace SwipeIT.ViewModels
         private async void OnLoginClicked(object obj)
         {
             ErrorMessage = "";
-            if (UserMail == "Admin" && UserPassword == "Admin")
-            {
-                CurrentUserSingleton.CurrentUser = new Admin()
-                {
-                    Email = UserMail,
-                    Password = UserPassword
-                };
-                await Shell.Current.GoToAsync(nameof(AdministrationPage));
-            }
 
             if (IsSignUp)
             {
@@ -195,7 +186,8 @@ namespace SwipeIT.ViewModels
 
                     case Admin admin:
                         // do admin stuff
-                        throw new NotImplementedException();
+                        await Shell.Current.GoToAsync(nameof(AdministrationPage));
+                        break;
                 }
             }
         }
