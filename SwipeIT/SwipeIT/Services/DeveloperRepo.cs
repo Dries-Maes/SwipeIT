@@ -11,13 +11,12 @@ namespace SwipeIT.Services
     public class DeveloperRepo : IDataStore<Developer>
     {
         private static DeveloperRepo instance;
+        private List<Developer> developers { get; set; }
 
         private DeveloperRepo()
         {
             AddDummyData();
         }
-
-        private List<Developer> developers { get; set; }
 
         public static DeveloperRepo GetSingleton()
         {
@@ -61,6 +60,11 @@ namespace SwipeIT.Services
             developers.Add(item);
 
             return await Task.FromResult(true);
+        }
+
+        public Task<Developer> GetAllItemsAsync()
+        {
+            throw new NotImplementedException();
         }
 
         private void AddDummyData()
@@ -383,11 +387,6 @@ namespace SwipeIT.Services
                     },
                 },
             };
-        }
-
-        public Task<Developer> GetAllItemsAsync()
-        {
-            throw new NotImplementedException();
         }
     }
 }

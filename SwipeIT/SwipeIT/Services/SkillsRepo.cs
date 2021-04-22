@@ -10,13 +10,12 @@ namespace SwipeIT.Services
     public class SkillsRepo : IDataStore<Skill>
     {
         private static SkillsRepo instance;
+        private ObservableCollection<Skill> skills { get; set; }
 
         private SkillsRepo()
         {
             AddDummyData();
         }
-
-        private ObservableCollection<Skill> skills { get; set; }
 
         public static SkillsRepo GetSingleton()
         {
@@ -54,6 +53,11 @@ namespace SwipeIT.Services
             throw new NotImplementedException();
         }
 
+        public Task<Skill> GetAllItemsAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         private void AddDummyData()
         {
             skills = new ObservableCollection<Skill>
@@ -83,11 +87,6 @@ namespace SwipeIT.Services
                     SkillName = "Javascript"
                 },
             };
-        }
-
-        public Task<Skill> GetAllItemsAsync()
-        {
-            throw new NotImplementedException();
         }
     }
 }
