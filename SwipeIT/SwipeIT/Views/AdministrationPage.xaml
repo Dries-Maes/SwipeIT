@@ -4,9 +4,14 @@
              x:Class="SwipeIT.Views.AdministrationPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout Orientation="Horizontal"
+                         VerticalOptions="CenterAndExpand"
+                         HorizontalOptions="CenterAndExpand">
+                <Label Text="&#xf505;"
+                       FontSize="Large"
+                       FontFamily='FontAwesome' />
+                <Label Text="Welcome to Administration Page!" />
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

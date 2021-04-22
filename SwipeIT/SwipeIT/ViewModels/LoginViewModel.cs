@@ -129,6 +129,16 @@ namespace SwipeIT.ViewModels
         private async void OnLoginClicked(object obj)
         {
             ErrorMessage = "";
+            if (UserMail == "Admin" && UserPassword == "Admin")
+            {
+                CurrentUserSingleton.CurrentUser = new Admin()
+                {
+                    Email = UserMail,
+                    Password = UserPassword
+                };
+                await Shell.Current.GoToAsync(nameof(AdministrationPage));
+            }
+
             if (IsSignUp)
             {
                 if (!RequiredFields())
