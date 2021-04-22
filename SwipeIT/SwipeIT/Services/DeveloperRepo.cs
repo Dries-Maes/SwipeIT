@@ -11,13 +11,12 @@ namespace SwipeIT.Services
     public class DeveloperRepo : IDataStore<Developer>
     {
         private static DeveloperRepo instance;
+        private List<Developer> developers { get; set; }
 
         private DeveloperRepo()
         {
             AddDummyData();
         }
-
-        private List<Developer> developers { get; set; }
 
         public static DeveloperRepo GetSingleton()
         {
@@ -63,6 +62,11 @@ namespace SwipeIT.Services
             return await Task.FromResult(true);
         }
 
+        public Task<Developer> GetAllItemsAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         private void AddDummyData()
         {
             developers = new List<Developer>
@@ -100,7 +104,8 @@ namespace SwipeIT.Services
                         Location.Henegouwen,
                     },
                     Email ="jens.v.gelder@gmail.com",
-                    Password ="DoNotDrag0n!"
+                    Password ="DoNotDrag0n!",
+                    Address = "Haacht neerstraat",
                 },
                 new Developer
                 {
@@ -381,13 +386,9 @@ namespace SwipeIT.Services
                         Location.VlaamsBrabant,
                         Location.Henegouwen,
                     },
-                },
+                     Address= "Aalst",
+        },
             };
-        }
-
-        public Task<Developer> GetAllItemsAsync()
-        {
-            throw new NotImplementedException();
         }
     }
 }

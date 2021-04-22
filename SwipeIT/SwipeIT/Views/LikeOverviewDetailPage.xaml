@@ -19,30 +19,41 @@
                     <Label Text="{Binding SelectedDeveloper.FirstName}" FontSize="Large" />
                     <Label Text="{Binding SelectedDeveloper.LastName}" FontSize="Large" />
                 </StackLayout>
+                <Label Text="{Binding DeveloperExperience}"
+                       FontSize="Small"
+                       HorizontalTextAlignment="Center"
+                       Margin="0,-20,0,10"/>
+                <Grid RowDefinitions="0.5*,*,0.5*,*" 
+                      ColumnDefinitions="*,0.2*"
+                      Margin="0,0,0,20">
 
-                <Label Text="Email:" />
-                <StackLayout Orientation="Horizontal">
+                    <Label Text="Email:"
+                           FontSize="Medium"/>
                     <Entry Text="{Binding SelectedDeveloper.Email}"
-                           IsEnabled="False" />
+                           IsEnabled="False"
+                           Grid.Row="1"/>
                     <Button Text="M"
-                            WidthRequest="50"
-                            HeightRequest="50"
                             HorizontalOptions="EndAndExpand"
-                            Command="{Binding SendMailCommand}" />
-                </StackLayout>
+                            Command="{Binding SendMailCommand}"
+                            Grid.Row="1"
+                            Grid.Column="1"/>
 
-                <Label Text="Address:" />
-                <Entry Text="{Binding SelectedDeveloper.Address}"
-                       IsEnabled="False" />
-
-                <Label Text="Years of experience:"
-                       VerticalTextAlignment="Center"
-                       Margin="0,0,20,0" />
-                <Entry Text="{Binding SelectedDeveloper.YearsOfExperience}"
-                       IsEnabled="False" />
+                    <Label Text="Address:"
+                           Grid.Row="2"
+                           FontSize="Medium"/>
+                    <Entry Text="{Binding SelectedDeveloper.Address}"
+                           IsEnabled="False"
+                           Grid.Row="3"/>
+                    <Button Text="M"
+                            HorizontalOptions="EndAndExpand"
+                            Command="{Binding OpenMapCommand}"
+                            Grid.Row="3"
+                            Grid.Column="1"/>
+                </Grid>
 
                 <Label Text="Available work locations:"
-                   Margin="0,0,0,15" />
+                       Margin="0,0,0,15"
+                       FontSize="Medium"/>
                 <FlexLayout BindableLayout.ItemsSource="{Binding SelectedDeveloper.Locations}"
                             Wrap="Wrap"
                             Direction="Row"
@@ -59,7 +70,8 @@
                 </FlexLayout>
 
                 <Label Text="Skills:"
-                   Margin="0,0,0,15" />
+                       Margin="0,15,0,15"
+                       FontSize="Medium"/>
                 <FlexLayout BindableLayout.ItemsSource="{Binding SelectedDeveloper.Skills}"
                             Wrap="Wrap"
                             Direction="Row"
@@ -75,7 +87,10 @@
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </FlexLayout>
-                <Button Text="Send Message" />
+                <Button Text="Send Message" 
+                        Margin="0,15,0,0"/>
+                <Label />
+                <Label />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
