@@ -20,6 +20,7 @@ namespace SwipeIT
             Database.EnsureCreated();
         }
 
+        // Database is autonmatically generated on first run
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string dbPath = Path.Combine(FileSystem.AppDataDirectory, "SwipeIT.db");
