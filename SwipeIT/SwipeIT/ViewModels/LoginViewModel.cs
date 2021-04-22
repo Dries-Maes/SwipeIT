@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using SwipeIT.Services;
 
 namespace SwipeIT.ViewModels
 {
@@ -34,6 +35,7 @@ namespace SwipeIT.ViewModels
         public string UserMail { get; set; }
         public List<Developer> DevelopersResult;
         public List<Recruiter> RecruiterResult;
+        public List<Admin> AdminsResult;
         public List<Account> Accounts;
         public Command LoginCommand => new Command(OnLoginClicked);
 
@@ -50,8 +52,10 @@ namespace SwipeIT.ViewModels
         {
             DevelopersResult = DeveloperRepo.GetDevelopers();
             RecruiterResult = RecruiterRepo.GetRecruiters();
+            AdminsResult = AdminRepo.GetAdmins();
             Accounts.AddRange(DevelopersResult);
             Accounts.AddRange(RecruiterResult);
+            Accounts.AddRange(AdminsResult);
         }
 
         private bool RequiredFields()
