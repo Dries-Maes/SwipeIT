@@ -49,18 +49,20 @@ namespace SwipeIT.Services.TESTDbRepos
 
         public async Task<List<Admin>> GetAllItemsAsync()
         {
-            using (var dbContext = new SwipeITDBContext())
-            {
-                return await dbContext.Admins.ToListAsync();
-            }
+            //using (var dbContext = new SwipeITDBContext())
+            //{
+            //    return await dbContext.Admins.ToListAsync();
+            //}
+            throw new NotImplementedException();
         }
 
         public async Task<Admin> GetItemAsync(int id)
         {
-            using (var dbContext = new SwipeITDBContext())
-            {
-                return await dbContext.Admins.FindAsync(id);
-            }
+            //using (var dbContext = new SwipeITDBContext())
+            //{
+            //    return await dbContext.Admins.FindAsync(id);
+            //}
+            throw new NotImplementedException();
         }
     }
 }
