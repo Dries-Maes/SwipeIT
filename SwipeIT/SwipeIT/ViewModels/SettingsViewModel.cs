@@ -87,15 +87,15 @@ namespace SwipeIT.ViewModels
             temp.Remove(temp.FirstOrDefault(x => x.SkillName == skill));
         }
 
-        internal void UpdateCurrentUser()
+        internal async void UpdateCurrentUser()
         {
             if (CurrentUserSingleton.CurrentUser is Developer)
             {
-                DeveloperRepo.UpdateItemAsync((Developer)CurrentUserSingleton.CurrentUser);
+                await DeveloperRepo.UpdateItemAsync((Developer)CurrentUserSingleton.CurrentUser);
             }
             else if (CurrentUserSingleton.CurrentUser is Recruiter)
             {
-                RecruiterRepo.UpdateItemAsync((Recruiter)CurrentUserSingleton.CurrentUser);
+                await RecruiterRepo.UpdateItemAsync((Recruiter)CurrentUserSingleton.CurrentUser);
             }
             else
             {
