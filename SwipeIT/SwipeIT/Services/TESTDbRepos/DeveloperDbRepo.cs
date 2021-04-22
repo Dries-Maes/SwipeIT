@@ -49,18 +49,20 @@ namespace SwipeIT.Services
 
         public async Task<List<Developer>> GetAllItemsAsync()
         {
-            using (var dbContext = new SwipeITDBContext())
-            {
-                return await dbContext.Developers.ToListAsync();
-            }
+            //using (var dbContext = new SwipeITDBContext())
+            //{
+            //    return await dbContext.Developers.ToListAsync();
+            //}
+            throw new NotImplementedException();
         }
 
         public async Task<Developer> GetItemAsync(int id)
         {
-            using (var dbContext = new SwipeITDBContext())
-            {
-                return await dbContext.Developers.FindAsync(id);
-            }
+            //using (var dbContext = new SwipeITDBContext())
+            //{
+            //    return await dbContext.Developers.FindAsync(id);
+            //}
+            throw new NotImplementedException();
         }
     }
 }
