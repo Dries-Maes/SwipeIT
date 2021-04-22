@@ -1,6 +1,7 @@
 ﻿using SwipeIT.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,34 +9,73 @@ namespace SwipeIT.Services
 {
     public class AdminRepo : IDataStore<Admin>
     {
+        private static AdminRepo instance;
+        private List<Admin> admins { get; set; }
+
+        private AdminRepo()
+        {
+            AddDummyData();
+        }
+
+        public static AdminRepo GetSingleton()
+        {
+            if (instance == null)
+            {
+                instance = new AdminRepo();
+            }
+            return instance;
+        }
+
+        public List<Admin> GetDevelopers()
+        {
+            return admins;
+        }
+
+        public async Task<bool> AddItemAsync(Admin item)
+        {
+            admins.Add(item);
+            return await Task.FromResult(true);
+        }
+
+        public Task<bool> DeleteItemAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<Admin> GetItemAsync(int id)
+        {
+            return await Task.FromResult(admins.FirstOrDefault(s => s.ID == id));
+        }
+
+        public Task<IEnumerable<Admin>> GetItemsAsync(bool forceRefresh = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<bool> UpdateItemAsync(Admin item)
+        {
+            Admin oldItem = admins.FirstOrDefault(x => x == item);
+            admins.Remove(oldItem);
+            admins.Add(item);
+
+            return await Task.FromResult(true);
+        }
+
         public Task<Admin> GetAllItemsAsync()
         {
             throw new NotImplementedException();
         }
 
-        Task<bool> IDataStore<Admin>.AddItemAsync(Admin item)
+        private void AddDummyData()
         {
-            throw new NotImplementedException();
-        }
-
-        Task<bool> IDataStore<Admin>.DeleteItemAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<Admin> IDataStore<Admin>.GetItemAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<IEnumerable<Admin>> IDataStore<Admin>.GetItemsAsync(bool forceRefresh)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<bool> IDataStore<Admin>.UpdateItemAsync(Admin item)
-        {
-            throw new NotImplementedException();
+            admins = new List<Admin>
+            {
+                new Admin
+                {
+                    Email = "admin",
+                    Password = "admin",
+                },
+            };
         }
     }
 }
