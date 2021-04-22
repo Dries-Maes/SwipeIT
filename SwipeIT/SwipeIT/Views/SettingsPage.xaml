@@ -11,33 +11,9 @@
         <ScrollView>
             <StackLayout Margin="30"
                          Padding="5">
-                <CollectionView ItemsSource="{Binding AvatarList}"
-                                IsVisible="{Binding ShowImagePicker}"
-                                HeightRequest="100">
 
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding .}"
-                                   HeightRequest="100">
-
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:SettingsViewModel}}, Path=AvatarSelectedCommand}"
-                                                          CommandParameter="{Binding .}"
-                                                          NumberOfTapsRequired="1" />
-                                </Image.GestureRecognizers>
-                            </Image>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                    <CollectionView.ItemsLayout>
-
-                        <LinearItemsLayout Orientation="Horizontal"
-                                           SnapPointsAlignment="Start"
-                                           SnapPointsType="Mandatory" />
-                    </CollectionView.ItemsLayout>
-                </CollectionView>
                 <Grid>
-                    <Image x:Name="PickedImage" />
-                    <Image Source="{Binding CurrentUserSingleton.CurrentUser.Image}"
+                    <Image x:Name="PickedImage"
                            HorizontalOptions="Center"
                            HeightRequest="150"
                            WidthRequest="150">
