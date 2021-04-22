@@ -36,7 +36,9 @@
                     <Entry Text="{Binding SelectedDeveloper.Email}"
                            IsEnabled="False"
                            Grid.Row="1" />
-                    <Button Text="M"
+                    <Button Text="&#xf0e0;"
+                            FontSize="Large"
+                            FontFamily='FontAwesome'
                             HorizontalOptions="EndAndExpand"
                             Command="{Binding SendMailCommand}"
                             Grid.Row="1"
