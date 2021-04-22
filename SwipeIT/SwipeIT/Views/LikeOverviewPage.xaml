@@ -18,10 +18,14 @@
                             <SwipeView>
                                 <SwipeView.RightItems>
                                     <SwipeItems>
-                                        <SwipeItem Text="X"
-                                                   BackgroundColor="Red"
-                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeleteCommand}"
-                                                   CommandParameter="{Binding .}" />
+                                        <SwipeItemView>
+                                            <Button Text="&#xf503;"
+                                                    BackgroundColor="Red"
+                                                    FontSize="Large"
+                                                    FontFamily='FontAwesome'
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeleteCommand}"
+                                                    CommandParameter="{Binding .}" />
+                                        </SwipeItemView>
                                     </SwipeItems>
                                 </SwipeView.RightItems>
                                 <Frame HasShadow="True"
@@ -36,7 +40,9 @@
                                         <Button IsVisible="{OnIdiom Desktop=True, Default=false, TV=True }"
                                                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeleteCommand}"
                                                 CommandParameter="{Binding .}"
-                                                Text="x"
+                                                Text="&#xf503;"
+                                                FontSize="Large"
+                                                FontFamily='FontAwesome'
                                                 BackgroundColor="Red" />
                                         <Image Source="{Binding Image}"
                                                WidthRequest="60"
@@ -69,10 +75,14 @@
                             <SwipeView>
                                 <SwipeView.RightItems>
                                     <SwipeItems>
-                                        <SwipeItem Text="X"
-                                                   BackgroundColor="Red"
-                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeleteCommand}"
-                                                   CommandParameter="{Binding .}" />
+                                        <SwipeItemView>
+                                            <Button Text="&#xf503;"
+                                                    FontSize="Large"
+                                                    FontFamily='FontAwesome'
+                                                    BackgroundColor="Red"
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeleteCommand}"
+                                                    CommandParameter="{Binding .}" />
+                                        </SwipeItemView>
                                     </SwipeItems>
                                 </SwipeView.RightItems>
                                 <Frame HasShadow="True"
@@ -87,7 +97,9 @@
                                         <Button IsVisible="{OnIdiom Desktop=True, Default=false, TV=True }"
                                                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeleteCommand}"
                                                 CommandParameter="{Binding .}"
-                                                Text="x"
+                                                Text="&#xf503;"
+                                                FontSize="Large"
+                                                FontFamily='FontAwesome'
                                                 BackgroundColor="Red" />
                                         <Image Source="{Binding Image}"
                                                WidthRequest="60"
