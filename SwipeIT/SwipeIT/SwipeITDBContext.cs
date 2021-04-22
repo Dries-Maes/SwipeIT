@@ -10,10 +10,10 @@ namespace SwipeIT
 {
     public class SwipeITDBContext : DbContext
     {
-        public DbSet<Recruiter> Recruiters { get; set; }
-        public DbSet<Developer> Developers { get; set; }
-        public DbSet<Admin> Admins { get; set; }
-        public DbSet<Skill> Skills { get; set; }
+        //public DbSet<Recruiter> Recruiters { get; set; }
+        //public DbSet<Developer> Developers { get; set; }
+        //public DbSet<Admin> Admins { get; set; }
+        //public DbSet<Skill> Skills { get; set; }
 
         public SwipeITDBContext()
         {
