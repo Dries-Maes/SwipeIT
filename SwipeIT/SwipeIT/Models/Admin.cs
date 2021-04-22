@@ -8,7 +8,6 @@ namespace SwipeIT.Models
     {
         public Admin()
         {
-            Role = Role.Admin;
         }
     }
 }

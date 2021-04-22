@@ -31,7 +31,6 @@ namespace SwipeIT.Models
 
         public Recruiter()
         {
-            Role = Role.Recruiter;
             SelectedDevelopers = new ObservableCollection<Developer>();
         }
     }

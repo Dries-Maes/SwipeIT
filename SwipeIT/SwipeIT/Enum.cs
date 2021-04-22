@@ -4,14 +4,6 @@ using System.Text;
 
 namespace SwipeIT
 {
-    public enum Role
-    {
-        Unassigned = 0,
-        Admin = 1,
-        Developer = 2,
-        Recruiter = 3,
-    }
-
     public enum Location
     {
         Select = 0,

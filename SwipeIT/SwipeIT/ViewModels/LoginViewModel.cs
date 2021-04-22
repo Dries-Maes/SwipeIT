@@ -25,8 +25,6 @@ namespace SwipeIT.ViewModels
             }
         }
 
-        public bool IsRecruiter { get; set; }
-        public bool IsDeveloper { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
