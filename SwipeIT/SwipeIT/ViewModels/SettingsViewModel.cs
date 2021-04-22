@@ -35,22 +35,6 @@ namespace SwipeIT.ViewModels
             }
         }
 
-        internal void UpdateCurrentUser()
-        {
-            if (CurrentUserSingleton.CurrentUser is Developer)
-            {
-                DeveloperRepo.UpdateItemAsync((Developer)CurrentUserSingleton.CurrentUser);
-            }
-            else if (CurrentUserSingleton.CurrentUser is Recruiter)
-            {
-                RecruiterRepo.UpdateItemAsync((Recruiter)CurrentUserSingleton.CurrentUser);
-            }
-            else
-            {
-                //AdminRepo
-            }
-        }
-
         private ObservableCollection<Location> availableLocations;
 
         public ObservableCollection<Location> AvailableLocations
@@ -88,12 +72,6 @@ namespace SwipeIT.ViewModels
         public Command<string> AvatarSelectedCommand => new Command<string>(AvatarSelected);
         public Command<string> SkillDeletedCommand => new Command<string>(SkillDeleted);
 
-        private void SkillDeleted(string skill)
-        {
-            var temp = ((User)CurrentUserSingleton.CurrentUser).Skills;
-            temp.Remove(temp.FirstOrDefault(x => x.SkillName == skill));
-        }
-
         public Command ImageClickedCommand => new Command(ImageClicked);
 
         public SettingsViewModel()
@@ -101,6 +79,28 @@ namespace SwipeIT.ViewModels
             BuildAvailableLocationsList();
             BuildAvatarList();
             SetRoleBools();
+        }
+
+        private void SkillDeleted(string skill)
+        {
+            var temp = ((User)CurrentUserSingleton.CurrentUser).Skills;
+            temp.Remove(temp.FirstOrDefault(x => x.SkillName == skill));
+        }
+
+        internal void UpdateCurrentUser()
+        {
+            if (CurrentUserSingleton.CurrentUser is Developer)
+            {
+                DeveloperRepo.UpdateItemAsync((Developer)CurrentUserSingleton.CurrentUser);
+            }
+            else if (CurrentUserSingleton.CurrentUser is Recruiter)
+            {
+                RecruiterRepo.UpdateItemAsync((Recruiter)CurrentUserSingleton.CurrentUser);
+            }
+            else
+            {
+                //AdminRepo
+            }
         }
 
         private async void SkillEnteredAsync()

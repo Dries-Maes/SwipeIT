@@ -13,11 +13,7 @@ namespace SwipeIT.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        public bool IsRecruiter { get; set; }
-        public bool IsDeveloper { get; set; }
         private string errorMessage;
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
 
         public string ErrorMessage
         {
@@ -29,23 +25,27 @@ namespace SwipeIT.ViewModels
             }
         }
 
+        public bool IsRecruiter { get; set; }
+        public bool IsDeveloper { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
         public bool IsSignUp { get; set; }
         public string UserPassword { get; set; }
         public string VerificationPassword { get; set; }
         public string UserMail { get; set; }
         public List<Developer> DevelopersResult;
         public List<Recruiter> RecruiterResult;
-        public List<Account> Accounts = new List<Account>();
-
-        public Command LoginCommand { get; }
+        public List<Account> Accounts;
+        public Command LoginCommand => new Command(OnLoginClicked);
 
         public LoginViewModel()
         {
+            Accounts = new List<Account>();
             GetMockData();
             CurrentUserSingleton.CurrentUser = null;
             UserMail = "";
             UserPassword = "";
-            LoginCommand = new Command(OnLoginClicked);
         }
 
         private void GetMockData()
@@ -54,66 +54,6 @@ namespace SwipeIT.ViewModels
             RecruiterResult = RecruiterRepo.GetRecruiters();
             Accounts.AddRange(DevelopersResult);
             Accounts.AddRange(RecruiterResult);
-        }
-
-        private async void OnLoginClicked(object obj)
-        {
-            ErrorMessage = "";
-            if (IsSignUp)
-            {
-                if (!RequiredFields())
-                {
-                    ErrorMessage = "Email and Password fields cannot be empty\n";
-                    return;
-                }
-
-                if (Accounts.Where(x => x.Email == UserMail).ToList().Count == 0)
-                {
-                    if (ErrorInFormValues()) return;
-                    await CreateNewUser();
-                    await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
-                }
-                else
-                {
-                    ErrorMessage += "User already exists\n";
-                    return;
-                }
-            }
-            else
-            {
-                try // find user
-                {
-                    CurrentUserSingleton.CurrentUser = Accounts.First(x => x.Email == UserMail);
-                }
-                catch (Exception)
-                {
-                    ErrorMessage += "User not Found\n";
-                    return;
-                }
-
-                //user exists, let's continue
-                if (!VerifyPassword())
-                {
-                    ErrorMessage += "Password Mismatch\n";
-                    return;
-                }
-                // password check passes when you got here so we decide were to go from here
-                // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-                switch (CurrentUserSingleton.CurrentUser)
-                {
-                    case Developer developer:
-                        await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
-                        break;
-
-                    case Recruiter recruiter:
-                        await Shell.Current.GoToAsync($"//{nameof(SwipePage)}");
-                        break;
-
-                    case Admin admin:
-                        // do admin stuff
-                        throw new NotImplementedException();
-                }
-            }
         }
 
         private bool RequiredFields()
@@ -186,6 +126,66 @@ namespace SwipeIT.ViewModels
                 await RecruiterRepo.AddItemAsync((Recruiter)CurrentUserSingleton.CurrentUser);
             }
             // todo admin (release 3)
+        }
+
+        private async void OnLoginClicked(object obj)
+        {
+            ErrorMessage = "";
+            if (IsSignUp)
+            {
+                if (!RequiredFields())
+                {
+                    ErrorMessage = "Email and Password fields cannot be empty\n";
+                    return;
+                }
+
+                if (Accounts.Where(x => x.Email == UserMail).ToList().Count == 0)
+                {
+                    if (ErrorInFormValues()) return;
+                    await CreateNewUser();
+                    await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
+                }
+                else
+                {
+                    ErrorMessage += "User already exists\n";
+                    return;
+                }
+            }
+            else
+            {
+                try // find user
+                {
+                    CurrentUserSingleton.CurrentUser = Accounts.First(x => x.Email == UserMail);
+                }
+                catch (Exception)
+                {
+                    ErrorMessage += "User not Found\n";
+                    return;
+                }
+
+                //user exists, let's continue
+                if (!VerifyPassword())
+                {
+                    ErrorMessage += "Password Mismatch\n";
+                    return;
+                }
+                // password check passes when you got here so we decide were to go from here
+                // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
+                switch (CurrentUserSingleton.CurrentUser)
+                {
+                    case Developer developer:
+                        await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
+                        break;
+
+                    case Recruiter recruiter:
+                        await Shell.Current.GoToAsync($"//{nameof(SwipePage)}");
+                        break;
+
+                    case Admin admin:
+                        // do admin stuff
+                        throw new NotImplementedException();
+                }
+            }
         }
     }
 }
