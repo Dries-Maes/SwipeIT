@@ -30,7 +30,6 @@ namespace SwipeIT.Models
 
         public Developer()
         {
-            Role = Role.Developer;
             LikedByRecruiters = new List<Recruiter>();
         }
     }

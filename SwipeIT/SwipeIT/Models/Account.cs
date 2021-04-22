@@ -18,18 +18,6 @@ namespace SwipeIT.Models
             }
         }
 
-        private Role role;
-
-        public Role Role
-        {
-            get => role;
-            set
-            {
-                role = value;
-                OnPropertyChanged(nameof(Role));
-            }
-        }
-
         private string email;
 
         public string Email
