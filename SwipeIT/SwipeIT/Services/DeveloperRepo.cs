@@ -104,7 +104,8 @@ namespace SwipeIT.Services
                         Location.Henegouwen,
                     },
                     Email ="jens.v.gelder@gmail.com",
-                    Password ="DoNotDrag0n!"
+                    Password ="DoNotDrag0n!",
+                    Address = "Haacht neerstraat",
                 },
                 new Developer
                 {
@@ -385,7 +386,8 @@ namespace SwipeIT.Services
                         Location.VlaamsBrabant,
                         Location.Henegouwen,
                     },
-                },
+                     Address= "Aalst",
+        },
             };
         }
     }
