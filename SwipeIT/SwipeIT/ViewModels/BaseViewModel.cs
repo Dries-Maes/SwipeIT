@@ -15,7 +15,21 @@ namespace SwipeIT.ViewModels
         public RecruiterRepo RecruiterRepo = RecruiterRepo.GetSingleton();
         public SkillsRepo SkillsRepo = SkillsRepo.GetSingleton();
         public AdminRepo AdminRepo = AdminRepo.GetSingleton();
-        public bool IsDeveloper { get; set; }
+        private bool isDeveloper;
+
+        public bool IsDeveloper
+        {
+            get
+            {
+                return isDeveloper;
+            }
+            set
+            {
+                isDeveloper = value;
+                OnPropertyChanged(nameof(isDeveloper));
+            }
+        }
+
         public bool IsRecruiter { get; set; }
 
         private bool isBusy = false;

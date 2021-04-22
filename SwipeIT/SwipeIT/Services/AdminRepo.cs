@@ -19,11 +19,7 @@ namespace SwipeIT.Services
 
         public static AdminRepo GetSingleton()
         {
-            if (instance == null)
-            {
-                instance = new AdminRepo();
-            }
-            return instance;
+            return instance ?? (instance = new AdminRepo());
         }
 
         public List<Admin> GetAdmins()

@@ -36,14 +36,14 @@
                     </CollectionView.ItemsLayout>
                 </CollectionView>
                 <Grid>
-
+                    <Image x:Name="PickedImage" />
                     <Image Source="{Binding CurrentUserSingleton.CurrentUser.Image}"
-                       HorizontalOptions="Center"
-                       HeightRequest="150"
-                       WidthRequest="150">
+                           HorizontalOptions="Center"
+                           HeightRequest="150"
+                           WidthRequest="150">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ImageClickedCommand}"
-                                              CommandParameter="{Binding .}" />
+                                                  CommandParameter="{Binding .}" />
                         </Image.GestureRecognizers>
                     </Image>
                     <Image Source="icon_about.png"
@@ -53,6 +53,8 @@
                            WidthRequest="40"
                            Margin="100,5,0,0" />
                 </Grid>
+                <Button Text="pick an image"
+                        Clicked="Button_Clicked" />
                 <Label Text="First name"
                        VerticalTextAlignment="Center" />
 

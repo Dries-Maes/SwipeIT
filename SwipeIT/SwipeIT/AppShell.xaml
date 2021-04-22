@@ -113,7 +113,6 @@
     </FlyoutItem>
     <FlyoutItem Title="Swipe"
                 Icon="icon_about.png">
-
         <ShellContent Route="SwipePage"
                       ContentTemplate="{DataTemplate local:SwipePage}" />
     </FlyoutItem>
@@ -130,7 +129,7 @@
     </FlyoutItem>
     <FlyoutItem Title="Settings"
                 Icon="icon_feed.png">
-        
+
         <ShellContent Route="SettingsPage"
                       ContentTemplate="{DataTemplate local:SettingsPage}" />
     </FlyoutItem>
