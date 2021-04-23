@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SwipeIT
 {
-    public enum Location
+    public enum Province
     {
         Select = 0,
         Antwerpen = 1,

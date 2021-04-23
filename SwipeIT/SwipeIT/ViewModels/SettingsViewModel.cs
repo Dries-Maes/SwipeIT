@@ -23,9 +23,9 @@ namespace SwipeIT.ViewModels
             }
         }
 
-        private Location selectedLocation;
+        private Province selectedLocation;
 
-        public Location SelectedLocation
+        public Province SelectedLocation
         {
             get => selectedLocation;
             set
@@ -35,15 +35,15 @@ namespace SwipeIT.ViewModels
             }
         }
 
-        private ObservableCollection<Location> availableLocations;
+        private ObservableCollection<Province> selectedLocations;
 
-        public ObservableCollection<Location> AvailableLocations
+        public ObservableCollection<Province> SelectedLocations
         {
-            get => availableLocations;
+            get => selectedLocations;
             set
             {
-                availableLocations = value;
-                OnPropertyChanged(nameof(AvailableLocations));
+                selectedLocations = value;
+                OnPropertyChanged(nameof(SelectedLocations));
             }
         }
 
@@ -62,7 +62,7 @@ namespace SwipeIT.ViewModels
         public List<string> AvatarList { get; set; }
 
         public Command<Account> SaveCommand => new Command<Account>(SaveAsync);
-        public Command<Location> DeleteLocationCommand => new Command<Location>(DeleteLocationAsync);
+        public Command<AvailableLocation> DeleteLocationCommand => new Command<AvailableLocation>(DeleteLocationAsync);
 
         public Command AddLocationCommand => new Command(AddLocation);
         public Command SkillEnteredCommand => new Command(SkillEnteredAsync);
@@ -114,12 +114,12 @@ namespace SwipeIT.ViewModels
 
         private void BuildAvailableLocationsList()
         {
-            AvailableLocations = new ObservableCollection<Location>();
-            foreach (Location item in Enum.GetValues(typeof(Location)))
+            SelectedLocations = new ObservableCollection<Province>();
+            foreach (Province item in Enum.GetValues(typeof(Province)))
             {
-                if (item != Location.Select && !((User)CurrentUserSingleton.CurrentUser).Locations.Contains(item))
+                if (item != Province.Select && ((User)CurrentUserSingleton.CurrentUser).AvailableLocations.FirstOrDefault(x => x.Province == item) == null)
                 {
-                    AvailableLocations.Add(item);
+                    SelectedLocations.Add(item);
                 }
             }
         }
@@ -134,21 +134,24 @@ namespace SwipeIT.ViewModels
             AvatarList = AvatarList.OrderBy(a => Guid.NewGuid()).ToList();
         }
 
-        private void DeleteLocationAsync(Location location)
+        private void DeleteLocationAsync(AvailableLocation locationClass)
         {
-            ((User)CurrentUserSingleton.CurrentUser).Locations.Remove(location);
-            AvailableLocations.Add(location);
+            var location = locationClass.Province;
+            var userLocations = ((User)CurrentUserSingleton.CurrentUser).AvailableLocations;
+            userLocations.Remove(userLocations.FirstOrDefault(x => x.Province == location));
+            SelectedLocations.Add(location);
         }
 
         private void AddLocation()
         {
-            if (SelectedLocation != Location.Select)
+            var userLocations = ((User)CurrentUserSingleton.CurrentUser).AvailableLocations;
+            if (SelectedLocation != Province.Select)
             {
-                ((User)CurrentUserSingleton.CurrentUser).Locations.Add(SelectedLocation);
-                AvailableLocations.Remove(SelectedLocation);
-                SelectedLocation = AvailableLocations.Count == 0 ? Location.Select : AvailableLocations[0];
+                userLocations.Add(new AvailableLocation { Province = SelectedLocation });
+                SelectedLocations.Remove(SelectedLocation);
+                SelectedLocation = SelectedLocations.Count == 0 ? Province.Select : SelectedLocations[0];
             }
-            SelectedLocation = Location.Select;
+            SelectedLocation = Province.Select;
         }
 
         private void ImageClicked()

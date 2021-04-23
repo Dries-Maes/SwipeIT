@@ -14,6 +14,7 @@ namespace SwipeIT
         public DbSet<Developer> Developers { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Skill> Skills { get; set; }
+        public DbSet<AvailableLocation> AvailableLocations { get; set; }
 
         public SwipeITDBContext()
         {
@@ -33,6 +34,8 @@ namespace SwipeIT
             modelBuilder.Entity<Recruiter>().HasMany(x => x.Developers);
             modelBuilder.Entity<Developer>().HasMany(x => x.Skills);
             modelBuilder.Entity<Recruiter>().HasMany(x => x.Skills);
+            modelBuilder.Entity<Developer>().HasMany(x => x.AvailableLocations);
+            modelBuilder.Entity<Recruiter>().HasMany(x => x.AvailableLocations);
             //Todo mapping for locations (and dbset)
         }
 

@@ -62,7 +62,7 @@
                 <Label Text="Available work locations:"
                        Margin="0,0,0,15"
                        FontSize="Medium" />
-                <FlexLayout BindableLayout.ItemsSource="{Binding SelectedDeveloper.Locations}"
+                <FlexLayout BindableLayout.ItemsSource="{Binding SelectedDeveloper.AvailableLocations}"
                             Wrap="Wrap"
                             Direction="Row"
                             JustifyContent="Start">
@@ -70,7 +70,7 @@
                         <DataTemplate>
                             <Frame BorderColor="Black"
                                    CornerRadius="20">
-                                <Label Text="{Binding .}"
+                                <Label Text="{Binding Province}"
                                        VerticalOptions="Center"
                                        HorizontalTextAlignment="Center" />
                             </Frame>
