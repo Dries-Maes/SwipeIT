@@ -18,14 +18,11 @@
                             <SwipeView>
                                 <SwipeView.RightItems>
                                     <SwipeItems>
-                                        <SwipeItemView>
-                                            <Button Text="&#xf503;"
+                                        <SwipeItem Text="X"
                                                     BackgroundColor="Red"
-                                                    FontSize="Large"
-                                                    FontFamily='FontAwesome'
+                                                    IconImageSource=""
                                                     Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeleteCommand}"
                                                     CommandParameter="{Binding .}" />
-                                        </SwipeItemView>
                                     </SwipeItems>
                                 </SwipeView.RightItems>
                                 <Frame HasShadow="True"
@@ -37,13 +34,6 @@
                                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeveloperTappedCommand}"
                                                                   CommandParameter="{Binding .}" />
                                         </StackLayout.GestureRecognizers>
-                                        <Button IsVisible="{OnIdiom Desktop=True, Default=false, TV=True }"
-                                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeleteCommand}"
-                                                CommandParameter="{Binding .}"
-                                                Text="&#xf503;"
-                                                FontSize="Large"
-                                                FontFamily='FontAwesome'
-                                                BackgroundColor="Red" />
                                         <Image Source="{Binding Image}"
                                                WidthRequest="60"
                                                HeightRequest="60" />
@@ -89,11 +79,6 @@
                                        CornerRadius="10"
                                        BorderColor="Black">
                                     <StackLayout Orientation="Horizontal">
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                                  Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeveloperTappedCommand}"
-                                                                  CommandParameter="{Binding .}" />
-                                        </StackLayout.GestureRecognizers>
                                         <Button IsVisible="{OnIdiom Desktop=True, Default=false, TV=True }"
                                                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeleteCommand}"
                                                 CommandParameter="{Binding .}"
