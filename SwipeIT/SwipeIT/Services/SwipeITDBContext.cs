@@ -32,5 +32,10 @@ namespace SwipeIT
             modelBuilder.Entity<Developer>().HasMany(x => x.Recruiters);
             modelBuilder.Entity<Recruiter>().HasMany(x => x.Developers);
         }
+
+        public void DeleteDb()
+        {
+            Database.EnsureDeleted();
+        }
     }
 }

@@ -55,6 +55,14 @@ namespace SwipeIT.ViewModels
             CurrentUserSingleton = CurrentUserSingleton.GetSingleton();
         }
 
+        internal void DeleteDb(object obj)
+        {
+            using (var dbContext = new SwipeITDBContext())
+            {
+                dbContext.DeleteDb();
+            }
+        }
+
         public async void AddDummyData()
         {
             List<Developer> temp = new List<Developer>
