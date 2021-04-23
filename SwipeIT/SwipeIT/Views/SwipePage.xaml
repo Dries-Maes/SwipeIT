@@ -54,6 +54,10 @@
                                            HeightRequest="150"
                                            WidthRequest="150">
                                     </Image>
+                                    <Button IsVisible="{OnIdiom Desktop=True, Default=False, TV=True }"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:SwipeViewModel}}, Path=LikeCommand}"
+                                            CommandParameter="{Binding .}"
+                                            Text="Add To DeveloperList" />
 
                                     <StackLayout Orientation="Horizontal"
                                                  HorizontalOptions="Center">
