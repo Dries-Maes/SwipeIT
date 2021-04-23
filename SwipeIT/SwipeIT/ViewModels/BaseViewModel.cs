@@ -12,10 +12,11 @@ namespace SwipeIT.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         public CurrentUserSingleton CurrentUserSingleton { get; set; }
-        public DeveloperRepo DeveloperRepo = new DeveloperRepo();
-        public RecruiterRepo RecruiterRepo = new RecruiterRepo();
-        public SkillRepo SkillsRepo = new SkillRepo();
-        public AdminRepo AdminRepo = new AdminRepo();
+
+        public IGenericRepo<Developer> DeveloperRepo = new DeveloperRepo();
+        public IGenericRepo<Recruiter> RecruiterRepo = new RecruiterRepo();
+        public IGenericRepo<Skill> SkillsRepo = new GenericRepo<Skill>();
+        public IGenericRepo<Admin> AdminRepo = new GenericRepo<Admin>();
         public bool IsDeveloper { get; set; }
         public bool IsRecruiter { get; set; }
 
@@ -53,7 +54,7 @@ namespace SwipeIT.ViewModels
             CurrentUserSingleton = CurrentUserSingleton.GetSingleton();
         }
 
-        internal void DeleteDb(object obj)
+        internal void DeleteDb()
         {
             using (var dbContext = new SwipeITDBContext())
             {

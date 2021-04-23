@@ -1,4 +1,5 @@
 ﻿using SwipeIT.Models;
+using SwipeIT.Services;
 using SwipeIT.Views;
 using System;
 using System.Collections.Generic;
@@ -37,18 +38,16 @@ namespace SwipeIT.ViewModels
         public LoginViewModel()
         {
             Accounts = new List<Account>();
-            GetMockData();
+            GetAccounts().Wait();
+
             CurrentUserSingleton.CurrentUser = null;
             UserMail = "";
             UserPassword = "";
         }
 
-        private async void GetMockData()
+        private async Task GetAccounts()
         {
-            DevelopersResult = await DeveloperRepo.GetAllItemsAsync();
-            RecruiterResult = await RecruiterRepo.GetAllItemsAsync();
-            Accounts.AddRange(DevelopersResult);
-            Accounts.AddRange(RecruiterResult);
+            Accounts = await AdminRepo.GetAllAcountsAsync();
         }
 
         private bool RequiredFields()
