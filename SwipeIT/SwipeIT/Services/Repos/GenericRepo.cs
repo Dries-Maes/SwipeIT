@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SwipeIT.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,7 +7,7 @@ namespace SwipeIT.Services
 {
     public class GenericRepo<T> : IGenericRepo<T> where T : ObservableObject
     {
-        public async Task<bool> AddItemAsync(T item)
+        public virtual async Task<bool> AddItemAsync(T item)
         {
             using (var dbContext = new SwipeITDBContext())
             {
@@ -16,7 +17,7 @@ namespace SwipeIT.Services
             return true;
         }
 
-        public async Task<bool> AddItemsAsync(IEnumerable<T> items)
+        public virtual async Task<bool> AddItemsAsync(IEnumerable<T> items)
         {
             using (var dbContext = new SwipeITDBContext())
             {
@@ -26,7 +27,7 @@ namespace SwipeIT.Services
             return true;
         }
 
-        public async Task<bool> DeleteItemAsync(int id)
+        public virtual async Task<bool> DeleteItemAsync(int id)
         {
             using (var dbContext = new SwipeITDBContext())
             {
@@ -37,7 +38,20 @@ namespace SwipeIT.Services
             return true;
         }
 
-        public async Task<List<T>> GetAllItemsAsync()
+        public async Task<List<Account>> GetAllAcountsAsync()
+        {
+            List<Account> results = new List<Account>();
+
+            using (var dbContext = new SwipeITDBContext())
+            {
+                results.AddRange(await dbContext.Set<Admin>().ToListAsync());
+                results.AddRange(await dbContext.Set<Developer>().ToListAsync());
+                results.AddRange(await dbContext.Set<Recruiter>().ToListAsync());
+            }
+            return results;
+        }
+
+        public virtual async Task<List<T>> GetAllItemsAsync()
         {
             using (var dbContext = new SwipeITDBContext())
             {
@@ -45,7 +59,7 @@ namespace SwipeIT.Services
             }
         }
 
-        public async Task<T> GetItemAsync(int id)
+        public virtual async Task<T> GetItemAsync(int id)
         {
             using (var dbContext = new SwipeITDBContext())
             {

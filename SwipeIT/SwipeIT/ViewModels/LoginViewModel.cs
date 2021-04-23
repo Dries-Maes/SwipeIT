@@ -1,4 +1,5 @@
 ﻿using SwipeIT.Models;
+using SwipeIT.Services;
 using SwipeIT.Views;
 using Xamarin.Forms;
 using System;
@@ -39,22 +40,16 @@ namespace SwipeIT.ViewModels
         public LoginViewModel()
         {
             Accounts = new List<Account>();
-            GetData();
-            IsDeveloper = IsDeveloper;
-            IsRecruiter = IsRecruiter;
+            GetAccounts().Wait();
+
             CurrentUserSingleton.CurrentUser = null;
             UserMail = "";
             UserPassword = "";
         }
 
-        private async void GetData()
+        private async Task GetAccounts()
         {
-            DevelopersResult = await DeveloperRepo.GetAllItemsAsync();
-            RecruiterResult = await RecruiterRepo.GetAllItemsAsync();
-            AdminsResult = await AdminRepo.GetAllItemsAsync();
-            Accounts.AddRange(DevelopersResult);
-            Accounts.AddRange(RecruiterResult);
-            Accounts.AddRange(AdminsResult);
+            Accounts = await AdminRepo.GetAllAcountsAsync();
         }
 
         private bool RequiredFields()
