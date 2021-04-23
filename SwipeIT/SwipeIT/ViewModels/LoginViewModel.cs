@@ -1,10 +1,12 @@
 ﻿using SwipeIT.Models;
+using SwipeIT.Services;
 using SwipeIT.Views;
 using Xamarin.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using SwipeIT.Services;
 
 namespace SwipeIT.ViewModels
@@ -39,22 +41,16 @@ namespace SwipeIT.ViewModels
         public LoginViewModel()
         {
             Accounts = new List<Account>();
-            GetData();
-            IsDeveloper = IsDeveloper;
-            IsRecruiter = IsRecruiter;
+            GetAccounts().Wait();
+
             CurrentUserSingleton.CurrentUser = null;
             UserMail = "";
             UserPassword = "";
         }
 
-        private async void GetData()
+        private async Task GetAccounts()
         {
-            DevelopersResult = await DeveloperRepo.GetAllItemsAsync();
-            RecruiterResult = await RecruiterRepo.GetAllItemsAsync();
-            AdminsResult = await AdminRepo.GetAllItemsAsync();
-            Accounts.AddRange(DevelopersResult);
-            Accounts.AddRange(RecruiterResult);
-            Accounts.AddRange(AdminsResult);
+            Accounts = await AdminRepo.GetAllAcountsAsync();
         }
 
         private bool RequiredFields()
@@ -154,7 +150,7 @@ namespace SwipeIT.ViewModels
             }
             else
             {
-                try // find user
+                try // todo find user
                 {
                     CurrentUserSingleton.CurrentUser = Accounts.First(x => x.Email == UserMail);
                 }
@@ -164,15 +160,15 @@ namespace SwipeIT.ViewModels
                     return;
                 }
 
-                //user exists, let's continue
+                //todo user exists, let's continue
                 if (!VerifyPassword())
                 {
                     ErrorMessage += "Password Mismatch\n";
                     return;
                 }
-                // password check passes when you got here so we decide were to go from here
+                // todo password check passes when you got here so we decide were to go from here
 
-                // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
+                // todo Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
                 IsRecruiter = false;
                 IsDeveloper = false;
                 switch (CurrentUserSingleton.CurrentUser)

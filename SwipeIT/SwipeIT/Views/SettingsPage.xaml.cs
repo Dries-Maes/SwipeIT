@@ -9,16 +9,14 @@ namespace SwipeIT.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SettingsPage : ContentPage
     {
-        private SettingsViewModel settingsViewModel;
-
         public SettingsPage()
         {
-            settingsViewModel = new SettingsViewModel();
             InitializeComponent();
         }
 
         private void ContentPage_Disappearing(object sender, EventArgs e)
         {
+            SettingsViewModel settingsViewModel = new SettingsViewModel();
             settingsViewModel.UpdateCurrentUser();
         }
     }
