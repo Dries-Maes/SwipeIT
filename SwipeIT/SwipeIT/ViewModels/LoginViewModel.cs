@@ -2,11 +2,7 @@
 using SwipeIT.Views;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
-using System.Diagnostics;
 using System.Linq;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using SwipeIT.Services;
 
@@ -129,7 +125,6 @@ namespace SwipeIT.ViewModels
                 };
                 await RecruiterRepo.AddItemAsync((Recruiter)CurrentUserSingleton.CurrentUser);
             }
-            // todo admin (release 3)
         }
 
         private async void OnLoginClicked(object obj)
@@ -192,7 +187,7 @@ namespace SwipeIT.ViewModels
                         break;
 
                     case Admin admin:
-                        // do admin stuff
+
                         await Shell.Current.GoToAsync(nameof(AdministrationPage));
                         break;
                 }

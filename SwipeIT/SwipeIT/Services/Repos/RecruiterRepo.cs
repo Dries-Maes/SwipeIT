@@ -61,7 +61,7 @@ namespace SwipeIT.Services.TESTDbRepos
             using (var dbContext = new SwipeITDBContext())
             {
                 return await dbContext.Recruiters.Include(x => x.Developers)
-                    .Include(x => x.Skills)
+                                                .Include(x => x.Skills)
                     .Include(x => x.AvailableLocations)
                                                  .FirstOrDefaultAsync(x => x.ID == id);
             }

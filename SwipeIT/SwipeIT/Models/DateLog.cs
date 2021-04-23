@@ -1,7 +1,4 @@
-﻿using SwipeIT.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
 namespace SwipeIT.Models
 {
