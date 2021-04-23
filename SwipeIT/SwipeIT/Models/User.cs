@@ -70,9 +70,9 @@ namespace SwipeIT.Models
             }
         }
 
-        private ObservableCollection<Location> locations;
+        private ObservableCollection<Province> locations;
 
-        public ObservableCollection<Location> Locations
+        public ObservableCollection<Province> Locations
         {
             get => locations;
             set
@@ -85,7 +85,7 @@ namespace SwipeIT.Models
         public User()
         {
             Skills = new ObservableCollection<Skill>();
-            Locations = new ObservableCollection<Location>();
+            Locations = new ObservableCollection<Province>();
         }
     }
 }

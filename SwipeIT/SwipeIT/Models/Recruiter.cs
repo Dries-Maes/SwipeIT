@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SwipeIT.Models
 {
@@ -17,8 +18,10 @@ namespace SwipeIT.Models
             }
         }
 
+        [NotMapped]
         private ObservableCollection<Developer> selectedDevelopers;
 
+        [NotMapped]
         public ObservableCollection<Developer> SelectedDevelopers
         {
             get => selectedDevelopers;
@@ -29,9 +32,22 @@ namespace SwipeIT.Models
             }
         }
 
+        private ObservableCollection<Like> likes;
+
+        public ObservableCollection<Like> Likes
+        {
+            get { return likes; }
+            set
+            {
+                likes = value;
+                OnPropertyChanged(nameof(Likes));
+            }
+        }
+
         public Recruiter()
         {
             SelectedDevelopers = new ObservableCollection<Developer>();
+            Likes = new ObservableCollection<Like>();
         }
     }
 }

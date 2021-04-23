@@ -40,16 +40,15 @@ namespace SwipeIT.ViewModels
         public LoginViewModel()
         {
             Accounts = new List<Account>();
-            GetMockData();
             CurrentUserSingleton.CurrentUser = null;
             UserMail = "";
             UserPassword = "";
         }
 
-        private void GetMockData()
+        private async Task GetMockData()
         {
-            DevelopersResult = DeveloperRepo.GetDevelopers();
-            RecruiterResult = RecruiterRepo.GetRecruiters();
+            DevelopersResult = await DeveloperRepo.GetAllItemsAsync();
+            RecruiterResult = await RecruiterRepo.GetAllItemsAsync();
             Accounts.AddRange(DevelopersResult);
             Accounts.AddRange(RecruiterResult);
         }
@@ -114,13 +113,14 @@ namespace SwipeIT.ViewModels
 
             if (IsRecruiter)
             {
-                CurrentUserSingleton.CurrentUser = new Recruiter
+                Recruiter temp = new Recruiter
                 {
                     Email = UserMail,
                     Password = UserPassword,
                     FirstName = FirstName,
                     LastName = LastName,
                 };
+                CurrentUserSingleton.CurrentUser = temp;
                 await RecruiterRepo.AddItemAsync((Recruiter)CurrentUserSingleton.CurrentUser);
             }
             // todo admin (release 3)
@@ -128,6 +128,7 @@ namespace SwipeIT.ViewModels
 
         private async void OnLoginClicked(object obj)
         {
+            await GetMockData();
             ErrorMessage = "";
             if (IsSignUp)
             {

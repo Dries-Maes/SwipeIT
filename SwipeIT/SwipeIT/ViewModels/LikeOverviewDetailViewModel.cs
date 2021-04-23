@@ -71,7 +71,7 @@ namespace SwipeIT.ViewModels
             {
                 experience = "Senior";
             }
-            return $"({experience} ({SelectedDeveloper.YearsOfExperience}Yrs))";
+            return $"({experience})";
         }
 
         private async void LoadSelectedDeveloper(int id)

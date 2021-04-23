@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SwipeIT.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,12 @@ namespace SwipeIT.Views
 
         private void OnDeleteSwipeItemInvoked(object sender, EventArgs e)
         {
+        }
+
+        private void LoadData(object sender, EventArgs e)
+        {
+            SwipeViewModel viewModel = new SwipeViewModel();
+            viewModel.GetMockData();
         }
     }
 }

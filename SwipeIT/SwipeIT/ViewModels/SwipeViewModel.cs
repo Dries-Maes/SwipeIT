@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -11,26 +12,33 @@ namespace SwipeIT.ViewModels
 {
     public class SwipeViewModel : BaseViewModel
     {
-        public List<Developer> DevelopersResult { get; set; }
-
         public Command<Developer> LikeCommand => new Command<Developer>(Like);
+        public Command LoadDevelopers => new Command(GetMockData);
 
         public SwipeViewModel()
         {
-            DevelopersResult = new List<Developer>();
             GetMockData();
         }
 
-        private void GetMockData()
+        public async void GetMockData()
         {
-            DevelopersResult = DeveloperRepo.GetDevelopers();
+            CurrentUserSingleton.DevelopersResult = await DeveloperRepo.GetAllItemsAsync();
         }
 
-        private void Like(Developer developer)
+        private async void Like(Developer developer)
         {
             if (!((Recruiter)CurrentUserSingleton.CurrentUser).SelectedDevelopers.Contains(developer))
             {
+                Models.Like like = new Models.Like
+                {
+                    Developer = developer,
+                    DeveloperID = developer.ID,
+                    Recruiter = (Recruiter)CurrentUserSingleton.CurrentUser,
+                    RecruiterID = ((Recruiter)CurrentUserSingleton.CurrentUser).ID,
+                };
                 ((Recruiter)CurrentUserSingleton.CurrentUser).SelectedDevelopers.Add(developer);
+                ((Recruiter)CurrentUserSingleton.CurrentUser).Likes.Add(like);
+                await RecruiterRepo.AddItemAsync((Recruiter)CurrentUserSingleton.CurrentUser);
             }
         }
     }

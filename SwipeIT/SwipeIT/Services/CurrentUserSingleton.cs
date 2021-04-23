@@ -22,21 +22,20 @@ namespace SwipeIT.Services
             }
         }
 
+        private List<Developer> developersResult;
+
+        public List<Developer> DevelopersResult
+        {
+            get { return developersResult; }
+            set
+            {
+                developersResult = value;
+                OnPropertyChanged(nameof(DevelopersResult));
+            }
+        }
+
         private CurrentUserSingleton()
         {
-            CurrentUser = new Recruiter
-            {
-                FirstName = "Pieter",
-                Email = "Pieter@pietercorp.org",
-                Image = "Icon27.png",
-                Company = "PCorp",
-                Locations = new ObservableCollection<Location> {
-                Location.Henegouwen,
-                Location.Antwerpen,
-                Location.Luik,
-                Location.Namen
-                }
-            };
         }
 
         public static CurrentUserSingleton GetSingleton()

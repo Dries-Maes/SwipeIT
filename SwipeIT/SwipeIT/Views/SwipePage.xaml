@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:SwipeIT.ViewModels"
              x:Class="SwipeIT.Views.SwipePage"
-             BackgroundColor="{AppThemeBinding Dark=Black, Light=White}">
+             BackgroundColor="{AppThemeBinding Dark=Black, Light=White}"
+             Appearing="LoadData">
     <ContentPage.BindingContext>
         <local:SwipeViewModel />
     </ContentPage.BindingContext>
@@ -15,7 +16,7 @@
                      HorizontalOptions="CenterAndExpand"
                      BackgroundColor="{StaticResource Primary}">
 
-            <CarouselView ItemsSource="{Binding DevelopersResult}">
+            <CarouselView ItemsSource="{Binding CurrentUserSingleton.DevelopersResult}" RemainingItemsThreshold="0">
                 <CarouselView.ItemsLayout>
                     <LinearItemsLayout Orientation="Horizontal"
                                            SnapPointsType="Mandatory" />

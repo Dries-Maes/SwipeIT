@@ -1,5 +1,6 @@
 ﻿using SwipeIT.Models;
 using SwipeIT.Services;
+using SwipeIT.Services.TESTDbRepos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,10 +12,10 @@ namespace SwipeIT.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         public CurrentUserSingleton CurrentUserSingleton { get; set; }
-        public DeveloperRepo DeveloperRepo = DeveloperRepo.GetSingleton();
-        public RecruiterRepo RecruiterRepo = RecruiterRepo.GetSingleton();
-        public SkillsRepo SkillsRepo = SkillsRepo.GetSingleton();
-        public AdminRepo AdminRepo = AdminRepo.GetSingleton();
+        public DeveloperDbRepo DeveloperRepo = new DeveloperDbRepo();
+        public RecruiterDbRepo RecruiterRepo = new RecruiterDbRepo();
+        public SkillDbRepo SkillsRepo = new SkillDbRepo();
+        public AdminDbRepo AdminRepo = new AdminDbRepo();
         public bool IsDeveloper { get; set; }
         public bool IsRecruiter { get; set; }
 

@@ -57,7 +57,7 @@
             </CollectionView>
 
             <CollectionView IsVisible="{OnPlatform UWP=true, Default=false}"
-                            ItemsSource="{Binding CurrentUserSingleton.CurrentUser.SelectedDevelopers}">
+                            ItemsSource="{Binding CurrentUserSingleton.CurrentUser.Likes}">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Horizontal"
                                      Span="3" />
