@@ -1,8 +1,4 @@
-﻿using SwipeIT.Services;
-using SwipeIT.Views;
-using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
 
 namespace SwipeIT
 {

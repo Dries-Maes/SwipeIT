@@ -1,7 +1,5 @@
-﻿using SwipeIT.ViewModels;
-using SwipeIT.Views;
+﻿using SwipeIT.Views;
 using System;
-using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace SwipeIT

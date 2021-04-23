@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:viewmodels="clr-namespace:SwipeIT.ViewModels"
        xmlns:local="clr-namespace:SwipeIT.Views"
        Title="SwipeIT"
        x:Class="SwipeIT.AppShell">
@@ -130,7 +129,7 @@
     </FlyoutItem>
     <FlyoutItem Title="Settings"
                 Icon="icon_feed.png">
-        
+
         <ShellContent Route="SettingsPage"
                       ContentTemplate="{DataTemplate local:SettingsPage}" />
     </FlyoutItem>

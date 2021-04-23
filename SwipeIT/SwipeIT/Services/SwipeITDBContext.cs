@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using SwipeIT.Models;
+using System.IO;
 using Xamarin.Essentials;
 
 namespace SwipeIT

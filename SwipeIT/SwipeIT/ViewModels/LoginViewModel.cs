@@ -2,12 +2,9 @@
 using SwipeIT.Views;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
-using System.Diagnostics;
 using System.Linq;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace SwipeIT.ViewModels
 {
