@@ -71,22 +71,22 @@ namespace SwipeIT.Models
             }
         }
 
-        private ObservableCollection<Location> locations;
+        private ObservableCollection<AvailableLocation> availableLocations;
 
-        public ObservableCollection<Location> Locations
+        public ObservableCollection<AvailableLocation> AvailableLocations
         {
-            get => locations;
+            get => availableLocations;
             set
             {
-                locations = value;
-                OnPropertyChanged(nameof(Locations));
+                availableLocations = value;
+                OnPropertyChanged(nameof(AvailableLocations));
             }
         }
 
         public User()
         {
             Skills = new ObservableCollection<Skill>();
-            Locations = new ObservableCollection<Location>();
+            AvailableLocations = new ObservableCollection<AvailableLocation>();
         }
     }
 }

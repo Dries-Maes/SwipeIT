@@ -62,7 +62,7 @@ namespace SwipeIT.ViewModels
         public List<string> AvatarList { get; set; }
 
         public Command<Account> SaveCommand => new Command<Account>(SaveAsync);
-        public Command<Location> DeleteLocationCommand => new Command<Location>(DeleteLocationAsync);
+        public Command<AvailableLocation> DeleteLocationCommand => new Command<AvailableLocation>(DeleteLocationAsync);
 
         public Command AddLocationCommand => new Command(AddLocation);
         public Command SkillEnteredCommand => new Command(SkillEnteredAsync);
@@ -117,7 +117,7 @@ namespace SwipeIT.ViewModels
             AvailableLocations = new ObservableCollection<Province>();
             foreach (Province item in Enum.GetValues(typeof(Province)))
             {
-                if (item != Province.Select && ((User)CurrentUserSingleton.CurrentUser).Locations.FirstOrDefault(x => x.Province == item) == null)
+                if (item != Province.Select && ((User)CurrentUserSingleton.CurrentUser).AvailableLocations.FirstOrDefault(x => x.Province == item) == null)
                 {
                     AvailableLocations.Add(item);
                 }
@@ -134,20 +134,20 @@ namespace SwipeIT.ViewModels
             AvatarList = AvatarList.OrderBy(a => Guid.NewGuid()).ToList();
         }
 
-        private void DeleteLocationAsync(Location locationClass)
+        private void DeleteLocationAsync(AvailableLocation locationClass)
         {
             var location = locationClass.Province;
-            var userLocations = ((User)CurrentUserSingleton.CurrentUser).Locations;
+            var userLocations = ((User)CurrentUserSingleton.CurrentUser).AvailableLocations;
             userLocations.Remove(userLocations.FirstOrDefault(x => x.Province == location));
             AvailableLocations.Add(location);
         }
 
         private void AddLocation()
         {
-            var userLocations = ((User)CurrentUserSingleton.CurrentUser).Locations;
+            var userLocations = ((User)CurrentUserSingleton.CurrentUser).AvailableLocations;
             if (SelectedLocation != Province.Select)
             {
-                userLocations.Add(new Location { Province = SelectedLocation });
+                userLocations.Add(new AvailableLocation { Province = SelectedLocation });
                 AvailableLocations.Remove(SelectedLocation);
                 SelectedLocation = AvailableLocations.Count == 0 ? Province.Select : AvailableLocations[0];
             }

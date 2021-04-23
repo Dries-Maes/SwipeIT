@@ -91,12 +91,12 @@ namespace SwipeIT.ViewModels
                             SkillName="Javascript"
                         },
                     },
-                    Locations = new ObservableCollection<Location>
+                    AvailableLocations = new ObservableCollection<AvailableLocation>
                     {
-                        new Location{Province = Province.Antwerpen },
-                        new Location{Province = Province.VlaamsBrabant},
-                        new Location{Province = Province.Luik},
-                        new Location{Province = Province.Henegouwen},
+                        new AvailableLocation{Province = Province.Antwerpen },
+                        new AvailableLocation{Province = Province.VlaamsBrabant},
+                        new AvailableLocation{Province = Province.Luik},
+                        new AvailableLocation{Province = Province.Henegouwen},
                     },
                     Email ="jens.v.gelder@gmail.com",
                     Password ="DoNotDrag0n!",
@@ -114,11 +114,11 @@ namespace SwipeIT.ViewModels
                             SkillName="C#"
                         },
                     },
-                     Locations = new ObservableCollection<Location>
+                     AvailableLocations = new ObservableCollection<AvailableLocation>
                     {
-                        new Location{Province = Province.Antwerpen},
-                        new Location{Province = Province.VlaamsBrabant},
-                        new Location{Province = Province.Henegouwen },
+                        new AvailableLocation{Province = Province.Antwerpen},
+                        new AvailableLocation{Province = Province.VlaamsBrabant},
+                        new AvailableLocation{Province = Province.Henegouwen },
                     },
                     Email="dm.inbox@outlook.com",
                     Password ="P1ssM30ff"
@@ -135,11 +135,11 @@ namespace SwipeIT.ViewModels
                             SkillName="C#"
                         },
                     },
-                     Locations = new ObservableCollection<Location>
+                     AvailableLocations = new ObservableCollection<AvailableLocation>
                     {
-                        new Location{Province = Province.Antwerpen},
-                        new Location{Province = Province.VlaamsBrabant},
-                        new Location{Province = Province.Henegouwen},
+                        new AvailableLocation{Province = Province.Antwerpen},
+                        new AvailableLocation{Province = Province.VlaamsBrabant},
+                        new AvailableLocation{Province = Province.Henegouwen},
                     },
                     Email="ward@impesoft.com",
                     Password ="pass"
@@ -156,11 +156,11 @@ namespace SwipeIT.ViewModels
                             SkillName="C#"
                         },
                     },
-                     Locations = new ObservableCollection<Location>
+                     AvailableLocations = new ObservableCollection<AvailableLocation>
                     {
-                        new Location{Province = Province.Antwerpen},
-                        new Location{Province = Province.VlaamsBrabant},
-                        new Location{Province = Province.Henegouwen},
+                        new AvailableLocation{Province = Province.Antwerpen},
+                        new AvailableLocation{Province = Province.VlaamsBrabant},
+                        new AvailableLocation{Province = Province.Henegouwen},
                     },
                     Email ="seba.kesteloot@gmail.com",
                     Password="r00t"
@@ -177,11 +177,11 @@ namespace SwipeIT.ViewModels
                             SkillName="C#"
                         },
                     },
-                     Locations = new ObservableCollection<Location>
+                     AvailableLocations = new ObservableCollection<AvailableLocation>
                     {
-                        new Location{Province = Province.Antwerpen},
-                        new Location{Province = Province.VlaamsBrabant},
-                        new Location{Province = Province.Henegouwen},
+                        new AvailableLocation{Province = Province.Antwerpen},
+                        new AvailableLocation{Province = Province.VlaamsBrabant},
+                        new AvailableLocation{Province = Province.Henegouwen},
                     },
                     Email="simon.van.tittelboom@gmail.com",
                     Password ="R00T2.0"
@@ -198,11 +198,11 @@ namespace SwipeIT.ViewModels
                             SkillName="C#"
                         },
                     },
-                     Locations = new ObservableCollection<Location>
+                     AvailableLocations = new ObservableCollection<AvailableLocation>
                     {
-                        new Location{Province = Province.Antwerpen},
-                        new Location{Province = Province.VlaamsBrabant},
-                        new Location{Province = Province.Henegouwen},
+                        new AvailableLocation{Province = Province.Antwerpen},
+                        new AvailableLocation{Province = Province.VlaamsBrabant},
+                        new AvailableLocation{Province = Province.Henegouwen},
                     },
                     Email ="joyce.alfvoet@gmail.com",
                     Password = "Recruit#MeToo"
@@ -219,11 +219,11 @@ namespace SwipeIT.ViewModels
                             SkillName="C#"
                         },
                     },
-                     Locations = new ObservableCollection<Location>
+                     AvailableLocations = new ObservableCollection<AvailableLocation>
                     {
-                        new Location{Province = Province.Antwerpen},
-                        new Location{Province = Province.VlaamsBrabant},
-                        new Location{Province = Province.Henegouwen},
+                        new AvailableLocation{Province = Province.Antwerpen},
+                        new AvailableLocation{Province = Province.VlaamsBrabant},
+                        new AvailableLocation{Province = Province.Henegouwen},
                     },
                     Email = "delobellekobe@gmail.com",
                     Password ="IkWeetGeenPaswoordmeer"
@@ -240,11 +240,11 @@ namespace SwipeIT.ViewModels
                             SkillName="C#"
                         },
                     },
-                     Locations = new ObservableCollection<Location>
+                     AvailableLocations = new ObservableCollection<AvailableLocation>
                     {
-                        new Location{Province = Province.Antwerpen},
-                        new Location{Province = Province.VlaamsBrabant},
-                        new Location{Province = Province.Henegouwen},
+                        new AvailableLocation{Province = Province.Antwerpen},
+                        new AvailableLocation{Province = Province.VlaamsBrabant},
+                        new AvailableLocation{Province = Province.Henegouwen},
                     },
                     Email="emmadanckaert@hotmail.com",
                     Password = "DriesHeeftAltijdGelijk"
@@ -261,11 +261,11 @@ namespace SwipeIT.ViewModels
                             SkillName="C#"
                         },
                     },
-                     Locations = new ObservableCollection<Location>
+                     AvailableLocations = new ObservableCollection<AvailableLocation>
                     {
-                        new Location{Province = Province.Antwerpen},
-                        new Location{Province = Province.VlaamsBrabant},
-                        new Location{Province = Province.Henegouwen},
+                        new AvailableLocation{Province = Province.Antwerpen},
+                        new AvailableLocation{Province = Province.VlaamsBrabant},
+                        new AvailableLocation{Province = Province.Henegouwen},
                     },
                     Email="anstavropoulos@gmail.com",
                     Password= "Gr33c3"
@@ -282,11 +282,11 @@ namespace SwipeIT.ViewModels
                             SkillName="C#"
                         },
                     },
-                     Locations = new ObservableCollection<Location>
+                     AvailableLocations = new ObservableCollection<AvailableLocation>
                     {
-                        new Location{Province = Province.Antwerpen},
-                        new Location{Province = Province.VlaamsBrabant},
-                        new Location{Province = Province.Henegouwen},
+                        new AvailableLocation{Province = Province.Antwerpen},
+                        new AvailableLocation{Province = Province.VlaamsBrabant},
+                        new AvailableLocation{Province = Province.Henegouwen},
                     },
                     Email = "pieter_van_durme@hotmail.com",
                     Password ="Fr1tuur"
@@ -303,11 +303,11 @@ namespace SwipeIT.ViewModels
                             SkillName="C#"
                         },
                     },
-                     Locations = new ObservableCollection<Location>
+                     AvailableLocations = new ObservableCollection<AvailableLocation>
                     {
-                        new Location{Province = Province.Antwerpen},
-                        new Location{Province = Province.VlaamsBrabant},
-                        new Location{Province = Province.Henegouwen},
+                        new AvailableLocation{Province = Province.Antwerpen},
+                        new AvailableLocation{Province = Province.VlaamsBrabant},
+                        new AvailableLocation{Province = Province.Henegouwen},
                     },
                     Email ="nvanroyen@gmail.com",
                     Password = "ILoveTinder"
@@ -324,11 +324,11 @@ namespace SwipeIT.ViewModels
                             SkillName="C#"
                         },
                     },
-                     Locations = new ObservableCollection<Location>
+                     AvailableLocations = new ObservableCollection<AvailableLocation>
                     {
-                        new Location{Province = Province.Antwerpen},
-                        new Location{Province = Province.VlaamsBrabant},
-                        new Location{Province = Province.Henegouwen},
+                        new AvailableLocation{Province = Province.Antwerpen},
+                        new AvailableLocation{Province = Province.VlaamsBrabant},
+                        new AvailableLocation{Province = Province.Henegouwen},
                     },
                 },
                 new Developer
@@ -343,11 +343,11 @@ namespace SwipeIT.ViewModels
                             SkillName="Communication"
                         },
                     },
-                     Locations = new ObservableCollection<Location>
+                     AvailableLocations = new ObservableCollection<AvailableLocation>
                     {
-                        new Location{Province = Province.Antwerpen},
-                        new Location{Province = Province.VlaamsBrabant},
-                        new Location{Province = Province.Henegouwen},
+                        new AvailableLocation{Province = Province.Antwerpen},
+                        new AvailableLocation{Province = Province.VlaamsBrabant},
+                        new AvailableLocation{Province = Province.Henegouwen},
                     },
                 },
                 new Developer
@@ -362,11 +362,11 @@ namespace SwipeIT.ViewModels
                             SkillName="C#"
                         },
                     },
-                     Locations = new ObservableCollection<Location>
+                     AvailableLocations = new ObservableCollection<AvailableLocation>
                     {
-                        new Location{Province = Province.Antwerpen},
-                        new Location{Province = Province.VlaamsBrabant},
-                        new Location{Province = Province.Henegouwen},
+                        new AvailableLocation{Province = Province.Antwerpen},
+                        new AvailableLocation{Province = Province.VlaamsBrabant},
+                        new AvailableLocation{Province = Province.Henegouwen},
                     },
                      Address= "Aalst",
         },
@@ -382,11 +382,11 @@ namespace SwipeIT.ViewModels
                     Company = "test",
                     Email = "test",
                     Password = "test",
-                    Locations = new ObservableCollection<Location>
+                    AvailableLocations = new ObservableCollection<AvailableLocation>
                     {
-                        new Location{Province = Province.Antwerpen},
-                        new Location{Province = Province.VlaamsBrabant},
-                        new Location{Province = Province.Henegouwen},
+                        new AvailableLocation{Province = Province.Antwerpen},
+                        new AvailableLocation{Province = Province.VlaamsBrabant},
+                        new AvailableLocation{Province = Province.Henegouwen},
                     },
                 },
                 new Recruiter
@@ -403,11 +403,11 @@ namespace SwipeIT.ViewModels
                             SkillName="C#"
                         },
                     },
-                     Locations = new ObservableCollection<Location>
+                     AvailableLocations = new ObservableCollection<AvailableLocation>
                     {
-                        new Location{Province = Province.Antwerpen},
-                        new Location{Province = Province.VlaamsBrabant},
-                        new Location{Province = Province.Henegouwen},
+                        new AvailableLocation{Province = Province.Antwerpen},
+                        new AvailableLocation{Province = Province.VlaamsBrabant},
+                        new AvailableLocation{Province = Province.Henegouwen},
                     },
                 },
                 new Recruiter
@@ -424,11 +424,11 @@ namespace SwipeIT.ViewModels
                             SkillName="C#"
                         },
                     },
-                     Locations = new ObservableCollection<Location>
+                     AvailableLocations = new ObservableCollection<AvailableLocation>
                     {
-                        new Location{Province = Province.Antwerpen},
-                        new Location{Province = Province.VlaamsBrabant},
-                        new Location{Province = Province.Henegouwen},
+                        new AvailableLocation{Province = Province.Antwerpen},
+                        new AvailableLocation{Province = Province.VlaamsBrabant},
+                        new AvailableLocation{Province = Province.Henegouwen},
                     },
                 },
                 new Recruiter
@@ -445,11 +445,11 @@ namespace SwipeIT.ViewModels
                             SkillName="C#"
                         },
                     },
-                     Locations = new ObservableCollection<Location>
+                     AvailableLocations = new ObservableCollection<AvailableLocation>
                     {
-                        new Location{Province = Province.Antwerpen},
-                        new Location{Province = Province.VlaamsBrabant},
-                        new Location{Province = Province.Henegouwen},
+                        new AvailableLocation{Province = Province.Antwerpen},
+                        new AvailableLocation{Province = Province.VlaamsBrabant},
+                        new AvailableLocation{Province = Province.Henegouwen},
                     },
                 },
                 new Recruiter
@@ -466,11 +466,11 @@ namespace SwipeIT.ViewModels
                             SkillName="C#"
                         },
                     },
-                     Locations = new ObservableCollection<Location>
+                     AvailableLocations = new ObservableCollection<AvailableLocation>
                     {
-                        new Location{Province = Province.Antwerpen},
-                        new Location{Province = Province.VlaamsBrabant},
-                        new Location{Province = Province.Henegouwen},
+                        new AvailableLocation{Province = Province.Antwerpen},
+                        new AvailableLocation{Province = Province.VlaamsBrabant},
+                        new AvailableLocation{Province = Province.Henegouwen},
                     },
                 },
             };
