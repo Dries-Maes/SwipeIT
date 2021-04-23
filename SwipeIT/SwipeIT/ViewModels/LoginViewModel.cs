@@ -52,9 +52,9 @@ namespace SwipeIT.ViewModels
 
         private async void GetData()
         {
-            DevelopersResult = DeveloperRepo.GetDevelopers();
-            RecruiterResult = RecruiterRepo.GetRecruiters();
-            AdminsResult = AdminRepo.GetAdmins();
+            DevelopersResult = await DeveloperRepo.GetAllItemsAsync();
+            RecruiterResult = await RecruiterRepo.GetAllItemsAsync();
+            AdminsResult = await AdminRepo.GetAllItemsAsync();
             Accounts.AddRange(DevelopersResult);
             Accounts.AddRange(RecruiterResult);
             Accounts.AddRange(AdminsResult);
