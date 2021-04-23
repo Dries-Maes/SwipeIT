@@ -10,10 +10,10 @@ namespace SwipeIT
 {
     public class SwipeITDBContext : DbContext
     {
-        //public DbSet<Recruiter> Recruiters { get; set; }
-        //public DbSet<Developer> Developers { get; set; }
-        //public DbSet<Admin> Admins { get; set; }
-        //public DbSet<Skill> Skills { get; set; }
+        public DbSet<Recruiter> Recruiters { get; set; }
+        public DbSet<Developer> Developers { get; set; }
+        public DbSet<Admin> Admins { get; set; }
+        public DbSet<Skill> Skills { get; set; }
 
         public SwipeITDBContext()
         {
@@ -25,6 +25,12 @@ namespace SwipeIT
         {
             string dbPath = Path.Combine(FileSystem.AppDataDirectory, "SwipeIT.db");
             optionsBuilder.UseSqlite($"Filename = {dbPath}");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Developer>().HasMany(x => x.Recruiters);
+            modelBuilder.Entity<Recruiter>().HasMany(x => x.Developers);
         }
     }
 }

@@ -28,9 +28,9 @@ namespace SwipeIT.ViewModels
 
         private void Like(Developer developer)
         {
-            if (!((Recruiter)CurrentUserSingleton.CurrentUser).SelectedDevelopers.Contains(developer))
+            if (!((Recruiter)CurrentUserSingleton.CurrentUser).Developers.Contains(developer))
             {
-                ((Recruiter)CurrentUserSingleton.CurrentUser).SelectedDevelopers.Add(developer);
+                ((Recruiter)CurrentUserSingleton.CurrentUser).Developers.Add(developer);
             }
         }
     }

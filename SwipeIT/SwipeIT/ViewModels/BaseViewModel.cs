@@ -11,8 +11,8 @@ namespace SwipeIT.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         public CurrentUserSingleton CurrentUserSingleton { get; set; }
-        public DeveloperRepo DeveloperRepo = DeveloperRepo.GetSingleton();
-        public RecruiterRepo RecruiterRepo = RecruiterRepo.GetSingleton();
+        public DeveloperDbRepo DeveloperRepo = new DeveloperDbRepo();
+        public RecruiterDbRepo RecruiterRepo = new RecruiterDbRepo();
         public SkillsRepo SkillsRepo = SkillsRepo.GetSingleton();
         public AdminRepo AdminRepo = AdminRepo.GetSingleton();
         public bool IsDeveloper { get; set; }

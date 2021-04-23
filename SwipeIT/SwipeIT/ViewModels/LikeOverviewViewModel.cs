@@ -11,7 +11,7 @@ namespace SwipeIT.ViewModels
 
         private void DeleteDeveloperFromList(Developer developer)
         {
-            ((Recruiter)CurrentUserSingleton.CurrentUser).SelectedDevelopers.Remove(developer);
+            ((Recruiter)CurrentUserSingleton.CurrentUser).Developers.Remove(developer);
         }
 
         private async void OnDeveloperSelected(Developer developer)
