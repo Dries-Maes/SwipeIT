@@ -1,11 +1,12 @@
 ﻿using SwipeIT.Models;
 using SwipeIT.Services;
 using SwipeIT.Views;
+using Xamarin.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Xamarin.Forms;
+using SwipeIT.Services;
 
 namespace SwipeIT.ViewModels
 {
@@ -32,6 +33,7 @@ namespace SwipeIT.ViewModels
         public string UserMail { get; set; }
         public List<Developer> DevelopersResult;
         public List<Recruiter> RecruiterResult;
+        public List<Admin> AdminsResult;
         public List<Account> Accounts;
         public Command LoginCommand => new Command(OnLoginClicked);
 
@@ -119,41 +121,11 @@ namespace SwipeIT.ViewModels
                 };
                 await RecruiterRepo.AddItemAsync((Recruiter)CurrentUserSingleton.CurrentUser);
             }
-            // todo admin (release 3)
-        }
-
-        private void SetRoleBools()
-        {
-            if (CurrentUserSingleton.CurrentUser is Developer)
-            {
-                IsDeveloper = true;
-                IsRecruiter = false;
-            }
-            else if (CurrentUserSingleton.CurrentUser is Recruiter)
-            {
-                IsDeveloper = false;
-                IsRecruiter = true;
-            }
-            else
-            {
-                IsDeveloper = false;
-                IsRecruiter = false;
-            }
         }
 
         private async void OnLoginClicked(object obj)
         {
-            SetRoleBools();
             ErrorMessage = "";
-            if (UserMail == "Admin" && UserPassword == "Admin")
-            {
-                CurrentUserSingleton.CurrentUser = new Admin()
-                {
-                    Email = UserMail,
-                    Password = UserPassword
-                };
-                await Shell.Current.GoToAsync(nameof(AdministrationPage));
-            }
 
             if (IsSignUp)
             {
@@ -194,20 +166,26 @@ namespace SwipeIT.ViewModels
                     return;
                 }
                 // password check passes when you got here so we decide were to go from here
+
                 // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
+                IsRecruiter = false;
+                IsDeveloper = false;
                 switch (CurrentUserSingleton.CurrentUser)
                 {
                     case Developer developer:
                         await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
+                        IsDeveloper = true;
                         break;
 
                     case Recruiter recruiter:
                         await Shell.Current.GoToAsync($"//{nameof(SwipePage)}");
+                        IsRecruiter = true;
                         break;
 
                     case Admin admin:
-                        // do admin stuff
-                        throw new NotImplementedException();
+
+                        await Shell.Current.GoToAsync(nameof(AdministrationPage));
+                        break;
                 }
             }
         }
