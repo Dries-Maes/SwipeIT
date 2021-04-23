@@ -91,11 +91,11 @@ namespace SwipeIT.ViewModels
         {
             if (CurrentUserSingleton.CurrentUser is Developer)
             {
-                await DeveloperRepo.UpdateItemAsync((Developer)CurrentUserSingleton.CurrentUser);
+                await DeveloperRepo.AddItemAsync((Developer)CurrentUserSingleton.CurrentUser);
             }
             else if (CurrentUserSingleton.CurrentUser is Recruiter)
             {
-                await RecruiterRepo.UpdateItemAsync((Recruiter)CurrentUserSingleton.CurrentUser);
+                await RecruiterRepo.AddItemAsync((Recruiter)CurrentUserSingleton.CurrentUser);
             }
             else
             {
@@ -105,11 +105,12 @@ namespace SwipeIT.ViewModels
 
         private async void SkillEnteredAsync()
         {
-            if (!SkillsRepo.GetSkills().Select(x => x.SkillName).Contains(SkillEntry))
+            var skills = await SkillsRepo.GetAllItemsAsync();
+            if (!skills.Select(x => x.SkillName).Contains(SkillEntry))
             {
                 await SkillsRepo.AddItemAsync(new Skill { SkillName = SkillEntry, IsCreatedByUser = true });
             }
-            ((User)CurrentUserSingleton.CurrentUser).Skills.Add(SkillsRepo.GetSkills().FirstOrDefault(x => x.SkillName == SkillEntry));
+            ((User)CurrentUserSingleton.CurrentUser).Skills.Add(skills.FirstOrDefault(x => x.SkillName == SkillEntry));
             SkillEntry = "";
         }
 
@@ -181,11 +182,11 @@ namespace SwipeIT.ViewModels
         {
             if (account is Developer)
             {
-                await DeveloperRepo.UpdateItemAsync((Developer)account);
+                await DeveloperRepo.AddItemAsync((Developer)account);
             }
             else if (account is Recruiter)
             {
-                await RecruiterRepo.UpdateItemAsync((Recruiter)account);
+                await RecruiterRepo.AddItemAsync((Recruiter)account);
             }
         }
     }

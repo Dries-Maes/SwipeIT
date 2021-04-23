@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace SwipeIT.Models
@@ -70,8 +71,10 @@ namespace SwipeIT.Models
             }
         }
 
+        [NotMapped]
         private ObservableCollection<Location> locations;
 
+        [NotMapped]
         public ObservableCollection<Location> Locations
         {
             get => locations;

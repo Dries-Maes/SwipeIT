@@ -1,9 +1,12 @@
 ﻿using SwipeIT.Models;
 using SwipeIT.Services;
+using SwipeIT.Services.TESTDbRepos;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace SwipeIT.ViewModels
@@ -11,10 +14,10 @@ namespace SwipeIT.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         public CurrentUserSingleton CurrentUserSingleton { get; set; }
-        public DeveloperDbRepo DeveloperRepo = new DeveloperDbRepo();
-        public RecruiterDbRepo RecruiterRepo = new RecruiterDbRepo();
-        public SkillsRepo SkillsRepo = SkillsRepo.GetSingleton();
-        public AdminRepo AdminRepo = AdminRepo.GetSingleton();
+        public DeveloperRepo DeveloperRepo = new DeveloperRepo();
+        public RecruiterRepo RecruiterRepo = new RecruiterRepo();
+        public SkillRepo SkillsRepo = new SkillRepo();
+        public AdminRepo AdminRepo = new AdminRepo();
         public bool IsDeveloper { get; set; }
         public bool IsRecruiter { get; set; }
 
@@ -50,6 +53,430 @@ namespace SwipeIT.ViewModels
         public BaseViewModel()
         {
             CurrentUserSingleton = CurrentUserSingleton.GetSingleton();
+        }
+
+        public async void AddDummyData()
+        {
+            List<Developer> temp = new List<Developer>
+            {
+                new Developer
+                {
+                    LastName = "Van Gelder",
+                    FirstName = "Jens",
+                    Image = "Icon15.png",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                        new Skill
+                        {
+                            SkillName="Google"
+                        },
+                        new Skill
+                        {
+                            SkillName=".NET"
+                        },
+                        new Skill
+                        {
+                            SkillName="Javascript"
+                        },
+                    },
+                    Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Luik,
+                        Location.Henegouwen,
+                    },
+                    Email ="jens.v.gelder@gmail.com",
+                    Password ="DoNotDrag0n!",
+                    Address = "Haacht neerstraat",
+                },
+                new Developer
+                {
+                    LastName = "Maes",
+                    FirstName = "Dries",
+                    Image = "Icon03.png",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
+                    Email="dm.inbox@outlook.com",
+                    Password ="P1ssM30ff"
+                },
+                new Developer
+                {
+                    LastName = "Impe",
+                    FirstName = "Ward",
+                    Image = "Icon07.png",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
+                    Email="ward@impesoft.com",
+                    Password ="pass"
+                },
+                new Developer
+                {
+                    LastName = "Kesteloot",
+                    FirstName = "Sebastiaan-Willem",
+                    Image = "Icon05.png",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
+                    Email ="seba.kesteloot@gmail.com",
+                    Password="r00t"
+                },
+                new Developer
+                {
+                    LastName = "Van Tittelboom",
+                    FirstName = "Simon",
+                    Image = "Icon06.png",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
+                    Email="simon.van.tittelboom@gmail.com",
+                    Password ="R00T2.0"
+                },
+                new Developer
+                {
+                    LastName = "Alfvoet",
+                    FirstName = "Joyce",
+                    Image = "Icon08.png",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
+                    Email ="joyce.alfvoet@gmail.com",
+                    Password = "Recruit#MeToo"
+                },
+                new Developer
+                {
+                    LastName = "DeLobelle",
+                    FirstName = "Kobe",
+                    Image = "Icon10.png",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
+                    Email = "delobellekobe@gmail.com",
+                    Password ="IkWeetGeenPaswoordmeer"
+                },
+                new Developer
+                {
+                    LastName = "Danckaert",
+                    FirstName = "Emma",
+                    Image = "Icon11.png",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
+                    Email="emmadanckaert@hotmail.com",
+                    Password = "DriesHeeftAltijdGelijk"
+                },
+                new Developer
+                {
+                    LastName = "Stavropoulos",
+                    FirstName = "Andreas",
+                    Image = "Icon12.png",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
+                    Email="anstavropoulos@gmail.com",
+                    Password= "Gr33c3"
+                },
+                new Developer
+                {
+                    LastName = "Van Durme",
+                    FirstName = "Pieter",
+                    Image = "Icon18.png",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
+                    Email = "pieter_van_durme@hotmail.com",
+                    Password ="Fr1tuur"
+                },
+                new Developer
+                {
+                    LastName = "Van Royen",
+                    FirstName = "Nick",
+                    Image = "Icon19.png",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
+                    Email ="nvanroyen@gmail.com",
+                    Password = "ILoveTinder"
+                },
+                new Developer
+                {
+                    LastName = "Van Yperzele",
+                    FirstName = "Diederick",
+                    Image = "Icon20.png",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
+                },
+                new Developer
+                {
+                    LastName = "Verhulsdonck",
+                    FirstName = "Marieke",
+                    Image = "Icon22.png",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="Communication"
+                        },
+                    },
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
+                },
+                new Developer
+                {
+                    LastName = "Wouters",
+                    FirstName = "Michiel",
+                    Image = "Icon24.png",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
+                     Address= "Aalst",
+        },
+            };
+            await DeveloperRepo.AddItemsAsync(temp);
+
+            var recruiters = new List<Recruiter>
+            {
+                new Recruiter
+                {
+                    FirstName = "test",
+                    LastName = "test",
+                    Company = "test",
+                    Email = "test",
+                    Password = "test",
+                    Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
+                },
+                new Recruiter
+                {
+                   FirstName = "Jef",
+                    LastName = "Besos",
+                    Company = "Bamazon",
+                    Email = "jef@bamazon.com",
+                    Password = "B3505",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
+                },
+                new Recruiter
+                {
+                    FirstName = "Billy",
+                    LastName = "Gates",
+                    Company = "Licrosoft",
+                    Email ="billygates@licrosoft.org",
+                    Password ="BgL003!?",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
+                },
+                new Recruiter
+                {
+                    FirstName = "Stefaan",
+                    LastName = "Jops",
+                    Company = "Bapple",
+                    Email = "stefjops@bapple.io",
+                    Password = "Peer4TheWin",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
+                },
+                new Recruiter
+                {
+                    FirstName = "Meloen",
+                    LastName = "Musk",
+                    Company = "Teslaa",
+                    Email ="muskmeloen@teslaa.be",
+                    Password ="Model3XS",
+                    Skills = new ObservableCollection<Skill>
+                    {
+                        new Skill
+                        {
+                            SkillName="C#"
+                        },
+                    },
+                     Locations = new ObservableCollection<Location>
+                    {
+                        Location.Antwerpen,
+                        Location.VlaamsBrabant,
+                        Location.Henegouwen,
+                    },
+                },
+            };
+            await RecruiterRepo.AddItemsAsync(recruiters);
+
+            var admins = new List<Admin>
+            {
+                new Admin
+                {
+                    Email = "admin",
+                    Password = "admin",
+                },
+            };
+            await AdminRepo.AddItemsAsync(admins);
         }
 
         #region INotifyPropertyChanged

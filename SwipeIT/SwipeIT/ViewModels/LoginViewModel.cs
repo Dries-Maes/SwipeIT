@@ -46,10 +46,10 @@ namespace SwipeIT.ViewModels
             UserPassword = "";
         }
 
-        private void GetMockData()
+        private async void GetMockData()
         {
-            DevelopersResult = DeveloperRepo.GetDevelopers();
-            RecruiterResult = RecruiterRepo.GetRecruiters();
+            DevelopersResult = await DeveloperRepo.GetAllItemsAsync();
+            RecruiterResult = await RecruiterRepo.GetAllItemsAsync();
             Accounts.AddRange(DevelopersResult);
             Accounts.AddRange(RecruiterResult);
         }

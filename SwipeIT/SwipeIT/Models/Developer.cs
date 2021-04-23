@@ -16,9 +16,9 @@ namespace SwipeIT.Models
             }
         }
 
-        private List<Recruiter> recruiters;
+        private ICollection<Recruiter> recruiters;
 
-        public List<Recruiter> Recruiters
+        public ICollection<Recruiter> Recruiters
         {
             get => recruiters;
             set

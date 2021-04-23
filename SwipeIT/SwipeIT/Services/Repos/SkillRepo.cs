@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SwipeIT.Services.TESTDbRepos
 {
-    public class SkillDbRepo : IGenericRepo<Skill>
+    public class SkillRepo : IGenericRepo<Skill>
     {
         public async Task<bool> AddItemAsync(Skill skill)
         {
@@ -44,20 +44,18 @@ namespace SwipeIT.Services.TESTDbRepos
 
         public async Task<List<Skill>> GetAllItemsAsync()
         {
-            //using (var dbContext = new SwipeITDBContext())
-            //{
-            //    return await dbContext.Skills.ToListAsync();
-            //}
-            throw new NotImplementedException();
+            using (var dbContext = new SwipeITDBContext())
+            {
+                return await dbContext.Skills.ToListAsync();
+            }
         }
 
         public async Task<Skill> GetItemAsync(int id)
         {
-            //using (var dbContext = new SwipeITDBContext())
-            //{
-            //    return await dbContext.Skills.FindAsync(id);
-            //}
-            throw new NotImplementedException();
+            using (var dbContext = new SwipeITDBContext())
+            {
+                return await dbContext.Skills.FindAsync(id);
+            }
         }
     }
 }

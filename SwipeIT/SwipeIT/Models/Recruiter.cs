@@ -17,9 +17,9 @@ namespace SwipeIT.Models
             }
         }
 
-        private ObservableCollection<Developer> developers;
+        private ICollection<Developer> developers;
 
-        public ObservableCollection<Developer> Developers
+        public ICollection<Developer> Developers
         {
             get => developers;
             set
