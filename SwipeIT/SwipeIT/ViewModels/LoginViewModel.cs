@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using SwipeIT.Services;
 
 namespace SwipeIT.ViewModels
 {
@@ -34,6 +35,7 @@ namespace SwipeIT.ViewModels
         public string UserMail { get; set; }
         public List<Developer> DevelopersResult;
         public List<Recruiter> RecruiterResult;
+        public List<Admin> AdminsResult;
         public List<Account> Accounts;
         public Command LoginCommand => new Command(OnLoginClicked);
 
@@ -50,10 +52,12 @@ namespace SwipeIT.ViewModels
 
         private async void GetData()
         {
-            DevelopersResult = await DeveloperRepo.GetAllItemsAsync();
-            RecruiterResult = await RecruiterRepo.GetAllItemsAsync();
+            DevelopersResult = DeveloperRepo.GetDevelopers();
+            RecruiterResult = RecruiterRepo.GetRecruiters();
+            AdminsResult = AdminRepo.GetAdmins();
             Accounts.AddRange(DevelopersResult);
             Accounts.AddRange(RecruiterResult);
+            Accounts.AddRange(AdminsResult);
         }
 
         private bool RequiredFields()
@@ -128,85 +132,84 @@ namespace SwipeIT.ViewModels
             // todo admin (release 3)
         }
 
-        private void SetRoleBools()
-        {
-            if (CurrentUserSingleton.CurrentUser is Developer)
-            {
-                IsDeveloper = true;
-                IsRecruiter = false;
-            }
-            else if (CurrentUserSingleton.CurrentUser is Recruiter)
-            {
-                IsDeveloper = false;
-                IsRecruiter = true;
-            }
-            else
-            {
-                IsDeveloper = false;
-                IsRecruiter = false;
-            }
-        }
-
         private async void OnLoginClicked(object obj)
         {
             ErrorMessage = "";
-
-            if (IsSignUp)
+            if (UserMail == "Admin" && UserPassword == "Admin")
             {
-                if (!RequiredFields())
+                CurrentUserSingleton.CurrentUser = new Admin()
                 {
-                    ErrorMessage = "Email and Password fields cannot be empty\n";
-                    return;
-                }
+                    Email = UserMail,
+                    Password = UserPassword
+                };
+                await Shell.Current.GoToAsync(nameof(AdministrationPage));
+            }
 
-                if (Accounts.Where(x => x.Email == UserMail).ToList().Count == 0)
+            private async void OnLoginClicked(object obj)
+            {
+                ErrorMessage = "";
+
+                if (IsSignUp)
                 {
-                    if (ErrorInFormValues()) return;
-                    await CreateNewUser();
-                    await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
+                    if (!RequiredFields())
+                    {
+                        ErrorMessage = "Email and Password fields cannot be empty\n";
+                        return;
+                    }
+
+                    if (Accounts.Where(x => x.Email == UserMail).ToList().Count == 0)
+                    {
+                        if (ErrorInFormValues()) return;
+                        await CreateNewUser();
+                        await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
+                    }
+                    else
+                    {
+                        ErrorMessage += "User already exists\n";
+                        return;
+                    }
                 }
                 else
                 {
-                    ErrorMessage += "User already exists\n";
-                    return;
-                }
-            }
-            else
-            {
-                try // find user
-                {
-                    CurrentUserSingleton.CurrentUser = Accounts.First(x => x.Email == UserMail);
-                }
-                catch (Exception)
-                {
-                    ErrorMessage += "User not Found\n";
-                    return;
-                }
+                    try // find user
+                    {
+                        CurrentUserSingleton.CurrentUser = Accounts.First(x => x.Email == UserMail);
+                    }
+                    catch (Exception)
+                    {
+                        ErrorMessage += "User not Found\n";
+                        return;
+                    }
 
-                //user exists, let's continue
-                if (!VerifyPassword())
-                {
-                    ErrorMessage += "Password Mismatch\n";
-                    return;
-                }
-                // password check passes when you got here so we decide were to go from here
-                // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-                switch (CurrentUserSingleton.CurrentUser)
-                {
+                    //user exists, let's continue
+                    if (!VerifyPassword())
+                    {
+                        ErrorMessage += "Password Mismatch\n";
+                        return;
+                    }
+                    // password check passes when you got here so we decide were to go from here
+                    SetRoleBools();
+                    // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
+                    switch (CurrentUserSingleton.CurrentUser)
+                    {
+                        IsRecruiter = false;
+                    IsDeveloper = false;
                     case Developer developer:
                         await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
-                        break;
+            IsDeveloper = true;
+            break;
 
                     case Recruiter recruiter:
                         await Shell.Current.GoToAsync($"//{nameof(SwipePage)}");
-                        break;
+            IsRecruiter = true;
+            break;
 
                     case Admin admin:
                         // do admin stuff
                         await Shell.Current.GoToAsync(nameof(AdministrationPage));
-                        break;
-                }
-            }
+            break;
         }
+    }
+}
     }
 }
