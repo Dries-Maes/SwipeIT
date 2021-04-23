@@ -51,9 +51,8 @@ namespace SwipeIT.Services.TESTDbRepos
             {
                 return await dbContext.Recruiters.Include(x => x.Developers)
                                                 .Include(x => x.Skills)
-
+                                                .Include(x => x.AvailableLocations)
                                                  .ToListAsync();
-                //Todo: include locations (everywhere)
             }
         }
 
@@ -63,6 +62,7 @@ namespace SwipeIT.Services.TESTDbRepos
             {
                 return await dbContext.Recruiters.Include(x => x.Developers)
                     .Include(x => x.Skills)
+                    .Include(x => x.AvailableLocations)
                                                  .FirstOrDefaultAsync(x => x.ID == id);
             }
         }

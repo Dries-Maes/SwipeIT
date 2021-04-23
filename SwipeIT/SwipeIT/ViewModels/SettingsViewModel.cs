@@ -35,15 +35,15 @@ namespace SwipeIT.ViewModels
             }
         }
 
-        private ObservableCollection<Province> availableLocations;
+        private ObservableCollection<Province> selectedLocations;
 
-        public ObservableCollection<Province> AvailableLocations
+        public ObservableCollection<Province> SelectedLocations
         {
-            get => availableLocations;
+            get => selectedLocations;
             set
             {
-                availableLocations = value;
-                OnPropertyChanged(nameof(AvailableLocations));
+                selectedLocations = value;
+                OnPropertyChanged(nameof(SelectedLocations));
             }
         }
 
@@ -114,12 +114,12 @@ namespace SwipeIT.ViewModels
 
         private void BuildAvailableLocationsList()
         {
-            AvailableLocations = new ObservableCollection<Province>();
+            SelectedLocations = new ObservableCollection<Province>();
             foreach (Province item in Enum.GetValues(typeof(Province)))
             {
                 if (item != Province.Select && ((User)CurrentUserSingleton.CurrentUser).AvailableLocations.FirstOrDefault(x => x.Province == item) == null)
                 {
-                    AvailableLocations.Add(item);
+                    SelectedLocations.Add(item);
                 }
             }
         }
@@ -139,7 +139,7 @@ namespace SwipeIT.ViewModels
             var location = locationClass.Province;
             var userLocations = ((User)CurrentUserSingleton.CurrentUser).AvailableLocations;
             userLocations.Remove(userLocations.FirstOrDefault(x => x.Province == location));
-            AvailableLocations.Add(location);
+            SelectedLocations.Add(location);
         }
 
         private void AddLocation()
@@ -148,8 +148,8 @@ namespace SwipeIT.ViewModels
             if (SelectedLocation != Province.Select)
             {
                 userLocations.Add(new AvailableLocation { Province = SelectedLocation });
-                AvailableLocations.Remove(SelectedLocation);
-                SelectedLocation = AvailableLocations.Count == 0 ? Province.Select : AvailableLocations[0];
+                SelectedLocations.Remove(SelectedLocation);
+                SelectedLocation = SelectedLocations.Count == 0 ? Province.Select : SelectedLocations[0];
             }
             SelectedLocation = Province.Select;
         }
