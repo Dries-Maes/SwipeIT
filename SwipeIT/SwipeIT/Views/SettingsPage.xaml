@@ -97,7 +97,7 @@
                         <DataTemplate>
 
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding .}"
+                                <Label Text="{Binding Province}"
                                        VerticalOptions="Center" />
                                 <Button Text="Delete"
                                         WidthRequest="75"

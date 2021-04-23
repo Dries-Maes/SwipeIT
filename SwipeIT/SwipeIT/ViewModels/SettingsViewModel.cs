@@ -23,9 +23,9 @@ namespace SwipeIT.ViewModels
             }
         }
 
-        private Location selectedLocation;
+        private Province selectedLocation;
 
-        public Location SelectedLocation
+        public Province SelectedLocation
         {
             get => selectedLocation;
             set
@@ -35,9 +35,9 @@ namespace SwipeIT.ViewModels
             }
         }
 
-        private ObservableCollection<Location> availableLocations;
+        private ObservableCollection<Province> availableLocations;
 
-        public ObservableCollection<Location> AvailableLocations
+        public ObservableCollection<Province> AvailableLocations
         {
             get => availableLocations;
             set
@@ -114,10 +114,10 @@ namespace SwipeIT.ViewModels
 
         private void BuildAvailableLocationsList()
         {
-            AvailableLocations = new ObservableCollection<Location>();
-            foreach (Location item in Enum.GetValues(typeof(Location)))
+            AvailableLocations = new ObservableCollection<Province>();
+            foreach (Province item in Enum.GetValues(typeof(Province)))
             {
-                if (item != Location.Select && !((User)CurrentUserSingleton.CurrentUser).Locations.Contains(item))
+                if (item != Province.Select && ((User)CurrentUserSingleton.CurrentUser).Locations.FirstOrDefault(x => x.Province == item) == null)
                 {
                     AvailableLocations.Add(item);
                 }
@@ -134,21 +134,24 @@ namespace SwipeIT.ViewModels
             AvatarList = AvatarList.OrderBy(a => Guid.NewGuid()).ToList();
         }
 
-        private void DeleteLocationAsync(Location location)
+        private void DeleteLocationAsync(Location locationClass)
         {
-            ((User)CurrentUserSingleton.CurrentUser).Locations.Remove(location);
+            var location = locationClass.Province;
+            var userLocations = ((User)CurrentUserSingleton.CurrentUser).Locations;
+            userLocations.Remove(userLocations.FirstOrDefault(x => x.Province == location));
             AvailableLocations.Add(location);
         }
 
         private void AddLocation()
         {
-            if (SelectedLocation != Location.Select)
+            var userLocations = ((User)CurrentUserSingleton.CurrentUser).Locations;
+            if (SelectedLocation != Province.Select)
             {
-                ((User)CurrentUserSingleton.CurrentUser).Locations.Add(SelectedLocation);
+                userLocations.Add(new Location { Province = SelectedLocation });
                 AvailableLocations.Remove(SelectedLocation);
-                SelectedLocation = AvailableLocations.Count == 0 ? Location.Select : AvailableLocations[0];
+                SelectedLocation = AvailableLocations.Count == 0 ? Province.Select : AvailableLocations[0];
             }
-            SelectedLocation = Location.Select;
+            SelectedLocation = Province.Select;
         }
 
         private void ImageClicked()

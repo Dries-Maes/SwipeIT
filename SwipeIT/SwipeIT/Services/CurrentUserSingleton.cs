@@ -31,10 +31,10 @@ namespace SwipeIT.Services
                 Image = "Icon27.png",
                 Company = "PCorp",
                 Locations = new ObservableCollection<Location> {
-                Location.Henegouwen,
-                Location.Antwerpen,
-                Location.Luik,
-                Location.Namen
+                new Location{Province = Province.Henegouwen},
+                new Location{Province = Province.Antwerpen},
+                new Location{Province = Province.Luik},
+                new Location{Province = Province.Namen},
                 }
             };
         }

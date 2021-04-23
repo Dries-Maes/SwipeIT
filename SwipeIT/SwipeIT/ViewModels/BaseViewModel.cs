@@ -85,10 +85,10 @@ namespace SwipeIT.ViewModels
                     },
                     Locations = new ObservableCollection<Location>
                     {
-                        Location.Antwerpen,
-                        Location.VlaamsBrabant,
-                        Location.Luik,
-                        Location.Henegouwen,
+                        new Location{Province = Province.Antwerpen },
+                        new Location{Province = Province.VlaamsBrabant},
+                        new Location{Province = Province.Luik},
+                        new Location{Province = Province.Henegouwen},
                     },
                     Email ="jens.v.gelder@gmail.com",
                     Password ="DoNotDrag0n!",
@@ -108,9 +108,9 @@ namespace SwipeIT.ViewModels
                     },
                      Locations = new ObservableCollection<Location>
                     {
-                        Location.Antwerpen,
-                        Location.VlaamsBrabant,
-                        Location.Henegouwen,
+                        new Location{Province = Province.Antwerpen},
+                        new Location{Province = Province.VlaamsBrabant},
+                        new Location{Province = Province.Henegouwen },
                     },
                     Email="dm.inbox@outlook.com",
                     Password ="P1ssM30ff"
@@ -129,9 +129,9 @@ namespace SwipeIT.ViewModels
                     },
                      Locations = new ObservableCollection<Location>
                     {
-                        Location.Antwerpen,
-                        Location.VlaamsBrabant,
-                        Location.Henegouwen,
+                        new Location{Province = Province.Antwerpen},
+                        new Location{Province = Province.VlaamsBrabant},
+                        new Location{Province = Province.Henegouwen},
                     },
                     Email="ward@impesoft.com",
                     Password ="pass"
@@ -150,9 +150,9 @@ namespace SwipeIT.ViewModels
                     },
                      Locations = new ObservableCollection<Location>
                     {
-                        Location.Antwerpen,
-                        Location.VlaamsBrabant,
-                        Location.Henegouwen,
+                        new Location{Province = Province.Antwerpen},
+                        new Location{Province = Province.VlaamsBrabant},
+                        new Location{Province = Province.Henegouwen},
                     },
                     Email ="seba.kesteloot@gmail.com",
                     Password="r00t"
@@ -171,9 +171,9 @@ namespace SwipeIT.ViewModels
                     },
                      Locations = new ObservableCollection<Location>
                     {
-                        Location.Antwerpen,
-                        Location.VlaamsBrabant,
-                        Location.Henegouwen,
+                        new Location{Province = Province.Antwerpen},
+                        new Location{Province = Province.VlaamsBrabant},
+                        new Location{Province = Province.Henegouwen},
                     },
                     Email="simon.van.tittelboom@gmail.com",
                     Password ="R00T2.0"
@@ -192,9 +192,9 @@ namespace SwipeIT.ViewModels
                     },
                      Locations = new ObservableCollection<Location>
                     {
-                        Location.Antwerpen,
-                        Location.VlaamsBrabant,
-                        Location.Henegouwen,
+                        new Location{Province = Province.Antwerpen},
+                        new Location{Province = Province.VlaamsBrabant},
+                        new Location{Province = Province.Henegouwen},
                     },
                     Email ="joyce.alfvoet@gmail.com",
                     Password = "Recruit#MeToo"
@@ -213,9 +213,9 @@ namespace SwipeIT.ViewModels
                     },
                      Locations = new ObservableCollection<Location>
                     {
-                        Location.Antwerpen,
-                        Location.VlaamsBrabant,
-                        Location.Henegouwen,
+                        new Location{Province = Province.Antwerpen},
+                        new Location{Province = Province.VlaamsBrabant},
+                        new Location{Province = Province.Henegouwen},
                     },
                     Email = "delobellekobe@gmail.com",
                     Password ="IkWeetGeenPaswoordmeer"
@@ -234,9 +234,9 @@ namespace SwipeIT.ViewModels
                     },
                      Locations = new ObservableCollection<Location>
                     {
-                        Location.Antwerpen,
-                        Location.VlaamsBrabant,
-                        Location.Henegouwen,
+                        new Location{Province = Province.Antwerpen},
+                        new Location{Province = Province.VlaamsBrabant},
+                        new Location{Province = Province.Henegouwen},
                     },
                     Email="emmadanckaert@hotmail.com",
                     Password = "DriesHeeftAltijdGelijk"
@@ -255,9 +255,9 @@ namespace SwipeIT.ViewModels
                     },
                      Locations = new ObservableCollection<Location>
                     {
-                        Location.Antwerpen,
-                        Location.VlaamsBrabant,
-                        Location.Henegouwen,
+                        new Location{Province = Province.Antwerpen},
+                        new Location{Province = Province.VlaamsBrabant},
+                        new Location{Province = Province.Henegouwen},
                     },
                     Email="anstavropoulos@gmail.com",
                     Password= "Gr33c3"
@@ -276,9 +276,9 @@ namespace SwipeIT.ViewModels
                     },
                      Locations = new ObservableCollection<Location>
                     {
-                        Location.Antwerpen,
-                        Location.VlaamsBrabant,
-                        Location.Henegouwen,
+                        new Location{Province = Province.Antwerpen},
+                        new Location{Province = Province.VlaamsBrabant},
+                        new Location{Province = Province.Henegouwen},
                     },
                     Email = "pieter_van_durme@hotmail.com",
                     Password ="Fr1tuur"
@@ -297,9 +297,9 @@ namespace SwipeIT.ViewModels
                     },
                      Locations = new ObservableCollection<Location>
                     {
-                        Location.Antwerpen,
-                        Location.VlaamsBrabant,
-                        Location.Henegouwen,
+                        new Location{Province = Province.Antwerpen},
+                        new Location{Province = Province.VlaamsBrabant},
+                        new Location{Province = Province.Henegouwen},
                     },
                     Email ="nvanroyen@gmail.com",
                     Password = "ILoveTinder"
@@ -318,9 +318,9 @@ namespace SwipeIT.ViewModels
                     },
                      Locations = new ObservableCollection<Location>
                     {
-                        Location.Antwerpen,
-                        Location.VlaamsBrabant,
-                        Location.Henegouwen,
+                        new Location{Province = Province.Antwerpen},
+                        new Location{Province = Province.VlaamsBrabant},
+                        new Location{Province = Province.Henegouwen},
                     },
                 },
                 new Developer
@@ -337,9 +337,9 @@ namespace SwipeIT.ViewModels
                     },
                      Locations = new ObservableCollection<Location>
                     {
-                        Location.Antwerpen,
-                        Location.VlaamsBrabant,
-                        Location.Henegouwen,
+                        new Location{Province = Province.Antwerpen},
+                        new Location{Province = Province.VlaamsBrabant},
+                        new Location{Province = Province.Henegouwen},
                     },
                 },
                 new Developer
@@ -356,9 +356,9 @@ namespace SwipeIT.ViewModels
                     },
                      Locations = new ObservableCollection<Location>
                     {
-                        Location.Antwerpen,
-                        Location.VlaamsBrabant,
-                        Location.Henegouwen,
+                        new Location{Province = Province.Antwerpen},
+                        new Location{Province = Province.VlaamsBrabant},
+                        new Location{Province = Province.Henegouwen},
                     },
                      Address= "Aalst",
         },
@@ -376,9 +376,9 @@ namespace SwipeIT.ViewModels
                     Password = "test",
                     Locations = new ObservableCollection<Location>
                     {
-                        Location.Antwerpen,
-                        Location.VlaamsBrabant,
-                        Location.Henegouwen,
+                        new Location{Province = Province.Antwerpen},
+                        new Location{Province = Province.VlaamsBrabant},
+                        new Location{Province = Province.Henegouwen},
                     },
                 },
                 new Recruiter
@@ -397,9 +397,9 @@ namespace SwipeIT.ViewModels
                     },
                      Locations = new ObservableCollection<Location>
                     {
-                        Location.Antwerpen,
-                        Location.VlaamsBrabant,
-                        Location.Henegouwen,
+                        new Location{Province = Province.Antwerpen},
+                        new Location{Province = Province.VlaamsBrabant},
+                        new Location{Province = Province.Henegouwen},
                     },
                 },
                 new Recruiter
@@ -418,9 +418,9 @@ namespace SwipeIT.ViewModels
                     },
                      Locations = new ObservableCollection<Location>
                     {
-                        Location.Antwerpen,
-                        Location.VlaamsBrabant,
-                        Location.Henegouwen,
+                        new Location{Province = Province.Antwerpen},
+                        new Location{Province = Province.VlaamsBrabant},
+                        new Location{Province = Province.Henegouwen},
                     },
                 },
                 new Recruiter
@@ -439,9 +439,9 @@ namespace SwipeIT.ViewModels
                     },
                      Locations = new ObservableCollection<Location>
                     {
-                        Location.Antwerpen,
-                        Location.VlaamsBrabant,
-                        Location.Henegouwen,
+                        new Location{Province = Province.Antwerpen},
+                        new Location{Province = Province.VlaamsBrabant},
+                        new Location{Province = Province.Henegouwen},
                     },
                 },
                 new Recruiter
@@ -460,9 +460,9 @@ namespace SwipeIT.ViewModels
                     },
                      Locations = new ObservableCollection<Location>
                     {
-                        Location.Antwerpen,
-                        Location.VlaamsBrabant,
-                        Location.Henegouwen,
+                        new Location{Province = Province.Antwerpen},
+                        new Location{Province = Province.VlaamsBrabant},
+                        new Location{Province = Province.Henegouwen},
                     },
                 },
             };

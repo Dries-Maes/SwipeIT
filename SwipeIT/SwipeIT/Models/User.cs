@@ -71,10 +71,8 @@ namespace SwipeIT.Models
             }
         }
 
-        [NotMapped]
         private ObservableCollection<Location> locations;
 
-        [NotMapped]
         public ObservableCollection<Location> Locations
         {
             get => locations;
