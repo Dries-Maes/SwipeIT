@@ -52,7 +52,7 @@ namespace SwipeIT.Services.TESTDbRepos
         {
             using (var dbContext = new SwipeITDBContext())
             {
-                return await dbContext.Developers.ToListAsync();
+                return await dbContext.Developers.Include(x => x.Skills).Include(x => x.Recruiters).ToListAsync();
             }
         }
 
@@ -60,7 +60,7 @@ namespace SwipeIT.Services.TESTDbRepos
         {
             using (var dbContext = new SwipeITDBContext())
             {
-                return await dbContext.Developers.FindAsync(id);
+                return await dbContext.Developers.Include(x => x.Skills).Include(x => x.Recruiters).FirstOrDefaultAsync(x => x.ID == id);
             }
         }
     }

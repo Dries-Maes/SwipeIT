@@ -31,6 +31,9 @@ namespace SwipeIT
         {
             modelBuilder.Entity<Developer>().HasMany(x => x.Recruiters);
             modelBuilder.Entity<Recruiter>().HasMany(x => x.Developers);
+            modelBuilder.Entity<Developer>().HasMany(x => x.Skills);
+            modelBuilder.Entity<Recruiter>().HasMany(x => x.Skills);
+            //Todo mapping for locations (and dbset)
         }
 
         public void DeleteDb()

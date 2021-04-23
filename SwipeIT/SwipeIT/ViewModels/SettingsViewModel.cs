@@ -60,8 +60,6 @@ namespace SwipeIT.ViewModels
         }
 
         public List<string> AvatarList { get; set; }
-        public bool IsDeveloper { get; set; }
-        public bool IsRecruiter { get; set; }
 
         public Command<Account> SaveCommand => new Command<Account>(SaveAsync);
         public Command<Location> DeleteLocationCommand => new Command<Location>(DeleteLocationAsync);
@@ -78,7 +76,6 @@ namespace SwipeIT.ViewModels
         {
             BuildAvailableLocationsList();
             BuildAvatarList();
-            SetRoleBools();
         }
 
         private void SkillDeleted(string skill)
@@ -109,6 +106,7 @@ namespace SwipeIT.ViewModels
             if (!skills.Select(x => x.SkillName).Contains(SkillEntry))
             {
                 await SkillsRepo.AddItemAsync(new Skill { SkillName = SkillEntry, IsCreatedByUser = true });
+                skills.Add(new Skill { SkillName = SkillEntry, IsCreatedByUser = true });
             }
             ((User)CurrentUserSingleton.CurrentUser).Skills.Add(skills.FirstOrDefault(x => x.SkillName == SkillEntry));
             SkillEntry = "";
@@ -123,20 +121,6 @@ namespace SwipeIT.ViewModels
                 {
                     AvailableLocations.Add(item);
                 }
-            }
-        }
-
-        private void SetRoleBools()
-        {
-            if (CurrentUserSingleton.CurrentUser is Developer)
-            {
-                IsDeveloper = true;
-                IsRecruiter = false;
-            }
-            else if (CurrentUserSingleton.CurrentUser is Recruiter)
-            {
-                IsDeveloper = false;
-                IsRecruiter = true;
             }
         }
 
