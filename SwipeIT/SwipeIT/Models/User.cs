@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace SwipeIT.Models
 {
@@ -6,6 +7,7 @@ namespace SwipeIT.Models
     {
         private string firstName;
 
+        [MaxLength(50)]
         public string FirstName
         {
             get => firstName;
@@ -18,6 +20,7 @@ namespace SwipeIT.Models
 
         private string lastName;
 
+        [MaxLength(50)]
         public string LastName
         {
             get => lastName;
@@ -45,6 +48,7 @@ namespace SwipeIT.Models
 
         private int yearsOfExperience;
 
+        [Range(0, 75)]
         public int YearsOfExperience
         {
             get => yearsOfExperience;

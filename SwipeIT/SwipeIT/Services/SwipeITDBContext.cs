@@ -12,6 +12,8 @@ namespace SwipeIT
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<AvailableLocation> AvailableLocations { get; set; }
+        public DbSet<DateLog> DateLogs { get; set; }
+        public DbSet<Account> Accounts { get; set; }
 
         public SwipeITDBContext()
         {
