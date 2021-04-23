@@ -43,7 +43,7 @@ namespace SwipeIT.ViewModels
             Accounts = new List<Account>();
             GetAccounts().Wait();
 
-            CurrentUserSingleton.CurrentUser = null;
+            Current.User = null;
             UserMail = "";
             UserPassword = "";
         }
@@ -93,34 +93,33 @@ namespace SwipeIT.ViewModels
 
         private bool VerifyPassword()
         {
-            return UserPassword == CurrentUserSingleton.CurrentUser.Password;
+            return UserPassword == Current.User.Password;
         }
 
         private async Task CreateNewUser()
         {
             if (IsDeveloper)
             {
-                Developer temp = new Developer
+                Current.User = new Developer
                 {
                     Email = UserMail,
                     Password = UserPassword,
                     FirstName = FirstName,
                     LastName = LastName,
                 };
-                CurrentUserSingleton.CurrentUser = temp;
-                await DeveloperRepo.AddItemAsync((Developer)CurrentUserSingleton.CurrentUser);
+                await DeveloperRepo.AddItemAsync((Developer)Current.User);
             }
 
             if (IsRecruiter)
             {
-                CurrentUserSingleton.CurrentUser = new Recruiter
+                Current.User = new Recruiter
                 {
                     Email = UserMail,
                     Password = UserPassword,
                     FirstName = FirstName,
                     LastName = LastName,
                 };
-                await RecruiterRepo.AddItemAsync((Recruiter)CurrentUserSingleton.CurrentUser);
+                await RecruiterRepo.AddItemAsync((Recruiter)Current.User);
             }
         }
 
@@ -152,7 +151,27 @@ namespace SwipeIT.ViewModels
             {
                 try // todo find user
                 {
-                    CurrentUserSingleton.CurrentUser = Accounts.First(x => x.Email == UserMail);
+                    var account = Accounts.First(x => x.Email == UserMail);
+                    if (account != null && account.Email != "admin")
+                    {
+                        List<User> list = new List<User>();
+                        list.AddRange(await DeveloperRepo.GetAllItemsAsync());
+                        list.AddRange(await RecruiterRepo.GetAllItemsAsync());
+                        User user = list.FirstOrDefault(x => x.ID == account.ID);
+                        if (user is Developer)
+                        {
+                            Current.User = user;
+                        }
+                        else if (user is Recruiter)
+                        {
+                            Current.User = user;
+                        }
+                    }
+                    else if (account.Email == "admin")
+                    {
+                        // Admin moet niet een current user hebben (todo)
+                        Current.User = (User)account;
+                    }
                 }
                 catch (Exception)
                 {
@@ -171,20 +190,19 @@ namespace SwipeIT.ViewModels
                 // todo Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
                 IsRecruiter = false;
                 IsDeveloper = false;
-                switch (CurrentUserSingleton.CurrentUser)
+                switch (Current.User)
                 {
                     case Developer developer:
-                        await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
                         IsDeveloper = true;
+                        await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
                         break;
 
                     case Recruiter recruiter:
-                        await Shell.Current.GoToAsync($"//{nameof(SwipePage)}");
                         IsRecruiter = true;
+                        await Shell.Current.GoToAsync($"//{nameof(SwipePage)}");
                         break;
 
-                    case Admin admin:
-
+                    default:
                         await Shell.Current.GoToAsync(nameof(AdministrationPage));
                         break;
                 }

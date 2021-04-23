@@ -11,7 +11,7 @@ namespace SwipeIT.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public CurrentUserSingleton CurrentUserSingleton { get; set; }
+        public Current Current { get; set; }
 
         public IGenericRepo<Developer> DeveloperRepo = new DeveloperRepo();
         public IGenericRepo<Recruiter> RecruiterRepo = new RecruiterRepo();
@@ -51,7 +51,7 @@ namespace SwipeIT.ViewModels
 
         public BaseViewModel()
         {
-            CurrentUserSingleton = CurrentUserSingleton.GetSingleton();
+            Current = Current.GetSingleton();
         }
 
         internal void DeleteDb()

@@ -193,12 +193,12 @@
     <AndroidResource Include="Resources\drawable\Icon09.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\user-plus.svg">
+    <AndroidResource Include="Resources\drawable\userplus.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\user-minus.svg">
+    <AndroidResource Include="Resources\drawable\userminus.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AndroidResource>
   </ItemGroup>
