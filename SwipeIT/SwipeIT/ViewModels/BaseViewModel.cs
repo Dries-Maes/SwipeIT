@@ -97,7 +97,7 @@ namespace SwipeIT.ViewModels
                         new AvailableLocation{Province = Province.Henegouwen},
                     },
                     Email ="jens.v.gelder@gmail.com",
-                    Password ="DoNotDrag0n!",
+                    Password ="pass",
                     Address = "Haacht neerstraat",
                 },
                 new Developer
@@ -119,7 +119,7 @@ namespace SwipeIT.ViewModels
                         new AvailableLocation{Province = Province.Henegouwen },
                     },
                     Email="dm.inbox@outlook.com",
-                    Password ="P1ssM30ff"
+                    Password ="pass"
                 },
                 new Developer
                 {
@@ -161,7 +161,7 @@ namespace SwipeIT.ViewModels
                         new AvailableLocation{Province = Province.Henegouwen},
                     },
                     Email ="seba.kesteloot@gmail.com",
-                    Password="r00t"
+                    Password="pass"
                 },
                 new Developer
                 {
@@ -182,7 +182,7 @@ namespace SwipeIT.ViewModels
                         new AvailableLocation{Province = Province.Henegouwen},
                     },
                     Email="simon.van.tittelboom@gmail.com",
-                    Password ="R00T2.0"
+                    Password ="pass"
                 },
                 new Developer
                 {
@@ -203,7 +203,7 @@ namespace SwipeIT.ViewModels
                         new AvailableLocation{Province = Province.Henegouwen},
                     },
                     Email ="joyce.alfvoet@gmail.com",
-                    Password = "Recruit#MeToo"
+                    Password = "pass"
                 },
                 new Developer
                 {
@@ -224,7 +224,7 @@ namespace SwipeIT.ViewModels
                         new AvailableLocation{Province = Province.Henegouwen},
                     },
                     Email = "delobellekobe@gmail.com",
-                    Password ="IkWeetGeenPaswoordmeer"
+                    Password ="pass"
                 },
                 new Developer
                 {
@@ -245,7 +245,7 @@ namespace SwipeIT.ViewModels
                         new AvailableLocation{Province = Province.Henegouwen},
                     },
                     Email="emmadanckaert@hotmail.com",
-                    Password = "DriesHeeftAltijdGelijk"
+                    Password = "pass"
                 },
                 new Developer
                 {
@@ -266,7 +266,7 @@ namespace SwipeIT.ViewModels
                         new AvailableLocation{Province = Province.Henegouwen},
                     },
                     Email="anstavropoulos@gmail.com",
-                    Password= "Gr33c3"
+                    Password= "pass"
                 },
                 new Developer
                 {
@@ -287,7 +287,7 @@ namespace SwipeIT.ViewModels
                         new AvailableLocation{Province = Province.Henegouwen},
                     },
                     Email = "pieter_van_durme@hotmail.com",
-                    Password ="Fr1tuur"
+                    Password ="pass"
                 },
                 new Developer
                 {
@@ -307,8 +307,8 @@ namespace SwipeIT.ViewModels
                         new AvailableLocation{Province = Province.VlaamsBrabant},
                         new AvailableLocation{Province = Province.Henegouwen},
                     },
-                    Email ="nvanroyen@gmail.com",
-                    Password = "ILoveTinder"
+                    Email ="nick",
+                    Password = "pass"
                 },
                 new Developer
                 {
@@ -328,6 +328,8 @@ namespace SwipeIT.ViewModels
                         new AvailableLocation{Province = Province.VlaamsBrabant},
                         new AvailableLocation{Province = Province.Henegouwen},
                     },
+                     Email ="diedeick",
+                     Password = "pass"
                 },
                 new Developer
                 {
@@ -347,6 +349,8 @@ namespace SwipeIT.ViewModels
                         new AvailableLocation{Province = Province.VlaamsBrabant},
                         new AvailableLocation{Province = Province.Henegouwen},
                     },
+                     Email ="marieke",
+                     Password = "pass"
                 },
                 new Developer
                 {
@@ -367,6 +371,8 @@ namespace SwipeIT.ViewModels
                         new AvailableLocation{Province = Province.Henegouwen},
                     },
                      Address= "Aalst",
+                     Email ="michiel",
+                     Password = "pass"
         },
             };
             await DeveloperRepo.AddItemsAsync(temp);
@@ -392,8 +398,8 @@ namespace SwipeIT.ViewModels
                    FirstName = "Jef",
                     LastName = "Besos",
                     Company = "Bamazon",
-                    Email = "jef@bamazon.com",
-                    Password = "B3505",
+                    Email = "jef",
+                    Password = "pass",
                     Skills = new ObservableCollection<Skill>
                     {
                         new Skill
@@ -413,8 +419,8 @@ namespace SwipeIT.ViewModels
                     FirstName = "Billy",
                     LastName = "Gates",
                     Company = "Licrosoft",
-                    Email ="billygates@licrosoft.org",
-                    Password ="BgL003!?",
+                    Email ="Billy",
+                    Password ="pass",
                     Skills = new ObservableCollection<Skill>
                     {
                         new Skill
@@ -434,8 +440,8 @@ namespace SwipeIT.ViewModels
                     FirstName = "Stefaan",
                     LastName = "Jops",
                     Company = "Bapple",
-                    Email = "stefjops@bapple.io",
-                    Password = "Peer4TheWin",
+                    Email = "stefaan",
+                    Password = "pass",
                     Skills = new ObservableCollection<Skill>
                     {
                         new Skill
@@ -455,8 +461,8 @@ namespace SwipeIT.ViewModels
                     FirstName = "Meloen",
                     LastName = "Musk",
                     Company = "Teslaa",
-                    Email ="muskmeloen@teslaa.be",
-                    Password ="Model3XS",
+                    Email ="meloen",
+                    Password ="pass",
                     Skills = new ObservableCollection<Skill>
                     {
                         new Skill

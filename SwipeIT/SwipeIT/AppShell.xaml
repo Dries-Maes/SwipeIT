@@ -2,6 +2,7 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:SwipeIT.Views"
+       xmlns:viewmodels="clr-namespace:SwipeIT.ViewModels"
        Title="SwipeIT"
        x:Class="SwipeIT.AppShell">
 
@@ -112,8 +113,11 @@
     </FlyoutItem>
     <FlyoutItem Title="Swipe"
                 Icon="icon_about.png">
-
+        <FlyoutItem.BindingContext>
+            <viewmodels:BaseViewModel />
+        </FlyoutItem.BindingContext>
         <ShellContent Route="SwipePage"
+                      IsVisible="{Binding IsRecruiter}"
                       ContentTemplate="{DataTemplate local:SwipePage}" />
     </FlyoutItem>
     <FlyoutItem Title="About"
