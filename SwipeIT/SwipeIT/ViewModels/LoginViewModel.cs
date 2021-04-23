@@ -40,13 +40,15 @@ namespace SwipeIT.ViewModels
         public LoginViewModel()
         {
             Accounts = new List<Account>();
-            GetMockData();
+            GetData();
+            IsDeveloper = IsDeveloper;
+            IsRecruiter = IsRecruiter;
             CurrentUserSingleton.CurrentUser = null;
             UserMail = "";
             UserPassword = "";
         }
 
-        private async void GetMockData()
+        private async void GetData()
         {
             DevelopersResult = await DeveloperRepo.GetAllItemsAsync();
             RecruiterResult = await RecruiterRepo.GetAllItemsAsync();
@@ -147,17 +149,7 @@ namespace SwipeIT.ViewModels
 
         private async void OnLoginClicked(object obj)
         {
-            SetRoleBools();
             ErrorMessage = "";
-            if (UserMail == "Admin" && UserPassword == "Admin")
-            {
-                CurrentUserSingleton.CurrentUser = new Admin()
-                {
-                    Email = UserMail,
-                    Password = UserPassword
-                };
-                await Shell.Current.GoToAsync(nameof(AdministrationPage));
-            }
 
             if (IsSignUp)
             {
@@ -211,7 +203,8 @@ namespace SwipeIT.ViewModels
 
                     case Admin admin:
                         // do admin stuff
-                        throw new NotImplementedException();
+                        await Shell.Current.GoToAsync(nameof(AdministrationPage));
+                        break;
                 }
             }
         }
