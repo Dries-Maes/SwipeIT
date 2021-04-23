@@ -38,5 +38,10 @@ namespace SwipeIT
             modelBuilder.Entity<Recruiter>().HasMany(x => x.Locations);
             //Todo mapping for locations (and dbset)
         }
+
+        public void DeleteDb()
+        {
+            Database.EnsureDeleted();
+        }
     }
 }
