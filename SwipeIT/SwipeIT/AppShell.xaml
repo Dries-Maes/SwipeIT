@@ -113,11 +113,7 @@
     </FlyoutItem>
     <FlyoutItem Title="Swipe"
                 Icon="icon_about.png">
-        <FlyoutItem.BindingContext>
-            <viewmodels:BaseViewModel />
-        </FlyoutItem.BindingContext>
         <ShellContent Route="SwipePage"
-                      IsVisible="{Binding IsRecruiter}"
                       ContentTemplate="{DataTemplate local:SwipePage}" />
     </FlyoutItem>
     <FlyoutItem Title="About"
