@@ -38,12 +38,12 @@
                 <Grid>
 
                     <Image Source="{Binding CurrentUserSingleton.CurrentUser.Image}"
-                       HorizontalOptions="Center"
-                       HeightRequest="150"
-                       WidthRequest="150">
+                           HorizontalOptions="Center"
+                           HeightRequest="150"
+                           WidthRequest="150">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ImageClickedCommand}"
-                                              CommandParameter="{Binding .}" />
+                                                  CommandParameter="{Binding .}" />
                         </Image.GestureRecognizers>
                     </Image>
                     <Image Source="icon_about.png"
@@ -78,7 +78,8 @@
                 <Entry Text="{Binding CurrentUserSingleton.CurrentUser.Address}"
                        IsVisible="{Binding IsDeveloper}" />
 
-                <Label Text="Company" />
+                <Label Text="Company"
+                       IsVisible="{Binding IsRecruiter}" />
 
                 <Entry Text="{Binding CurrentUserSingleton.CurrentUser.Company}"
                        IsVisible="{Binding IsRecruiter}" />

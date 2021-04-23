@@ -106,6 +106,7 @@ namespace SwipeIT.ViewModels
             if (!skills.Select(x => x.SkillName).Contains(SkillEntry))
             {
                 await SkillsRepo.AddItemAsync(new Skill { SkillName = SkillEntry, IsCreatedByUser = true });
+                skills.Add(new Skill { SkillName = SkillEntry, IsCreatedByUser = true });
             }
             ((User)CurrentUserSingleton.CurrentUser).Skills.Add(skills.FirstOrDefault(x => x.SkillName == SkillEntry));
             SkillEntry = "";

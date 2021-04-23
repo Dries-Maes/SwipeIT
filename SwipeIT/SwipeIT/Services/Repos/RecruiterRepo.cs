@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SwipeIT.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SwipeIT.Services.TESTDbRepos
@@ -52,7 +50,10 @@ namespace SwipeIT.Services.TESTDbRepos
             using (var dbContext = new SwipeITDBContext())
             {
                 return await dbContext.Recruiters.Include(x => x.Developers)
+                                                .Include(x => x.Skills)
+
                                                  .ToListAsync();
+                //Todo: include locations (everywhere)
             }
         }
 
@@ -61,6 +62,7 @@ namespace SwipeIT.Services.TESTDbRepos
             using (var dbContext = new SwipeITDBContext())
             {
                 return await dbContext.Recruiters.Include(x => x.Developers)
+                    .Include(x => x.Skills)
                                                  .FirstOrDefaultAsync(x => x.ID == id);
             }
         }

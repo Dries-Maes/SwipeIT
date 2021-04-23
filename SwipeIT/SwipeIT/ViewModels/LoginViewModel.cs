@@ -126,8 +126,28 @@ namespace SwipeIT.ViewModels
             // todo admin (release 3)
         }
 
+        private void SetRoleBools()
+        {
+            if (CurrentUserSingleton.CurrentUser is Developer)
+            {
+                IsDeveloper = true;
+                IsRecruiter = false;
+            }
+            else if (CurrentUserSingleton.CurrentUser is Recruiter)
+            {
+                IsDeveloper = false;
+                IsRecruiter = true;
+            }
+            else
+            {
+                IsDeveloper = false;
+                IsRecruiter = false;
+            }
+        }
+
         private async void OnLoginClicked(object obj)
         {
+            SetRoleBools();
             ErrorMessage = "";
             if (UserMail == "Admin" && UserPassword == "Admin")
             {
