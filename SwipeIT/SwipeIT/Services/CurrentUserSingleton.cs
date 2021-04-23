@@ -30,11 +30,11 @@ namespace SwipeIT.Services
                 Email = "Pieter@pietercorp.org",
                 Image = "Icon27.png",
                 Company = "PCorp",
-                Locations = new ObservableCollection<Location> {
-                Location.Henegouwen,
-                Location.Antwerpen,
-                Location.Luik,
-                Location.Namen
+                AvailableLocations = new ObservableCollection<AvailableLocation> {
+                new AvailableLocation{Province = Province.Henegouwen},
+                new AvailableLocation{Province = Province.Antwerpen},
+                new AvailableLocation{Province = Province.Luik},
+                new AvailableLocation{Province = Province.Namen},
                 }
             };
         }

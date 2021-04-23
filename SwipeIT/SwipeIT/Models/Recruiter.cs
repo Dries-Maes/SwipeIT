@@ -17,21 +17,21 @@ namespace SwipeIT.Models
             }
         }
 
-        private ObservableCollection<Developer> selectedDevelopers;
+        private ICollection<Developer> developers;
 
-        public ObservableCollection<Developer> SelectedDevelopers
+        public ICollection<Developer> Developers
         {
-            get => selectedDevelopers;
+            get => developers;
             set
             {
-                selectedDevelopers = value;
-                OnPropertyChanged(nameof(SelectedDevelopers));
+                developers = value;
+                OnPropertyChanged(nameof(Developers));
             }
         }
 
         public Recruiter()
         {
-            SelectedDevelopers = new ObservableCollection<Developer>();
+            Developers = new ObservableCollection<Developer>();
         }
     }
 }

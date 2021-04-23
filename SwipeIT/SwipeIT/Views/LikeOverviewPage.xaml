@@ -11,7 +11,7 @@
                      HorizontalOptions="CenterAndExpand">
 
             <CollectionView IsVisible="{OnPlatform Android=true, Default=false}"
-                            ItemsSource="{Binding CurrentUserSingleton.CurrentUser.SelectedDevelopers}">
+                            ItemsSource="{Binding CurrentUserSingleton.CurrentUser.Developers}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Margin="2">
@@ -63,7 +63,7 @@
             </CollectionView>
 
             <CollectionView IsVisible="{OnPlatform UWP=true, Default=false}"
-                            ItemsSource="{Binding CurrentUserSingleton.CurrentUser.SelectedDevelopers}">
+                            ItemsSource="{Binding CurrentUserSingleton.CurrentUser.Developers}">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Horizontal"
                                      Span="3" />

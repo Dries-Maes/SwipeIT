@@ -16,21 +16,21 @@ namespace SwipeIT.Models
             }
         }
 
-        private List<Recruiter> likedByRecruiters;
+        private ICollection<Recruiter> recruiters;
 
-        public List<Recruiter> LikedByRecruiters
+        public ICollection<Recruiter> Recruiters
         {
-            get => likedByRecruiters;
+            get => recruiters;
             set
             {
-                likedByRecruiters = value;
+                recruiters = value;
                 OnPropertyChanged(nameof(OnPropertyChanged));
             }
         }
 
         public Developer()
         {
-            LikedByRecruiters = new List<Recruiter>();
+            Recruiters = new List<Recruiter>();
         }
     }
 }

@@ -2,12 +2,13 @@
 using SwipeIT.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SwipeIT.Services
+namespace SwipeIT.Services.TESTDbRepos
 {
-    public class DeveloperDbRepo : IGenericRepo<Developer>
+    public class DeveloperRepo : IGenericRepo<Developer>
     {
         public async Task<bool> AddItemAsync(Developer developer)
         {
@@ -49,20 +50,18 @@ namespace SwipeIT.Services
 
         public async Task<List<Developer>> GetAllItemsAsync()
         {
-            //using (var dbContext = new SwipeITDBContext())
-            //{
-            //    return await dbContext.Developers.ToListAsync();
-            //}
-            throw new NotImplementedException();
+            using (var dbContext = new SwipeITDBContext())
+            {
+                return await dbContext.Developers.Include(x => x.Skills).Include(x => x.AvailableLocations).Include(x => x.Recruiters).ToListAsync();
+            }
         }
 
         public async Task<Developer> GetItemAsync(int id)
         {
-            //using (var dbContext = new SwipeITDBContext())
-            //{
-            //    return await dbContext.Developers.FindAsync(id);
-            //}
-            throw new NotImplementedException();
+            using (var dbContext = new SwipeITDBContext())
+            {
+                return await dbContext.Developers.Include(x => x.Skills).Include(x => x.AvailableLocations).Include(x => x.Recruiters).FirstOrDefaultAsync(x => x.ID == id);
+            }
         }
     }
 }

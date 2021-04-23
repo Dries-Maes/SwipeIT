@@ -1,13 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SwipeIT.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace SwipeIT.Services
+namespace SwipeIT.Services.TESTDbRepos
 {
-    public class RecruiterDbRepo : IGenericRepo<Recruiter>
+    public class RecruiterRepo : IGenericRepo<Recruiter>
     {
         public async Task<bool> AddItemAsync(Recruiter recruiter)
         {
@@ -49,20 +47,24 @@ namespace SwipeIT.Services
 
         public async Task<List<Recruiter>> GetAllItemsAsync()
         {
-            //using (var dbContext = new SwipeITDBContext())
-            //{
-            //    return await dbContext.Recruiters.ToListAsync();
-            //}
-            throw new NotImplementedException();
+            using (var dbContext = new SwipeITDBContext())
+            {
+                return await dbContext.Recruiters.Include(x => x.Developers)
+                                                .Include(x => x.Skills)
+                                                .Include(x => x.AvailableLocations)
+                                                 .ToListAsync();
+            }
         }
 
         public async Task<Recruiter> GetItemAsync(int id)
         {
-            //using (var dbContext = new SwipeITDBContext())
-            //{
-            //    return await dbContext.Recruiters.FindAsync(id);
-            //}
-            throw new NotImplementedException();
+            using (var dbContext = new SwipeITDBContext())
+            {
+                return await dbContext.Recruiters.Include(x => x.Developers)
+                    .Include(x => x.Skills)
+                    .Include(x => x.AvailableLocations)
+                                                 .FirstOrDefaultAsync(x => x.ID == id);
+            }
         }
     }
 }

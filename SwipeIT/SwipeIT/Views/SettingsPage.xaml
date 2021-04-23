@@ -38,12 +38,12 @@
                 <Grid>
 
                     <Image Source="{Binding CurrentUserSingleton.CurrentUser.Image}"
-                       HorizontalOptions="Center"
-                       HeightRequest="150"
-                       WidthRequest="150">
+                           HorizontalOptions="Center"
+                           HeightRequest="150"
+                           WidthRequest="150">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ImageClickedCommand}"
-                                              CommandParameter="{Binding .}" />
+                                                  CommandParameter="{Binding .}" />
                         </Image.GestureRecognizers>
                     </Image>
                     <Image Source="icon_about.png"
@@ -78,25 +78,26 @@
                 <Entry Text="{Binding CurrentUserSingleton.CurrentUser.Address}"
                        IsVisible="{Binding IsDeveloper}" />
 
-                <Label Text="Company" />
+                <Label Text="Company"
+                       IsVisible="{Binding IsRecruiter}" />
 
                 <Entry Text="{Binding CurrentUserSingleton.CurrentUser.Company}"
                        IsVisible="{Binding IsRecruiter}" />
                 <Picker Title="Select location"
-                        ItemsSource="{Binding AvailableLocations}"
+                        ItemsSource="{Binding SelectedLocations}"
                         ItemDisplayBinding="{Binding .}"
                         SelectedItem="{Binding Source={RelativeSource AncestorType={x:Type local:SettingsViewModel}}, Path=SelectedLocation}"
                         VerticalOptions="Start">
                 </Picker>
                 <Button Text="Add location"
                         Command="{Binding AddLocationCommand}" />
-                <StackLayout BindableLayout.ItemsSource="{Binding CurrentUserSingleton.CurrentUser.Locations}">
+                <StackLayout BindableLayout.ItemsSource="{Binding CurrentUserSingleton.CurrentUser.AvailableLocations}">
 
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
 
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding .}"
+                                <Label Text="{Binding Province}"
                                        VerticalOptions="Center" />
                                 <Button Text="Delete"
                                         WidthRequest="75"

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SwipeIT.Services.TESTDbRepos
 {
-    public class AdminDbRepo : IGenericRepo<Admin>
+    public class AdminRepo : IGenericRepo<Admin>
     {
         public async Task<bool> AddItemAsync(Admin admin)
         {
@@ -49,20 +49,18 @@ namespace SwipeIT.Services.TESTDbRepos
 
         public async Task<List<Admin>> GetAllItemsAsync()
         {
-            //using (var dbContext = new SwipeITDBContext())
-            //{
-            //    return await dbContext.Admins.ToListAsync();
-            //}
-            throw new NotImplementedException();
+            using (var dbContext = new SwipeITDBContext())
+            {
+                return await dbContext.Admins.ToListAsync();
+            }
         }
 
         public async Task<Admin> GetItemAsync(int id)
         {
-            //using (var dbContext = new SwipeITDBContext())
-            //{
-            //    return await dbContext.Admins.FindAsync(id);
-            //}
-            throw new NotImplementedException();
+            using (var dbContext = new SwipeITDBContext())
+            {
+                return await dbContext.Admins.FindAsync(id);
+            }
         }
     }
 }

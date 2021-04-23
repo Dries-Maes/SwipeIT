@@ -7,6 +7,9 @@ namespace SwipeIT.ViewModels
 {
     public class AboutViewModel : BaseViewModel
     {
+        public Command AddDummyDataCommand => new Command(AddDummyData);
+        public Command DeleteDbCommand => new Command(DeleteDb);
+
         public AboutViewModel()
         {
             Title = "About";

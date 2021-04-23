@@ -39,7 +39,9 @@
                                             <Button Text="&#xf410;"
                                                     FontSize="Large"
                                                     FontFamily='FontAwesome'
-                                                    BackgroundColor="Red" />
+                                                    BackgroundColor="Red"
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:SwipeViewModel}}, Path=RefreshCommand}"
+                                                    CommandParameter="{Binding .}" />
                                         </StackLayout>
                                     </SwipeItemView>
                                 </SwipeItems>
@@ -52,6 +54,10 @@
                                            HeightRequest="150"
                                            WidthRequest="150">
                                     </Image>
+                                    <Button IsVisible="{OnIdiom Desktop=True, Default=False, TV=True }"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:SwipeViewModel}}, Path=LikeCommand}"
+                                            CommandParameter="{Binding .}"
+                                            Text="Add To DeveloperList" />
 
                                     <StackLayout Orientation="Horizontal"
                                                  HorizontalOptions="Center">
@@ -61,7 +67,7 @@
                                                FontSize="Large" />
                                     </StackLayout>
 
-                                    <FlexLayout BindableLayout.ItemsSource="{Binding Locations}"
+                                    <FlexLayout BindableLayout.ItemsSource="{Binding AvailableLocations}"
                                                 Wrap="Wrap"
                                                 Direction="Row"
                                                 JustifyContent="Center"
@@ -70,7 +76,7 @@
                                             <DataTemplate>
                                                 <Frame BorderColor="Black"
                                                        CornerRadius="20">
-                                                    <Label Text="{Binding .}"
+                                                    <Label Text="{Binding Province}"
                                                            VerticalOptions="Center"
                                                            HorizontalTextAlignment="Center" />
                                                 </Frame>
