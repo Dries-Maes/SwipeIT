@@ -22,11 +22,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="AppShellDeveloper.xaml.cs">
+      <DependentUpon>AppShellDeveloper.xaml</DependentUpon>
+    </Compile>
     <Compile Update="AppShellAdmin.xaml.cs">
       <DependentUpon>AppShellAdmin.xaml</DependentUpon>
     </Compile>
-    <Compile Update="AppShellR.xaml.cs">
-      <DependentUpon>AppShellR.xaml</DependentUpon>
+    <Compile Update="AppShellRecruiter.xaml.cs">
+      <DependentUpon>AppShellRecruiter.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\SwipePage.xaml.cs">
       <DependentUpon>SwipePage.xaml</DependentUpon>
