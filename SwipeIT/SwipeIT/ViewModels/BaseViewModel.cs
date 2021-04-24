@@ -78,19 +78,15 @@ namespace SwipeIT.ViewModels
 
         private void SetBools()
         {
-            try
+            switch (Current.User)
             {
-                if (Current.User is Developer)
-                {
+                case Developer _:
                     IsDeveloper = true;
-                }
-                else if (Current.User is Recruiter)
-                {
+                    break;
+
+                case Recruiter _:
                     IsRecruiter = true;
-                }
-            }
-            catch (Exception)
-            {
+                    break;
             }
         }
 
