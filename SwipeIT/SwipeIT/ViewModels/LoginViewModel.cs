@@ -186,13 +186,13 @@ namespace SwipeIT.ViewModels
 
                 switch (Current.User)
                 {
-                    case Developer developer:
+                    case Developer _:
                         IsDeveloper = true;
                         App.Current.MainPage = new AppShell();
                         await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
                         break;
 
-                    case Recruiter recruiter:
+                    case Recruiter _:
                         IsRecruiter = true;
                         App.Current.MainPage = new AppShellR();
                         await Shell.Current.GoToAsync($"//{nameof(SwipePage)}");

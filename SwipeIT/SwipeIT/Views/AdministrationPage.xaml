@@ -18,16 +18,22 @@
             <StackLayout Orientation="Vertical"
                          VerticalOptions="CenterAndExpand"
                          HorizontalOptions="Center">
-                <Button Text="&#xf0c0; Users"
+                <Button x:Name="Users"
+                        Text="&#xf0c0; Users"
                         FontSize="Large"
-                        FontFamily='FontAwesome' />
-                <Button Text="&#xf0c0; Adminstrators"
+                        FontFamily='FontAwesome'
+                        Clicked="Button_OnClicked" />
+                <Button x:Name="Admin"
+                        Text="&#xf0c0; Adminstrators"
                         FontSize="Large"
-                        FontFamily='FontAwesome' />
+                        FontFamily='FontAwesome'
+                        Clicked="Button_OnClicked" />
 
-                <Button Text="&#xf0c0; Skills"
+                <Button x:Name="Skills"
+                        Text="&#xf0c0; Skills"
                         FontSize="Large"
-                        FontFamily='FontAwesome' />
+                        FontFamily='FontAwesome'
+                        Clicked="Button_OnClicked" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
