@@ -9,9 +9,9 @@
                          HorizontalOptions="CenterAndExpand">
 
                 <Label Text="&#xf505;"
-                       FntSize="Large"
+                       FontSize="Large"
                        FontFamily='FontAwesome'
-                       TextColor="Blue" />o
+                       TextColor="Blue" /> o
                 <Label Text="Administration" />
             </StackLayout>
         </StackLayout>
