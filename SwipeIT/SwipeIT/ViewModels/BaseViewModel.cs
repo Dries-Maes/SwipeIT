@@ -17,8 +17,29 @@ namespace SwipeIT.ViewModels
         public IGenericRepo<Recruiter> RecruiterRepo = new RecruiterRepo();
         public IGenericRepo<Skill> SkillsRepo = new GenericRepo<Skill>();
         public IGenericRepo<Admin> AdminRepo = new GenericRepo<Admin>();
-        public bool IsDeveloper { get; set; }
-        public bool IsRecruiter { get; set; }
+        private bool isDeveloper;
+
+        public bool IsDeveloper
+        {
+            get { return isDeveloper; }
+            set
+            {
+                isDeveloper = value;
+                OnPropertyChanged(nameof(IsDeveloper));
+            }
+        }
+
+        private bool isRecruiter;
+
+        public bool IsRecruiter
+        {
+            get { return isRecruiter; }
+            set
+            {
+                isRecruiter = value;
+                OnPropertyChanged(nameof(IsRecruiter));
+            }
+        }
 
         private bool isBusy = false;
 
@@ -52,6 +73,28 @@ namespace SwipeIT.ViewModels
         public BaseViewModel()
         {
             Current = Current.GetSingleton();
+            SetBools();
+        }
+
+        private void SetBools()
+        {
+            try
+            {
+                if (Current.User != null)
+                {
+                    if (Current.User is Developer)
+                    {
+                        IsDeveloper = true;
+                    }
+                    else if (Current.User is Recruiter)
+                    {
+                        IsRecruiter = true;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
         }
 
         internal void DeleteDb()

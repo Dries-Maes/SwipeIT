@@ -41,7 +41,6 @@ namespace SwipeIT.ViewModels
 
         public LoginViewModel()
         {
-
             GetAccounts().Wait();
         }
 
@@ -175,6 +174,8 @@ namespace SwipeIT.ViewModels
                 {
                     App.Current.MainPage = new AdministrationPage();
                 }
+                
+                
                 if (!(Accounts.FirstOrDefault(x => x.Id == account.Id) is Admin))
                 {
                     Current.User = (User)Accounts.FirstOrDefault(x => x.Id == account.Id);
@@ -182,19 +183,15 @@ namespace SwipeIT.ViewModels
 
                 //todo an admin is not a user so a user let's find out
                 //  Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-                IsRecruiter = false;
-                IsDeveloper = false;
 
                 switch (Current.User)
                 {
                     case Developer _:
-                        IsDeveloper = true;
                         App.Current.MainPage = new AppShell();
                         await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
                         break;
 
                     case Recruiter _:
-                        IsRecruiter = true;
                         App.Current.MainPage = new AppShellR();
                         await Shell.Current.GoToAsync($"//{nameof(SwipePage)}");
                         break;
