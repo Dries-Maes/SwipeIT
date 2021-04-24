@@ -12,28 +12,7 @@
                        FontSize="Large"
                        FontFamily='FontAwesome'
                        TextColor="Blue" />
-                <Label Text="Welcome to Administration Page!" />
-            </StackLayout>
-
-            <StackLayout Orientation="Vertical"
-                         VerticalOptions="CenterAndExpand"
-                         HorizontalOptions="Center">
-                <Button x:Name="Users"
-                        Text="&#xf0c0; Users"
-                        FontSize="Large"
-                        FontFamily='FontAwesome'
-                        Clicked="Button_OnClicked" />
-                <Button x:Name="Admin"
-                        Text="&#xf0c0; Adminstrators"
-                        FontSize="Large"
-                        FontFamily='FontAwesome'
-                        Clicked="Button_OnClicked" />
-
-                <Button x:Name="Skills"
-                        Text="&#xf0c0; Skills"
-                        FontSize="Large"
-                        FontFamily='FontAwesome'
-                        Clicked="Button_OnClicked" />
+                <Label Text="Administration" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

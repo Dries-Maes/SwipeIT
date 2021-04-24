@@ -12,21 +12,5 @@ namespace SwipeIT.Views
         {
             InitializeComponent();
         }
-
-        private void Button_OnClicked(object sender, EventArgs e)
-        {
-            if (sender == Users)
-            {
-                App.Current.MainPage = new UsersAdministrationPage();
-            }
-            else if (sender == Admin)
-            {
-                App.Current.MainPage = new AdministratorSettingsPage();
-            }
-            else if (sender == Skills)
-            {
-                App.Current.MainPage = new SkillsAdministrationPage();
-            }
-        }
     }
 }

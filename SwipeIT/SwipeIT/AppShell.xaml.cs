@@ -14,10 +14,5 @@ namespace SwipeIT
             Routing.RegisterRoute(nameof(SwipePage), typeof(SwipePage));
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
         }
-
-        private async void OnMenuItemClicked(object sender, EventArgs e)
-        {
-            await Shell.Current.GoToAsync("//LoginPage");
-        }
     }
 }
