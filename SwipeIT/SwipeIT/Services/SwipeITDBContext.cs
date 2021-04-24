@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SwipeIT.Models;
+using SwipeIT.Services;
 using System.IO;
 using Xamarin.Essentials;
 
@@ -20,7 +21,6 @@ namespace SwipeIT
             Database.EnsureCreated();
         }
 
-        // Database is autonmatically generated on first run
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string dbPath = Path.Combine(FileSystem.AppDataDirectory, "SwipeIT.db");
@@ -41,7 +41,7 @@ namespace SwipeIT
 
             modelBuilder.Entity<Recruiter>().HasMany(x => x.AvailableLocations);
 
-            //Todo mapping for locations (and dbset)
+            //modelBuilder.Seed();
         }
 
         public void DeleteDb()
