@@ -1,5 +1,6 @@
 ﻿using SwipeIT.Models;
 using System.Collections.Generic;
+using System.Linq;
 using Xamarin.Forms;
 
 namespace SwipeIT.ViewModels
@@ -34,7 +35,7 @@ namespace SwipeIT.ViewModels
 
         private async void Like(Developer developer)
         {
-            if (!((Recruiter)Current.User).Developers.Contains(developer))
+            if (((Recruiter)Current.User).Developers.FirstOrDefault(x => x.Id == developer.Id) == null)
             {
                 ((Recruiter)Current.User).Developers.Add(developer);
                 await RecruiterRepo.AddItemAsync((Recruiter)Current.User);

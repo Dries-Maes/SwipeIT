@@ -103,6 +103,21 @@
         FlyoutDisplayOptions="AsMultipleItems" will create a separate flyout item for each child element
         https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
     -->
+    <TabBar>
+        <!-- Store namespace in a variable -->
+        <ShellContent Title="Administrator"
+                      Icon="icon_feed.png"
+                      ContentTemplate="{DataTemplate local:AdministratorSettingsPage}" />
+        <ShellContent Title="Users"
+                      Icon="icon_feed.png"
+                      ContentTemplate="{DataTemplate local:UsersAdministrationPage}" />
+        <ShellContent Title="Skills"
+                      Icon="icon_about.png"
+                      ContentTemplate="{DataTemplate local:SkillsAdministrationPage}" />
+        <ShellContent Title="Admin"
+                      Icon="icon_feed.png"
+                      ContentTemplate="{DataTemplate local:AdministrationPage}" />
+    </TabBar>
 
     <!--<FlyoutItem Title="Logout"
                 Icon="icon_login.png">
@@ -147,8 +162,8 @@
         content you can do so by calling
         await Shell.Current.GoToAsync("//LoginPage");
     -->
-    <TabBar>
+    <!--<TabBar>
         <ShellContent Route="LoginPage"
                       ContentTemplate="{DataTemplate local:LoginPage}" />
-    </TabBar>
+    </TabBar>-->
 </Shell>
