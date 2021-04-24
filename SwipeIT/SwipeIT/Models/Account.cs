@@ -1,18 +1,21 @@
 ﻿using SwipeIT.Services;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SwipeIT.Models
 {
-    public abstract class Account : ObservableObject
+    public class Account : ObservableObject
     {
-        private int id;
+        private int accountId;
 
-        public int Id
+        [Required]
+        [Key]
+        public int AccountId
         {
-            get => id;
+            get => accountId;
             set
             {
-                id = value;
+                accountId = value;
             }
         }
 
@@ -44,13 +47,8 @@ namespace SwipeIT.Models
             }
         }
 
-        private DateLog dateLog;
-
-        public DateLog DateLog
-        {
-            get => dateLog;
-            set => dateLog = value;
-        }
+        [ForeignKey("DateLogId")]
+        public DateLog DateLog { get; set; }
 
         public Account()
         {

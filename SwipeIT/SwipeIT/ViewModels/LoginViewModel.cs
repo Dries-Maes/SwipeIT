@@ -169,16 +169,15 @@ namespace SwipeIT.ViewModels
                 UserMail = "";
                 UserPassword = "";
                 List<Admin> adminlist = await AdminRepo.GetAllItemsAsync();
-                var admin = adminlist.FirstOrDefault(x => x.Id == account.Id);
+                var admin = adminlist.FirstOrDefault(x => x.AccountId == account.AccountId);
                 if (admin != null)
                 {
                     App.Current.MainPage = new AdministrationPage();
                 }
-                
-                
-                if (!(Accounts.FirstOrDefault(x => x.Id == account.Id) is Admin))
+
+                if (!(Accounts.FirstOrDefault(x => x.AccountId == account.AccountId) is Admin))
                 {
-                    Current.User = (User)Accounts.FirstOrDefault(x => x.Id == account.Id);
+                    Current.User = (User)Accounts.FirstOrDefault(x => x.AccountId == account.AccountId);
                 }
 
                 //todo an admin is not a user so a user let's find out

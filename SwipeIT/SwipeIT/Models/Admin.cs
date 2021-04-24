@@ -1,4 +1,6 @@
-﻿namespace SwipeIT.Models
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace SwipeIT.Models
 {
     public class Admin : Account
     {

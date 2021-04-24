@@ -1,5 +1,6 @@
 ﻿using SwipeIT.Services;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SwipeIT.Models
 {
@@ -32,21 +33,12 @@ namespace SwipeIT.Models
             }
         }
 
-        private DateLog dateLog;
-
-        public DateLog DateLog
-        {
-            get => dateLog;
-            set
-            {
-                dateLog = value;
-                OnPropertyChanged(nameof(DateLog));
-            }
-        }
+        //[ForeignKey("DateLogId")]
+        //public DateLog DateLog { get; set; }
 
         public Skill()
         {
-            DateLog = new DateLog();
+            //DateLog = new DateLog();
         }
     }
 }

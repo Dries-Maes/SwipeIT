@@ -8,13 +8,13 @@ namespace SwipeIT
 {
     public class SwipeITDBContext : DbContext
     {
+        public DbSet<Account> Accounts { get; set; }
         public DbSet<Recruiter> Recruiters { get; set; }
         public DbSet<Developer> Developers { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<AvailableLocation> AvailableLocations { get; set; }
         public DbSet<DateLog> DateLogs { get; set; }
-        public DbSet<Account> Accounts { get; set; }
 
         public SwipeITDBContext()
         {
@@ -40,6 +40,8 @@ namespace SwipeIT
             modelBuilder.Entity<Developer>().HasMany(x => x.AvailableLocations);
 
             modelBuilder.Entity<Recruiter>().HasMany(x => x.AvailableLocations);
+            modelBuilder.Entity<Account>().OwnsOne(x => x.DateLog);
+            //modelBuilder.Entity<Skill>().OwnsOne(x => x.DateLog);
 
             //modelBuilder.Seed();
         }

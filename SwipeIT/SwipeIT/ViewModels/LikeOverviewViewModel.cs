@@ -16,7 +16,7 @@ namespace SwipeIT.ViewModels
 
         private async void OnDeveloperSelected(Developer developer)
         {
-            await Shell.Current.GoToAsync($"{nameof(LikeOverviewDetailPage)}?{nameof(LikeOverviewDetailViewModel.DeveloperID)}={developer.Id}");
+            await Shell.Current.GoToAsync($"{nameof(LikeOverviewDetailPage)}?{nameof(LikeOverviewDetailViewModel.DeveloperID)}={developer.AccountId}");
         }
     }
 }
