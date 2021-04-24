@@ -158,13 +158,11 @@ namespace SwipeIT.ViewModels
                     return;
                 }
 
-                //todo user exists, let's continue, find check pass and if passes set that user
                 if (!VerifyPassword())
                 {
                     ErrorMessage += "Password Mismatch\n";
                     return;
                 }
-                // todo password check passes when you got here so we decide were to go from here
                 Current.User = null;
                 UserMail = "";
                 UserPassword = "";
@@ -172,30 +170,27 @@ namespace SwipeIT.ViewModels
                 var admin = adminlist.FirstOrDefault(x => x.Id == account.Id);
                 if (admin != null)
                 {
-                    App.Current.MainPage = new AdministrationPage();
-                }
-                
-                
-                if (!(Accounts.FirstOrDefault(x => x.Id == account.Id) is Admin))
-                {
-                    Current.User = (User)Accounts.FirstOrDefault(x => x.Id == account.Id);
+                    Application.Current.MainPage = new AppShellD();
+                    await Shell.Current.GoToAsync(nameof(AdministrationPage));
                 }
 
-                //todo an admin is not a user so a user let's find out
-                //  Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
+                Current.User = (User)Accounts.FirstOrDefault(x => x.Id == account.Id);
+            }
 
-                switch (Current.User)
-                {
-                    case Developer _:
-                        App.Current.MainPage = new AppShell();
-                        await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
-                        break;
+            //todo an admin is not a user so a user let's find out
+            //  Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
 
-                    case Recruiter _:
-                        App.Current.MainPage = new AppShellR();
-                        await Shell.Current.GoToAsync($"//{nameof(SwipePage)}");
-                        break;
-                }
+            switch (Current.User)
+            {
+                case Developer _:
+                    App.Current.MainPage = new AppShell();
+                    await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
+                    break;
+
+                case Recruiter _:
+                    App.Current.MainPage = new AppShellR();
+                    await Shell.Current.GoToAsync($"//{nameof(SwipePage)}");
+                    break;
             }
         }
     }
