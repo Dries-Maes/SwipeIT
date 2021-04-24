@@ -4,11 +4,14 @@ using Xamarin.Forms;
 
 namespace SwipeIT
 {
-    public partial class AppShell : Xamarin.Forms.Shell
+    public partial class AppShellR : Xamarin.Forms.Shell
     {
-        public AppShell()
+        public AppShellR()
         {
             InitializeComponent();
+            Routing.RegisterRoute(nameof(LikeOverviewPage), typeof(LikeOverviewPage));
+            Routing.RegisterRoute(nameof(LikeOverviewDetailPage), typeof(LikeOverviewDetailPage));
+            Routing.RegisterRoute(nameof(SwipePage), typeof(SwipePage));
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
         }
 

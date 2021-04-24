@@ -43,10 +43,6 @@ namespace SwipeIT.ViewModels
         {
             Accounts = new List<Account>();
             GetAccounts().Wait();
-
-            Current.User = null;
-            UserMail = "";
-            UserPassword = "";
         }
 
         private async Task GetAccounts()
@@ -167,12 +163,14 @@ namespace SwipeIT.ViewModels
                     return;
                 }
                 // todo password check passes when you got here so we decide were to go from here
-
+                Current.User = null;
+                UserMail = "";
+                UserPassword = "";
                 List<Admin> adminlist = await AdminRepo.GetAllItemsAsync();
                 var admin = adminlist.FirstOrDefault(x => x.Id == account.Id);
                 if (admin != null)
                 {
-                    await Shell.Current.GoToAsync(nameof(AdministrationPage));
+                    App.Current.MainPage = new AdministrationPage();
                 }
 
                 List<User> list = new List<User>();
@@ -190,11 +188,13 @@ namespace SwipeIT.ViewModels
                 {
                     case Developer developer:
                         IsDeveloper = true;
+                        App.Current.MainPage = new AppShell();
                         await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
                         break;
 
                     case Recruiter recruiter:
                         IsRecruiter = true;
+                        App.Current.MainPage = new AppShellR();
                         await Shell.Current.GoToAsync($"//{nameof(SwipePage)}");
                         break;
                 }
