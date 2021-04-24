@@ -27,6 +27,16 @@ namespace SwipeIT.Services
             return true;
         }
 
+        public virtual async Task<bool> UpdateItemsAsync(IEnumerable<T> items)
+        {
+            using (var dbContext = new SwipeITDBContext())
+            {
+                dbContext.UpdateRange(items);
+                await dbContext.SaveChangesAsync();
+            }
+            return true;
+        }
+
         public virtual async Task<bool> DeleteItemAsync(int id)
         {
             using (var dbContext = new SwipeITDBContext())
@@ -37,7 +47,6 @@ namespace SwipeIT.Services
             }
             return true;
         }
-
 
         public virtual async Task<List<T>> GetAllItemsAsync()
         {

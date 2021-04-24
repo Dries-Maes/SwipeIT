@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SwipeIT.Services.TESTDbRepos
 {
-    public class RecruiterRepo : GenericRepo<Recruiter>, IGenericRepo<Recruiter>
+    public class RecruiterRepo : GenericRepo<Recruiter>
     {
         public override async Task<List<Recruiter>> GetAllItemsAsync()
         {

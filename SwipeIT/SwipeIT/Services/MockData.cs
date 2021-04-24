@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace SwipeIT.Services
 {
-    internal class MockData
+    public class MockData
     {
         private IEnumerable<Developer> developers;
         private IEnumerable<Recruiter> recruiters;

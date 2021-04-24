@@ -10,6 +10,8 @@ namespace SwipeIT.Services
 
         Task<bool> AddItemsAsync(IEnumerable<T> item);
 
+        Task<bool> UpdateItemsAsync(IEnumerable<T> items);
+
         Task<bool> DeleteItemAsync(int id);
 
         Task<List<T>> GetAllItemsAsync();

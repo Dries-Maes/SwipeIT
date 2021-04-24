@@ -12,7 +12,7 @@ namespace SwipeIT.Services
         public static void Seed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Developer>().HasData(
-                new Developer { LastName = "Van Gelder", FirstName = "Jens", Image = "Icon15.png", Skills = new ObservableCollection<Skill> { new Skill { SkillName = "C#" }, new Skill { SkillName = "Google" }, new Skill { SkillName = ".NET" }, }, AvailableLocations = new ObservableCollection<AvailableLocation> { new AvailableLocation { Province = Province.Antwerpen }, new AvailableLocation { Province = Province.VlaamsBrabant }, new AvailableLocation { Province = Province.Luik }, new AvailableLocation { Province = Province.Henegouwen }, }, Email = "jens.v.gelder@gmail.com", Password = "pass", Address = "Haacht neerstraat", },
+                new Developer { LastName = "Van Gelder", FirstName = "Jens", Image = "Icon15.png", Skills = new ObservableCollection<Skill> { new Skill { SkillName = "C#" }, new Skill { SkillName = ".NET" }, }, AvailableLocations = new ObservableCollection<AvailableLocation> { new AvailableLocation { Province = Province.Antwerpen }, new AvailableLocation { Province = Province.VlaamsBrabant }, new AvailableLocation { Province = Province.Luik }, new AvailableLocation { Province = Province.Henegouwen }, }, Email = "jens.v.gelder@gmail.com", Password = "pass", Address = "Haacht neerstraat", },
                 new Developer { LastName = "Maes", FirstName = "Dries", Image = "Icon03.png", Skills = new ObservableCollection<Skill> { new Skill { SkillName = "C#" }, new Skill { SkillName = ".NET" }, }, AvailableLocations = new ObservableCollection<AvailableLocation> { new AvailableLocation { Province = Province.Antwerpen }, new AvailableLocation { Province = Province.VlaamsBrabant }, new AvailableLocation { Province = Province.Henegouwen }, }, Email = "dm.inbox@outlook.com", Password = "pass" },
                 new Developer { LastName = "Impe", FirstName = "Ward", Image = "Icon07.png", Skills = new ObservableCollection<Skill> { new Skill { SkillName = "C#" }, }, AvailableLocations = new ObservableCollection<AvailableLocation> { new AvailableLocation { Province = Province.Antwerpen }, new AvailableLocation { Province = Province.VlaamsBrabant }, new AvailableLocation { Province = Province.Henegouwen }, }, Email = "ward@impesoft.com", Password = "pass" },
                 new Developer { LastName = "Kesteloot", FirstName = "Sebastiaan-Willem", Image = "Icon05.png", Skills = new ObservableCollection<Skill> { new Skill { SkillName = "C#" }, new Skill { SkillName = ".NET" }, }, AvailableLocations = new ObservableCollection<AvailableLocation> { new AvailableLocation { Province = Province.Antwerpen }, new AvailableLocation { Province = Province.VlaamsBrabant }, new AvailableLocation { Province = Province.Henegouwen }, }, Email = "feugiat.metus@Donecegestas.co.uk", Password = "pass" },
@@ -132,6 +132,20 @@ namespace SwipeIT.Services
             modelBuilder.Entity<Admin>().HasData(
                 new Admin { Email = "admin", Password = "admin", }
                 );
+        }
+
+        public static void MapRelations(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Developer>().HasMany(x => x.Recruiters);
+            modelBuilder.Entity<Recruiter>().HasMany(x => x.Developers);
+            modelBuilder.Entity<Developer>().HasMany(x => x.Skills);
+            modelBuilder.Entity<Recruiter>().HasMany(x => x.Skills);
+            modelBuilder.Entity<Skill>().HasMany(x => x.Users);
+            modelBuilder.Entity<Developer>().HasMany(x => x.AvailableLocations);
+            modelBuilder.Entity<Recruiter>().HasMany(x => x.AvailableLocations);
+            modelBuilder.Entity<Account>().HasOne(x => x.DateLog);
+            modelBuilder.Entity<Skill>().HasOne(x => x.DateLog);
+            //modelBuilder.Entity<DateLog>().HasOne(x => x.Account);
         }
     }
 }
