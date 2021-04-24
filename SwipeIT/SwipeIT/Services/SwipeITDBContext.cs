@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SwipeIT.Models;
-using SwipeIT.Services;
 using System.IO;
 using Xamarin.Essentials;
 
@@ -30,18 +29,14 @@ namespace SwipeIT
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Developer>().HasMany(x => x.Recruiters);
-
             modelBuilder.Entity<Recruiter>().HasMany(x => x.Developers);
-
             modelBuilder.Entity<Developer>().HasMany(x => x.Skills);
-
             modelBuilder.Entity<Recruiter>().HasMany(x => x.Skills);
-
+            modelBuilder.Entity<Skill>().HasMany(x => x.Users);
             modelBuilder.Entity<Developer>().HasMany(x => x.AvailableLocations);
-
             modelBuilder.Entity<Recruiter>().HasMany(x => x.AvailableLocations);
 
-            //modelBuilder.Seed();
+            //modelBuilder.Seed();  // @ Michiel "Couldn't get this to work"
         }
 
         public void DeleteDb()

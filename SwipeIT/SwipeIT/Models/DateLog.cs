@@ -1,9 +1,10 @@
-﻿using System;
+﻿using SwipeIT.Services;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace SwipeIT.Models
 {
-    public class DateLog
+    public class DateLog : ObservableObject
     {
         public int Id { get; set; }
 
@@ -12,6 +13,9 @@ namespace SwipeIT.Models
 
         [DataType(DataType.DateTime)]
         public DateTime DateModified { get; set; }
+
+        public Skill Skill { get; set; }
+        public Account Account { get; set; }
 
         public DateLog()
         {
