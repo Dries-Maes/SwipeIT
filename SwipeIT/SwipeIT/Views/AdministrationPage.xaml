@@ -11,7 +11,7 @@
                 <Label Text="&#xf505;"
                        FontSize="Large"
                        FontFamily='FontAwesome'
-                       TextColor="Blue" /> o
+                       TextColor="Blue" />
                 <Label Text="Administration" />
             </StackLayout>
         </StackLayout>
