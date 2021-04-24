@@ -11,7 +11,7 @@ namespace SwipeIT.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public CurrentUserSingleton CurrentUserSingleton { get; set; }
+        public Current Current { get; set; }
 
         public IGenericRepo<Developer> DeveloperRepo = new DeveloperRepo();
         public IGenericRepo<Recruiter> RecruiterRepo = new RecruiterRepo();
@@ -51,7 +51,7 @@ namespace SwipeIT.ViewModels
 
         public BaseViewModel()
         {
-            CurrentUserSingleton = CurrentUserSingleton.GetSingleton();
+            Current = Current.GetSingleton();
         }
 
         internal void DeleteDb()
@@ -311,64 +311,6 @@ namespace SwipeIT.ViewModels
                     Email ="nvanroyen@gmail.com",
                     Password = "ILoveTinder"
                 },
-                new Developer
-                {
-                    LastName = "Van Yperzele",
-                    FirstName = "Diederick",
-                    Image = "Icon20.png",
-                    Skills = new ObservableCollection<Skill>
-                    {
-                        new Skill
-                        {
-                            SkillName="C#"
-                        },
-                    },
-                     AvailableLocations = new ObservableCollection<AvailableLocation>
-                    {
-                        new AvailableLocation{Province = Province.Antwerpen},
-                        new AvailableLocation{Province = Province.VlaamsBrabant},
-                        new AvailableLocation{Province = Province.Henegouwen},
-                    },
-                },
-                new Developer
-                {
-                    LastName = "Verhulsdonck",
-                    FirstName = "Marieke",
-                    Image = "Icon22.png",
-                    Skills = new ObservableCollection<Skill>
-                    {
-                        new Skill
-                        {
-                            SkillName="Communication"
-                        },
-                    },
-                     AvailableLocations = new ObservableCollection<AvailableLocation>
-                    {
-                        new AvailableLocation{Province = Province.Antwerpen},
-                        new AvailableLocation{Province = Province.VlaamsBrabant},
-                        new AvailableLocation{Province = Province.Henegouwen},
-                    },
-                },
-                new Developer
-                {
-                    LastName = "Wouters",
-                    FirstName = "Michiel",
-                    Image = "Icon24.png",
-                    Skills = new ObservableCollection<Skill>
-                    {
-                        new Skill
-                        {
-                            SkillName="C#"
-                        },
-                    },
-                     AvailableLocations = new ObservableCollection<AvailableLocation>
-                    {
-                        new AvailableLocation{Province = Province.Antwerpen},
-                        new AvailableLocation{Province = Province.VlaamsBrabant},
-                        new AvailableLocation{Province = Province.Henegouwen},
-                    },
-                     Address= "Aalst",
-        },
             };
             await DeveloperRepo.AddItemsAsync(temp);
 

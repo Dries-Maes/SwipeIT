@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SwipeIT.Models
 {
@@ -6,6 +7,7 @@ namespace SwipeIT.Models
     {
         private string address;
 
+        [MaxLength(100)]
         public string Address
         {
             get => address;

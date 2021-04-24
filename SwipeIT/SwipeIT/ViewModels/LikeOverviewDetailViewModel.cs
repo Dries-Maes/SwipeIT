@@ -55,7 +55,7 @@ namespace SwipeIT.ViewModels
 
         private string GetDeveloperExperienceString()
         {
-            string experience = "";
+            string experience;
             if (SelectedDeveloper.YearsOfExperience <= 2)
             {
                 experience = "Junior";
@@ -86,7 +86,7 @@ namespace SwipeIT.ViewModels
 
         private async void SendMail()
         {
-            await Launcher.OpenAsync(new Uri($"mailto:{SelectedDeveloper.Email}?subject=SwipeIT found a Like!&body=Hey, {SelectedDeveloper.FirstName}!\nWe at {((Recruiter)CurrentUserSingleton.CurrentUser).Company} might have an interesting job offer for you.\nContact us for more information."));
+            await Launcher.OpenAsync(new Uri($"mailto:{SelectedDeveloper.Email}?subject=SwipeIT found a Like!&body=Hey, {SelectedDeveloper.FirstName}!\nWe at {((Recruiter)Current.User).Company} might have an interesting job offer for you.\nContact us for more information."));
         }
 
         private async void OpenMapApp()

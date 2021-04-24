@@ -37,7 +37,7 @@
                 </CollectionView>
                 <Grid>
 
-                    <Image Source="{Binding CurrentUserSingleton.CurrentUser.Image}"
+                    <Image Source="{Binding Current.User.Image}"
                            HorizontalOptions="Center"
                            HeightRequest="150"
                            WidthRequest="150">
@@ -56,42 +56,42 @@
                 <Label Text="First name"
                        VerticalTextAlignment="Center" />
 
-                <Entry Text="{Binding CurrentUserSingleton.CurrentUser.FirstName}"
+                <Entry Text="{Binding Current.User.FirstName}"
                        VerticalTextAlignment="Center" />
 
                 <Label Text="Last name:"
                        VerticalTextAlignment="Center"
                        Margin="0,0,20,0" />
 
-                <Entry Text="{Binding CurrentUserSingleton.CurrentUser.LastName}" />
+                <Entry Text="{Binding Current.User.LastName}" />
 
                 <Label Text="Years of experience"
                        VerticalTextAlignment="Center"
                        Margin="0,0,20,0" />
 
-                <Entry Text="{Binding CurrentUserSingleton.CurrentUser.YearsOfExperience}"
+                <Entry Text="{Binding Current.User.YearsOfExperience}"
                        Keyboard="Numeric" />
 
                 <Label Text="Address"
                        IsVisible="{Binding IsDeveloper}" />
 
-                <Entry Text="{Binding CurrentUserSingleton.CurrentUser.Address}"
+                <Entry Text="{Binding Current.User.Address}"
                        IsVisible="{Binding IsDeveloper}" />
 
                 <Label Text="Company"
                        IsVisible="{Binding IsRecruiter}" />
 
-                <Entry Text="{Binding CurrentUserSingleton.CurrentUser.Company}"
+                <Entry Text="{Binding Current.User.Company}"
                        IsVisible="{Binding IsRecruiter}" />
                 <Picker Title="Select location"
-                        ItemsSource="{Binding SelectedLocations}"
-                        ItemDisplayBinding="{Binding .}"
+                        ItemsSource="{Binding SelectedLocationsList}"
+                        ItemDisplayBinding="{Binding Province}"
                         SelectedItem="{Binding Source={RelativeSource AncestorType={x:Type local:SettingsViewModel}}, Path=SelectedLocation}"
                         VerticalOptions="Start">
                 </Picker>
                 <Button Text="Add location"
                         Command="{Binding AddLocationCommand}" />
-                <StackLayout BindableLayout.ItemsSource="{Binding CurrentUserSingleton.CurrentUser.AvailableLocations}">
+                <StackLayout BindableLayout.ItemsSource="{Binding Current.User.AvailableLocations}">
 
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
@@ -112,7 +112,7 @@
                        Placeholder="Add a skill"
                        ReturnCommand="{Binding SkillEnteredCommand}" />
 
-                <StackLayout BindableLayout.ItemsSource="{Binding CurrentUserSingleton.CurrentUser.Skills}"
+                <StackLayout BindableLayout.ItemsSource="{Binding Current.User.Skills}"
                              Padding="0,5"
                              Margin="0,5">
                     <BindableLayout.ItemTemplate>

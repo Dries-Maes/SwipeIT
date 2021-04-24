@@ -25,7 +25,7 @@ namespace SwipeIT.Services.TESTDbRepos
                 return await dbContext.Developers.Include(x => x.Skills)
                                                  .Include(x => x.AvailableLocations)
                                                  .Include(x => x.Recruiters)
-                                                 .FirstOrDefaultAsync(x => x.ID == id);
+                                                 .FirstOrDefaultAsync(x => x.Id == id);
             }
         }
     }
