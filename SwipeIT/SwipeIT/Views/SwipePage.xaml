@@ -46,8 +46,7 @@
                                     </SwipeItemView>
                                 </SwipeItems>
                             </SwipeView.TopItems>
-                            <Frame HasShadow="True"
-                                   CornerRadius="20">
+                            <Frame>
                                 <StackLayout Margin="10">
                                     <Image Source="{Binding Image}"
                                            HorizontalOptions="Center"
@@ -74,8 +73,7 @@
                                                 Margin="0,25,0,25">
                                         <BindableLayout.ItemTemplate>
                                             <DataTemplate>
-                                                <Frame BorderColor="Black"
-                                                       CornerRadius="20">
+                                                <Frame>
                                                     <Label Text="{Binding Province}"
                                                            VerticalOptions="Center"
                                                            HorizontalTextAlignment="Center" />
@@ -91,8 +89,7 @@
                                                 AlignItems="Center">
                                         <BindableLayout.ItemTemplate>
                                             <DataTemplate>
-                                                <Frame BorderColor="Black"
-                                                       CornerRadius="20">
+                                                <Frame>
                                                     <Label Text="{Binding SkillName}"
                                                            VerticalOptions="Center"
                                                            HorizontalTextAlignment="Center" />

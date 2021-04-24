@@ -75,9 +75,7 @@
                                         </SwipeItemView>
                                     </SwipeItems>
                                 </SwipeView.RightItems>
-                                <Frame HasShadow="True"
-                                       CornerRadius="10"
-                                       BorderColor="Black">
+                                <Frame>
                                     <StackLayout Orientation="Horizontal">
                                         <Button IsVisible="{OnIdiom Desktop=True, Default=false, TV=True }"
                                                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeleteCommand}"
