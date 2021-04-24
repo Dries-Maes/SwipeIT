@@ -18,11 +18,11 @@
             <StackLayout Orientation="Horizontal"
                          VerticalOptions="Start"
                          HorizontalOptions="CenterAndExpand">
-                <Label Text="&#xf506;"
+                <Label Text="&#xf506; "
                        TextColor="Red"
                        FontSize="Large"
                        FontFamily='FontAwesome' />
-                <Label Text="Remove User" />
+                <Label Text="Users Administration" />
 
                 <Label Text="&#xf0c0;"
                        FontSize="Large"
@@ -33,57 +33,6 @@
                        FontFamily='FontAwesome' />
                 <Label Text="Show All Users" />
             </StackLayout>
-            <FlexLayout Margin="10"
-                        Wrap="Wrap">
-                <Button Text="User1"
-                        Margin="10"
-                        CornerRadius="25"
-                        BorderColor="AliceBlue"
-                        BorderWidth="1"
-                        BackgroundColor="White"></Button>
-                <Button Text="User2"
-                        Margin="10"
-                        CornerRadius="25"
-                        BorderColor="AliceBlue"
-                        BorderWidth="1"
-                        BackgroundColor="White"></Button>
-                <Button Text="User3"
-                        Margin="10"
-                        CornerRadius="25"
-                        BorderColor="AliceBlue"
-                        BorderWidth="1"
-                        BackgroundColor="White"></Button>
-                <Button Text="User4"
-                        Margin="10"
-                        CornerRadius="25"
-                        BorderColor="AliceBlue"
-                        BorderWidth="1"
-                        BackgroundColor="White"></Button>
-                <Button Text="User1"
-                        Margin="10"
-                        CornerRadius="25"
-                        BorderColor="AliceBlue"
-                        BorderWidth="1"
-                        BackgroundColor="White"></Button>
-                <Button Text="User2"
-                        Margin="10"
-                        CornerRadius="25"
-                        BorderColor="AliceBlue"
-                        BorderWidth="1"
-                        BackgroundColor="White"></Button>
-                <Button Text="User3"
-                        Margin="10"
-                        CornerRadius="25"
-                        BorderColor="AliceBlue"
-                        BorderWidth="1"
-                        BackgroundColor="White"></Button>
-                <Button Text="User4"
-                        Margin="10"
-                        CornerRadius="25"
-                        BorderColor="AliceBlue"
-                        BorderWidth="1"
-                        BackgroundColor="White"></Button>
-            </FlexLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
