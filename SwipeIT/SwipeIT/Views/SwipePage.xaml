@@ -8,7 +8,7 @@
         <local:SwipeViewModel />
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="{Binding CurrentUserSingleton.CurrentUser.FirstName }" />
+        <ToolbarItem Text="{Binding Current.User.FirstName }" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand"

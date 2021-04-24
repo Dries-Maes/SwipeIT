@@ -30,11 +30,17 @@ namespace SwipeIT
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Developer>().HasMany(x => x.Recruiters);
+
             modelBuilder.Entity<Recruiter>().HasMany(x => x.Developers);
+
             modelBuilder.Entity<Developer>().HasMany(x => x.Skills);
+
             modelBuilder.Entity<Recruiter>().HasMany(x => x.Skills);
+
             modelBuilder.Entity<Developer>().HasMany(x => x.AvailableLocations);
+
             modelBuilder.Entity<Recruiter>().HasMany(x => x.AvailableLocations);
+
             //Todo mapping for locations (and dbset)
         }
 

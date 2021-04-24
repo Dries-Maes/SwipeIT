@@ -23,9 +23,9 @@ namespace SwipeIT.ViewModels
             }
         }
 
-        private Province selectedLocation;
+        private AvailableLocation selectedLocation;
 
-        public Province SelectedLocation
+        public AvailableLocation SelectedLocation
         {
             get => selectedLocation;
             set
@@ -35,15 +35,15 @@ namespace SwipeIT.ViewModels
             }
         }
 
-        private ObservableCollection<Province> selectedLocations;
+        private ObservableCollection<AvailableLocation> selectedLocationsList;
 
-        public ObservableCollection<Province> SelectedLocations
+        public ObservableCollection<AvailableLocation> SelectedLocationsList
         {
-            get => selectedLocations;
+            get => selectedLocationsList;
             set
             {
-                selectedLocations = value;
-                OnPropertyChanged(nameof(SelectedLocations));
+                selectedLocationsList = value;
+                OnPropertyChanged(nameof(SelectedLocationsList));
             }
         }
 
@@ -61,14 +61,13 @@ namespace SwipeIT.ViewModels
 
         public List<string> AvatarList { get; set; }
 
-        public Command<Account> SaveCommand => new Command<Account>(SaveAsync);
         public Command<AvailableLocation> DeleteLocationCommand => new Command<AvailableLocation>(DeleteLocationAsync);
 
         public Command AddLocationCommand => new Command(AddLocation);
-        public Command SkillEnteredCommand => new Command(SkillEnteredAsync);
+        public Command SkillEnteredCommand => new Command(SkillEntryAsync);
 
         public Command<string> AvatarSelectedCommand => new Command<string>(AvatarSelected);
-        public Command<string> SkillDeletedCommand => new Command<string>(SkillDeleted);
+        public Command<string> SkillDeletedCommand => new Command<string>(DeleteSkill);
 
         public Command ImageClickedCommand => new Command(ImageClicked);
 
@@ -78,48 +77,46 @@ namespace SwipeIT.ViewModels
             BuildAvatarList();
         }
 
-        private void SkillDeleted(string skill)
+        private void DeleteSkill(string skill)
         {
-            var temp = ((User)CurrentUserSingleton.CurrentUser).Skills;
-            temp.Remove(temp.FirstOrDefault(x => x.SkillName == skill));
+            Current.User.Skills.Remove(Current.User.Skills.FirstOrDefault(x => x.SkillName == skill));
         }
 
         internal async void UpdateCurrentUser()
         {
-            if (CurrentUserSingleton.CurrentUser is Developer)
+            if (Current.User is Developer developer)
             {
-                await DeveloperRepo.AddItemAsync((Developer)CurrentUserSingleton.CurrentUser);
+                await DeveloperRepo.AddItemAsync(developer);
             }
-            else if (CurrentUserSingleton.CurrentUser is Recruiter)
+            else if (Current.User is Recruiter recruiter)
             {
-                await RecruiterRepo.AddItemAsync((Recruiter)CurrentUserSingleton.CurrentUser);
-            }
-            else
-            {
-                //AdminRepo
+                await RecruiterRepo.AddItemAsync(recruiter);
             }
         }
 
-        private async void SkillEnteredAsync()
+        private async void SkillEntryAsync()
         {
-            var skills = await SkillsRepo.GetAllItemsAsync();
-            if (!skills.Select(x => x.SkillName).Contains(SkillEntry))
+            var db = await SkillsRepo.GetAllItemsAsync();
+            var dbskill = db.FirstOrDefault(x => x.SkillName == SkillEntry);
+
+            if (dbskill == null)
             {
-                await SkillsRepo.AddItemAsync(new Skill { SkillName = SkillEntry, IsCreatedByUser = true });
-                skills.Add(new Skill { SkillName = SkillEntry, IsCreatedByUser = true });
+                dbskill = new Skill { SkillName = SkillEntry, IsCreatedByUser = true };
+                await SkillsRepo.AddItemAsync(dbskill);
             }
-            ((User)CurrentUserSingleton.CurrentUser).Skills.Add(skills.FirstOrDefault(x => x.SkillName == SkillEntry));
+            Current.User.Skills.Add(dbskill);
             SkillEntry = "";
         }
 
         private void BuildAvailableLocationsList()
         {
-            SelectedLocations = new ObservableCollection<Province>();
+            SelectedLocationsList = new ObservableCollection<AvailableLocation>();
             foreach (Province item in Enum.GetValues(typeof(Province)))
             {
-                if (item != Province.Select && ((User)CurrentUserSingleton.CurrentUser).AvailableLocations.FirstOrDefault(x => x.Province == item) == null)
+                if (item != Province.Select && (Current.User).AvailableLocations.FirstOrDefault(x => x.Province == item) == null)
                 {
-                    SelectedLocations.Add(item);
+                    AvailableLocation location = new AvailableLocation { Province = item };
+                    SelectedLocationsList.Add(location);
                 }
             }
         }
@@ -134,24 +131,20 @@ namespace SwipeIT.ViewModels
             AvatarList = AvatarList.OrderBy(a => Guid.NewGuid()).ToList();
         }
 
-        private void DeleteLocationAsync(AvailableLocation locationClass)
+        private void DeleteLocationAsync(AvailableLocation location)
         {
-            var location = locationClass.Province;
-            var userLocations = ((User)CurrentUserSingleton.CurrentUser).AvailableLocations;
-            userLocations.Remove(userLocations.FirstOrDefault(x => x.Province == location));
-            SelectedLocations.Add(location);
+            var userLocations = Current.User.AvailableLocations;
+            userLocations.Remove(location);
+            SelectedLocationsList.Add(location);
         }
 
         private void AddLocation()
         {
-            var userLocations = ((User)CurrentUserSingleton.CurrentUser).AvailableLocations;
-            if (SelectedLocation != Province.Select)
-            {
-                userLocations.Add(new AvailableLocation { Province = SelectedLocation });
-                SelectedLocations.Remove(SelectedLocation);
-                SelectedLocation = SelectedLocations.Count == 0 ? Province.Select : SelectedLocations[0];
-            }
-            SelectedLocation = Province.Select;
+            var userLocations = Current.User.AvailableLocations;
+
+            userLocations.Add(SelectedLocation);
+            SelectedLocationsList.Remove(SelectedLocation);
+            SelectedLocation = (SelectedLocationsList[0]) ?? SelectedLocation;
         }
 
         private void ImageClicked()
@@ -161,20 +154,8 @@ namespace SwipeIT.ViewModels
 
         private void AvatarSelected(string imageURL)
         {
-            ((User)CurrentUserSingleton.CurrentUser).Image = imageURL;
+            Current.User.Image = imageURL;
             ShowImagePicker = false;
-        }
-
-        private async void SaveAsync(Account account)
-        {
-            if (account is Developer)
-            {
-                await DeveloperRepo.AddItemAsync((Developer)account);
-            }
-            else if (account is Recruiter)
-            {
-                await RecruiterRepo.AddItemAsync((Recruiter)account);
-            }
         }
     }
 }
