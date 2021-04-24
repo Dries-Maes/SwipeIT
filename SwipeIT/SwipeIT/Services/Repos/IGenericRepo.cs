@@ -12,8 +12,6 @@ namespace SwipeIT.Services
 
         Task<bool> DeleteItemAsync(int id);
 
-        Task<List<Account>> GetAllAcountsAsync();
-
         Task<List<T>> GetAllItemsAsync();
 
         Task<T> GetItemAsync(int id);

@@ -41,7 +41,6 @@ namespace SwipeIT.ViewModels
 
         public LoginViewModel()
         {
-            // Accounts = new List<Account>();
 
             GetAccounts().Wait();
         }
@@ -176,8 +175,10 @@ namespace SwipeIT.ViewModels
                 {
                     App.Current.MainPage = new AdministrationPage();
                 }
-
-                Current.User = (User)Accounts.FirstOrDefault(x => x.Id == account.Id);
+                if (!(Accounts.FirstOrDefault(x => x.Id == account.Id) is Admin))
+                {
+                    Current.User = (User)Accounts.FirstOrDefault(x => x.Id == account.Id);
+                }
 
                 //todo an admin is not a user so a user let's find out
                 //  Prefixing with `//` switches to a different navigation stack instead of pushing to the active one

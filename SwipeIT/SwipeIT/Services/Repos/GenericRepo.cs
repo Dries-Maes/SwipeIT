@@ -38,18 +38,6 @@ namespace SwipeIT.Services
             return true;
         }
 
-        public async Task<List<Account>> GetAllAcountsAsync()
-        {
-            List<Account> results = new List<Account>();
-
-            using (var dbContext = new SwipeITDBContext())
-            {
-                results.AddRange(await dbContext.Set<Admin>().ToListAsync());
-                results.AddRange(await dbContext.Set<Developer>().ToListAsync());
-                results.AddRange(await dbContext.Set<Recruiter>().ToListAsync());
-            }
-            return results;
-        }
 
         public virtual async Task<List<T>> GetAllItemsAsync()
         {
