@@ -128,7 +128,7 @@ namespace SwipeIT.Services
                 new Recruiter { LastName = "Ellison", FirstName = "Urielle", Email = "lorem.ipsum.sodales@eleifendnecmalesuada.co.uk", Password = "58790026999", Company = "Elit Corp.", AvailableLocations = new ObservableCollection<AvailableLocation> { new AvailableLocation { Province = Province.OostVlaanderen }, new AvailableLocation { Province = Province.Luxemburg }, }, Skills = new ObservableCollection<Skill> { new Skill { SkillName = "HTML" }, }, Image = "Icon17.png", },
                 new Recruiter { LastName = "Mcpherson", FirstName = "Melanie", Email = "Curabitur.egestas.nunc@malesuada.org", Password = "62890177299", Company = "Mollis Corp.", AvailableLocations = new ObservableCollection<AvailableLocation> { new AvailableLocation { Province = Province.Antwerpen }, new AvailableLocation { Province = Province.VlaamsBrabant }, }, Skills = new ObservableCollection<Skill> { new Skill { SkillName = "C#" }, }, Image = "Icon05.png", },
                 new Recruiter { LastName = "Mclean", FirstName = "Calvin", Email = "habitant@ligulaNullamfeugiat.ca", Password = "25280950899", Company = "Lobortis Risus Institute", AvailableLocations = new ObservableCollection<AvailableLocation> { new AvailableLocation { Province = Province.OostVlaanderen }, new AvailableLocation { Province = Province.Luxemburg }, }, Skills = new ObservableCollection<Skill> { new Skill { SkillName = ".NET" }, }, Image = "Icon01.png", }
-                );
+                    );
             modelBuilder.Entity<Admin>().HasData(
                 new Admin { Email = "admin", Password = "admin", }
                 );

@@ -35,6 +35,7 @@ namespace SwipeIT
             modelBuilder.Entity<Recruiter>().HasMany(x => x.Skills);
             modelBuilder.Entity<Developer>().HasMany(x => x.AvailableLocations);
             modelBuilder.Entity<Recruiter>().HasMany(x => x.AvailableLocations);
+
             //modelBuilder.Seed();
         }
 

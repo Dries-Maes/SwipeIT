@@ -48,7 +48,6 @@ namespace SwipeIT.Models
 
         private int yearsOfExperience;
 
-        [Range(0, 75)]
         public int YearsOfExperience
         {
             get => yearsOfExperience;
