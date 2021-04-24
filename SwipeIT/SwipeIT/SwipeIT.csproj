@@ -22,6 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="AppShellR.xaml.cs">
+      <DependentUpon>AppShellR.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\SwipePage.xaml.cs">
       <DependentUpon>SwipePage.xaml</DependentUpon>
     </Compile>
