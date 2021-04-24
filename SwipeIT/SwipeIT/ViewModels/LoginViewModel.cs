@@ -41,13 +41,16 @@ namespace SwipeIT.ViewModels
 
         public LoginViewModel()
         {
-            Accounts = new List<Account>();
+
             GetAccounts().Wait();
         }
 
         private async Task GetAccounts()
         {
-            Accounts = await AdminRepo.GetAllAcountsAsync();
+            Accounts = new List<Account>();
+            Accounts.AddRange(await DeveloperRepo.GetAllItemsAsync());
+            Accounts.AddRange(await RecruiterRepo.GetAllItemsAsync());
+            Accounts.AddRange(await AdminRepo.GetAllItemsAsync());
         }
 
         private bool RequiredFields()
@@ -172,12 +175,10 @@ namespace SwipeIT.ViewModels
                 {
                     App.Current.MainPage = new AdministrationPage();
                 }
-
-                List<User> list = new List<User>();
-                list.AddRange(await DeveloperRepo.GetAllItemsAsync());
-                list.AddRange(await RecruiterRepo.GetAllItemsAsync());
-                User user = list.FirstOrDefault(x => x.Id == account.Id);
-                Current.User = user;
+                if (!(Accounts.FirstOrDefault(x => x.Id == account.Id) is Admin))
+                {
+                    Current.User = (User)Accounts.FirstOrDefault(x => x.Id == account.Id);
+                }
 
                 //todo an admin is not a user so a user let's find out
                 //  Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
