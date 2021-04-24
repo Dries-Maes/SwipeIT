@@ -22,6 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="AppShellD.xaml.cs">
+      <DependentUpon>AppShellD.xaml</DependentUpon>
+    </Compile>
     <Compile Update="AppShellR.xaml.cs">
       <DependentUpon>AppShellR.xaml</DependentUpon>
     </Compile>
