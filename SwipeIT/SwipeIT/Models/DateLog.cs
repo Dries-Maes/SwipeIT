@@ -16,6 +16,7 @@ namespace SwipeIT.Models
         public DateLog()
         {
             DateCreated = DateTime.Now;
+            DateModified = DateTime.Now;
         }
     }
 }
