@@ -80,16 +80,13 @@ namespace SwipeIT.ViewModels
         {
             try
             {
-                if (Current.User != null)
+                if (Current.User is Developer)
                 {
-                    if (Current.User is Developer)
-                    {
-                        IsDeveloper = true;
-                    }
-                    else if (Current.User is Recruiter)
-                    {
-                        IsRecruiter = true;
-                    }
+                    IsDeveloper = true;
+                }
+                else if (Current.User is Recruiter)
+                {
+                    IsRecruiter = true;
                 }
             }
             catch (Exception)
