@@ -1,6 +1,7 @@
 ﻿using SwipeIT.Services;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SwipeIT.Models
 {
@@ -14,8 +15,8 @@ namespace SwipeIT.Models
         [DataType(DataType.DateTime)]
         public DateTime DateModified { get; set; }
 
-        public Skill Skill { get; set; }
-        public Account Account { get; set; }
+        //[ForeignKey("Id")]
+        //public Account Account { get; set; }
 
         public DateLog()
         {

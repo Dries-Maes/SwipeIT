@@ -94,6 +94,5 @@
                       ContentTemplate="{DataTemplate local:UsersAdministrationPage}" />
         <ShellContent Title="Skills"
                       Icon="icon_about.png"
-                      ContentTemplate="{DataTemplate local:SkillsAdministrationPage}" />
-        <ShellContent Title="Logout"                      Icon="icon_login.png"                      ContentTemplate="{DataTemplate local:LoginPage}" />    </TabBar>
+                      ContentTemplate="{DataTemplate local:SkillsAdministrationPage}" />    </TabBar>
 </Shell>

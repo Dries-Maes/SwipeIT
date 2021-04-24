@@ -39,7 +39,7 @@ namespace SwipeIT.ViewModels
         private async Task SetDateLogs()
         {
             DateLogRepo repo = new DateLogRepo();
-            DateLogs = new ObservableCollection<DateLog>(await repo.GetLast10DateLogs());
+            //DateLogs = new ObservableCollection<DateLog>(await repo.GetLast10DateLogs());
         }
     }
 }

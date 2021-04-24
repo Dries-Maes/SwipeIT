@@ -1,5 +1,6 @@
 ﻿using SwipeIT.Services;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SwipeIT.Models
 {
@@ -46,6 +47,7 @@ namespace SwipeIT.Models
 
         private DateLog dateLog;
 
+        //[ForeignKey("Id")]
         public DateLog DateLog
         {
             get => dateLog;
