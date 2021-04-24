@@ -14,6 +14,7 @@ namespace SwipeIT.ViewModels
     public class LoginViewModel : BaseViewModel
     {
         private string errorMessage;
+        private Account account;
 
         public string ErrorMessage
         {
@@ -93,7 +94,7 @@ namespace SwipeIT.ViewModels
 
         private bool VerifyPassword()
         {
-            return UserPassword == Current.User.Password;
+            return UserPassword == account.Password;
         }
 
         private async Task CreateNewUser()
@@ -149,29 +150,9 @@ namespace SwipeIT.ViewModels
             }
             else
             {
-                try // todo find user
+                try
                 {
-                    var account = Accounts.First(x => x.Email == UserMail);
-                    if (account != null && account.Email != "admin")
-                    {
-                        List<User> list = new List<User>();
-                        list.AddRange(await DeveloperRepo.GetAllItemsAsync());
-                        list.AddRange(await RecruiterRepo.GetAllItemsAsync());
-                        User user = list.FirstOrDefault(x => x.Id == account.Id);
-                        if (user is Developer)
-                        {
-                            Current.User = user;
-                        }
-                        else if (user is Recruiter)
-                        {
-                            Current.User = user;
-                        }
-                    }
-                    else if (account.Email == "admin")
-                    {
-                        // Admin moet niet een current user hebben (todo)
-                        Current.User = (User)account;
-                    }
+                    account = Accounts.First(x => x.Email == UserMail);
                 }
                 catch (Exception)
                 {
@@ -179,7 +160,7 @@ namespace SwipeIT.ViewModels
                     return;
                 }
 
-                //todo user exists, let's continue
+                //todo user exists, let's continue, find check pass and if passes set that user
                 if (!VerifyPassword())
                 {
                     ErrorMessage += "Password Mismatch\n";
@@ -187,9 +168,24 @@ namespace SwipeIT.ViewModels
                 }
                 // todo password check passes when you got here so we decide were to go from here
 
-                // todo Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
+                List<Admin> adminlist = await AdminRepo.GetAllItemsAsync();
+                var admin = adminlist.FirstOrDefault(x => x.Id == account.Id);
+                if (admin != null)
+                {
+                    await Shell.Current.GoToAsync(nameof(AdministrationPage));
+                }
+
+                List<User> list = new List<User>();
+                list.AddRange(await DeveloperRepo.GetAllItemsAsync());
+                list.AddRange(await RecruiterRepo.GetAllItemsAsync());
+                User user = list.FirstOrDefault(x => x.Id == account.Id);
+                Current.User = user;
+
+                //todo an admin is not a user so a user let's find out
+                //  Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
                 IsRecruiter = false;
                 IsDeveloper = false;
+
                 switch (Current.User)
                 {
                     case Developer developer:
@@ -200,10 +196,6 @@ namespace SwipeIT.ViewModels
                     case Recruiter recruiter:
                         IsRecruiter = true;
                         await Shell.Current.GoToAsync($"//{nameof(SwipePage)}");
-                        break;
-
-                    default:
-                        await Shell.Current.GoToAsync(nameof(AdministrationPage));
                         break;
                 }
             }
