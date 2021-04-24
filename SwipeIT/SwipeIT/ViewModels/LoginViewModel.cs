@@ -157,7 +157,7 @@ namespace SwipeIT.ViewModels
                         List<User> list = new List<User>();
                         list.AddRange(await DeveloperRepo.GetAllItemsAsync());
                         list.AddRange(await RecruiterRepo.GetAllItemsAsync());
-                        User user = list.FirstOrDefault(x => x.ID == account.ID);
+                        User user = list.FirstOrDefault(x => x.Id == account.Id);
                         if (user is Developer)
                         {
                             Current.User = user;

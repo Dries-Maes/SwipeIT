@@ -55,7 +55,7 @@ namespace SwipeIT.ViewModels
 
         private string GetDeveloperExperienceString()
         {
-            string experience = "";
+            string experience;
             if (SelectedDeveloper.YearsOfExperience <= 2)
             {
                 experience = "Junior";
