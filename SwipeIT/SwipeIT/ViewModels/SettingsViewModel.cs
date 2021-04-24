@@ -86,6 +86,7 @@ namespace SwipeIT.ViewModels
         {
             if (Current.User is Developer developer)
             {
+                Current.User.DateLog.DateModified = DateTime.Now;
                 await DeveloperRepo.AddItemAsync(developer);
             }
             else if (Current.User is Recruiter recruiter)
