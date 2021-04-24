@@ -125,6 +125,10 @@ namespace SwipeIT.ViewModels
         private async void OnLoginClicked(object obj)
         {
             ErrorMessage = "";
+            if (String.IsNullOrEmpty(UserMail) || String.IsNullOrEmpty(UserPassword))
+            {
+                ErrorMessage = "Email and Password fields cannot be empty\n";
+            }
 
             if (IsSignUp)
             {
@@ -170,8 +174,8 @@ namespace SwipeIT.ViewModels
                 var admin = adminlist.FirstOrDefault(x => x.Id == account.Id);
                 if (admin != null)
                 {
-                    Application.Current.MainPage = new AppShellD();
-                    await Shell.Current.GoToAsync(nameof(AdministrationPage));
+                    Application.Current.MainPage = new AppShellAdmin();
+                    return;
                 }
 
                 Current.User = (User)Accounts.FirstOrDefault(x => x.Id == account.Id);
