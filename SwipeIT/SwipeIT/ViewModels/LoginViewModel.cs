@@ -14,6 +14,7 @@ namespace SwipeIT.ViewModels
     public class LoginViewModel : BaseViewModel
     {
         private string errorMessage;
+        private Account account;
 
         public string ErrorMessage
         {
@@ -40,17 +41,15 @@ namespace SwipeIT.ViewModels
 
         public LoginViewModel()
         {
-            Accounts = new List<Account>();
             GetAccounts().Wait();
-
-            CurrentUserSingleton.CurrentUser = null;
-            UserMail = "";
-            UserPassword = "";
         }
 
         private async Task GetAccounts()
         {
-            Accounts = await AdminRepo.GetAllAcountsAsync();
+            Accounts = new List<Account>();
+            Accounts.AddRange(await DeveloperRepo.GetAllItemsAsync());
+            Accounts.AddRange(await RecruiterRepo.GetAllItemsAsync());
+            Accounts.AddRange(await AdminRepo.GetAllItemsAsync());
         }
 
         private bool RequiredFields()
@@ -93,34 +92,33 @@ namespace SwipeIT.ViewModels
 
         private bool VerifyPassword()
         {
-            return UserPassword == CurrentUserSingleton.CurrentUser.Password;
+            return UserPassword == account.Password;
         }
 
         private async Task CreateNewUser()
         {
             if (IsDeveloper)
             {
-                Developer temp = new Developer
+                Current.User = new Developer
                 {
                     Email = UserMail,
                     Password = UserPassword,
                     FirstName = FirstName,
                     LastName = LastName,
                 };
-                CurrentUserSingleton.CurrentUser = temp;
-                await DeveloperRepo.AddItemAsync((Developer)CurrentUserSingleton.CurrentUser);
+                await DeveloperRepo.AddItemAsync((Developer)Current.User);
             }
 
             if (IsRecruiter)
             {
-                CurrentUserSingleton.CurrentUser = new Recruiter
+                Current.User = new Recruiter
                 {
                     Email = UserMail,
                     Password = UserPassword,
                     FirstName = FirstName,
                     LastName = LastName,
                 };
-                await RecruiterRepo.AddItemAsync((Recruiter)CurrentUserSingleton.CurrentUser);
+                await RecruiterRepo.AddItemAsync((Recruiter)Current.User);
             }
         }
 
@@ -150,9 +148,9 @@ namespace SwipeIT.ViewModels
             }
             else
             {
-                try // todo find user
+                try
                 {
-                    CurrentUserSingleton.CurrentUser = Accounts.First(x => x.Email == UserMail);
+                    account = Accounts.First(x => x.Email == UserMail);
                 }
                 catch (Exception)
                 {
@@ -160,32 +158,42 @@ namespace SwipeIT.ViewModels
                     return;
                 }
 
-                //todo user exists, let's continue
+                //todo user exists, let's continue, find check pass and if passes set that user
                 if (!VerifyPassword())
                 {
                     ErrorMessage += "Password Mismatch\n";
                     return;
                 }
                 // todo password check passes when you got here so we decide were to go from here
-
-                // todo Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-                IsRecruiter = false;
-                IsDeveloper = false;
-                switch (CurrentUserSingleton.CurrentUser)
+                Current.User = null;
+                UserMail = "";
+                UserPassword = "";
+                List<Admin> adminlist = await AdminRepo.GetAllItemsAsync();
+                var admin = adminlist.FirstOrDefault(x => x.Id == account.Id);
+                if (admin != null)
                 {
-                    case Developer developer:
+                    App.Current.MainPage = new AdministrationPage();
+                }
+                
+                
+                if (!(Accounts.FirstOrDefault(x => x.Id == account.Id) is Admin))
+                {
+                    Current.User = (User)Accounts.FirstOrDefault(x => x.Id == account.Id);
+                }
+
+                //todo an admin is not a user so a user let's find out
+                //  Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
+
+                switch (Current.User)
+                {
+                    case Developer _:
+                        App.Current.MainPage = new AppShell();
                         await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
-                        IsDeveloper = true;
                         break;
 
-                    case Recruiter recruiter:
+                    case Recruiter _:
+                        App.Current.MainPage = new AppShellR();
                         await Shell.Current.GoToAsync($"//{nameof(SwipePage)}");
-                        IsRecruiter = true;
-                        break;
-
-                    case Admin admin:
-
-                        await Shell.Current.GoToAsync(nameof(AdministrationPage));
                         break;
                 }
             }

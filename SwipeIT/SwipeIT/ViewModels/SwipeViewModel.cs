@@ -34,10 +34,10 @@ namespace SwipeIT.ViewModels
 
         private async void Like(Developer developer)
         {
-            if (!((Recruiter)CurrentUserSingleton.CurrentUser).Developers.Contains(developer))
+            if (!((Recruiter)Current.User).Developers.Contains(developer))
             {
-                ((Recruiter)CurrentUserSingleton.CurrentUser).Developers.Add(developer);
-                await RecruiterRepo.AddItemAsync((Recruiter)CurrentUserSingleton.CurrentUser);
+                ((Recruiter)Current.User).Developers.Add(developer);
+                await RecruiterRepo.AddItemAsync((Recruiter)Current.User);
             }
         }
     }

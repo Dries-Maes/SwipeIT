@@ -15,75 +15,26 @@
                 <Label Text="Welcome to Administration Page!" />
             </StackLayout>
 
-            <StackLayout Orientation="Horizontal"
-                         VerticalOptions="Start"
-                         HorizontalOptions="CenterAndExpand">
-                <Label Text="&#xf506;"
-                       TextColor="Red"
-                       FontSize="Large"
-                       FontFamily='FontAwesome' />
-                <Label Text="Remove User" />
+            <StackLayout Orientation="Vertical"
+                         VerticalOptions="CenterAndExpand"
+                         HorizontalOptions="Center">
+                <Button x:Name="Users"
+                        Text="&#xf0c0; Users"
+                        FontSize="Large"
+                        FontFamily='FontAwesome'
+                        Clicked="Button_OnClicked" />
+                <Button x:Name="Admin"
+                        Text="&#xf0c0; Adminstrators"
+                        FontSize="Large"
+                        FontFamily='FontAwesome'
+                        Clicked="Button_OnClicked" />
 
-                <Label Text="&#xf0c0;"
-                       FontSize="Large"
-                       FontFamily='FontAwesome' />
-                <Label Text="Show All Users" />
-                <Label Text="&#xf0c0;"
-                       FontSize="Large"
-                       FontFamily='FontAwesome' />
-                <Label Text="Show All Users" />
+                <Button x:Name="Skills"
+                        Text="&#xf0c0; Skills"
+                        FontSize="Large"
+                        FontFamily='FontAwesome'
+                        Clicked="Button_OnClicked" />
             </StackLayout>
-            <FlexLayout Margin="10"
-                        Wrap="Wrap">
-                <Button Text="User1"
-                        Margin="10"
-                        CornerRadius="25"
-                        BorderColor="AliceBlue"
-                        BorderWidth="1"
-                        BackgroundColor="White"></Button>
-                <Button Text="User2"
-                        Margin="10"
-                        CornerRadius="25"
-                        BorderColor="AliceBlue"
-                        BorderWidth="1"
-                        BackgroundColor="White"></Button>
-                <Button Text="User3"
-                        Margin="10"
-                        CornerRadius="25"
-                        BorderColor="AliceBlue"
-                        BorderWidth="1"
-                        BackgroundColor="White"></Button>
-                <Button Text="User4"
-                        Margin="10"
-                        CornerRadius="25"
-                        BorderColor="AliceBlue"
-                        BorderWidth="1"
-                        BackgroundColor="White"></Button>
-                <Button Text="User1"
-                        Margin="10"
-                        CornerRadius="25"
-                        BorderColor="AliceBlue"
-                        BorderWidth="1"
-                        BackgroundColor="White"></Button>
-                <Button Text="User2"
-                        Margin="10"
-                        CornerRadius="25"
-                        BorderColor="AliceBlue"
-                        BorderWidth="1"
-                        BackgroundColor="White"></Button>
-                <Button Text="User3"
-                        Margin="10"
-                        CornerRadius="25"
-                        BorderColor="AliceBlue"
-                        BorderWidth="1"
-                        BackgroundColor="White"></Button>
-                <Button Text="User4"
-                        Margin="10"
-                        CornerRadius="25"
-                        BorderColor="AliceBlue"
-                        BorderWidth="1"
-                        BackgroundColor="White"></Button>
-            </FlexLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
