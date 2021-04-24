@@ -47,9 +47,19 @@ namespace SwipeIT.ViewModels
         private async Task GetAccounts()
         {
             Accounts = new List<Account>();
+            Accounts.AddRange(await AdminRepo.GetAllItemsAsync());
             Accounts.AddRange(await DeveloperRepo.GetAllItemsAsync());
             Accounts.AddRange(await RecruiterRepo.GetAllItemsAsync());
-            Accounts.AddRange(await AdminRepo.GetAllItemsAsync());
+            await AddMockDataIfDbIsEmpty();
+        }
+
+        private async Task AddMockDataIfDbIsEmpty()
+        {
+            if (Accounts.Count == 0)
+            {
+                AddDummyData();
+                await GetAccounts();
+            }
         }
 
         private bool RequiredFields()

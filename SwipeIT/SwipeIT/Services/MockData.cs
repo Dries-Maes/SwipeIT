@@ -4,13 +4,13 @@ using System.Collections.ObjectModel;
 
 namespace SwipeIT.Services
 {
-    internal class AccountFactory
+    internal class MockData
     {
         private IEnumerable<Developer> developers;
         private IEnumerable<Recruiter> recruiters;
         private IEnumerable<Admin> admins;
 
-        public AccountFactory()
+        public MockData()
         {
             MakeDeveloperList();
             MakeRecruiterList();

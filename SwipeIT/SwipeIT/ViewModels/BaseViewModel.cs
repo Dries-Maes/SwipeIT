@@ -100,7 +100,7 @@ namespace SwipeIT.ViewModels
 
         public async void AddDummyData()
         {
-            var factory = new AccountFactory();
+            var factory = new MockData();
             await AdminRepo.AddItemsAsync(factory.GetAdminList());
             await DeveloperRepo.AddItemsAsync(factory.GetDeveloperList());
             await RecruiterRepo.AddItemsAsync(factory.GetRecruiterList());
