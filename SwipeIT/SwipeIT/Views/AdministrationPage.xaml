@@ -15,23 +15,19 @@
                 <Label Text="Welcome to Administration Page!" />
             </StackLayout>
 
-            <StackLayout Orientation="Horizontal"
-                         VerticalOptions="Start"
-                         HorizontalOptions="CenterAndExpand">
-                <Label Text="&#xf506; "
-                       TextColor="Red"
-                       FontSize="Large"
-                       FontFamily='FontAwesome' />
-                <Label Text="Users Administration" />
+            <StackLayout Orientation="Vertical"
+                         VerticalOptions="CenterAndExpand"
+                         HorizontalOptions="Center">
+                <Button Text="&#xf0c0; Users"
+                        FontSize="Large"
+                        FontFamily='FontAwesome' />
+                <Button Text="&#xf0c0; Adminstrators"
+                        FontSize="Large"
+                        FontFamily='FontAwesome' />
 
-                <Label Text="&#xf0c0;"
-                       FontSize="Large"
-                       FontFamily='FontAwesome' />
-                <Label Text="Show All Users" />
-                <Label Text="&#xf0c0;"
-                       FontSize="Large"
-                       FontFamily='FontAwesome' />
-                <Label Text="Show All Users" />
+                <Button Text="&#xf0c0; Skills"
+                        FontSize="Large"
+                        FontFamily='FontAwesome' />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
