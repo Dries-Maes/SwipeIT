@@ -6,10 +6,11 @@ using Xamarin.Forms;
 namespace SwipeIT.ViewModels
 {
     public class SwipeViewModel : BaseViewModel
-    {
-        private List<Developer> developersResult;
 
-        public List<Developer> DevelopersResult
+    {
+        private List<User> developersResult;
+
+        public List<User> DevelopersResult
         {
             get { return developersResult; }
             set
@@ -19,26 +20,46 @@ namespace SwipeIT.ViewModels
             }
         }
 
-        public Command<Developer> LikeCommand => new Command<Developer>(Like);
+        public Command<User> LikeCommand => new Command<User>(Like);
         public Command RefreshCommand => new Command(GetUserData);
 
         public SwipeViewModel()
         {
-            DevelopersResult = new List<Developer>();
+            DevelopersResult = new List<User>();
             GetUserData();
         }
 
         private async void GetUserData()
         {
-            DevelopersResult = await DeveloperRepo.GetAllItemsAsync();
+            if (IsDeveloper)
+            {
+                var results = await RecruiterRepo.GetAllItemsAsync();
+                developersResult.AddRange(results);
+            }
+            else if (IsRecruiter)
+            {
+                var results = await DeveloperRepo.GetAllItemsAsync();
+                developersResult.AddRange(results);
+            }
         }
 
-        private async void Like(Developer developer)
+        private async void Like(User UserClicked)
         {
-            if (((Recruiter)Current.User).Developers.FirstOrDefault(x => x.Id == developer.Id) == null)
+            if (IsDeveloper)
             {
-                ((Recruiter)Current.User).Developers.Add(developer);
-                await RecruiterRepo.AddItemAsync((Recruiter)Current.User);
+                if (((Developer)Current.User).Recruiters.FirstOrDefault(x => x.Id == UserClicked.Id) == null)
+                {
+                    ((Developer)Current.User).Recruiters.Add((Recruiter)UserClicked);
+                    await DeveloperRepo.AddItemAsync((Developer)Current.User);
+                }
+            }
+            else if (IsRecruiter)
+            {
+                if (((Recruiter)Current.User).Developers.FirstOrDefault(x => x.Id == UserClicked.Id) == null)
+                {
+                    ((Recruiter)Current.User).Developers.Add((Developer)UserClicked);
+                    await RecruiterRepo.AddItemAsync((Recruiter)Current.User);
+                }
             }
         }
     }

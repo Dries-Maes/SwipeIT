@@ -17,6 +17,7 @@ namespace SwipeIT.ViewModels
         public IGenericRepo<Recruiter> RecruiterRepo = new RecruiterRepo();
         public IGenericRepo<Skill> SkillsRepo = new GenericRepo<Skill>();
         public IGenericRepo<Admin> AdminRepo = new GenericRepo<Admin>();
+        public IGenericRepo<ObservableObject> GenericRepo = new GenericRepo<ObservableObject>();
         private bool isDeveloper;
 
         public bool IsDeveloper
