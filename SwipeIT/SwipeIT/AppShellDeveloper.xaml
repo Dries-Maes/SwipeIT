@@ -97,8 +97,8 @@
 
         <ShellContent Route="SettingsPage"
                       ContentTemplate="{DataTemplate local:SettingsPage}" />
-    <!--</FlyoutItem>
-    <FlyoutItem Title="Swipe"
+    </FlyoutItem>
+    <!--<FlyoutItem Title="Swipe"
                 Icon="icon_about.png">
         <ShellContent Route="SwipePage"
                       ContentTemplate="{DataTemplate local:SwipePage}" />
@@ -109,7 +109,6 @@
         <ShellContent Route="LikeOverviewPage"
                       ContentTemplate="{DataTemplate local:LikeOverviewPage}" />
     </FlyoutItem>-->
-
     <FlyoutItem Title="About"
                 Icon="icon_about.png">
         <ShellContent Route="AboutPage"
