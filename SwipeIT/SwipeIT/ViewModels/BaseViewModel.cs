@@ -1,6 +1,5 @@
 ﻿using SwipeIT.Models;
 using SwipeIT.Services;
-using SwipeIT.Services.TESTDbRepos;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -98,6 +97,20 @@ namespace SwipeIT.ViewModels
             }
         }
 
+        internal async void UpdateCurrentUser()
+        {
+            if (Current.User is Developer developer)
+            {
+                Current.User.DateLog.DateModified = DateTime.Now;
+                await DeveloperRepo.AddItemAsync(developer);
+            }
+            else if (Current.User is Recruiter recruiter)
+            {
+                await RecruiterRepo.AddItemAsync(recruiter);
+            }
+        }
+
+        
         #region INotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;

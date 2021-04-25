@@ -31,7 +31,8 @@
                             <Label Text="{Binding DateLog.DateModified}"
                                    FontSize="Medium" />
                             <Label Text="{Binding Email}"
-                                   FontSize="Medium" />
+                                   FontSize="Medium"
+                                   Margin="0,-5,0,10"/>
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

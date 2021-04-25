@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SwipeIT.ViewModels"
+             x:Class="SwipeIT.Views.SettingsLocationsPage"
+             Disappearing="ContentPage_Disappearing">
+    <ContentPage.BindingContext>
+        <local:SettingsLocationsViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Picker Title="Select location"
+                    ItemsSource="{Binding SelectedLocationsList}"
+                    ItemDisplayBinding="{Binding Province}"
+                    SelectedItem="{Binding Source={RelativeSource AncestorType={x:Type local:SettingsLocationsViewModel}}, Path=SelectedLocation}"
+                    VerticalOptions="Start">
+            </Picker>
+            <Button Text="Add location"
+                    Command="{Binding AddLocationCommand}" />
+            <StackLayout BindableLayout.ItemsSource="{Binding Current.User.AvailableLocations}">
+
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Province}"
+                                   VerticalOptions="Center" />
+                            <Button Text="Delete"
+                                    WidthRequest="75"
+                                    HorizontalOptions="EndAndExpand"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:SettingsLocationsViewModel}}, Path=DeleteLocationCommand}"
+                                    CommandParameter="{Binding .}" />
+                        </StackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+            <Label Text=" " />
+            <Label Text=" " />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

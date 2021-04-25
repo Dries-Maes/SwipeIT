@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SwipeIT.Models;
-using SwipeIT.Services.Repos;
 using SwipeIT.Views;
 using System;
 using System.Linq;

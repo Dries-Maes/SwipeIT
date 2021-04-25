@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SwipeIT.Services.Repos
+namespace SwipeIT.Services
 {
-    internal class SkillRepo : GenericRepo<Skill>
+    public class SkillRepo : GenericRepo<Skill>
     {
         public async Task<List<Skill>> GetAllUserCreatedSkillsAsync()
         {

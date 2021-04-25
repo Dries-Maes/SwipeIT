@@ -36,6 +36,12 @@
     <Compile Update="AppShellRecruiter.xaml.cs">
       <DependentUpon>AppShellRecruiter.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\SettingsLocationsPage.xaml.cs">
+      <DependentUpon>SettingsLocationsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SettingsSkillsPage.xaml.cs">
+      <DependentUpon>SettingsSkillsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\SwipePage.xaml.cs">
       <DependentUpon>SwipePage.xaml</DependentUpon>
     </Compile>
@@ -46,6 +52,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LikeOverviewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SettingsLocationsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SettingsSkillsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SkillsAdministrationPage.xaml">
