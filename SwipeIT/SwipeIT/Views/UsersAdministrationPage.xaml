@@ -11,6 +11,7 @@
             <Label Text="&#xf509; User Administration:"
                    Style="{StaticResource Fa-Label}" />
             <SearchBar Text="{Binding SearchText}"
+                       SearchCommand="{Binding SearchForUsersCommand}"
                        BackgroundColor="DarkGray"
                        TextColor="Black"
                        Placeholder="search users" />

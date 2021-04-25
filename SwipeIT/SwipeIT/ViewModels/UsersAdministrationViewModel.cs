@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -13,6 +14,13 @@ namespace SwipeIT.ViewModels
     {
         private string searchText;
         private List<User> allUsers;
+        public Command<Developer> SearchForUsersCommand => new Command<Developer>(SearchForUsers);
+
+        private void SearchForUsers(Developer obj)
+        {
+            allUsers = new List<User>();
+            AllUsersListCollection = new ObservableCollection<User>(allUsers);
+        }
 
         public string SearchText
         {
@@ -38,15 +46,15 @@ namespace SwipeIT.ViewModels
 
         public UsersAdministrationViewModel()
         {
-            GetSkills().Wait();
+            GetUsers().Wait();
+            AllUsersListCollection = new ObservableCollection<User>(allUsers.Where(x => x.Email.Contains("rch")).ToList());
         }
 
-        private async Task GetSkills()
+        private async Task GetUsers()
         {
             allUsers = new List<User>();
             allUsers.AddRange(await DeveloperRepo.GetAllItemsAsync());
             allUsers.AddRange(await RecruiterRepo.GetAllItemsAsync());
-            AllUsersListCollection = new ObservableCollection<User>(allUsers);
         }
     }
 }
