@@ -93,10 +93,16 @@
                       ContentTemplate="{DataTemplate local:LoginPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Settings"
-                Icon="icon_feed.png">
-
-        <ShellContent Route="SettingsPage"
-                      ContentTemplate="{DataTemplate local:SettingsPage}" />
+                Icon="{FontImage Glyph=&#xf085;, FontFamily=FontAwesome, Color=Black}">
+        <Tab>
+            <ShellContent Title="General"
+                          Route="SettingsPage"
+                          ContentTemplate="{DataTemplate local:SettingsPage}" />
+            <ShellContent Title="Skills"
+                          ContentTemplate="{DataTemplate local:SettingsSkillsPage}" />
+            <ShellContent Title="Locations"
+                          ContentTemplate="{DataTemplate local:SettingsLocationsPage}" />
+        </Tab>
     </FlyoutItem>
     <!--<FlyoutItem Title="Swipe"
                 Icon="icon_about.png">
