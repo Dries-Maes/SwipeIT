@@ -8,7 +8,7 @@
         <local:SettingsSkillsViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout  Style="{StaticResource MainMargin}">
             <Picker Title="Select Skill"
                     ItemsSource="{Binding AvailableSkillsList}"
                     ItemDisplayBinding="{Binding SkillName}"

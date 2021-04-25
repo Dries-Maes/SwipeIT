@@ -10,8 +10,7 @@
     <ContentPage.Content>
         <ScrollView>
             <FlexLayout>
-                <StackLayout Margin="30"
-                             Padding="5">
+                <StackLayout Style="{StaticResource MainMargin}">
                     <CollectionView ItemsSource="{Binding AvatarList}"
                                     IsVisible="{Binding ShowImagePicker}"
                                     HeightRequest="100">

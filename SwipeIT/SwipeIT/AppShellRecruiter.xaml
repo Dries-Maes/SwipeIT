@@ -4,7 +4,8 @@
        xmlns:local="clr-namespace:SwipeIT.Views"
        xmlns:viewmodels="clr-namespace:SwipeIT.ViewModels"
        Title="SwipeIT"
-       x:Class="SwipeIT.AppShellRecruiter">
+       x:Class="SwipeIT.AppShellRecruiter"
+       FlyoutWidth="230">
 
     <Shell.Resources>
         <ResourceDictionary>
@@ -84,12 +85,24 @@
             </Style>
         </ResourceDictionary>
     </Shell.Resources>
+
     <FlyoutItem Title="Logout"
                 Icon="icon_login.png">
 
         <ShellContent Route="LoginPage"
                       Shell.FlyoutBehavior="Disabled"
                       ContentTemplate="{DataTemplate local:LoginPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Swipe"
+                Icon="{FontImage Glyph=&#xf25a;, FontFamily=FontAwesome, Color=Black}">
+        <ShellContent Route="SwipePage"
+                      ContentTemplate="{DataTemplate local:SwipePage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Connections"
+                Icon="{FontImage Glyph=&#xf0c1;, FontFamily=FontAwesome, Color=Black}">
+        <ShellContent Route="LikeOverviewPage"
+                      ContentTemplate="{DataTemplate local:LikeOverviewPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Settings"
                 Icon="{FontImage Glyph=&#xf085;, FontFamily=FontAwesome, Color=Black}">
@@ -102,17 +115,6 @@
             <ShellContent Title="Locations"
                           ContentTemplate="{DataTemplate local:SettingsLocationsPage}" />
         </Tab>
-    </FlyoutItem>
-    <FlyoutItem Title="Swipe"
-                Icon="icon_about.png">
-        <ShellContent Route="SwipePage"
-                      ContentTemplate="{DataTemplate local:SwipePage}" />
-    </FlyoutItem>
-
-    <FlyoutItem Title="Connections"
-                Icon="icon_feed.png">
-        <ShellContent Route="LikeOverviewPage"
-                      ContentTemplate="{DataTemplate local:LikeOverviewPage}" />
     </FlyoutItem>
 
     <FlyoutItem Title="About"

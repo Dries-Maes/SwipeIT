@@ -13,7 +13,7 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand"
                      HorizontalOptions="CenterAndExpand"
-                     BackgroundColor="{StaticResource Primary}">
+                     BackgroundColor="#c25e00">
 
             <CarouselView ItemsSource="{Binding DevelopersResult}">
                 <CarouselView.ItemsLayout>
@@ -27,17 +27,18 @@
                                 <SwipeItems>
                                     <SwipeItemView>
                                         <Button Text="&#xf234;"
-                                                FontSize="Large"
+                                                FontSize="40"
                                                 FontFamily="FontAwesome"
-                                                BackgroundColor="Green"
+                                                TextColor="Black"
                                                 WidthRequest="600"
                                                 HeightRequest="75"
+                                                BackgroundColor="Transparent"
                                                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:SwipeViewModel}}, Path=LikeCommand}"
                                                 CommandParameter="{Binding .}" />
                                     </SwipeItemView>
                                 </SwipeItems>
                             </SwipeView.TopItems>
-                            <Frame>
+                            <Frame Margin="5"  >
                                 <StackLayout Margin="10">
                                     <Image Source="{Binding Image}"
                                            HorizontalOptions="Center"

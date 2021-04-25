@@ -8,7 +8,7 @@
         <local:SettingsLocationsViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout  Style="{StaticResource MainMargin}">
             <Picker Title="Select location"
                     ItemsSource="{Binding SelectedLocationsList}"
                     ItemDisplayBinding="{Binding Province}"
