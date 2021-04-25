@@ -1,5 +1,5 @@
 ﻿using SwipeIT.Models;
-using SwipeIT.Services.Repos;
+using SwipeIT.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

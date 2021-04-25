@@ -3,7 +3,7 @@ using SwipeIT.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace SwipeIT.Services.TESTDbRepos
+namespace SwipeIT.Services
 {
     public class RecruiterRepo : GenericRepo<Recruiter>
     {
