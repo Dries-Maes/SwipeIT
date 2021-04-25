@@ -55,6 +55,7 @@
             <StackLayout Orientation="Horizontal">
                 <Button VerticalOptions="Center"
                         Text="Login"
+                        BackgroundColor="#fb8c00"
                         Command="{Binding LoginCommand}" />
                 <Label Text="Signup"
                        VerticalOptions="Center" />
