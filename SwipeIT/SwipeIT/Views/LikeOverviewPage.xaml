@@ -7,8 +7,9 @@
         <local:LikeOverviewViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Margin="{OnIdiom Phone=30, Default=100}"
-                     HorizontalOptions="CenterAndExpand">
+        <StackLayout Margin="30"
+                     HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="CenterAndExpand">
 
             <CollectionView IsVisible="{OnIdiom Phone=True, Tablet=True, Default=false}"
                             ItemsSource="{Binding Current.User.Developers}">
@@ -52,16 +53,24 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <CollectionView IsVisible="{OnIdiom Desktop=True, TV=True, Default=false }"
-                            ItemsSource="{Binding Current.User.Developers}">
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Horizontal"
-                                     Span="3" />
-                </CollectionView.ItemsLayout>
+            <FlexLayout IsVisible="{OnIdiom Desktop=True, TV=True, Default=false }"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"
+                        Wrap="Wrap"
+                        BindableLayout.ItemsSource="{Binding Current.User.Developers}">
+                <!--<CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                     Span="5" />
+                </CollectionView.ItemsLayout>-->
 
-                <CollectionView.ItemTemplate>
+                <BindableLayout.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Margin="1">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeveloperTappedCommand}"
+                                                      CommandParameter="{Binding .}" />
+                            </StackLayout.GestureRecognizers>
 
                             <Button Text="&#xf503;"
                                     FontSize="Large"
@@ -86,8 +95,8 @@
                             </Frame>
                         </StackLayout>
                     </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
