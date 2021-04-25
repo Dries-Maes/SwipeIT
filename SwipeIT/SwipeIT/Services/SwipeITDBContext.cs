@@ -29,19 +29,9 @@ namespace SwipeIT
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Developer>().HasMany(x => x.Recruiters);
+            modelBuilder.MapRelations();
 
-            modelBuilder.Entity<Recruiter>().HasMany(x => x.Developers);
-
-            modelBuilder.Entity<Developer>().HasMany(x => x.Skills);
-
-            modelBuilder.Entity<Recruiter>().HasMany(x => x.Skills);
-
-            modelBuilder.Entity<Developer>().HasMany(x => x.AvailableLocations);
-
-            modelBuilder.Entity<Recruiter>().HasMany(x => x.AvailableLocations);
-
-            //modelBuilder.Seed();
+            //modelBuilder.Seed();  // @ Michiel "Couldn't get this to work but it's an extension methode :-)"
         }
 
         public void DeleteDb()

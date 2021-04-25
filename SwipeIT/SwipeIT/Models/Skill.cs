@@ -1,4 +1,5 @@
 ﻿using SwipeIT.Services;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace SwipeIT.Models
@@ -42,6 +43,14 @@ namespace SwipeIT.Models
                 dateLog = value;
                 OnPropertyChanged(nameof(DateLog));
             }
+        }
+
+        private ObservableCollection<User> users;
+
+        public ObservableCollection<User> Users
+        {
+            get { return users; }
+            set { users = value; }
         }
 
         public Skill()

@@ -1,12 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SwipeIT.ViewModels"
+             xmlns:converters="clr-namespace:SwipeIT.Services"
              x:Class="SwipeIT.Views.SkillsAdministrationPage">
+    <ContentPage.BindingContext>
+        <local:SkillsAdministrationViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Command="{Binding SaveSkillsCommand}" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to The SkillsAdministrationPage!"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
+        <StackLayout Margin="30">
+            <CollectionView ItemsSource="{Binding Skills}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Margin="10">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="&#xf410;"
+                                       TextColor="Red"
+                                       BackgroundColor="Transparent"
+                                       FontFamily='FontAwesome'
+                                       VerticalTextAlignment="Center"
+                                       Margin="0,0,10,0"
+                                       FontSize="Large">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:SkillsAdministrationViewModel}}, Path=DeleteSkillCommand}"
+                                                              CommandParameter="{Binding .}"
+                                                              NumberOfTapsRequired="1"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <Label Text="{Binding SkillName}"
+                                   FontSize="Large"
+                                   VerticalTextAlignment="Center" />
+                                <Button Text="Approve"
+                                        HorizontalOptions="EndAndExpand"
+                                        IsEnabled="{Binding IsCreatedByUser}"
+                                        Grid.Column="1" IsVisible="{Binding IsCreatedByUser}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:SkillsAdministrationViewModel}}, Path=InvertIsUserCreatedBoolCommad}"
+                                        CommandParameter="{Binding .}" />
+                                <Button Text="Cancel"
+                                        BackgroundColor="red"
+                                        HorizontalOptions="EndAndExpand"
+                                        IsVisible="{Binding IsCreatedByUser, Converter={converters:InvertBoolConverter}}"
+                                        Grid.Column="1"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:SkillsAdministrationViewModel}}, Path=InvertIsUserCreatedBoolCommad}"
+                                        CommandParameter="{Binding .}" />
+                            </StackLayout>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
