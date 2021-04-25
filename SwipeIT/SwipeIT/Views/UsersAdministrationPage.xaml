@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewModels="clr-namespace:SwipeIT.ViewModels"
+             xmlns:local="clr-namespace:SwipeIT.ViewModels"
              x:Class="SwipeIT.Views.UsersAdministrationPage">
     <ContentPage.BindingContext>
-        <viewModels:UsersAdministrationViewModel />
+        <local:UsersAdministrationViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout Margin="30">
@@ -23,6 +23,11 @@
                     <DataTemplate>
 
                         <Grid Padding="5">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type local:UsersAdministrationViewModel}}, Path=NavigateToSettingsCommand}"
+                                                      CommandParameter="{Binding .}" />
+                            </Grid.GestureRecognizers>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="55" />
                             </Grid.RowDefinitions>

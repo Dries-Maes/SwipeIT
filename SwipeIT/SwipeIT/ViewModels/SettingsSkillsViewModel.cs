@@ -79,9 +79,12 @@ namespace SwipeIT.ViewModels
                     Skills.Add(item);
                 }
             }
-            foreach (var item in Skills.Distinct())
+            foreach (var item in Skills)
             {
-                AvailableSkillsList.Add(item);
+                if (!AvailableSkillsList.Select(x => x.SkillName).Contains(item.SkillName))
+                {
+                    AvailableSkillsList.Add(item);
+                }
             };
         }
 

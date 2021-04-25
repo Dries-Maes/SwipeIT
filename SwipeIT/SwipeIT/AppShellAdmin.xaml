@@ -83,7 +83,6 @@
             </Style>
         </ResourceDictionary>
     </Shell.Resources>
-
     <TabBar>
 
         <ShellContent Title="Admin"
@@ -95,4 +94,13 @@
         <ShellContent Title="Skills"
                       Icon="icon_about.png"
                       ContentTemplate="{DataTemplate local:SkillsAdministrationPage}" />    </TabBar>
+    <Tab>
+        <ShellContent Title="General"
+                      Route="AdminSettingsPage"
+                      ContentTemplate="{DataTemplate local:SettingsPage}" />
+        <ShellContent Title="Skills"
+                      ContentTemplate="{DataTemplate local:SettingsSkillsPage}" />
+        <ShellContent Title="Locations"
+                      ContentTemplate="{DataTemplate local:SettingsLocationsPage}" />
+    </Tab>
 </Shell>
