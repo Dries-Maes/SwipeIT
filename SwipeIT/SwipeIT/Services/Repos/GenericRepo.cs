@@ -21,7 +21,7 @@ namespace SwipeIT.Services
         {
             using (var dbContext = new SwipeITDBContext())
             {
-                dbContext.AddRange(items);
+                await dbContext.AddRangeAsync(items);
                 await dbContext.SaveChangesAsync();
             }
             return true;

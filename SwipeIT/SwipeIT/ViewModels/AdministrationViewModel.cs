@@ -3,6 +3,7 @@ using SwipeIT.Models;
 using SwipeIT.Services.Repos;
 using SwipeIT.Views;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -14,32 +15,40 @@ namespace SwipeIT.ViewModels
 {
     public class AdministrationViewModel : BaseViewModel
     {
-        private ObservableCollection<DateLog> dateLogs;
+        private List<Account> userDateLogs;
 
-        public ObservableCollection<DateLog> DateLogs
+        public List<Account> UserDateLogs
         {
-            get { return dateLogs; }
-            set { dateLogs = value; }
+            get { return userDateLogs; }
+            set { userDateLogs = value; }
         }
 
         public ICommand LogoutCommand => new Command(Logout);
 
         private async void Logout()
         {
-            //await Shell.Current.GoToAsync(nameof(LoginPage));
             var page = new NavigationPage(new LoginPage());
             await Application.Current.MainPage.Navigation.PushModalAsync(page, true);
         }
 
         public AdministrationViewModel()
         {
-            SetDateLogs().Wait();
+            SetUsers().Wait();
         }
 
-        private async Task SetDateLogs()
+        private async Task<List<Account>> GetUsers()
         {
-            DateLogRepo repo = new DateLogRepo();
-            //DateLogs = new ObservableCollection<DateLog>(await repo.GetLast10DateLogs());
+            var userList = new List<Account>();
+            userList.AddRange(await AdminRepo.GetAllItemsAsync());
+            userList.AddRange(await DeveloperRepo.GetAllItemsAsync());
+            userList.AddRange(await RecruiterRepo.GetAllItemsAsync());
+            return userList;
+        }
+
+        private async Task SetUsers()
+        {
+            List<Account> temp = await GetUsers();
+            UserDateLogs = temp.OrderByDescending(x => x.DateLog.DateModified).Take(25).ToList();
         }
     }
 }

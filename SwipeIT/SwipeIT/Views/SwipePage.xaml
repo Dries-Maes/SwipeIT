@@ -26,23 +26,14 @@
                             <SwipeView.TopItems>
                                 <SwipeItems>
                                     <SwipeItemView>
-                                        <StackLayout Margin="10"
-                                                     Orientation="Horizontal"
-                                                     HorizontalOptions="Center">
-
-                                            <Button Text="&#xf234;"
-                                                    FontSize="Large"
-                                                    FontFamily='FontAwesome'
-                                                    BackgroundColor="Green"
-                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:SwipeViewModel}}, Path=LikeCommand}"
-                                                    CommandParameter="{Binding .}" />
-                                            <Button Text="&#xf410;"
-                                                    FontSize="Large"
-                                                    FontFamily='FontAwesome'
-                                                    BackgroundColor="Red"
-                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:SwipeViewModel}}, Path=RefreshCommand}"
-                                                    CommandParameter="{Binding .}" />
-                                        </StackLayout>
+                                        <Button Text="&#xf234;"
+                                                FontSize="Large"
+                                                FontFamily="FontAwesome"
+                                                BackgroundColor="Green"
+                                                WidthRequest="600"
+                                                HeightRequest="75"
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:SwipeViewModel}}, Path=LikeCommand}"
+                                                CommandParameter="{Binding .}" />
                                     </SwipeItemView>
                                 </SwipeItems>
                             </SwipeView.TopItems>

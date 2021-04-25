@@ -38,7 +38,7 @@
                            Grid.Row="1" />
                     <Button Text="&#xf0e0;"
                             FontSize="Large"
-                            FontFamily='FontAwesome'
+                            FontFamily="FontAwesome"
                             HorizontalOptions="EndAndExpand"
                             Command="{Binding SendMailCommand}"
                             Grid.Row="1"
@@ -52,7 +52,7 @@
                            Grid.Row="3" />
                     <Button Text="&#xf5a0;"
                             FontSize="Large"
-                            FontFamily='FontAwesome'
+                            FontFamily="FontAwesome"
                             HorizontalOptions="EndAndExpand"
                             Command="{Binding OpenMapCommand}"
                             Grid.Row="3"
