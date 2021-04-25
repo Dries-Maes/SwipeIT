@@ -24,6 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="AppShell.xaml.cs">
+      <DependentUpon>AppShell.xaml</DependentUpon>
+    </Compile>
     <Compile Update="AppShellDeveloper.xaml.cs">
       <DependentUpon>AppShellDeveloper.xaml</DependentUpon>
     </Compile>
