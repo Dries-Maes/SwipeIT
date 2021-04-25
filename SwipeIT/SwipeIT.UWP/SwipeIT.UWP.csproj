@@ -135,6 +135,7 @@
     <Content Include="Icon29.png" />
     <Content Include="Icon30.png" />
     <Content Include="Icon31.png" />
+    <Content Include="Logo.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />

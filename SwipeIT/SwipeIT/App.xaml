@@ -22,6 +22,12 @@
                 <Setter Property="FontSize"
                         Value="Large"></Setter>
             </Style>
+            <Style  TargetType="StackLayout"
+                    x:Key="MainMargin">
+                <Setter Property="Margin"
+                        Value="30" />
+            </Style>
+
             <Style TargetType="Button">
                 <Setter Property="TextColor"
                         Value="{AppThemeBinding Dark={StaticResource DarkTextColor}, Light={StaticResource LightTextColor}}"></Setter>

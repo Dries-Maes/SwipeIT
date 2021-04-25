@@ -7,7 +7,7 @@
         <local:UsersAdministrationViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Margin="30">
+        <StackLayout  Style="{StaticResource MainMargin}">
             <Label Text="&#xf509; User Administration:"
                    Style="{StaticResource Fa-Label}" />
             <SearchBar Text="{Binding SearchText}"

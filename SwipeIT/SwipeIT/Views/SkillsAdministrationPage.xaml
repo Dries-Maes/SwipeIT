@@ -8,10 +8,11 @@
         <local:SkillsAdministrationViewModel />
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save" Command="{Binding SaveSkillsCommand}" />
+        <ToolbarItem Text="Save"
+                     Command="{Binding SaveSkillsCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout Margin="30">
+        <StackLayout  Style="{StaticResource MainMargin}">
             <CollectionView ItemsSource="{Binding Skills}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -31,12 +32,13 @@
                                     </Label.GestureRecognizers>
                                 </Label>
                                 <Label Text="{Binding SkillName}"
-                                   FontSize="Large"
-                                   VerticalTextAlignment="Center" />
+                                       FontSize="Large"
+                                       VerticalTextAlignment="Center" />
                                 <Button Text="Approve"
                                         HorizontalOptions="EndAndExpand"
                                         IsEnabled="{Binding IsCreatedByUser}"
-                                        Grid.Column="1" IsVisible="{Binding IsCreatedByUser}"
+                                        Grid.Column="1"
+                                        IsVisible="{Binding IsCreatedByUser}"
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type local:SkillsAdministrationViewModel}}, Path=InvertIsUserCreatedBoolCommad}"
                                         CommandParameter="{Binding .}" />
                                 <Button Text="Cancel"

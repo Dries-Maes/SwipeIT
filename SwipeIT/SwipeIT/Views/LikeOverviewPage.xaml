@@ -7,7 +7,7 @@
         <local:LikeOverviewViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Margin="30"
+        <StackLayout Style="{StaticResource MainMargin}"
                      HorizontalOptions="CenterAndExpand"
                      VerticalOptions="CenterAndExpand">
 
@@ -19,9 +19,8 @@
                             <SwipeView>
                                 <SwipeView.RightItems>
                                     <SwipeItems>
-                                        <SwipeItem Text="X"
-                                                   BackgroundColor="Red"
-                                                   IconImageSource="{FontImage Glyph=f503}"
+                                        <SwipeItem BackgroundColor="Red"
+                                                   IconImageSource="{FontImage Glyph=&#xf503;, FontFamily=FontAwesome, Color=Black}"
                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeleteCommand}"
                                                    CommandParameter="{Binding .}" />
                                     </SwipeItems>

@@ -7,7 +7,9 @@
         <local:AdministrationViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Margin="30">
+        <StackLayout Orientation="Vertical"
+                     HorizontalOptions="CenterAndExpand"
+                     Style="{StaticResource MainMargin}">
             <StackLayout Orientation="Horizontal">
 
                 <Label Text="&#xf505;"
@@ -32,7 +34,7 @@
                                    FontSize="Medium" />
                             <Label Text="{Binding Email}"
                                    FontSize="Medium"
-                                   Margin="0,-5,0,10"/>
+                                   Margin="0,-5,0,10" />
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
