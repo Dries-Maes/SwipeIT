@@ -98,14 +98,6 @@ namespace SwipeIT.ViewModels
             }
         }
 
-        public async void AddDummyData()
-        {
-            var temp = new MockData();
-            await AdminRepo.AddItemsAsync(temp.GetAdminList());
-            await DeveloperRepo.AddItemsAsync(temp.GetDeveloperList());
-            await RecruiterRepo.AddItemsAsync(temp.GetRecruiterList());
-        }
-
         #region INotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;

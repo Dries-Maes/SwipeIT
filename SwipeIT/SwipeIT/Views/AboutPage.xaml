@@ -61,9 +61,6 @@
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White" />
                 <StackLayout Orientation="Horizontal">
-                    <Button BackgroundColor="DarkOliveGreen"
-                            Text="AddDummyData"
-                            Command="{Binding AddDummyDataCommand}" />
                     <Button BackgroundColor="Red"
                             Text="Warning Will delete Database"
                             Command="{Binding DeleteDbCommand}" />

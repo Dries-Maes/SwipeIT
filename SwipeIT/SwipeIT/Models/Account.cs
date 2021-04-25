@@ -47,7 +47,6 @@ namespace SwipeIT.Models
 
         private DateLog dateLog;
 
-        //[ForeignKey("Id")]
         public DateLog DateLog
         {
             get => dateLog;

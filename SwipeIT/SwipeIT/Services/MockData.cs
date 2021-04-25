@@ -1,4 +1,5 @@
 ﻿using SwipeIT.Models;
+using SwipeIT.ViewModels;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -9,19 +10,21 @@ namespace SwipeIT.Services
         private IEnumerable<Developer> developers;
         private IEnumerable<Recruiter> recruiters;
         private IEnumerable<Admin> admins;
+        private IEnumerable<Skill> skills;
 
         public MockData()
         {
             MakeDeveloperList();
             MakeRecruiterList();
             MakeAdminList();
+            MakeSkillList();
         }
 
         private void MakeDeveloperList()
         {
             developers = new List<Developer>
             {
-                new Developer {LastName = "Van Gelder",FirstName = "Jens",Image = "Icon15.png",Skills = new ObservableCollection<Skill>{new Skill{SkillName="C#"},new Skill{SkillName="Google"},new Skill{SkillName=".NET"},},AvailableLocations = new ObservableCollection<AvailableLocation>{new AvailableLocation{Province = Province.Antwerpen },new AvailableLocation{Province = Province.VlaamsBrabant},new AvailableLocation{Province = Province.Luik},new AvailableLocation{Province = Province.Henegouwen},},Email ="jens.v.gelder@gmail.com",Password ="pass",Address = "Haacht neerstraat",},
+                new Developer {LastName = "Van Gelder",FirstName = "Jens",Image = "Icon15.png",Skills = new ObservableCollection<Skill>{new Skill{SkillName="C#"},new Skill{SkillName=".NET"},},AvailableLocations = new ObservableCollection<AvailableLocation>{new AvailableLocation{Province = Province.Antwerpen },new AvailableLocation{Province = Province.VlaamsBrabant},new AvailableLocation{Province = Province.Luik},new AvailableLocation{Province = Province.Henegouwen},},Email ="jens.v.gelder@gmail.com",Password ="pass",Address = "Haacht neerstraat",},
                 new Developer {LastName = "Maes",FirstName = "Dries",Image = "Icon03.png",Skills = new ObservableCollection<Skill>{new Skill{SkillName="C#"},new Skill{SkillName=".NET"},},AvailableLocations = new ObservableCollection<AvailableLocation>{new AvailableLocation{Province = Province.Antwerpen},new AvailableLocation{Province = Province.VlaamsBrabant},new AvailableLocation{Province = Province.Henegouwen },},Email="dm.inbox@outlook.com",Password ="pass"},
                 new Developer {LastName = "Impe",FirstName = "Ward",Image = "Icon07.png",Skills = new ObservableCollection<Skill>{new Skill{SkillName="C#"},},AvailableLocations = new ObservableCollection<AvailableLocation>{new AvailableLocation{Province = Province.Antwerpen},new AvailableLocation{Province = Province.VlaamsBrabant},new AvailableLocation{Province = Province.Henegouwen},},Email="ward@impesoft.com",Password ="pass"},
                 new Developer {LastName = "Kesteloot",FirstName = "Sebastiaan-Willem",Image = "Icon05.png",Skills = new ObservableCollection<Skill>{new Skill{SkillName="C#"},new Skill{SkillName=".NET"},},AvailableLocations = new ObservableCollection<AvailableLocation>{new AvailableLocation{Province = Province.Antwerpen},new AvailableLocation{Province = Province.VlaamsBrabant},new AvailableLocation{Province = Province.Henegouwen},},Email ="feugiat.metus@Donecegestas.co.uk",Password="pass"},
@@ -157,19 +160,36 @@ namespace SwipeIT.Services
             };
         }
 
-        public IEnumerable<Developer> GetDeveloperList()
+        private void MakeSkillList()
         {
-            return developers;
+            skills = new List<Skill>
+            {
+                new Skill
+                {
+                    SkillName = "Banaan",
+                    IsCreatedByUser = true,
+                },
+                new Skill
+                {
+                    SkillName = "Sleeping",
+                    IsCreatedByUser = true,
+                },
+                new Skill
+                {
+                    SkillName = ":)",
+                    IsCreatedByUser = true,
+                },
+            };
         }
 
-        public IEnumerable<Recruiter> GetRecruiterList()
+        public async void AddDummyData()
         {
-            return recruiters;
-        }
-
-        public IEnumerable<Admin> GetAdminList()
-        {
-            return admins;
+            BaseViewModel viewModel = new BaseViewModel();
+            var temp = new MockData();
+            await viewModel.AdminRepo.AddItemsAsync(temp.admins);
+            await viewModel.DeveloperRepo.AddItemsAsync(temp.developers);
+            await viewModel.RecruiterRepo.AddItemsAsync(temp.recruiters);
+            await viewModel.SkillsRepo.AddItemsAsync(temp.skills);
         }
     }
 }

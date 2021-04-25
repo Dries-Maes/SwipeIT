@@ -15,13 +15,9 @@ namespace SwipeIT.Models
         [DataType(DataType.DateTime)]
         public DateTime DateModified { get; set; }
 
-        //[ForeignKey("Id")]
-        //public Account Account { get; set; }
-
         public DateLog()
         {
             DateCreated = DateTime.Now;
-            DateModified = DateTime.Now;
         }
     }
 }

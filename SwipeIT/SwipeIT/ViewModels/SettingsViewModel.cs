@@ -91,6 +91,7 @@ namespace SwipeIT.ViewModels
             }
             else if (Current.User is Recruiter recruiter)
             {
+                Current.User.DateLog.DateModified = DateTime.Now;
                 await RecruiterRepo.AddItemAsync(recruiter);
             }
         }
