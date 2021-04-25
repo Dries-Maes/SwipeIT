@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <ApplicationIcon>Swipe-IT.ico</ApplicationIcon>
+    <Version>2.9.7</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,6 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="AppShell.xaml.cs">
+      <DependentUpon>AppShell.xaml</DependentUpon>
+    </Compile>
     <Compile Update="AppShellDeveloper.xaml.cs">
       <DependentUpon>AppShellDeveloper.xaml</DependentUpon>
     </Compile>

@@ -16,9 +16,11 @@
             <Color x:Key="PrimaryWindowsLight">#F39621</Color>
             <Color x:Key="PrimaryWindowsDark">#B05500</Color>
             <Style TargetType="Label"
-                   x:Key="FontAwesome">
-                <Setter Property="FontFamily" Value="FontAwesome"></Setter>
-                <Setter Property="FontSize" Value="Large"></Setter>
+                   x:Key="Fa-Label">
+                <Setter Property="FontFamily"
+                        Value="FontAwesome"></Setter>
+                <Setter Property="FontSize"
+                        Value="Large"></Setter>
             </Style>
             <Style TargetType="Button">
                 <Setter Property="TextColor"
