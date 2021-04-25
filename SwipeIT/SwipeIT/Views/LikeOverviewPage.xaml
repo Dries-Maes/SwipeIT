@@ -7,10 +7,11 @@
         <local:LikeOverviewViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Margin="{OnPlatform Android=30, UWP=100}"
-                     HorizontalOptions="CenterAndExpand">
+        <StackLayout Margin="30"
+                     HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="CenterAndExpand">
 
-            <CollectionView IsVisible="{OnPlatform Android=true, Default=false}"
+            <CollectionView IsVisible="{OnIdiom Phone=True, Tablet=True, Default=false}"
                             ItemsSource="{Binding Current.User.Developers}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -20,7 +21,7 @@
                                     <SwipeItems>
                                         <SwipeItem Text="X"
                                                    BackgroundColor="Red"
-                                                   IconImageSource=""
+                                                   IconImageSource="{FontImage Glyph=f503}"
                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeleteCommand}"
                                                    CommandParameter="{Binding .}" />
                                     </SwipeItems>
@@ -52,55 +53,50 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <CollectionView IsVisible="{OnPlatform UWP=true, Default=false}"
-                            ItemsSource="{Binding Current.User.Developers}">
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Horizontal"
-                                     Span="3" />
-                </CollectionView.ItemsLayout>
+            <FlexLayout IsVisible="{OnIdiom Desktop=True, TV=True, Default=false }"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"
+                        Wrap="Wrap"
+                        BindableLayout.ItemsSource="{Binding Current.User.Developers}">
+                <!--<CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                     Span="5" />
+                </CollectionView.ItemsLayout>-->
 
-                <CollectionView.ItemTemplate>
+                <BindableLayout.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Margin="1">
-                            <SwipeView>
-                                <SwipeView.RightItems>
-                                    <SwipeItems>
-                                        <SwipeItemView>
-                                            <Button Text="&#xf503;"
-                                                    FontSize="Large"
-                                                    FontFamily='FontAwesome'
-                                                    BackgroundColor="Red"
-                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeleteCommand}"
-                                                    CommandParameter="{Binding .}" />
-                                        </SwipeItemView>
-                                    </SwipeItems>
-                                </SwipeView.RightItems>
-                                <Frame>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Button IsVisible="{OnIdiom Desktop=True, Default=false, TV=True }"
-                                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeleteCommand}"
-                                                CommandParameter="{Binding .}"
-                                                Text="&#xf503;"
-                                                FontSize="Large"
-                                                FontFamily='FontAwesome'
-                                                BackgroundColor="Red" />
-                                        <Image Source="{Binding Image}"
-                                               WidthRequest="60"
-                                               HeightRequest="60" />
-                                        <Label Text="{Binding LastName}"
-                                               FontSize="16"
-                                               VerticalTextAlignment="Center" />
-                                        <Label Text="{Binding FirstName}"
-                                               LineBreakMode="NoWrap"
-                                               FontSize="16"
-                                               VerticalTextAlignment="Center" />
-                                    </StackLayout>
-                                </Frame>
-                            </SwipeView>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeveloperTappedCommand}"
+                                                      CommandParameter="{Binding .}" />
+                            </StackLayout.GestureRecognizers>
+
+                            <Button Text="&#xf503;"
+                                    FontSize="Large"
+                                    FontFamily='FontAwesome'
+                                    BackgroundColor="Red"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:LikeOverviewViewModel}}, Path=DeleteCommand}"
+                                    CommandParameter="{Binding .}" />
+                            <Frame>
+                                <StackLayout Orientation="Horizontal">
+
+                                    <Image Source="{Binding Image}"
+                                           WidthRequest="60"
+                                           HeightRequest="60" />
+                                    <Label Text="{Binding LastName}"
+                                           FontSize="16"
+                                           VerticalTextAlignment="Center" />
+                                    <Label Text="{Binding FirstName}"
+                                           LineBreakMode="NoWrap"
+                                           FontSize="16"
+                                           VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </Frame>
                         </StackLayout>
                     </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
