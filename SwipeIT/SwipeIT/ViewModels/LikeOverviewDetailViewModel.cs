@@ -8,9 +8,9 @@ namespace SwipeIT.ViewModels
     [QueryProperty(nameof(DeveloperID), nameof(DeveloperID))]
     public class LikeOverviewDetailViewModel : BaseViewModel
     {
-        private User selectedDeveloper;
+        private Developer selectedDeveloper;
 
-        public User SelectedDeveloper
+        public Developer SelectedDeveloper
         {
             get => selectedDeveloper;
             set
@@ -50,6 +50,7 @@ namespace SwipeIT.ViewModels
 
         public LikeOverviewDetailViewModel()
         {
+            SelectedDeveloper = new Developer();
         }
 
         private string GetDeveloperExperienceString()
@@ -72,19 +73,14 @@ namespace SwipeIT.ViewModels
 
         private async void LoadSelectedDeveloper(int id)
         {
-            switch (Current.User)
+            try
             {
-                case Developer _:
-                    _ = new Developer();
-                    Developer result = await DeveloperRepo.GetItemAsync(id);
-                    SelectedDeveloper = result;
-                    break;
-
-                case Recruiter _:
-                    _ = new Recruiter();
-                    Recruiter result2 = await RecruiterRepo.GetItemAsync(id);
-                    SelectedDeveloper = result2;
-                    break;
+                var dev = await DeveloperRepo.GetItemAsync(id);
+                SelectedDeveloper = dev;
+            }
+            catch (Exception)
+            {
+                //Debug
             }
         }
 
@@ -95,17 +91,14 @@ namespace SwipeIT.ViewModels
 
         private async void OpenMapApp()
         {
-            if (IsDeveloper)
+            if (Device.RuntimePlatform == Device.Android)
             {
-                if (Device.RuntimePlatform == Device.Android)
-                {
-                    string address = ((Developer)selectedDeveloper).Address.Replace(" ", "+");
-                    await Launcher.OpenAsync($"geo:0,0?q={address}+BE");
-                }
-                else if (Device.RuntimePlatform == Device.UWP)
-                {
-                    await Launcher.OpenAsync($"bingmaps:?where={((Developer)SelectedDeveloper).Address}");
-                }
+                string address = selectedDeveloper.Address.Replace(" ", "+");
+                await Launcher.OpenAsync($"geo:0,0?q={address}+BE");
+            }
+            else if (Device.RuntimePlatform == Device.UWP)
+            {
+                await Launcher.OpenAsync($"bingmaps:?where={SelectedDeveloper.Address}");
             }
         }
     }

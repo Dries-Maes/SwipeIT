@@ -11,7 +11,7 @@
                      HorizontalOptions="CenterAndExpand">
 
             <CollectionView IsVisible="{OnPlatform Android=true, Default=false}"
-                            ItemsSource="{Binding ConnectionList}">
+                            ItemsSource="{Binding Current.User.Developers}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Margin="2">

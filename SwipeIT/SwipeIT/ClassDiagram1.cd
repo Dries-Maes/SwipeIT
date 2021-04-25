@@ -3,7 +3,7 @@
   <Class Name="SwipeIT.Models.Account" Collapsed="true">
     <Position X="9" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAACAAAAAgAAAAAAAIAAAACAACAAAAAgAAAgA=</HashCode>
+      <HashCode>AAAAAAAAACAAgAAgEAAAABAIAAAACAACAAAAAgAAAgA=</HashCode>
       <FileName>Models\Account.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -17,35 +17,35 @@
   <Class Name="SwipeIT.Models.DateLog" Collapsed="true">
     <Position X="12" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Models\DateLog.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SwipeIT.Models.Developer">
+  <Class Name="SwipeIT.Models.Developer" Collapsed="true">
     <Position X="6.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAAAABAAAAAAAAAAAAAAAAAIAAAACAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAIAAQACAAAAAAAAAAA=</HashCode>
       <FileName>Models\Developer.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SwipeIT.Models.Recruiter">
+  <Class Name="SwipeIT.Models.Recruiter" Collapsed="true">
     <Position X="9" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAABAAAAAQ=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQABAAAAAQ=</HashCode>
       <FileName>Models\Recruiter.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SwipeIT.Models.Skill" Collapsed="true">
     <Position X="15.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAKAAAAAAAAAAAAAAAAAEAIAABACAAAACAAAAAAAAA=</HashCode>
+      <HashCode>AAAIAAAAAAAAgAAAAAAAAEAIAABACAAAACAAAAAAAAA=</HashCode>
       <FileName>Models\Skill.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SwipeIT.Models.User" Collapsed="true">
     <Position X="7.75" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAFAAAABAACAAAAAgAAAAEAAAgBAAAIAACAAAAAg=</HashCode>
+      <HashCode>EAAAAFAAAABAAAAAAAIAAAACEAAAgBAAAIAACAAAAAg=</HashCode>
       <FileName>Models\User.cs</FileName>
     </TypeIdentifier>
   </Class>
