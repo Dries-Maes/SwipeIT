@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SwipeIT.ViewModels"
+             x:Class="SwipeIT.Views.SettingsSkillsPage"
+             Disappearing="ContentPage_Disappearing">
+    <ContentPage.BindingContext>
+        <local:SettingsSkillsViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout  Style="{StaticResource MainMargin}">
+            <Picker Title="Select Skill"
+                    ItemsSource="{Binding AvailableSkillsList}"
+                    ItemDisplayBinding="{Binding SkillName}"
+                    SelectedItem="{Binding Source={RelativeSource AncestorType={x:Type local:SettingsSkillsViewModel}}, Path=SelectedSkill}"
+                    VerticalOptions="Start">
+            </Picker>
+            <Button Text="Add"
+                    Command="{Binding SkillPickedCommand}" />
+            <Entry Text="{Binding SkillEntry}"
+                   Placeholder="Create new Skill"
+                   ReturnCommand="{Binding SkillEnteredCommand}" />
+            <Button Text="Add "
+                    Command="{Binding SkillEnteredCommand}" />
+            <StackLayout BindableLayout.ItemsSource="{Binding Current.User.Skills}"
+                         Padding="0,5"
+                         Margin="0,5">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding SkillName}"
+                                   VerticalOptions="Center" />
+                            <Button Text="Delete"
+                                    WidthRequest="75"
+                                    HorizontalOptions="EndAndExpand"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:SettingsSkillsViewModel}}, Path=SkillDeletedCommand}"
+                                    CommandParameter="{Binding SkillName}" />
+                        </StackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+            <Label Text=" " />
+            <Label Text=" " />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

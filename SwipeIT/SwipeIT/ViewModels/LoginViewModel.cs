@@ -1,23 +1,18 @@
 ﻿using SwipeIT.Models;
+using SwipeIT.Services;
 using SwipeIT.Views;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
-using System.Diagnostics;
 using System.Linq;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace SwipeIT.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        public bool IsRecruiter { get; set; }
-        public bool IsDeveloper { get; set; }
         private string errorMessage;
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        private Account account;
 
         public string ErrorMessage
         {
@@ -29,90 +24,59 @@ namespace SwipeIT.ViewModels
             }
         }
 
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
         public bool IsSignUp { get; set; }
         public string UserPassword { get; set; }
         public string VerificationPassword { get; set; }
         public string UserMail { get; set; }
         public List<Developer> DevelopersResult;
         public List<Recruiter> RecruiterResult;
-        public List<Account> Accounts = new List<Account>();
-
-        public Command LoginCommand { get; }
+        public List<Admin> AdminsResult;
+        public List<Account> Accounts;
+        public Command LoginCommand => new Command(OnLoginClicked);
 
         public LoginViewModel()
         {
-            GetMockData();
-            CurrentUserSingleton.CurrentUser = null;
-            UserMail = "";
-            UserPassword = "";
-            LoginCommand = new Command(OnLoginClicked);
+            GetAccounts().Wait();
         }
 
-        private void GetMockData()
+        private async Task GetAccounts()
         {
-            DevelopersResult = DeveloperRepo.GetDevelopers();
-            RecruiterResult = RecruiterRepo.GetRecruiters();
-            Accounts.AddRange(DevelopersResult);
-            Accounts.AddRange(RecruiterResult);
+            Accounts = new List<Account>();
+            var tasks = new List<Task>
+            {
+            GetAdmins(),
+            GetDevelopers(),
+            GetRecruiters(),
+            AddMockDataIfDbIsEmpty(),
+            };
+            await Task.WhenAll(tasks);
         }
 
-        private async void OnLoginClicked(object obj)
+        private async Task GetRecruiters()
         {
-            ErrorMessage = "";
-            if (IsSignUp)
+            Accounts.AddRange(await RecruiterRepo.GetAllItemsAsync());
+        }
+
+        private async Task GetDevelopers()
+        {
+            Accounts.AddRange(await DeveloperRepo.GetAllItemsAsync());
+        }
+
+        private async Task GetAdmins()
+        {
+            Accounts.AddRange(await AdminRepo.GetAllItemsAsync());
+        }
+
+        private async Task AddMockDataIfDbIsEmpty()
+        {
+            if (Accounts.Count == 0)
             {
-                if (!RequiredFields())
-                {
-                    ErrorMessage = "Email and Password fields cannot be empty\n";
-                    return;
-                }
-
-                if (Accounts.Where(x => x.Email == UserMail).ToList().Count == 0)
-                {
-                    if (ErrorInFormValues()) return;
-                    await CreateNewUser();
-                    await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
-                }
-                else
-                {
-                    ErrorMessage += "User already exists\n";
-                    return;
-                }
-            }
-            else
-            {
-                try // find user
-                {
-                    CurrentUserSingleton.CurrentUser = Accounts.First(x => x.Email == UserMail);
-                }
-                catch (Exception)
-                {
-                    ErrorMessage += "User not Found\n";
-                    return;
-                }
-
-                //user exists, let's continue
-                if (!VerifyPassword())
-                {
-                    ErrorMessage += "Password Mismatch\n";
-                    return;
-                }
-                // password check passes when you got here so we decide were to go from here
-                // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-                switch (CurrentUserSingleton.CurrentUser)
-                {
-                    case Developer developer:
-                        await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
-                        break;
-
-                    case Recruiter recruiter:
-                        await Shell.Current.GoToAsync($"//{nameof(SwipePage)}");
-                        break;
-
-                    case Admin admin:
-                        // do admin stuff
-                        throw new NotImplementedException();
-                }
+                var mockData = new MockData();
+                mockData.AddDummyData();
+                await GetAccounts();
             }
         }
 
@@ -124,23 +88,42 @@ namespace SwipeIT.ViewModels
         private bool ErrorInFormValues()
         {
             bool retVal = false;
-            if (!PassWordsMatch())
+            retVal = CheckIFPasswordsMatch(retVal);
+            retVal = CheckForEmptyFields(retVal);
+            retVal = CheckIfRoleIsSelected(retVal);
+            return retVal;
+        }
+
+        private bool CheckIfRoleIsSelected(bool retVal)
+        {
+            if (IsDeveloper == false && IsRecruiter == false)
             {
-                ErrorMessage += "Passwords don't match\n";
+                ErrorMessage += "please select your Developer or Recruiter role\n";
                 retVal = true;
             }
 
+            return retVal;
+        }
+
+        private bool CheckForEmptyFields(bool retVal)
+        {
             if (EmptyFields())
             {
                 ErrorMessage += "These required fields cannot be empty\n";
                 retVal = true;
             }
 
-            if (IsDeveloper == false && IsRecruiter == false)
+            return retVal;
+        }
+
+        private bool CheckIFPasswordsMatch(bool retVal)
+        {
+            if (!PassWordsMatch())
             {
-                ErrorMessage += "please select your Developer or Recruiter role\n";
+                ErrorMessage += "Passwords don't match\n";
                 retVal = true;
             }
+
             return retVal;
         }
 
@@ -156,36 +139,148 @@ namespace SwipeIT.ViewModels
 
         private bool VerifyPassword()
         {
-            return UserPassword == CurrentUserSingleton.CurrentUser.Password;
+            return UserPassword == account.Password;
         }
 
         private async Task CreateNewUser()
         {
-            if (IsDeveloper)
+            var tasks = new List<Task>
             {
-                Developer temp = new Developer
-                {
-                    Email = UserMail,
-                    Password = UserPassword,
-                    FirstName = FirstName,
-                    LastName = LastName,
-                };
-                CurrentUserSingleton.CurrentUser = temp;
-                await DeveloperRepo.AddItemAsync((Developer)CurrentUserSingleton.CurrentUser);
-            }
+            CreateDeveloperAccount(),
+            CreateRecruiterAccount(),
+            Login(),
+            };
+            await Task.WhenAll(tasks);
+        }
 
+        private async Task CreateRecruiterAccount()
+        {
             if (IsRecruiter)
             {
-                CurrentUserSingleton.CurrentUser = new Recruiter
+                Current.User = new Recruiter
                 {
                     Email = UserMail,
                     Password = UserPassword,
                     FirstName = FirstName,
                     LastName = LastName,
                 };
-                await RecruiterRepo.AddItemAsync((Recruiter)CurrentUserSingleton.CurrentUser);
+                await RecruiterRepo.AddItemAsync((Recruiter)Current.User);
             }
-            // todo admin (release 3)
+        }
+
+        private async Task CreateDeveloperAccount()
+        {
+            if (IsDeveloper)
+            {
+                Current.User = new Developer
+                {
+                    Email = UserMail,
+                    Password = UserPassword,
+                    FirstName = FirstName,
+                    LastName = LastName,
+                };
+                await DeveloperRepo.AddItemAsync((Developer)Current.User);
+            }
+        }
+
+        private async void OnLoginClicked(object obj)
+        {
+            Current.User = null;
+            ErrorMessage = "";
+            CheckIfRequiredFieldsAreFilledIn();
+            if (IsSignUp)
+            {
+                await SignUp();
+            }
+            else
+            {
+                await CheckLoginDetails();
+            }
+
+            await Login();
+        }
+
+        private void CheckIfRequiredFieldsAreFilledIn()
+        {
+            if (!RequiredFields())
+            {
+                ErrorMessage = "Email and Password fields cannot be empty\n";
+                return;
+            }
+        }
+
+        private async Task CheckLoginDetails()
+        {
+            try
+            {
+                account = Accounts.First(x => x.Email == UserMail);
+            }
+            catch (Exception)
+            {
+                ErrorMessage += "User not Found\n";
+                return;
+            }
+
+            if (!VerifyPassword())
+            {
+                ErrorMessage += "Password Mismatch\n";
+                return;
+            }
+            Current.User = null;
+            UserMail = "";
+            UserPassword = "";
+            List<Admin> adminlist = await AdminRepo.GetAllItemsAsync();
+            var admin = adminlist.FirstOrDefault(x => x.Id == account.Id);
+            if (admin != null)
+            {
+                Application.Current.MainPage = new AppShellAdmin();
+                return;
+            }
+
+            Current.User = (User)Accounts.FirstOrDefault(x => x.Id == account.Id);
+        }
+
+        private async Task Login()
+        {
+            switch (Current.User)
+            {
+                case Developer _:
+                    App.Current.MainPage = new AppShellDeveloper();
+                    await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
+                    break;
+
+                case Recruiter _:
+                    App.Current.MainPage = new AppShellRecruiter();
+                    await Shell.Current.GoToAsync($"//{nameof(SwipePage)}");
+                    break;
+            }
+        }
+
+        private async Task SignUp()
+        {
+            if (Accounts.Where(x => x.Email == UserMail).ToList().Count == 0)
+            {
+                if (ErrorInFormValues()) return;
+                await CreateNewUser();
+            }
+            else
+            {
+                ErrorMessage += "User already exists\n";
+                return;
+            }
+        }
+
+        private void CheckIfUserExists()
+        {
+            try
+            {
+                account = Accounts.First(x => x.Email == UserMail);
+            }
+            catch (Exception)
+            {
+                ErrorMessage += "User not Found\n";
+                return;
+            }
         }
     }
 }

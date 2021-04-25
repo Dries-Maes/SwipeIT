@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using SwipeIT.Services;
+﻿using SwipeIT.Services;
+using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace SwipeIT.Models
 {
     public class Skill : ObservableObject
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         private string skillName;
 
+        [MaxLength(50)]
         public string SkillName
         {
             get => skillName;
@@ -43,6 +43,14 @@ namespace SwipeIT.Models
                 dateLog = value;
                 OnPropertyChanged(nameof(DateLog));
             }
+        }
+
+        private ObservableCollection<User> users;
+
+        public ObservableCollection<User> Users
+        {
+            get { return users; }
+            set { users = value; }
         }
 
         public Skill()

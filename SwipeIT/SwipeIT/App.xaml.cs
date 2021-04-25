@@ -1,8 +1,5 @@
-﻿using SwipeIT.Services;
-using SwipeIT.Views;
-using System;
+﻿using SwipeIT.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace SwipeIT
 {
@@ -12,7 +9,7 @@ namespace SwipeIT
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new LoginPage();
         }
 
         protected override void OnStart()

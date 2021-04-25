@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SwipeIT.ViewModels"
+             x:Class="SwipeIT.Views.AdministrationPage">
+    <ContentPage.BindingContext>
+        <local:AdministrationViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical"
+                     HorizontalOptions="CenterAndExpand"
+                     Style="{StaticResource MainMargin}">
+            <StackLayout Orientation="Horizontal">
+
+                <Label Text="&#xf505;"
+                       FontSize="Large"
+                       FontFamily="FontAwesome"
+                       TextColor="Blue" />
+                <Label Text="Administration" />
+                <Button Text="&#xf2f5;"
+                        FontFamily="FontAwesome"
+                        HorizontalOptions="EndAndExpand"
+                        Command="{Binding LogoutCommand}" />
+            </StackLayout>
+            <Label Text="Latest Modifications:"
+                   FontSize="Large"
+                   TextDecorations="Underline"
+                   Margin="0,0,0,10" />
+            <CollectionView ItemsSource="{Binding UserDateLogs}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding DateLog.DateModified}"
+                                   FontSize="Medium" />
+                            <Label Text="{Binding Email}"
+                                   FontSize="Medium"
+                                   Margin="0,-5,0,10" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

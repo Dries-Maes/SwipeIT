@@ -3,28 +3,73 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <ApplicationIcon>Swipe-IT.ico</ApplicationIcon>
+    <Version>2.9.7</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NEST" Version="7.12.0" />
+    <None Remove="fa-solid-900.ttf" />
+    <None Remove="Font Awesome 5 Free-Regular-400.otf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="fa-solid-900.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.14" />
+    <PackageReference Include="NEST" Version="7.12.1" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="AppShell.xaml.cs">
+      <DependentUpon>AppShell.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="AppShellDeveloper.xaml.cs">
+      <DependentUpon>AppShellDeveloper.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="AppShellAdmin.xaml.cs">
+      <DependentUpon>AppShellAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="AppShellRecruiter.xaml.cs">
+      <DependentUpon>AppShellRecruiter.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SettingsLocationsPage.xaml.cs">
+      <DependentUpon>SettingsLocationsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SettingsSkillsPage.xaml.cs">
+      <DependentUpon>SettingsSkillsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\SwipePage.xaml.cs">
       <DependentUpon>SwipePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Views\AdministrationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\LikeOverviewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SettingsLocationsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SettingsSkillsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SkillsAdministrationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SwipePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\UsersAdministrationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

@@ -2,19 +2,43 @@
 using SwipeIT.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Xamarin.Forms;
 
 namespace SwipeIT.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public CurrentUserSingleton CurrentUserSingleton { get; set; }
+        public Current Current { get; set; }
 
-        public DeveloperRepo DeveloperRepo = DeveloperRepo.GetSingleton();
-        public RecruiterRepo RecruiterRepo = RecruiterRepo.GetSingleton();
-        public SkillsRepo SkillsRepo = SkillsRepo.GetSingleton();
+        public IGenericRepo<Developer> DeveloperRepo = new DeveloperRepo();
+        public IGenericRepo<Recruiter> RecruiterRepo = new RecruiterRepo();
+        public IGenericRepo<Skill> SkillsRepo = new GenericRepo<Skill>();
+        public IGenericRepo<Admin> AdminRepo = new GenericRepo<Admin>();
+        private bool isDeveloper;
+
+        public bool IsDeveloper
+        {
+            get { return isDeveloper; }
+            set
+            {
+                isDeveloper = value;
+                OnPropertyChanged(nameof(IsDeveloper));
+            }
+        }
+
+        private bool isRecruiter;
+
+        public bool IsRecruiter
+        {
+            get { return isRecruiter; }
+            set
+            {
+                isRecruiter = value;
+                OnPropertyChanged(nameof(IsRecruiter));
+            }
+        }
 
         private bool isBusy = false;
 
@@ -47,9 +71,46 @@ namespace SwipeIT.ViewModels
 
         public BaseViewModel()
         {
-            CurrentUserSingleton = CurrentUserSingleton.GetSingleton();
+            Current = Current.GetSingleton();
+            SetBools();
         }
 
+        private void SetBools()
+        {
+            switch (Current.User)
+            {
+                case Developer _:
+                    IsDeveloper = true;
+                    break;
+
+                case Recruiter _:
+                    IsRecruiter = true;
+                    break;
+            }
+        }
+
+        internal void DeleteDb()
+        {
+            using (var dbContext = new SwipeITDBContext())
+            {
+                dbContext.DeleteDb();
+            }
+        }
+
+        internal async void UpdateCurrentUser()
+        {
+            if (Current.User is Developer developer)
+            {
+                Current.User.DateLog.DateModified = DateTime.Now;
+                await DeveloperRepo.AddItemAsync(developer);
+            }
+            else if (Current.User is Recruiter recruiter)
+            {
+                await RecruiterRepo.AddItemAsync(recruiter);
+            }
+        }
+
+        
         #region INotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;

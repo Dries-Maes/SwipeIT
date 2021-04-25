@@ -1,10 +1,7 @@
 ﻿using SwipeIT.Models;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
-using Xamarin.Forms;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace SwipeIT.ViewModels
 {
@@ -35,11 +32,43 @@ namespace SwipeIT.ViewModels
             }
         }
 
+        public string DeveloperExperience
+        {
+            get
+            {
+                return GetDeveloperExperienceString();
+            }
+            set
+            {
+                DeveloperExperience = value;
+                OnPropertyChanged(nameof(DeveloperExperience));
+            }
+        }
+
         public Command SendMailCommand => new Command(SendMail);
+        public Command OpenMapCommand => new Command(OpenMapApp);
 
         public LikeOverviewDetailViewModel()
         {
             SelectedDeveloper = new Developer();
+        }
+
+        private string GetDeveloperExperienceString()
+        {
+            string experience;
+            if (SelectedDeveloper.YearsOfExperience <= 2)
+            {
+                experience = "Junior";
+            }
+            else if (SelectedDeveloper.YearsOfExperience <= 5)
+            {
+                experience = "Medior";
+            }
+            else
+            {
+                experience = "Senior";
+            }
+            return $"({experience} ({SelectedDeveloper.YearsOfExperience}Yrs))";
         }
 
         private async void LoadSelectedDeveloper(int id)
@@ -55,9 +84,22 @@ namespace SwipeIT.ViewModels
             }
         }
 
-        private void SendMail()
+        private async void SendMail()
         {
-            Launcher.OpenAsync(new Uri($"mailto:{SelectedDeveloper.Email}?subject=SwipeIT found a Like!&body=Hey, {SelectedDeveloper.FirstName}!%0D%0A%0D%0AWe at {((Recruiter)CurrentUserSingleton.CurrentUser).Company} might have an interesting job offer for you.%0D%0A%0D%0AContact us for more information."));
+            await Launcher.OpenAsync(new Uri($"mailto:{SelectedDeveloper.Email}?subject=SwipeIT found a Like!&body=Hey, {SelectedDeveloper.FirstName}!\nWe at {((Recruiter)Current.User).Company} might have an interesting job offer for you.\nContact us for more information."));
+        }
+
+        private async void OpenMapApp()
+        {
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                string address = selectedDeveloper.Address.Replace(" ", "+");
+                await Launcher.OpenAsync($"geo:0,0?q={address}+BE");
+            }
+            else if (Device.RuntimePlatform == Device.UWP)
+            {
+                await Launcher.OpenAsync($"bingmaps:?where={SelectedDeveloper.Address}");
+            }
         }
     }
 }

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:SwipeIT.Views"
+       xmlns:viewmodels="clr-namespace:SwipeIT.ViewModels"
+       Title="SwipeIT"
+       x:Class="SwipeIT.AppShellRecruiter"
+       FlyoutWidth="230">
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle"
+                   TargetType="Element">
+                <Setter Property="Shell.BackgroundColor"
+                        Value="{StaticResource Primary}" />
+                <Setter Property="Shell.ForegroundColor"
+                        Value="White" />
+                <Setter Property="Shell.TitleColor"
+                        Value="White" />
+                <Setter Property="Shell.DisabledColor"
+                        Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor"
+                        Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor"
+                        Value="{StaticResource Primary}" />
+                <Setter Property="Shell.TabBarForegroundColor"
+                        Value="White" />
+                <Setter Property="Shell.TabBarUnselectedColor"
+                        Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarTitleColor"
+                        Value="White" />
+            </Style>
+            <Style TargetType="TabBar"
+                   BasedOn="{StaticResource BaseStyle}" />
+            <Style TargetType="FlyoutItem"
+                   BasedOn="{StaticResource BaseStyle}" />
+
+            <Style Class="FlyoutItemLabelStyle"
+                   TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="White"></Setter>
+            </Style>
+            <Style Class="FlyoutItemLayoutStyle"
+                   TargetType="Layout"
+                   ApplyToDerivedTypes="True">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor"
+                                            Value="{x:OnPlatform UWP=Transparent, iOS=White}" />
+                                    <Setter TargetName="FlyoutItemLabel"
+                                            Property="Label.TextColor"
+                                            Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor"
+                                            Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style Class="MenuItemLayoutStyle"
+                   TargetType="Layout"
+                   ApplyToDerivedTypes="True">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates1">
+                            <VisualState x:Name="Normal1">
+                                <VisualState.Setters>
+                                    <Setter TargetName="FlyoutItemLabel"
+                                            Property="Label.TextColor"
+                                            Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <FlyoutItem Title="Logout"
+                Icon="icon_login.png">
+
+        <ShellContent Route="LoginPage"
+                      Shell.FlyoutBehavior="Disabled"
+                      ContentTemplate="{DataTemplate local:LoginPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Swipe"
+                Icon="{FontImage Glyph=&#xf25a;, FontFamily=FontAwesome, Color=Black}">
+        <ShellContent Route="SwipePage"
+                      ContentTemplate="{DataTemplate local:SwipePage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Connections"
+                Icon="{FontImage Glyph=&#xf0c1;, FontFamily=FontAwesome, Color=Black}">
+        <ShellContent Route="LikeOverviewPage"
+                      ContentTemplate="{DataTemplate local:LikeOverviewPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Settings"
+                Icon="{FontImage Glyph=&#xf085;, FontFamily=FontAwesome, Color=Black}">
+        <Tab>
+            <ShellContent Title="General"
+                          Route="SettingsPage"
+                          ContentTemplate="{DataTemplate local:SettingsPage}" />
+            <ShellContent Title="Skills"
+                          ContentTemplate="{DataTemplate local:SettingsSkillsPage}" />
+            <ShellContent Title="Locations"
+                          ContentTemplate="{DataTemplate local:SettingsLocationsPage}" />
+        </Tab>
+    </FlyoutItem>
+
+    <FlyoutItem Title="About"
+                Icon="icon_about.png">
+
+        <ShellContent Route="AboutPage"
+                      ContentTemplate="{DataTemplate local:AboutPage}" />
+    </FlyoutItem>
+</Shell>

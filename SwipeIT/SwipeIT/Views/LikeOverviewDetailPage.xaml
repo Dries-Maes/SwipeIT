@@ -8,49 +8,69 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Margin="30">
+            <StackLayout  Style="{StaticResource MainMargin}">
                 <Image Source="{Binding SelectedDeveloper.Image}"
                        HorizontalOptions="Center"
                        HeightRequest="150"
                        WidthRequest="150">
                 </Image>
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,5,0,15">
-                    <Label Text="{Binding SelectedDeveloper.FirstName}" FontSize="Large" />
-                    <Label Text="{Binding SelectedDeveloper.LastName}" FontSize="Large" />
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="Center"
+                             Margin="0,5,0,15">
+                    <Label Text="{Binding SelectedDeveloper.FirstName}"
+                           FontSize="Large" />
+                    <Label Text="{Binding SelectedDeveloper.LastName}"
+                           FontSize="Large" />
                 </StackLayout>
+                <Label Text="{Binding DeveloperExperience}"
+                       FontSize="Small"
+                       HorizontalTextAlignment="Center"
+                       Margin="0,-20,0,10" />
+                <Grid RowDefinitions="0.5*,*,0.5*,*"
+                      ColumnDefinitions="*,0.2*"
+                      Margin="0,0,0,20">
 
-                <Label Text="Email:" />
-                <StackLayout Orientation="Horizontal">
+                    <Label Text="Email:"
+                           FontSize="Medium" />
                     <Entry Text="{Binding SelectedDeveloper.Email}"
-                           IsEnabled="False" />
-                    <Button Text="M"
-                            WidthRequest="50"
-                            HeightRequest="50"
+                           IsEnabled="False"
+                           Grid.Row="1" />
+                    <Button Text="&#xf0e0;"
+                            FontSize="Large"
+                            FontFamily="FontAwesome"
                             HorizontalOptions="EndAndExpand"
-                            Command="{Binding SendMailCommand}" />
-                </StackLayout>
+                            Command="{Binding SendMailCommand}"
+                            Grid.Row="1"
+                            Grid.Column="1" />
 
-                <Label Text="Address:" />
-                <Entry Text="{Binding SelectedDeveloper.Address}"
-                       IsEnabled="False" />
-
-                <Label Text="Years of experience:"
-                       VerticalTextAlignment="Center"
-                       Margin="0,0,20,0" />
-                <Entry Text="{Binding SelectedDeveloper.YearsOfExperience}"
-                       IsEnabled="False" />
+                    <Label Text="Address:"
+                           Grid.Row="2"
+                           FontSize="Medium" />
+                    <Entry Text="{Binding SelectedDeveloper.Address}"
+                           IsEnabled="False"
+                           Grid.Row="3" />
+                    <Button Text="&#xf5a0;"
+                            FontSize="Large"
+                            FontFamily="FontAwesome"
+                            HorizontalOptions="EndAndExpand"
+                            Command="{Binding OpenMapCommand}"
+                            Grid.Row="3"
+                            Grid.Column="1" />
+                </Grid>
 
                 <Label Text="Available work locations:"
-                   Margin="0,0,0,15" />
-                <FlexLayout BindableLayout.ItemsSource="{Binding SelectedDeveloper.Locations}"
+                       Margin="0,0,0,15"
+                       FontSize="Medium" />
+                <FlexLayout BindableLayout.ItemsSource="{Binding SelectedDeveloper.AvailableLocations}"
                             Wrap="Wrap"
                             Direction="Row"
                             JustifyContent="Start">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <Frame BorderColor="Black" CornerRadius="20">
-                                <Label Text="{Binding .}"
+                            <Frame BorderColor="Black"
+                                   CornerRadius="20">
+                                <Label Text="{Binding Province}"
                                        VerticalOptions="Center"
                                        HorizontalTextAlignment="Center" />
                             </Frame>
@@ -59,7 +79,8 @@
                 </FlexLayout>
 
                 <Label Text="Skills:"
-                   Margin="0,0,0,15" />
+                       Margin="0,15,0,15"
+                       FontSize="Medium" />
                 <FlexLayout BindableLayout.ItemsSource="{Binding SelectedDeveloper.Skills}"
                             Wrap="Wrap"
                             Direction="Row"
@@ -67,7 +88,8 @@
                             AlignItems="Start">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <Frame BorderColor="Black" CornerRadius="20">
+                            <Frame BorderColor="Black"
+                                   CornerRadius="20">
                                 <Label Text="{Binding SkillName}"
                                        VerticalOptions="Center"
                                        HorizontalTextAlignment="Center" />
@@ -75,7 +97,10 @@
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </FlexLayout>
-                <Button Text="Send Message" />
+                <Button Text="Send Message"
+                        Margin="0,15,0,0" />
+                <Label />
+                <Label />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

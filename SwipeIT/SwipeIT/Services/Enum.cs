@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SwipeIT
+﻿namespace SwipeIT
 {
-    public enum Role
-    {
-        Unassigned = 0,
-        Admin = 1,
-        Developer = 2,
-        Recruiter = 3,
-    }
-
-    public enum Location
+    public enum Province
     {
         Select = 0,
         Antwerpen = 1,

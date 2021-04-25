@@ -8,17 +8,17 @@
         <local:SwipeViewModel />
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="{Binding CurrentUserSingleton.CurrentUser.FirstName }" />
+        <ToolbarItem Text="{Binding Current.User.FirstName }" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand"
                      HorizontalOptions="CenterAndExpand"
-                     BackgroundColor="{StaticResource Primary}">
+                     BackgroundColor="#c25e00">
 
             <CarouselView ItemsSource="{Binding DevelopersResult}">
                 <CarouselView.ItemsLayout>
                     <LinearItemsLayout Orientation="Horizontal"
-                                           SnapPointsType="Mandatory" />
+                                       SnapPointsType="Mandatory" />
                 </CarouselView.ItemsLayout>
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
@@ -26,46 +26,47 @@
                             <SwipeView.TopItems>
                                 <SwipeItems>
                                     <SwipeItemView>
-                                        <StackLayout Margin="10"
-                                                         Orientation="Horizontal"
-                                                         HorizontalOptions="Center">
-
-                                            <Button Text="Save"
-                                                        BackgroundColor="Green"
-                                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:SwipeViewModel}}, Path=LikeCommand}"
-                                                        CommandParameter="{Binding .}" />
-                                            <Button Text="Cancel"
-                                                        BackgroundColor="Red" />
-                                        </StackLayout>
+                                        <Button Text="&#xf234;"
+                                                FontSize="40"
+                                                FontFamily="FontAwesome"
+                                                TextColor="Black"
+                                                WidthRequest="600"
+                                                HeightRequest="75"
+                                                BackgroundColor="Transparent"
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:SwipeViewModel}}, Path=LikeCommand}"
+                                                CommandParameter="{Binding .}" />
                                     </SwipeItemView>
                                 </SwipeItems>
                             </SwipeView.TopItems>
-                            <Frame
-                   HasShadow="True"
-                   CornerRadius="20">
+                            <Frame Margin="5"  >
                                 <StackLayout Margin="10">
                                     <Image Source="{Binding Image}"
                                            HorizontalOptions="Center"
                                            HeightRequest="150"
                                            WidthRequest="150">
                                     </Image>
+                                    <Button IsVisible="{OnIdiom Desktop=True, Default=False, TV=True }"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:SwipeViewModel}}, Path=LikeCommand}"
+                                            CommandParameter="{Binding .}"
+                                            Text="Add To DeveloperList" />
 
                                     <StackLayout Orientation="Horizontal"
                                                  HorizontalOptions="Center">
-                                        <Label Text="{Binding FirstName}" FontSize="Large" />
-                                        <Label Text="{Binding LastName}" FontSize="Large" />
+                                        <Label Text="{Binding FirstName}"
+                                               FontSize="Large" />
+                                        <Label Text="{Binding LastName}"
+                                               FontSize="Large" />
                                     </StackLayout>
 
-                                    <FlexLayout BindableLayout.ItemsSource="{Binding Locations}"
+                                    <FlexLayout BindableLayout.ItemsSource="{Binding AvailableLocations}"
                                                 Wrap="Wrap"
                                                 Direction="Row"
                                                 JustifyContent="Center"
                                                 Margin="0,25,0,25">
                                         <BindableLayout.ItemTemplate>
                                             <DataTemplate>
-                                                <Frame BorderColor="Black"
-                                                       CornerRadius="20">
-                                                    <Label Text="{Binding .}"
+                                                <Frame>
+                                                    <Label Text="{Binding Province}"
                                                            VerticalOptions="Center"
                                                            HorizontalTextAlignment="Center" />
                                                 </Frame>
@@ -74,16 +75,16 @@
                                     </FlexLayout>
 
                                     <FlexLayout BindableLayout.ItemsSource="{Binding Skills}"
-                                            Wrap="Wrap"
-                                            Direction="Row"
-                                            JustifyContent="Center"
-                                            AlignItems="Center">
+                                                Wrap="Wrap"
+                                                Direction="Row"
+                                                JustifyContent="Center"
+                                                AlignItems="Center">
                                         <BindableLayout.ItemTemplate>
                                             <DataTemplate>
-                                                <Frame BorderColor="Black" CornerRadius="20">
+                                                <Frame>
                                                     <Label Text="{Binding SkillName}"
-                                                       VerticalOptions="Center"
-                                                       HorizontalTextAlignment="Center" />
+                                                           VerticalOptions="Center"
+                                                           HorizontalTextAlignment="Center" />
                                                 </Frame>
                                             </DataTemplate>
                                         </BindableLayout.ItemTemplate>

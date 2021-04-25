@@ -1,7 +1,6 @@
 ﻿using SwipeIT.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SwipeIT.Models
 {
@@ -9,7 +8,7 @@ namespace SwipeIT.Models
     {
         private int id;
 
-        public int ID
+        public int Id
         {
             get => id;
             set
@@ -18,20 +17,10 @@ namespace SwipeIT.Models
             }
         }
 
-        private Role role;
-
-        public Role Role
-        {
-            get => role;
-            set
-            {
-                role = value;
-                OnPropertyChanged(nameof(Role));
-            }
-        }
-
         private string email;
 
+        [Required]
+        [MaxLength(100)]
         public string Email
         {
             get => email;
@@ -44,6 +33,8 @@ namespace SwipeIT.Models
 
         private string password;
 
+        [Required]
+        [MaxLength(50)]
         public string Password
         {
             get => password;

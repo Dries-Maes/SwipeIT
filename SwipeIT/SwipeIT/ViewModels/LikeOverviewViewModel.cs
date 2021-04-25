@@ -11,12 +11,12 @@ namespace SwipeIT.ViewModels
 
         private void DeleteDeveloperFromList(Developer developer)
         {
-            ((Recruiter)CurrentUserSingleton.CurrentUser).SelectedDevelopers.Remove(developer);
+            ((Recruiter)Current.User).Developers.Remove(developer);
         }
 
         private async void OnDeveloperSelected(Developer developer)
         {
-            await Shell.Current.GoToAsync($"{nameof(LikeOverviewDetailPage)}?{nameof(LikeOverviewDetailViewModel.DeveloperID)}={developer.ID}");
+            await Shell.Current.GoToAsync($"{nameof(LikeOverviewDetailPage)}?{nameof(LikeOverviewDetailViewModel.DeveloperID)}={developer.Id}");
         }
     }
 }

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SwipeIT.ViewModels"
+             x:Class="SwipeIT.Views.UsersAdministrationPage">
+    <ContentPage.BindingContext>
+        <local:UsersAdministrationViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout  Style="{StaticResource MainMargin}">
+            <Label Text="&#xf509; User Administration:"
+                   Style="{StaticResource Fa-Label}" />
+            <SearchBar Text="{Binding SearchText}"
+                       SearchCommand="{Binding SearchForUsersCommand}"
+                       BackgroundColor="DarkGray"
+                       TextColor="Black"
+                       Placeholder="search users" />
+
+            <Label Text="Users"></Label>
+            <CollectionView ItemsLayout="VerticalGrid, 1"
+                            ItemsSource="{Binding AllUsersListCollection}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Grid Padding="5">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type local:UsersAdministrationViewModel}}, Path=NavigateToSettingsCommand}"
+                                                      CommandParameter="{Binding .}" />
+                            </Grid.GestureRecognizers>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="55" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="35" />
+                                <ColumnDefinition Width="300" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding  Image}"
+                                   HeightRequest="30"
+                                   WidthRequest="30" />
+                            <StackLayout Grid.Column="1"
+                                         Grid.Row="0">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Id }"></Label>
+                                    <Label Text="{Binding FirstName}"
+                                           FontAttributes="Bold" />
+                                    <Label Text="{Binding LastName}" />
+                                </StackLayout>
+                                <Label Text="{Binding  Email}"
+                                       TextColor="DarkBlue" />
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

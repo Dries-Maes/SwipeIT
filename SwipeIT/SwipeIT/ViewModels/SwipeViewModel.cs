@@ -1,36 +1,44 @@
-﻿using Nest;
-using SwipeIT.Models;
-using System;
+﻿using SwipeIT.Models;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using System.Windows.Input;
+using System.Linq;
 using Xamarin.Forms;
 
 namespace SwipeIT.ViewModels
 {
     public class SwipeViewModel : BaseViewModel
     {
-        public List<Developer> DevelopersResult { get; set; }
+        private List<Developer> developersResult;
+
+        public List<Developer> DevelopersResult
+        {
+            get { return developersResult; }
+            set
+            {
+                developersResult = value;
+                OnPropertyChanged(nameof(DevelopersResult));
+            }
+        }
 
         public Command<Developer> LikeCommand => new Command<Developer>(Like);
+        public Command RefreshCommand => new Command(GetUserData);
 
         public SwipeViewModel()
         {
             DevelopersResult = new List<Developer>();
-            GetMockData();
+            GetUserData();
         }
 
-        private void GetMockData()
+        private async void GetUserData()
         {
-            DevelopersResult = DeveloperRepo.GetDevelopers();
+            DevelopersResult = await DeveloperRepo.GetAllItemsAsync();
         }
 
-        private void Like(Developer developer)
+        private async void Like(Developer developer)
         {
-            if (!((Recruiter)CurrentUserSingleton.CurrentUser).SelectedDevelopers.Contains(developer))
+            if (((Recruiter)Current.User).Developers.FirstOrDefault(x => x.Id == developer.Id) == null)
             {
-                ((Recruiter)CurrentUserSingleton.CurrentUser).SelectedDevelopers.Add(developer);
+                ((Recruiter)Current.User).Developers.Add(developer);
+                await RecruiterRepo.AddItemAsync((Recruiter)Current.User);
             }
         }
     }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -7,6 +6,8 @@ namespace SwipeIT.ViewModels
 {
     public class AboutViewModel : BaseViewModel
     {
+        public Command DeleteDbCommand => new Command(DeleteDb);
+
         public AboutViewModel()
         {
             Title = "About";

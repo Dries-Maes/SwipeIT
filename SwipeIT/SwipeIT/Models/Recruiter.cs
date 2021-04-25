@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace SwipeIT.Models
 {
@@ -7,6 +8,7 @@ namespace SwipeIT.Models
     {
         private string company;
 
+        [MaxLength(75)]
         public string Company
         {
             get => company;
@@ -17,22 +19,21 @@ namespace SwipeIT.Models
             }
         }
 
-        private ObservableCollection<Developer> selectedDevelopers;
+        private ICollection<Developer> developers;
 
-        public ObservableCollection<Developer> SelectedDevelopers
+        public ICollection<Developer> Developers
         {
-            get => selectedDevelopers;
+            get => developers;
             set
             {
-                selectedDevelopers = value;
-                OnPropertyChanged(nameof(SelectedDevelopers));
+                developers = value;
+                OnPropertyChanged(nameof(Developers));
             }
         }
 
         public Recruiter()
         {
-            Role = Role.Recruiter;
-            SelectedDevelopers = new ObservableCollection<Developer>();
+            Developers = new ObservableCollection<Developer>();
         }
     }
 }

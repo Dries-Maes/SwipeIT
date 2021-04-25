@@ -1,19 +1,24 @@
 ﻿using SwipeIT.Services;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SwipeIT.Models
 {
-    public class DateLog
+    public class DateLog : ObservableObject
     {
+        public int Id { get; set; }
+
+        [DataType(DataType.DateTime)]
         public DateTime DateCreated { get; set; }
 
+        [DataType(DataType.DateTime)]
         public DateTime DateModified { get; set; }
 
         public DateLog()
         {
             DateCreated = DateTime.Now;
+            DateModified = DateTime.Now;
         }
     }
 }

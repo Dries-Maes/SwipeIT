@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SwipeIT.Models
+﻿namespace SwipeIT.Models
 {
     public class Admin : Account
     {
         public Admin()
         {
-            Role = Role.Admin;
         }
     }
 }

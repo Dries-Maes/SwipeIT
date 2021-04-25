@@ -1,7 +1,5 @@
-﻿using SwipeIT.ViewModels;
-using SwipeIT.Views;
+﻿using SwipeIT.Views;
 using System;
-using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace SwipeIT
@@ -15,11 +13,6 @@ namespace SwipeIT
             Routing.RegisterRoute(nameof(LikeOverviewDetailPage), typeof(LikeOverviewDetailPage));
             Routing.RegisterRoute(nameof(SwipePage), typeof(SwipePage));
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
-        }
-
-        private async void OnMenuItemClicked(object sender, EventArgs e)
-        {
-            await Shell.Current.GoToAsync("//LoginPage");
         }
     }
 }

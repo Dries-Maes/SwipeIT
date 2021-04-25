@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SwipeIT.Models
 {
@@ -6,6 +7,7 @@ namespace SwipeIT.Models
     {
         private string address;
 
+        [MaxLength(100)]
         public string Address
         {
             get => address;
@@ -16,22 +18,21 @@ namespace SwipeIT.Models
             }
         }
 
-        private List<Recruiter> likedByRecruiters;
+        private ICollection<Recruiter> recruiters;
 
-        public List<Recruiter> LikedByRecruiters
+        public ICollection<Recruiter> Recruiters
         {
-            get => likedByRecruiters;
+            get => recruiters;
             set
             {
-                likedByRecruiters = value;
+                recruiters = value;
                 OnPropertyChanged(nameof(OnPropertyChanged));
             }
         }
 
         public Developer()
         {
-            Role = Role.Developer;
-            LikedByRecruiters = new List<Recruiter>();
+            Recruiters = new List<Recruiter>();
         }
     }
 }

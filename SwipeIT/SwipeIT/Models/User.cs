@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace SwipeIT.Models
 {
@@ -9,6 +7,7 @@ namespace SwipeIT.Models
     {
         private string firstName;
 
+        [MaxLength(50)]
         public string FirstName
         {
             get => firstName;
@@ -21,6 +20,7 @@ namespace SwipeIT.Models
 
         private string lastName;
 
+        [MaxLength(50)]
         public string LastName
         {
             get => lastName;
@@ -70,22 +70,22 @@ namespace SwipeIT.Models
             }
         }
 
-        private ObservableCollection<Location> locations;
+        private ObservableCollection<AvailableLocation> availableLocations;
 
-        public ObservableCollection<Location> Locations
+        public ObservableCollection<AvailableLocation> AvailableLocations
         {
-            get => locations;
+            get => availableLocations;
             set
             {
-                locations = value;
-                OnPropertyChanged(nameof(Locations));
+                availableLocations = value;
+                OnPropertyChanged(nameof(AvailableLocations));
             }
         }
 
         public User()
         {
             Skills = new ObservableCollection<Skill>();
-            Locations = new ObservableCollection<Location>();
+            AvailableLocations = new ObservableCollection<AvailableLocation>();
         }
     }
 }
