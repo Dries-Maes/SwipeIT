@@ -4,7 +4,8 @@
        xmlns:local="clr-namespace:SwipeIT.Views"
        xmlns:viewmodels="clr-namespace:SwipeIT.ViewModels"
        Title="SwipeIT"
-       x:Class="SwipeIT.AppShellDeveloper">
+       x:Class="SwipeIT.AppShellDeveloper"
+       FlyoutWidth="230">
 
     <Shell.Resources>
         <ResourceDictionary>
