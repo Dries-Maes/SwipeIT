@@ -1,11 +1,8 @@
 ﻿using SwipeIT.Models;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace SwipeIT.ViewModels
@@ -19,7 +16,10 @@ namespace SwipeIT.ViewModels
         private void SearchForUsers(Developer obj)
         {
             allUsers = new List<User>();
-            AllUsersListCollection = new ObservableCollection<User>(allUsers);
+            GetUsers().Wait();
+            AllUsersListCollection = new ObservableCollection<User>(allUsers.Where(x =>
+                    x.Email.ToLower().Contains(searchText.ToLower()) || x.FirstName.ToLower().Contains(searchText.ToLower())
+                                                                     || x.LastName.ToLower().Contains(searchText.ToLower())).ToList());
         }
 
         public string SearchText
@@ -27,7 +27,7 @@ namespace SwipeIT.ViewModels
             get { return searchText; }
             set
             {
-                searchText = value;
+                searchText = string.IsNullOrWhiteSpace(value) ? string.Empty : value;
                 OnPropertyChanged(nameof(SearchText));
             }
         }
@@ -47,7 +47,7 @@ namespace SwipeIT.ViewModels
         public UsersAdministrationViewModel()
         {
             GetUsers().Wait();
-            AllUsersListCollection = new ObservableCollection<User>(allUsers.Where(x => x.Email.Contains("rch")).ToList());
+            allUsersListCollection = new ObservableCollection<User>(allUsers);
         }
 
         private async Task GetUsers()
