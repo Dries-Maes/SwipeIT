@@ -7,8 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using SwipeIT.Services;
-
 namespace SwipeIT.ViewModels
 {
     public class LoginViewModel : BaseViewModel
@@ -57,7 +55,8 @@ namespace SwipeIT.ViewModels
         {
             if (Accounts.Count == 0)
             {
-                AddDummyData();
+                var mockData = new MockData();
+                mockData.AddDummyData();
                 await GetAccounts();
             }
         }

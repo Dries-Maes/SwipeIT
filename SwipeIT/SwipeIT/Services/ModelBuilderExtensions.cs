@@ -145,7 +145,6 @@ namespace SwipeIT.Services
             modelBuilder.Entity<Recruiter>().HasMany(x => x.AvailableLocations);
             modelBuilder.Entity<Account>().HasOne(x => x.DateLog);
             modelBuilder.Entity<Skill>().HasOne(x => x.DateLog);
-            //modelBuilder.Entity<DateLog>().HasOne(x => x.Account);
         }
     }
 }
