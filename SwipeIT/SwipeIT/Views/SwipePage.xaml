@@ -32,13 +32,13 @@
 
                                             <Button Text="&#xf234;"
                                                     FontSize="Large"
-                                                    FontFamily='FontAwesome'
+                                                    FontFamily="FontAwesome"
                                                     BackgroundColor="Green"
                                                     Command="{Binding Source={RelativeSource AncestorType={x:Type local:SwipeViewModel}}, Path=LikeCommand}"
                                                     CommandParameter="{Binding .}" />
                                             <Button Text="&#xf410;"
                                                     FontSize="Large"
-                                                    FontFamily='FontAwesome'
+                                                    FontFamily="FontAwesome"
                                                     BackgroundColor="Red"
                                                     Command="{Binding Source={RelativeSource AncestorType={x:Type local:SwipeViewModel}}, Path=RefreshCommand}"
                                                     CommandParameter="{Binding .}" />

@@ -13,6 +13,7 @@ namespace SwipeIT
             Routing.RegisterRoute(nameof(LikeOverviewDetailPage), typeof(LikeOverviewDetailPage));
             Routing.RegisterRoute(nameof(SwipePage), typeof(SwipePage));
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
+            Routing.RegisterRoute(nameof(SettingsPage), typeof(SettingsPage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

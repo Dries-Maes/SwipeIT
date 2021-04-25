@@ -57,7 +57,8 @@ namespace SwipeIT.ViewModels
         {
             if (Accounts.Count == 0)
             {
-                AddDummyData();
+                var mockData = new MockData();
+                mockData.AddDummyData();
                 await GetAccounts();
             }
         }
