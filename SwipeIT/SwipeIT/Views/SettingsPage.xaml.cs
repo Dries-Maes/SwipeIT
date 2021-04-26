@@ -19,5 +19,10 @@ namespace SwipeIT.Views
             SettingsViewModel settingsViewModel = new SettingsViewModel();
             settingsViewModel.UpdateCurrentUser();
         }
+
+        private void ShowPassword_OnPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            Password.IsPassword = !ShowPassword.IsChecked;
+        }
     }
 }

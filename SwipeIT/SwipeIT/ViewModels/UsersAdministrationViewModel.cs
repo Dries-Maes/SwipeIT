@@ -16,7 +16,7 @@ namespace SwipeIT.ViewModels
 
         public List<User> AllUsers
         {
-            get { return allUsers; }
+            get => allUsers;
             set
             {
                 allUsers = value;

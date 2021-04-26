@@ -16,7 +16,7 @@ namespace SwipeIT.ViewModels
 
         public ObservableCollection<Skill> Skills
         {
-            get { return skill; }
+            get => skill;
             set
             {
                 skill = value;

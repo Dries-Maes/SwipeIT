@@ -38,18 +38,37 @@
             <StackLayout Orientation="Vertical"
                          Padding="30,24,30,24"
                          Spacing="10">
-                <Label Text="Start developing now"
+                <Label Text="Swipe IT"
                        FontSize="Title" />
-                <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!"
-                       FontSize="16"
-                       Padding="0,0,0,0" />
+                <Label
+                    FontSize="16"
+                         Padding="0,0,0,0">
+                    <Label.Text>
+                        An Android APP showcasing a swipe oriented APP for recruiting IT profiles.
+
+                        Authors and Acknowledgement:
+
+                        Dries Maes: https://github.com/Dries-Maes
+
+                        Ward Impe: https://github.com/Impesoft
+
+                        Jens Van Gelder: https://github.com/JensVanGelder
+
+                        Teacher/Mentor:
+
+                        Michiel Wouters: https://github.com/MichWouters
+
+                        Feel free download and run!
+
+                        Admin account: (username) admin (password) admin</Label.Text>
+                </Label>
                 <Label FontSize="16"
                        Padding="0,24,0,0">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
                                 <Span Text="Learn more at " />
-                                <Span Text="https://aka.ms/xamarin-quickstart"
+                                <Span Text="https://github.com/Dries-Maes/SwipeIT"
                                       FontAttributes="Bold" />
                             </FormattedString.Spans>
                         </FormattedString>
