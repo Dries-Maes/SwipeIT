@@ -88,7 +88,7 @@ namespace SwipeIT.ViewModels
         private bool ErrorInFormValues()
         {
             bool retVal = false;
-            retVal = CheckIFPasswordsMatch(retVal);
+            retVal = CheckIfPasswordsMatch(retVal);
             retVal = CheckForEmptyFields(retVal);
             retVal = CheckIfRoleIsSelected(retVal);
             return retVal;
@@ -116,15 +116,11 @@ namespace SwipeIT.ViewModels
             return retVal;
         }
 
-        private bool CheckIFPasswordsMatch(bool retVal)
+        private bool CheckIfPasswordsMatch(bool retVal)
         {
-            if (!PassWordsMatch())
-            {
-                ErrorMessage += "Passwords don't match\n";
-                retVal = true;
-            }
-
-            return retVal;
+            if (PassWordsMatch()) return retVal;
+            ErrorMessage += "Passwords don't match\n";
+            return true;
         }
 
         private bool EmptyFields()
@@ -202,11 +198,9 @@ namespace SwipeIT.ViewModels
 
         private void CheckIfRequiredFieldsAreFilledIn()
         {
-            if (!RequiredFields())
-            {
-                ErrorMessage = "Email and Password fields cannot be empty\n";
-                return;
-            }
+            if (RequiredFields()) return;
+            ErrorMessage = "Email and Password fields cannot be empty\n";
+            return;
         }
 
         private async Task CheckLoginDetails()

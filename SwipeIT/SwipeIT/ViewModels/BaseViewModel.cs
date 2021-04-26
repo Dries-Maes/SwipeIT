@@ -20,7 +20,7 @@ namespace SwipeIT.ViewModels
 
         public bool IsDeveloper
         {
-            get { return isDeveloper; }
+            get => isDeveloper;
             set
             {
                 isDeveloper = value;
@@ -32,7 +32,7 @@ namespace SwipeIT.ViewModels
 
         public bool IsRecruiter
         {
-            get { return isRecruiter; }
+            get => isRecruiter;
             set
             {
                 isRecruiter = value;
@@ -110,7 +110,6 @@ namespace SwipeIT.ViewModels
             }
         }
 
-        
         #region INotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -11,7 +11,7 @@ namespace SwipeIT.ViewModels
         public AboutViewModel()
         {
             Title = "About";
-            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));
+            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://github.com/Dries-Maes/SwipeIT"));
         }
 
         public ICommand OpenWebCommand { get; }

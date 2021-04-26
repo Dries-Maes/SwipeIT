@@ -11,7 +11,7 @@ namespace SwipeIT.ViewModels
 
         public List<Developer> DevelopersResult
         {
-            get { return developersResult; }
+            get => developersResult;
             set
             {
                 developersResult = value;

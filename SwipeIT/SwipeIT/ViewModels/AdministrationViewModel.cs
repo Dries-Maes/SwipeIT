@@ -14,13 +14,7 @@ namespace SwipeIT.ViewModels
 {
     public class AdministrationViewModel : BaseViewModel
     {
-        private List<Account> userDateLogs;
-
-        public List<Account> UserDateLogs
-        {
-            get { return userDateLogs; }
-            set { userDateLogs = value; }
-        }
+        public List<Account> UserDateLogs { get; set; }
 
         public ICommand LogoutCommand => new Command(Logout);
 

@@ -49,11 +49,10 @@ namespace SwipeIT.ViewModels
             SelectedLocationsList = new ObservableCollection<AvailableLocation>();
             foreach (Province item in Enum.GetValues(typeof(Province)))
             {
-                if (item != Province.Select && (Current.User).AvailableLocations.FirstOrDefault(x => x.Province == item) == null)
-                {
-                    AvailableLocation location = new AvailableLocation { Province = item };
-                    SelectedLocationsList.Add(location);
-                }
+                if (item == Province.Select ||
+                    (Current.User).AvailableLocations.FirstOrDefault(x => x.Province == item) != null) continue;
+                AvailableLocation location = new AvailableLocation { Province = item };
+                SelectedLocationsList.Add(location);
             }
         }
 
@@ -66,13 +65,11 @@ namespace SwipeIT.ViewModels
 
         private async void AddLocation()
         {
-            if (SelectedLocation != null)
-            {
-                var userLocations = Current.User.AvailableLocations;
-                userLocations.Add(SelectedLocation);
-                SelectedLocationsList.Remove(SelectedLocation);
-                SelectedLocation = (SelectedLocationsList[0]) ?? SelectedLocation;
-            }
+            if (SelectedLocation == null) return;
+            var userLocations = Current.User.AvailableLocations;
+            userLocations.Add(SelectedLocation);
+            SelectedLocationsList.Remove(SelectedLocation);
+            SelectedLocation = (SelectedLocationsList[0]) ?? SelectedLocation;
         }
     }
 }

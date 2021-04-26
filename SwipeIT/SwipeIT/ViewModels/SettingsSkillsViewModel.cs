@@ -51,13 +51,11 @@ namespace SwipeIT.ViewModels
 
         private void SkillPickedAsync()
         {
-            if (SelectedSkill != null)
-            {
-                var skills = Current.User.Skills;
-                skills.Add(SelectedSkill);
-                AvailableSkillsList.Remove(SelectedSkill);
-                SelectedSkill = (AvailableSkillsList[0]) ?? SelectedSkill;
-            }
+            if (SelectedSkill == null) return;
+            var skills = Current.User.Skills;
+            skills.Add(SelectedSkill);
+            AvailableSkillsList.Remove(SelectedSkill);
+            SelectedSkill = (AvailableSkillsList[0]) ?? SelectedSkill;
         }
 
         public Command SkillEnteredCommand => new Command(SkillEntryAsync);
@@ -70,22 +68,14 @@ namespace SwipeIT.ViewModels
 
         private async Task BuildAvailableSkillsList()
         {
-            List<Skill> Skills = new List<Skill>();
             AvailableSkillsList = new ObservableCollection<Skill>();
-            foreach (var item in await SkillsRepo.GetAllItemsAsync())
+
+            List<Skill> Skills = (await SkillsRepo.GetAllItemsAsync()).Where(item => !item.IsCreatedByUser).ToList();
+
+            foreach (var item in Skills.Where(item => !AvailableSkillsList.Select(x => x.SkillName).Contains(item.SkillName)))
             {
-                if (!item.IsCreatedByUser)
-                {
-                    Skills.Add(item);
-                }
+                AvailableSkillsList.Add(item);
             }
-            foreach (var item in Skills)
-            {
-                if (!AvailableSkillsList.Select(x => x.SkillName).Contains(item.SkillName))
-                {
-                    AvailableSkillsList.Add(item);
-                }
-            };
         }
 
         private void DeleteSkill(string skill)

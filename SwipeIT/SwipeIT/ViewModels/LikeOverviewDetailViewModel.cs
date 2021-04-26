@@ -34,10 +34,7 @@ namespace SwipeIT.ViewModels
 
         public string DeveloperExperience
         {
-            get
-            {
-                return GetDeveloperExperienceString();
-            }
+            get => GetDeveloperExperienceString();
             set
             {
                 DeveloperExperience = value;
