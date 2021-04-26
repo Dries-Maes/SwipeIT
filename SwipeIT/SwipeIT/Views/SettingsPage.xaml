@@ -58,9 +58,17 @@
                            Placeholder="Enter your email"
                            PlaceholderColor="IndianRed" />
 
-                    <Entry Text="{Binding Current.User.Password}"
-                           Placeholder="Enter your password"
-                           PlaceholderColor="IndianRed" />
+                    <StackLayout Orientation="Horizontal">
+                        <Entry Text="{Binding Current.User.Password}"
+                               x:Name="Password"
+                               Placeholder="Enter your password"
+                               IsPassword="True"
+                               PlaceholderColor="IndianRed" />
+                        <CheckBox x:Name="ShowPassword"
+                                  PropertyChanged="ShowPassword_OnPropertyChanged"
+                                  IsChecked="False" />
+                        <Label Text="Show Password"></Label>
+                    </StackLayout>
                     <Label Text="First and last name"
                            VerticalTextAlignment="Center" />
                     <Entry Text="{Binding Current.User.FirstName}"
